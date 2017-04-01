@@ -1,0 +1,23 @@
+module CreativeControls
+ColorChooser 1.0 ColorChooser.qml
+ColorWheel 1.0 ColorWheel.qml
+Graph 1.0 Graph.qml
+HSLSlider 1.0 HSLSlider.qml
+HSVSlider 1.0 HSVSlider.qml
+Joystick 1.0 Joystick.qml
+Keyboard 1.0 Keyboard.qml
+Leds 1.0 Leds.qml
+LogSlider 1.0 LogSlider.qml
+Matrix 1.0 Matrix.qml
+MultiSlider 1.0 MultiSlider.qml
+Random1D 1.0 Random1D.qml
+Random2D 1.0 Random2D.qml
+Random3D 1.0 Random3D.qml
+RangeSlider 1.0 RangeSlider.qml
+RGBSlider 1.0 RGBSlider.qml
+Spectrum 1.0 Spectrum.qml
+Step 1.0 Step.qml
+Voronoi 1.0 Voronoi.qml
+XYPad 1.0 XYPad.qml
+designersupported
+
