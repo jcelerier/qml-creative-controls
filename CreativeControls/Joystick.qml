@@ -6,20 +6,33 @@ Rectangle
 {
     id: pad
     color: Styles.base
-    radius: 100
-    height: radius * 2
-    width: height
+
     state: "default"
 
+
+    width : Math.max(parent.width,parent.height)
+    height: Math.max(parent.width,parent.height)
+    radius: Math.max(parent.width,parent.height)/2
 
     Rectangle
     {
         id: stick
         color: Styles.detail
-        radius: 10
+        radius: pad.radius / 10
         height: radius* 2
         width: height
 
+    }
+
+    function moveStick(mouseX,mouseY)
+    {
+        var dist = Utils.distance(0,0, mouseX - pad.radius,mouseY- pad.radius);
+        var theta = Math.atan2(mouseY - pad.radius, mouseX - pad.radius);
+
+        var radius = Utils.clamp(dist, 0,pad.radius - stick.radius) ;
+
+        stick.x = radius* Math.cos(theta) + pad.radius- stick.radius;
+        stick.y = radius * Math.sin(theta) + pad.radius- stick.radius;
     }
 
     MouseArea
@@ -28,23 +41,10 @@ Rectangle
         anchors.fill: parent
         onPressed: {
             pad.state = "move"
-            stick.x = mouseX - stick.radius;
-            stick.y = mouseY - stick.radius;
+            moveStick(mouseX,mouseY);
         }
 
-        onPositionChanged: {
-            var newX = mouseX - stick.radius ;
-            var newY = mouseY - stick.radius ;
-
-            var dist = Utils.distance(0,0, newX - pad.radius,newY- pad.radius)
-            var theta = Math.atan2(newY - pad.radius, newX - pad.radius);
-
-            var radius = Utils.clamp(dist, 0,pad.radius - stick.radius) ;
-
-            stick.x = radius* Math.cos(theta) + pad.radius - stick.radius
-            stick.y = radius * Math.sin(theta) + pad.radius - stick.radius
-
-        }
+        onPositionChanged: moveStick(mouseX,mouseY)
         onReleased: pad.state = "default"
     }
 

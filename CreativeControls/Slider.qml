@@ -8,7 +8,7 @@ Rectangle
     color : Styles.detail
     property bool bRotate : false
 
-    anchors.fill : parent
+    //anchors.fill : parent
 
     property real sliderWidth : bRotate ? height / 10 : width / 10
     Rectangle
@@ -40,6 +40,5 @@ Rectangle
         onPressed :  moveCursor(mouseX,mouseY);
 
         onPositionChanged: moveCursor(mouseX,mouseY);
-        onDoubleClicked: parent.bRotate = !parent.bRotate
     }
 }

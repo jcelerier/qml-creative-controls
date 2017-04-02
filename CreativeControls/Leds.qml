@@ -6,20 +6,20 @@ import CreativeControls 1.0
 Grid
 {
     id: ledsGrid
-    height: 500
-    width: 500
 
     columns: 3
     rows : 3
+    property real ledRadius : 20
 
+    columnSpacing : Utils.clamp((ledsGrid.width - ledsGrid.ledRadius*2* ledsGrid.columns) / (ledsGrid.columns-1),
+                                0, parent.width)
+    rowSpacing : Utils.clamp((ledsGrid.height - ledsGrid.ledRadius*2* ledsGrid.rows) / (ledsGrid.rows-1),
+                             0,parent.height)
 
-    columnSpacing :  (width - ledRadius/2) / columns
-    rowSpacing :  (height - ledRadius/2) / rows
-
-    property real ledRadius : 30
 
     property color ledColorOn: Styles.detail
     property color ledColorOff: Styles.base
+
 
 
     // intensity default values
@@ -89,5 +89,4 @@ Grid
         }
 
     }
-
 }
