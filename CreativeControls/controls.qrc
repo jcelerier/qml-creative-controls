@@ -18,7 +18,6 @@
         <file>Random1D.qml</file>
         <file>Random2D.qml</file>
         <file>Random3D.qml</file>
-        <file>README.md</file>
         <file>Spectrum.qml</file>
         <file>Graph.qml</file>
     </qresource>
