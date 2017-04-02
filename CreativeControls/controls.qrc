@@ -9,6 +9,7 @@
         <file>Leds.qml</file>
         <file>LogSlider.qml</file>
         <file>Matrix.qml</file>
+        <file>Slider.qml</file>
         <file>MultiSlider.qml</file>
         <file>RangeSlider.qml</file>
         <file>RGBSlider.qml</file>
@@ -24,5 +25,8 @@
         <file>Trajectory.qml</file>
         <file>Graph2D.qml</file>
         <file>Spat.qml</file>
+        <file>Styles.qml</file>
+        <file>Utils.qml</file>
+
     </qresource>
 </RCC>
