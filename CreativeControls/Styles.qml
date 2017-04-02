@@ -12,5 +12,5 @@ QtObject
     property color whiteKeyDetail: "#99BB99"
     property color blackKeyDetail: "#99BB99"
 
-    property real cornerRadius : 10
+    property real cornerRadius : 20
 }

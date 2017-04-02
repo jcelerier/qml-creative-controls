@@ -18,10 +18,10 @@ Rectangle
         property real sliderWidth : parent.width/4.
         spacing : 0.
 
-        ColorChannelSlider
+        Slider
         {
             id : r
-            sliderWidth : rgbSlider.sliderWidth
+            bRotate : true
 
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
@@ -29,44 +29,44 @@ Rectangle
             initialValue: 153. / 255.
 
             color : Qt.rgba(value,0,0,1.)
-            border.color : Qt.rgba(1.-value,0,0,1.)
+            handleColor : Qt.rgba(1.-value,0,0,1.)
         }
-        ColorChannelSlider
+        Slider
         {
             id : g
-            sliderWidth : rgbSlider.sliderWidth
+            bRotate : true
+
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
 
             initialValue: 187. / 255.
             color : Qt.rgba(0,value,0,1.)
-            border.color : Qt.rgba(0.,1.-value,0,1.)
+            handleColor : Qt.rgba(0.,1.-value,0,1.)
 
         }
-        ColorChannelSlider
+        Slider
         {
             id : b
-            sliderWidth : rgbSlider.sliderWidth
+
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
 
             initialValue: 153. / 255.
             color : Qt.rgba(0,0,value,1.)
-            border.color : Qt.rgba(0.,0.,1.-value,1.)
+            handleColor : Qt.rgba(0.,0.,1.-value,1.)
 
         }
-        ColorChannelSlider
+        Slider
         {
             id : a
-            sliderWidth : rgbSlider.sliderWidth
+
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
 
             initialValue: 0.7
 
             color : Qt.rgba(0,0,0,value)
-            border.color : Qt.rgba(value,value,value,1.)
-
+            handleColor : Qt.rgba(value,value,value,1.)
         }
     }
 

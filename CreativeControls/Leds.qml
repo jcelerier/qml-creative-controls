@@ -3,7 +3,6 @@ import CreativeControls 1.0
 
 // A LED matrix
 // No input
-
 Grid
 {
     id: ledsGrid
@@ -79,8 +78,8 @@ Grid
             id: rect
             width: ledsGrid.ledRadius * 2.; height: ledsGrid.ledRadius * 2.
             radius : ledsGrid.ledRadius
-            border.width: 1
-            border.color: "transparent"
+            border.width: 2
+            border.color: Qt.rgba(1.-color.g, 1.-color.g, 1.-color.g, color.a)
 
             property real indexRow : index% ledsGrid.columns
             property real indexColumn : ( index - indexRow)/(ledsGrid.columns)
@@ -91,3 +90,4 @@ Grid
 
     }
 }
+

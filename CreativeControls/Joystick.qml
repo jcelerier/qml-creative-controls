@@ -14,6 +14,9 @@ Rectangle
     height: Math.max(parent.width,parent.height)
     radius: Math.max(parent.width,parent.height)/2
 
+    border.color: Styles.detail
+    border.width: 5.
+
     Rectangle
     {
         id: stick

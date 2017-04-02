@@ -10,15 +10,20 @@ Rectangle
     radius : Styles.cornerRadius
     clip: true
 
-    //anchors.fill : parent
+    property real sliderWidth : 100
+    border.width : handleWidth
+    border.color : handleColor
 
-    property real handleWidth : bRotate ? height / 10 : width / 10
     property real value : bRotate? 1.0 - handle.y / background.height : handle.x / background.width;
     property real initialValue : 0.
-    property alias handleColor: handle.color
+
+    property real handleWidth : bRotate ? height / 20 : width / 20
+    property color handleColor: Styles.base
+
     Rectangle
     {
         id: handle
+        color : handleColor
 
         width : bRotate? background.width : handleWidth
         height : bRotate? handleWidth : background.height
@@ -28,8 +33,6 @@ Rectangle
         y : bRotate ? (1. - initialValue) * (background.height - handle.height) : 0
         anchors.verticalCenter: bRotate? undefined : parent.verticalCenter
         anchors.horizontalCenter: bRotate? parent.horizontalCenter : undefined
-
-        color : Styles.base
     }
 
 
