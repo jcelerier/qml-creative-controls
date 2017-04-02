@@ -21,5 +21,6 @@ Slider 1.0 Slider.qml
 Voronoi 1.0 Voronoi.qml
 XYPad 1.0 XYPad.qml
 singleton Styles Styles.qml
+singleton Utils Utils.qml
 designersupported
 

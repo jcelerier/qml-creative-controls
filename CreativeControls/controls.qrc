@@ -26,6 +26,7 @@
         <file>Graph2D.qml</file>
         <file>Spat.qml</file>
         <file>Styles.qml</file>
+        <file>Utils.qml</file>
 
     </qresource>
 </RCC>
