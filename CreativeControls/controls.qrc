@@ -20,5 +20,9 @@
         <file>Random3D.qml</file>
         <file>Spectrum.qml</file>
         <file>Graph.qml</file>
+        <file>AngleSlider.qml</file>
+        <file>Trajectory.qml</file>
+        <file>Graph2D.qml</file>
+        <file>Spat.qml</file>
     </qresource>
 </RCC>
