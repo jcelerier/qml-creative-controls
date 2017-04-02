@@ -35,7 +35,7 @@ private:
   QColor m_graphColor;
 
   QVector<qreal> m_values;
-  bool m_lines;
+  bool m_lines{};
 };
 
 #endif // GRAPH_HPP
