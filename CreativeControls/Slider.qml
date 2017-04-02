@@ -6,21 +6,32 @@ Rectangle
 {
     id: background
     color : Styles.detail
-    property bool bRotate : false
+    property bool bRotate : true
+    radius : Styles.cornerRadius
+    clip: true
 
     //anchors.fill : parent
 
-    property real sliderWidth : bRotate ? height / 10 : width / 10
+    property real handleWidth : bRotate ? height / 10 : width / 10
+    property real value : bRotate? 1.0 - handle.y / background.height : handle.x / background.width;
+    property real initialValue : 0.
+    property alias handleColor: handle.color
     Rectangle
     {
         id: handle
-        height : bRotate? sliderWidth : background.height
-        width : bRotate? background.width : sliderWidth
+
+        width : bRotate? background.width : handleWidth
+        height : bRotate? handleWidth : background.height
+        radius : Styles.cornerRadius
+
+        x: bRotate ? 0 : (1. - initialValue) * (background.width - handle.width)
+        y : bRotate ? (1. - initialValue) * (background.height - handle.height) : 0
         anchors.verticalCenter: bRotate? undefined : parent.verticalCenter
         anchors.horizontalCenter: bRotate? parent.horizontalCenter : undefined
 
         color : Styles.base
     }
+
 
     function moveCursor(mouseX,mouseY)
     {

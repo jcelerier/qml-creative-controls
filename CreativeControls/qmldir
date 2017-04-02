@@ -1,5 +1,4 @@
 module CreativeControls
-plugin CreativeControls
 ColorChooser 1.0 ColorChooser.qml
 ColorWheel 1.0 ColorWheel.qml
 Graph 1.0 Graph.qml
@@ -15,6 +14,7 @@ Random1D 1.0 Random1D.qml
 Random2D 1.0 Random2D.qml
 Random3D 1.0 Random3D.qml
 RangeSlider 1.0 RangeSlider.qml
+ColorChannelSlider 1.0 ColorChannelSlider.qml
 RGBSlider 1.0 RGBSlider.qml
 Spectrum 1.0 Spectrum.qml
 Step 1.0 Step.qml
