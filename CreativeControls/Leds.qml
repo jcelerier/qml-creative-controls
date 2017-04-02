@@ -3,19 +3,24 @@ import QtQuick.Layouts 1.3
 
 // A LED matrix
 // No input
-Item
+Grid
 {
-    id: leds
+    id: ledsGrid
+    height: 500
+    width: 500
 
-    property real ledsPerRow : 3
-    property real ledsPerColumn : 3
+    columns: 3
+    rows : 3
+
+
+    columnSpacing :  (width - ledRadius/2) / columns
+    rowSpacing :  (height - ledRadius/2) / rows
+
+    property real ledRadius : 30
 
     property color ledColorOn: "#99BB99"
     property color ledColorOff: "#666666"
 
-
-    height: 500
-    width: 400
 
     // intensity default values
     property var intensity : [
@@ -27,8 +32,8 @@ Item
     // set intensity for one led at index (1D index for the grid)
     function setIntensity(index,val)
     {
-        var indexRow = index% ledsPerRow;
-        var indexColumn = ( index - indexRow)/(ledsPerRow)
+        var indexRow = index% ledsGrid.columns;
+        var indexColumn = ( index - indexRow)/(ledsGrid.columns)
 
         // modify the intensity matrix
         intensity[indexColumn][indexRow] = val;
@@ -44,9 +49,9 @@ Item
     function setIntensityForAll(val)
     {
         // modify the intensity matrix
-        for(var i = 0; i < ledsPerRow; i++)
+        for(var i = 0; i < ledsGrid.columns; i++)
         {
-            for(var j = 0; j < ledsPerColumn; j++)
+            for(var j = 0; j < ledsGrid.rows; j++)
             {
                 intensity[i][j] = val;
 
@@ -54,7 +59,7 @@ Item
         }
 
         // set the led color
-        for(var k = 0; k < ledsPerColumn*ledsPerRow; k++)
+        for(var k = 0; k < ledsGrid.rows*ledsGrid.columns; k++)
         {
             var item = repeater.itemAt(k)
             if(item !== null)
@@ -65,32 +70,24 @@ Item
 
     }
 
-    // grid containing leds
-    Grid {
-        id: gridTest
-        anchors.fill : parent
-        columns: ledsPerRow
-        rows : ledsPerColumn
 
-        spacing : 30
+    Repeater {
+        id: repeater
+        model: ledsGrid.rows * ledsGrid.columns
+        Rectangle {
+            id: rect
+            width: ledsGrid.ledRadius * 2.; height: ledsGrid.ledRadius * 2.
+            radius : ledsGrid.ledRadius
+            border.width: 1
+            border.color: "transparent"
 
-        Repeater {
-            id: repeater
-            model: ledsPerRow * ledsPerColumn
-            Rectangle {
-                id: rect
-                width: gridTest.spacing /2.; height: gridTest.spacing /2.
-                radius : width/2.
-                border.width: 1
-                border.color: "transparent"
+            property real indexRow : index% ledsGrid.columns
+            property real indexColumn : ( index - indexRow)/(ledsGrid.columns)
 
-                property real indexRow : index% ledsPerRow
-                property real indexColumn : ( index - indexRow)/(ledsPerRow)
-
-                color: Qt.darker(ledColorOn, intensity[indexColumn][indexRow] *10.)
-
-            }
+            color: Qt.darker(ledColorOn, intensity[indexColumn][indexRow] *10.)
 
         }
+
     }
+
 }

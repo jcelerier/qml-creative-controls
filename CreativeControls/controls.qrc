@@ -9,6 +9,7 @@
         <file>Leds.qml</file>
         <file>LogSlider.qml</file>
         <file>Matrix.qml</file>
+        <file>Slider.qml</file>
         <file>MultiSlider.qml</file>
         <file>RangeSlider.qml</file>
         <file>RGBSlider.qml</file>
