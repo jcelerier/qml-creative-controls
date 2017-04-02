@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.3
+import CreativeControls 1.0
 
 // A LED matrix
 // No input
@@ -18,8 +18,8 @@ Grid
 
     property real ledRadius : 30
 
-    property color ledColorOn: "#99BB99"
-    property color ledColorOff: "#666666"
+    property color ledColorOn: Styles.detail
+    property color ledColorOff: Styles.base
 
 
     // intensity default values

@@ -25,5 +25,7 @@
         <file>Trajectory.qml</file>
         <file>Graph2D.qml</file>
         <file>Spat.qml</file>
+        <file>Styles.qml</file>
+
     </qresource>
 </RCC>

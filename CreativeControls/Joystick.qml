@@ -1,18 +1,16 @@
 import QtQuick 2.6
+import CreativeControls 1.0
 
 // A round 2D touch area. The ballpen automatically returns to center upon release.
 Rectangle
 {
     id: pad
-    color: base
+    color: Styles.base
     radius: 100
     height: radius * 2
     width: height
     state: "default"
 
-
-    property color base: "#666666"
-    property color detail: "#99BB99"
 
     function distance(x1,y1,x2,y2)
     {
@@ -29,7 +27,7 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: detail
+        color: Styles.detail
         radius: 10
         height: radius* 2
         width: height

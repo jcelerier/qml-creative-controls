@@ -1,5 +1,5 @@
 import QtQuick 2.6
-
+import CreativeControls 1.0
 
 // A piano keyboard.
 Item
@@ -7,11 +7,6 @@ Item
 
     property int firstKey: 17
     property int lastKey: 75
-
-    property color whiteKeyColor: "#777777"
-    property color blackKeyColor: "#444444"
-    property color whiteKeyDetail: "#99BB99"
-    property color blackKeyDetail: "#99BB99"
 
     function isBlackKey(key)
     {
@@ -42,8 +37,8 @@ Item
             var N = lastKey - firstKey;
 
             ctx.beginPath();
-            ctx.strokeStyle = whiteKeyDetail;
-            ctx.fillStyle = whiteKeyColor;
+            ctx.strokeStyle = Styles.whiteKeyDetail;
+            ctx.fillStyle = Styles.whiteKeyColor;
             ctx.lineWidth = 1;
 
             for(var it = firstKey; it < lastKey; ++it) {
@@ -58,8 +53,8 @@ Item
             ctx.closePath();
 
             ctx.beginPath();
-            ctx.fillStyle = blackKeyColor;
-            ctx.strokeStyle = blackKeyDetail;
+            ctx.fillStyle = Styles.blackKeyColor;
+            ctx.strokeStyle = Styles.blackKeyDetail;
             cur_x = 0;
 
             for(var it = firstKey; it < lastKey; ++it) {
