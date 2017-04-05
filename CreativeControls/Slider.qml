@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import CreativeControls 1.0
 
-// Simple slider
+// Simple slider : values are betweeen 0. and 1.
 Rectangle
 {
     id: background
@@ -15,7 +15,29 @@ Rectangle
     border.color : handleColor
 
     // the value is between 0 and 1.
-    property real value : bVertical? 1.0 - handle.y / background.height : handle.x / background.width;
+    property real value : customMap(linearMap())
+
+    property point valueRange : bVertical?
+                                    Qt.point(border.width + handle.height/2.,
+                                             background.height - border.width - handle.height/2.)
+                                  : Qt.point(border.width + handle.width/2.,
+                                             background.width - border.width - handle.width/2.)
+
+    property var customMap: function(val){return val;}
+
+
+    property var linearMap: function()
+    {
+        var mappedVal = 0.;
+
+        if(bVertical)
+            mappedVal = 1.0 - (handle.y - border.width) / (valueRange.y - valueRange.x);
+        else
+           mappedVal = (handle.x - border.width) /  (valueRange.y - valueRange.x- handle.width)
+        return Utils.clamp(mappedVal,0,1);
+
+    }
+
     property real initialValue : 0.5
 
     property real handleWidth : Math.min(background.width,background.height) * 1./15//bVertical ? height / 20 : width / 20
@@ -31,8 +53,8 @@ Rectangle
         height : bVertical? handleWidth : background.height
         radius : Styles.cornerRadius
 
-        x: bVertical ? 0 : (1. - initialValue) * (background.width - handle.width)
-        y : bVertical ? (1. - initialValue) * (background.height - handle.height) : 0
+        x: bVertical ? 0 : (1. - initialValue) * (valueRange.y - handle.width)
+        y : bVertical ? (1. - initialValue) * (valueRange.y - handle.height) : 0
         anchors.verticalCenter: bVertical? undefined : parent.verticalCenter
         anchors.horizontalCenter: bVertical? parent.horizontalCenter : undefined
     }
@@ -50,13 +72,17 @@ Rectangle
     function moveCursor(mouseX,mouseY)
     {
         if(background.bVertical)
-            handle.y = Utils.clamp(mouseY - handle.height/2,
-                                   0,
-                                   background.height - handle.height );
+        {
+            handle.y = Utils.clamp(mouseY,
+                                   valueRange.x , valueRange.y ) - handle.height/2;
+        }
         else
-            handle.x = Utils.clamp(mouseX - handle.width/2,
-                                   0,
-                                   background.width - handle.width );
+        {
+            handle.x = Utils.clamp(mouseX,
+                                   valueRange.x ,valueRange.y ) - handle.width/2;
+
+        }
+
     }
 
     MouseArea
