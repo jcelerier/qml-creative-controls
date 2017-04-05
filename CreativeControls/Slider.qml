@@ -6,7 +6,7 @@ Rectangle
 {
     id: background
     color : Styles.detail
-    property bool bRotate : true
+    property bool bVertical : true
     radius : Styles.cornerRadius
     clip: true
 
@@ -14,10 +14,11 @@ Rectangle
     border.width : handleWidth
     border.color : handleColor
 
-    property real value : bRotate? 1.0 - handle.y / background.height : handle.x / background.width;
-    property real initialValue : 0.
+    property real value : bVertical? 1.0 - handle.y / background.height : handle.x / background.width;
+    property real initialValue : 0.5
 
-    property real handleWidth : bRotate ? height / 20 : width / 20
+    property real handleWidth : Math.min(background.width,background.height) * 1./15//bVertical ? height / 20 : width / 20
+
     property color handleColor: Styles.base
 
     Rectangle
@@ -25,20 +26,20 @@ Rectangle
         id: handle
         color : handleColor
 
-        width : bRotate? background.width : handleWidth
-        height : bRotate? handleWidth : background.height
+        width : bVertical? background.width : handleWidth
+        height : bVertical? handleWidth : background.height
         radius : Styles.cornerRadius
 
-        x: bRotate ? 0 : (1. - initialValue) * (background.width - handle.width)
-        y : bRotate ? (1. - initialValue) * (background.height - handle.height) : 0
-        anchors.verticalCenter: bRotate? undefined : parent.verticalCenter
-        anchors.horizontalCenter: bRotate? parent.horizontalCenter : undefined
+        x: bVertical ? 0 : (1. - initialValue) * (background.width - handle.width)
+        y : bVertical ? (1. - initialValue) * (background.height - handle.height) : 0
+        anchors.verticalCenter: bVertical? undefined : parent.verticalCenter
+        anchors.horizontalCenter: bVertical? parent.horizontalCenter : undefined
     }
 
 
     function moveCursor(mouseX,mouseY)
     {
-        if(background.bRotate)
+        if(background.bVertical)
             handle.y = Utils.clamp(mouseY - handle.height/2,
                                    0,
                                    background.height - handle.height );

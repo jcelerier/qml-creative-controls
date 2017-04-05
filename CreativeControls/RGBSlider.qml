@@ -21,7 +21,7 @@ Rectangle
         Slider
         {
             id : r
-            bRotate : true
+            bVertical : true
 
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
@@ -34,7 +34,7 @@ Rectangle
         Slider
         {
             id : g
-            bRotate : true
+            bVertical : true
 
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
