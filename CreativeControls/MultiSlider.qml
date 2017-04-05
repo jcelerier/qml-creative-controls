@@ -6,7 +6,7 @@ Item
     id: multiSlider
     anchors.fill : parent
     property var nbSliders : 10
-    property bool bVerticalSet : false
+    property bool bVerticalSet : true
     property real spacing : 5.
 
     Row

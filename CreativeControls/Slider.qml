@@ -14,6 +14,7 @@ Rectangle
     border.width : handleWidth
     border.color : handleColor
 
+    // the value is between 0 and 1.
     property real value : bVertical? 1.0 - handle.y / background.height : handle.x / background.width;
     property real initialValue : 0.5
 
@@ -34,6 +35,15 @@ Rectangle
         y : bVertical ? (1. - initialValue) * (background.height - handle.height) : 0
         anchors.verticalCenter: bVertical? undefined : parent.verticalCenter
         anchors.horizontalCenter: bVertical? parent.horizontalCenter : undefined
+    }
+    // label
+    property alias sliderName : label.text
+    Text
+    {
+        id: label
+        anchors.centerIn: background
+        font.bold: true
+        color : handleColor
     }
 
 

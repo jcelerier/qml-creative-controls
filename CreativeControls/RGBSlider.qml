@@ -5,7 +5,11 @@ import QtQuick.Layouts 1.3
 // Four sliders to control R, G, B, alpha
 Rectangle
 {
-    color : Qt.rgba(r.value,g.value,b.value,a.value)
+    // add an alpha slider
+    property bool bAlpha : false
+    property real alphaValue : bAlpha ? a.value : 1.0
+
+    color : Qt.rgba(r.value,g.value,b.value,alphaValue)
 
 
     RowLayout
@@ -15,12 +19,15 @@ Rectangle
         height : parent.height * 2/3
         anchors.centerIn: parent
 
-        property real sliderWidth : parent.width/4.
+        property real sliderWidth : bAlpha ?
+                                        parent.width/4.
+                                      : parent.width/3.
         spacing : 0.
 
         Slider
         {
             id : r
+            sliderName : "R"
             bVertical : true
 
             Layout.fillHeight: true
@@ -34,6 +41,8 @@ Rectangle
         Slider
         {
             id : g
+            sliderName : "G"
+
             bVertical : true
 
             Layout.fillHeight: true
@@ -47,6 +56,7 @@ Rectangle
         Slider
         {
             id : b
+            sliderName : "B"
 
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
@@ -59,6 +69,7 @@ Rectangle
         Slider
         {
             id : a
+            sliderName : "A"
 
             Layout.fillHeight: true
             Layout.preferredWidth: rgbSlider.sliderWidth
@@ -67,6 +78,7 @@ Rectangle
 
             color : Qt.rgba(0,0,0,value)
             handleColor : Qt.rgba(value,value,value,1.)
+            visible : bAlpha
         }
     }
 
