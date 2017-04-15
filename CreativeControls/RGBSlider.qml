@@ -50,7 +50,7 @@ Rectangle
 
             initialValue: 187. / 255.
             color : Qt.rgba(0,value,0,1.)
-            handleColor : Qt.rgba(0.,1.-value,0,1.)
+            handleColor: Qt.rgba(0.,1.-value,0,1.)
 
         }
         Slider

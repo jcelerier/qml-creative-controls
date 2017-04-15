@@ -11,17 +11,15 @@ Rectangle
     clip: true
 
     property real sliderWidth : 100
-    border.width : handleWidth
-    border.color : handleColor
 
     // the value is between 0 and 1.
-    property real value : customMap(linearMap())
+    property real value : /*customMap*/(linearMap())
 
     property point valueRange : bVertical?
-                                    Qt.point(border.width + handle.height/2.,
-                                             background.height - border.width - handle.height/2.)
-                                  : Qt.point(border.width + handle.width/2.,
-                                             background.width - border.width - handle.width/2.)
+                                    Qt.point(border.width + handleWidth/2.,
+                                             background.height - border.width - handleWidth/2.)
+                                  : Qt.point(border.width + handleWidth/2.,
+                                             background.width - border.width - handleWidth/2.)
 
     property var customMap: function(val){return val;}
 
@@ -29,11 +27,11 @@ Rectangle
     property var linearMap: function()
     {
         var mappedVal = 0.;
-
+        var borderW = 0//border.width
         if(bVertical)
-            mappedVal = 1.0 - (handle.y - border.width) / (valueRange.y - valueRange.x);
+            mappedVal = 1.0 - (handle.y - borderW) / (valueRange.y - valueRange.x);
         else
-           mappedVal = (handle.x - border.width) /  (valueRange.y - valueRange.x- handle.width)
+           mappedVal = (handle.x - borderW) /  (valueRange.y - valueRange.x)
         return Utils.clamp(mappedVal,0,1);
 
     }
@@ -44,11 +42,13 @@ Rectangle
 
     property color handleColor: Styles.base
 
+    border.width : handleWidth
+    border.color : handleColor
+
     Rectangle
     {
         id: handle
-        color : handleColor
-
+        color: handleColor
         width : bVertical? background.width : handleWidth
         height : bVertical? handleWidth : background.height
         radius : Styles.cornerRadius
@@ -74,13 +74,12 @@ Rectangle
         if(background.bVertical)
         {
             handle.y = Utils.clamp(mouseY,
-                                   valueRange.x , valueRange.y ) - handle.height/2;
+                                   valueRange.x , valueRange.y ) - handleWidth/2;
         }
         else
         {
             handle.x = Utils.clamp(mouseX,
-                                   valueRange.x ,valueRange.y ) - handle.width/2;
-
+                                   valueRange.x ,valueRange.y ) - handleWidth/2;
         }
 
     }
