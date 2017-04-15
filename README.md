@@ -22,6 +22,8 @@ Controls useful in a creative coding context
 
 * [dat.gui](http://workshop.chromeexperiments.com/examples/gui)
 
+* [p5.gui](https://github.com/bitcraftlab/p5.gui)
+
 * [controlp5](https://github.com/sojamo/controlp5)
 
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
