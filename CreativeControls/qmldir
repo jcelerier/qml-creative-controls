@@ -1,4 +1,6 @@
 module CreativeControls
+plugin qml-creative-controls
+AngleSlider 1.0 AngleSlider.qml
 ColorChooser 1.0 ColorChooser.qml
 ColorWheel 1.0 ColorWheel.qml
 Graph 1.0 Graph.qml

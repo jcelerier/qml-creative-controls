@@ -1,6 +1,4 @@
-#ifndef GRAPH_HPP
-#define GRAPH_HPP
-
+#pragma once
 #include <QQuickItem>
 #include <QQmlListProperty>
 #include <QVector>
@@ -37,5 +35,3 @@ private:
   QVector<qreal> m_values;
   bool m_lines{};
 };
-
-#endif // GRAPH_HPP
