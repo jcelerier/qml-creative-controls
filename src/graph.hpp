@@ -6,9 +6,9 @@
 class Graph : public QQuickItem
 {
   Q_OBJECT
-  Q_PROPERTY(QColor graphColor READ graphColor WRITE setGraphColor NOTIFY graphColorChanged)
-  Q_PROPERTY(QVector<qreal> values READ values WRITE setValues NOTIFY valuesChanged)
-  Q_PROPERTY(bool lines READ lines WRITE setLines NOTIFY linesChanged)
+  Q_PROPERTY(QColor graphColor READ graphColor WRITE setGraphColor NOTIFY graphColorChanged FINAL)
+  Q_PROPERTY(QVector<qreal> values READ values WRITE setValues NOTIFY valuesChanged FINAL)
+  Q_PROPERTY(bool lines READ lines WRITE setLines NOTIFY linesChanged FINAL)
 
 public:
   Graph();
@@ -28,10 +28,9 @@ public slots:
   void setLines(bool lines);
 
 private:
-  QSGNode* updatePaintNode(QSGNode*, UpdatePaintNodeData*) override;
+  QSGNode* updatePaintNode(QSGNode*, UpdatePaintNodeData*) final override;
 
-  QColor m_graphColor;
-
+  QColor m_graphColor{};
   QVector<qreal> m_values;
   bool m_lines{};
 };

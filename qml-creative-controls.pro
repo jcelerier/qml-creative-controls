@@ -4,9 +4,9 @@ TEMPLATE = lib
 OTHER_FILES += examples/Gallery.qml controls/qmldir
 RESOURCES += CreativeControls/controls.qrc
 
-QML_IMPORT_PATH = /home/jcelerier/travail/qml-creative-controls $$_PRO_FILE_PWD_
-QML2_IMPORT_PATH = /home/jcelerier/travail/qml-creative-controls $$_PRO_FILE_PWD_
-QML_DESIGNER_IMPORT_PATH = /home/jcelerier/travail/qml-creative-controls  $$_PRO_FILE_PWD_/ $$_PRO_FILE_PWD_/CreativeControls
+QML_IMPORT_PATH += $$PWD
+QML2_IMPORT_PATH += $$PWD
+QML_DESIGNER_IMPORT_PATH += $$PWD
 
 DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
@@ -20,12 +20,18 @@ HEADERS += \
     src/graph.hpp \
     src/creativecontrolsplugin.hpp \
     src/angleslider.hpp \
-    src/scope.hpp
+    src/scope.hpp \
+    src/circle.hpp \
+    src/cpputils.hpp \
+    src/xytarget.hpp
 
 SOURCES += \
     src/graph.cpp \
     src/creativecontrolsplugin.cpp \
     src/angleslider.cpp \
-    src/scope.cpp
+    src/scope.cpp \
+    src/circle.cpp \
+    src/cpputils.cpp \
+    src/xytarget.cpp
 
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/

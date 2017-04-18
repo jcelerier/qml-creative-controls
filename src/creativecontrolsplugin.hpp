@@ -1,6 +1,4 @@
-#ifndef CREATIVECONTROLSPLUGIN_HPP
-#define CREATIVECONTROLSPLUGIN_HPP
-
+#pragma once
 #include <QQmlExtensionPlugin>
 
 class CreativeControlsPlugin : public QQmlExtensionPlugin
@@ -10,8 +8,6 @@ class CreativeControlsPlugin : public QQmlExtensionPlugin
 public:
   CreativeControlsPlugin();
 
-public:
-  void registerTypes(const char *uri);
+private:
+  void registerTypes(const char *uri) final override;
 };
-
-#endif // CREATIVECONTROLSPLUGIN_HPP

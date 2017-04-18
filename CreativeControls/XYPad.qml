@@ -2,13 +2,17 @@ import QtQuick 2.6
 import CreativeControls 1.0
 
 // X-Y pad
-Rectangle
+Item
 {
     anchors.fill: parent
-    color: Styles.base
-    radius: Styles.cornerRadius
-    property real ballsX : width / 2
-    property real ballsY : height / 2
+    property real centerX : 0.5
+    property real centerY : 0.5
+
+    onWidthChanged: cv.requestPaint()
+    onHeightChanged: cv.requestPaint()
+    onCenterXChanged: cv.requestPaint()
+    onCenterYChanged: cv.requestPaint()
+
     Canvas
     {
         id: cv
@@ -17,20 +21,22 @@ Rectangle
             var ctx = getContext("2d");
             ctx.reset();
 
+            var xpos = centerX * width;
+            var ypos = centerY * height;
             ctx.strokeStyle = Styles.detail
             ctx.fillStyle = Styles.detail
             ctx.lineWidth = 2
 
             ctx.beginPath();
-            ctx.moveTo(0, ballsY)
-            ctx.lineTo(width, ballsY)
-            ctx.moveTo(ballsX, 0)
-            ctx.lineTo(ballsX, height)
+            ctx.moveTo(0, ypos)
+            ctx.lineTo(width, ypos)
+            ctx.moveTo(xpos, 0)
+            ctx.lineTo(xpos, height)
 
             ctx.stroke();
             ctx.closePath();
 
-            ctx.arc(ballsX, ballsY, 10, 0, 2 * Math.PI, false);
+            ctx.arc(xpos, ypos, 10, 0, 2 * Math.PI, false);
 
             ctx.fill();
         }
@@ -39,8 +45,8 @@ Rectangle
     MouseArea {
         function applyPos()
         {
-            ballsX = Utils.clamp(mouseX, 0, width);
-            ballsY = Utils.clamp(mouseY, 0, height);
+            centerX = Utils.clamp(mouseX, 0, width) / width;
+            centerY = Utils.clamp(mouseY, 0, height) / height;
             cv.requestPaint();
         }
 

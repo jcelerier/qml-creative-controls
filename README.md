@@ -26,6 +26,8 @@ Controls useful in a creative coding context
 
 * [controlp5](https://github.com/sojamo/controlp5)
 
+* [Dear ImGui](https://github.com/ocornut/imgui)
+
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
 
 * [ofxCvGui](https://github.com/elliotwoods/ofxCvGui)
@@ -38,5 +40,6 @@ Controls useful in a creative coding context
 
 * [spatium](https://vimeo.com/52321647)
 
+* [qml-color-picker](https://github.com/astorije/qml-color-picker)
 
 

@@ -14,7 +14,7 @@
         <file>RangeSlider.qml</file>
         <file>RGBSlider.qml</file>
         <file>Step.qml</file>
-        <file>Voronoi.qml</file>
+        <file>CosInfluence.qml</file>
         <file>XYPad.qml</file>
         <file>Random1D.qml</file>
         <file>Random2D.qml</file>
@@ -28,5 +28,6 @@
         <file>Styles.qml</file>
         <file>Utils.qml</file>
         <file>Scope.qml</file>
+        <file>Scale.qml</file>
     </qresource>
 </RCC>

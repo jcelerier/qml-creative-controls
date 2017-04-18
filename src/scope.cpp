@@ -150,7 +150,7 @@ void Scope::updatePath()
       const auto inc = width() / m_points.size();
 
       auto it = m_points.cbegin();
-      auto x = 0;
+      auto x = 0.;
       QPointF start{x, scale(*it)};
       int i = 0;
       for(; it != m_points.cend(); ++it)

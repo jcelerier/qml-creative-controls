@@ -18,11 +18,12 @@ Random3D 1.0 Random3D.qml
 RangeSlider 1.0 RangeSlider.qml
 RGBSlider 1.0 RGBSlider.qml
 Spectrum 1.0 Spectrum.qml
+Scale 1.0 Scale.qml
 Step 1.0 Step.qml
 Slider 1.0 Slider.qml
 Voronoi 1.0 Voronoi.qml
 XYPad 1.0 XYPad.qml
-singleton Styles Styles.qml
-singleton Utils Utils.qml
+singleton Styles 1.0 Styles.qml
+singleton Utils 1.0 Utils.qml
 designersupported
 

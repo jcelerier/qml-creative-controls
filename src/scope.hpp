@@ -15,11 +15,7 @@ class Scope : public QQuickPaintedItem
 public:
   Scope();
 
-public:
-  void paint(QPainter* painter) override;
-
   QVector<qreal> points() const;
-
   qreal yMin() const;
   qreal yMax() const;
   QColor baseColor() const;
@@ -43,7 +39,9 @@ signals:
   void symmetrizeChanged(bool symmetrize);
 
 private:
+  void paint(QPainter* painter) final override;
   void updatePath();
+
   QVector<qreal> m_points;
   QVector<QPointF> m_data;
   qreal m_yMin{-1};
@@ -53,6 +51,4 @@ private:
   QPen m_scopePen;
   QBrush m_scopeBrush;
   bool m_symmetrize{true};
-
-
 };

@@ -11,8 +11,8 @@ QtObject
 
         return Math.sqrt( a*a + b*b );
     }
+
     function clamp(val, min, max) {
         return Math.min(Math.max(val, min), max);
     }
-
 }
