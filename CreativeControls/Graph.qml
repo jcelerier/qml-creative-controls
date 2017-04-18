@@ -14,7 +14,7 @@ Rectangle
         if(plot.values.length > width)
             plot.values.shift()
     }
-    Plot1D {
+    GraphImpl {
         id: plot
         anchors.fill: parent
         graphColor: "green"
@@ -22,6 +22,7 @@ Rectangle
         values: [1, 0.5, 0, 0.5, 0, 0.5, 0]
     }
 
+    /* Test:
     Timer {
         id: tm
         repeat: true
@@ -29,5 +30,6 @@ Rectangle
         running: true
         interval: 100
     }
+    */
 
 }

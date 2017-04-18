@@ -19,11 +19,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     src/graph.hpp \
     src/creativecontrolsplugin.hpp \
-    src/angleslider.hpp
+    src/angleslider.hpp \
+    src/scope.hpp
 
 SOURCES += \
     src/graph.cpp \
     src/creativecontrolsplugin.cpp \
-    src/angleslider.cpp
+    src/angleslider.cpp \
+    src/scope.cpp
 
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/

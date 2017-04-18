@@ -27,6 +27,6 @@
         <file>Spat.qml</file>
         <file>Styles.qml</file>
         <file>Utils.qml</file>
-
+        <file>Scope.qml</file>
     </qresource>
 </RCC>

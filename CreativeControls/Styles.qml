@@ -6,6 +6,7 @@ QtObject
 {
     property color base: "#666666"
     property color detail: "#99BB99"
+    property color dark: "#779977"
 
     property color whiteKeyColor: "#777777"
     property color blackKeyColor: "#444444"
