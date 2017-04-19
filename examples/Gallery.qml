@@ -168,6 +168,7 @@ Item {
                     height: 100
                     Layout.column: 0
                     Layout.row: 1
+                    symmetrize: true
 
                     Timer
                     {

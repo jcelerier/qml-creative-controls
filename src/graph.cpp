@@ -63,7 +63,6 @@ QSGNode* Graph::updatePaintNode(
   QSGGeometry *dotsGeometry{};
 
   const auto n_pts = m_values.size();
-
   if(n_pts == 0)
   {
     if(dotsNode)
@@ -82,7 +81,6 @@ QSGNode* Graph::updatePaintNode(
     dotsNode->setGeometry(dotsGeometry);
     dotsNode->setFlag(QSGNode::OwnsGeometry);
 
-    // La couleur des bords
     auto border = new QSGFlatColorMaterial;
     border->setColor(m_graphColor);
     dotsNode->setMaterial(border);
@@ -108,7 +106,7 @@ QSGNode* Graph::updatePaintNode(
 
   for (int i = 0; i < n_pts; ++i)
   {
-    dotsVertices[i].set(w - 2. * (n_pts - i),  h - h * m_values[i]);
+    dotsVertices[i].set(w -  2 * (n_pts - i),  h - h * m_values[i]);
   }
 
   dotsNode->markDirty(QSGNode::DirtyGeometry);
