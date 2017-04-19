@@ -10,7 +10,6 @@ import CreativeControls 1.0
 Item
 {
     id: item
-    anchors.fill: parent
 
     property var points : [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
     property alias centerX : xy.centerX
@@ -56,6 +55,8 @@ Item
         model: points
         delegate: Polygon
         {
+            smooth: true
+            antialiasing: true
             x: points[index].x * item.width
             y: points[index].y * item.height
             onXChanged: { points[index].x = x / item.width; updateValues(); }

@@ -1,0 +1,265 @@
+MetaInfo {
+    Type {
+        name: "CreativeControls.AngleSlider"
+        
+        ItemLibraryEntry {
+            name: "Angle Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.ColorChooser"
+        
+        ItemLibraryEntry {
+            name: "Color Chooser"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.ColorWheel"
+        
+        ItemLibraryEntry {
+            name: "Color Wheel"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.CosInfluence"
+        
+        ItemLibraryEntry {
+            name: "Cosine Influence"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Graph2D"
+        
+        ItemLibraryEntry {
+            name: "2D Graph"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Graph"
+        
+        ItemLibraryEntry {
+            name: "1D Graph"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.HSVSlider"
+        
+        ItemLibraryEntry {
+            name: "HSV Sliders"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Joystick"
+        
+        ItemLibraryEntry {
+            name: "Joystick"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Keyboard"
+        
+        ItemLibraryEntry {
+            name: "Piano Keyboard"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Leds"
+        
+        ItemLibraryEntry {
+            name: "Leds"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.LogSlider"
+        
+        ItemLibraryEntry {
+            name: "Log Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Matrix"
+        
+        ItemLibraryEntry {
+            name: "Button Matrix"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.MultiSlider"
+        
+        ItemLibraryEntry {
+            name: "Multi-Sliders"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Random1D"
+        
+        ItemLibraryEntry {
+            name: "1D Random Generator"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Random2D"
+        
+        ItemLibraryEntry {
+            name: "2D Random Generator"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Random3D"
+        
+        ItemLibraryEntry {
+            name: "3D Random Generator"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Scale"
+        
+        ItemLibraryEntry {
+            name: "Linear Scale"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Scope"
+        
+        ItemLibraryEntry {
+            name: "Scope"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Slider"
+        
+        ItemLibraryEntry {
+            name: "Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Spat"
+        
+        ItemLibraryEntry {
+            name: "Spatializer"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Spectrum"
+        
+        ItemLibraryEntry {
+            name: "Spectrum Display"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Step"
+        
+        ItemLibraryEntry {
+            name: "Step Sequencer"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Trajectory"
+        
+        ItemLibraryEntry {
+            name: "Trajectory Editor"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.XYPad"
+        
+        ItemLibraryEntry {
+            name: "X-Y Pad"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+}

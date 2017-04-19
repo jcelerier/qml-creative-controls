@@ -10,6 +10,8 @@ Rectangle
     property real alphaValue : bAlpha ? a.value : 1.0
 
     color : Qt.rgba(r.value,g.value,b.value,alphaValue)
+    border.color: Styles.base
+    border.width: 2
 
 
     RowLayout
@@ -31,7 +33,8 @@ Rectangle
             bVertical : true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: rgbSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 153. / 255.
 
@@ -46,7 +49,8 @@ Rectangle
             bVertical : true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: rgbSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 187. / 255.
             color : Qt.rgba(0,value,0,1.)
@@ -59,7 +63,8 @@ Rectangle
             sliderName : "B"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: rgbSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 153. / 255.
             color : Qt.rgba(0,0,value,1.)
@@ -72,7 +77,8 @@ Rectangle
             sliderName : "A"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: rgbSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 0.7
 

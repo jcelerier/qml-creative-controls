@@ -13,6 +13,8 @@ Rectangle
     property real alphaValue : bAlpha ? a.value : 1.0
 
     color : Qt.hsva(h.value,s.value,v.value,alphaValue)
+    border.color: Styles.base
+    border.width: 2
 
     RowLayout
     {
@@ -35,12 +37,13 @@ Rectangle
             bVertical : true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hsvSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hsvSlider.sliderWidth - 10
 
             initialValue: 120./ 360.
 
             color : Qt.hsva(value ,0.5,0.5,1.)
-            handleColor : Qt.hsva((1.-value),0.5,0.5,1.)
+            handleColor : Qt.hsva((value + 0.5) % 1,0.5,0.7,1.)
         }
 
         Slider
@@ -51,12 +54,13 @@ Rectangle
             bVertical : true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hsvSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hsvSlider.sliderWidth - 10
 
             initialValue: 0.182
 
             color : Qt.hsva(1.0 ,value,0.5,1.)
-            handleColor : Qt.hsva(1.0,1.-value,0.5,1.)
+            handleColor : Qt.hsva((h.value + 0.5) % 1,1.-value,0.7,1.)
         }
 
         Slider
@@ -65,7 +69,8 @@ Rectangle
             sliderName : "V"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hsvSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hsvSlider.sliderWidth - 10
 
             initialValue: 0.733
 
@@ -79,7 +84,8 @@ Rectangle
             sliderName : "A"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hsvSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hsvSlider.sliderWidth - 10
 
             initialValue: 0.7
 

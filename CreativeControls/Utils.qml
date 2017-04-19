@@ -23,4 +23,9 @@ QtObject
         var coeff = (b1 - b0) / (a1 - a0);
         return b0 + coeff * (val - a0);
     }
+
+    function roundNum(n)
+    {
+        return Math.round(n * 100) / 100;
+    }
 }

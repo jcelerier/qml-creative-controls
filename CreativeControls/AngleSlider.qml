@@ -6,7 +6,8 @@ import CreativeControls 1.0
 // TODO: infinite mode that uses the delta instead of the position.
 AngleSliderImpl
 {
-    anchors.fill: parent
+    width: 100
+    height: 100
     baseColor: Styles.detail
     detailColor: Styles.base
     angle: 0

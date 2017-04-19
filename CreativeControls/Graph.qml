@@ -6,11 +6,9 @@ import CreativeControls 1.0
 // * lines: will display lines between dots
 GraphImpl {
     id: plot
-    anchors.fill: parent
 
     color: Styles.detail
     lines: true
-
 
     // Use this function to add a value to the graph.
     function pushValue(v) {
@@ -18,14 +16,4 @@ GraphImpl {
         if(plot.values.length > width)
             plot.values.shift()
     }
-
-    /* Test:
-    Timer {
-        id: tm
-        repeat: true
-        onTriggered: { pushValue(Math.random()); }
-        running: true
-        interval: 100
-    }
-    */
 }

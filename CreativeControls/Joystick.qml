@@ -13,7 +13,6 @@ Rectangle
 
     state: "default"
 
-    anchors.fill: parent
     radius: Math.max(width, height) / 2
 
     border.color: Styles.detail
@@ -24,7 +23,6 @@ Rectangle
     property real stickR: Utils.distance(stickX, stickY, 0, 0)
     property real stickTheta: -Math.atan2(stickY, -stickX) * 360 / (2 * Math.PI) + 180
 
-    onStickThetaChanged: console.log(stickR, stickTheta)
     Rectangle
     {
         id: stick

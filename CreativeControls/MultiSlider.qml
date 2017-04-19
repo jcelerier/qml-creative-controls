@@ -4,14 +4,12 @@ import QtQuick 2.6
 Item
 {
     id: multiSlider
-    anchors.fill : parent
     property var nbSliders : 10
     property bool bVerticalSet : true
     property real spacing : 5.
 
     Row
     {
-
         spacing : multiSlider.spacing
 
         Repeater
@@ -24,11 +22,10 @@ Item
                 bVertical: true
             }
         }
-
     }
+
     Column
     {
-      //  anchors.fill : parent
         spacing : multiSlider.spacing
         Repeater
         {

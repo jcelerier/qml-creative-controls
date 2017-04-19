@@ -27,7 +27,7 @@ Rectangle
     property var linearMap: function()
     {
         var mappedVal = 0.;
-        var borderW = 0//border.width
+        var borderW = border.width
         if(bVertical)
             mappedVal = 1.0 - (handle.y - borderW) / (valueRange.y - valueRange.x);
         else

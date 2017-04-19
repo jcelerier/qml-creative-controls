@@ -4,14 +4,13 @@ import CreativeControls 1.0
 // X-Y pad
 Item
 {
-    anchors.fill: parent
-    property real centerX : 0.5
-    property real centerY : 0.5
+    property real stickX : 0.5
+    property real stickY : 0.5
 
     onWidthChanged: cv.requestPaint()
     onHeightChanged: cv.requestPaint()
-    onCenterXChanged: cv.requestPaint()
-    onCenterYChanged: cv.requestPaint()
+    onStickXChanged: cv.requestPaint()
+    onStickYChanged: cv.requestPaint()
 
     Canvas
     {
@@ -21,8 +20,8 @@ Item
             var ctx = getContext("2d");
             ctx.reset();
 
-            var xpos = centerX * width;
-            var ypos = centerY * height;
+            var xpos = stickX * width;
+            var ypos = stickY * height;
             ctx.strokeStyle = Styles.detail
             ctx.fillStyle = Styles.detail
             ctx.lineWidth = 2
@@ -45,8 +44,8 @@ Item
     MouseArea {
         function applyPos()
         {
-            centerX = Utils.clamp(mouseX, 0, width) / width;
-            centerY = Utils.clamp(mouseY, 0, height) / height;
+            stickX = Utils.clamp(mouseX, 0, width) / width;
+            stickY = Utils.clamp(mouseY, 0, height) / height;
             cv.requestPaint();
         }
 

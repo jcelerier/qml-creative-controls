@@ -1,8 +1,6 @@
 QT += qml quick
 CONFIG += c++14
 TEMPLATE = lib
-OTHER_FILES += examples/Gallery.qml controls/qmldir
-RESOURCES += CreativeControls/controls.qrc
 
 QML_IMPORT_PATH += $$PWD
 QML2_IMPORT_PATH += $$PWD
@@ -35,3 +33,40 @@ SOURCES += \
     src/xytarget.cpp
 
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/
+
+OTHER_FILES += examples/Gallery.qml
+
+OTHER_FILES += \
+    CreativeControls/AngleSlider.qml \
+    CreativeControls/ColorChooser.qml \
+    CreativeControls/ColorWheel.qml \
+    CreativeControls/CosInfluence.qml \
+    CreativeControls/Graph2D.qml \
+    CreativeControls/Graph.qml \
+    CreativeControls/HSLSlider.qml \
+    CreativeControls/HSVSlider.qml \
+    CreativeControls/Joystick.qml \
+    CreativeControls/Keyboard.qml \
+    CreativeControls/Leds.qml \
+    CreativeControls/LogSlider.qml \
+    CreativeControls/Matrix.qml \
+    CreativeControls/MultiSlider.qml \
+    CreativeControls/Random1D.qml \
+    CreativeControls/Random2D.qml \
+    CreativeControls/Random3D.qml \
+    CreativeControls/RangeSlider.qml \
+    CreativeControls/RGBSlider.qml \
+    CreativeControls/Scale.qml \
+    CreativeControls/Scope.qml \
+    CreativeControls/Slider.qml \
+    CreativeControls/Spat.qml \
+    CreativeControls/Spectrum.qml \
+    CreativeControls/Step.qml \
+    CreativeControls/Styles.qml \
+    CreativeControls/Trajectory.qml \
+    CreativeControls/Utils.qml \
+    CreativeControls/XYPad.qml
+
+OTHER_FILES += \
+    CreativeControls/qmldir \
+    CreativeControls/designer/CreativeControls.metainfo

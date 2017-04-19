@@ -10,7 +10,6 @@ import CreativeControls 1.0
 // * firstKey / lastKey : limits of the keyboard
 Item
 {
-    anchors.fill : parent
     property real xScale : Math.max(width / (34 * keyWidth),1.0)
     property real yScale : Math.max(height / whiteHeight,1.0)
 
@@ -128,9 +127,8 @@ Item
 
     // Compare two arrays to check if the same keys are pressed in it
     function sameKeys(a1, a2) {
-        return a1.length == a2.length && a1.every(function(v,i)
-        { return v.key === a2[i].key;
-        });
+        return a1.length === a2.length && a1.every(function(v,i)
+        { return v.key === a2[i].key; });
     }
 
     Canvas
@@ -209,17 +207,30 @@ Item
     MouseArea {
         anchors.fill: parent
         onPressed: {
-            pressedKeys = [ keyFromPos(mouseX, mouseY) ];
+            var key = keyFromPos(mouseX, mouseY);
+            if(key !== undefined)
+                pressedKeys = [ key ];
+            else
+                pressedKeys = [ ];
             canvas.requestPaint()
         }
 
         onPositionChanged: {
-            var newKeys = [ keyFromPos(mouseX, mouseY) ];
-            if(!sameKeys(newKeys, pressedKeys))
+            var key = keyFromPos(mouseX, mouseY);
+            if(key !== undefined)
             {
-                pressedKeys = newKeys;
-                canvas.requestPaint()
+                var newKeys = [ key ];
+                if(!sameKeys(newKeys, pressedKeys))
+                {
+                    pressedKeys = newKeys;
+                }
             }
+            else
+            {
+                pressedKeys = [ ];
+            }
+
+            canvas.requestPaint()
         }
 
         onReleased: {

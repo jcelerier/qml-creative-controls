@@ -1,7 +1,9 @@
 import QtQuick 2.6
 
-// Vertical or horizontal set of sliders.
-Item
+// 2D trajectory
+// TODO 3D ?
+Text
 {
-
+    font.pointSize: 20
+    text: "TODO"
 }

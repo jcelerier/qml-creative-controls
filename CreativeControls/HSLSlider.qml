@@ -12,6 +12,8 @@ Rectangle
     property real alphaValue : enableAlpha ? a.value : 1.0
 
     color : Qt.hsla(h.value,s.value,l.value,alphaValue)
+    border.color: Styles.base
+    border.width: 2
 
     RowLayout
     {
@@ -33,28 +35,30 @@ Rectangle
             bVertical : true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hslSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hslSlider.sliderWidth - 10
 
-            initialValue: 120./ 360.
+            initialValue: 120. / 360.
 
-            color : Qt.hsla(value ,0.5,0.5,1.)
-            handleColor : Qt.hsla((1.-value),0.5,0.5,1.)
+            color: Qt.hsla(value, 0.5, 0.5, 1.)
+            handleColor: Qt.hsla((value + 0.5) % 1, 0.5, 0.5, 1.)
         }
 
         Slider
         {
             id : s
-            sliderName : "S"
+            sliderName: "S"
 
-            bVertical : true
+            bVertical: true
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hslSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hslSlider.sliderWidth - 10
 
             initialValue: 0.2
 
-            color : Qt.hsla(1.0 ,value,0.5,1.)
-            handleColor : Qt.hsla(1.0,1.-value,0.5,1.)
+            color: Qt.hsla(h.value, value, 0.5, 1.)
+            handleColor: Qt.hsla((h.value + 0.5) % 1, 1.-value, 0.5, 1.)
         }
 
         Slider
@@ -63,7 +67,8 @@ Rectangle
             sliderName : "L"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hslSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hslSlider.sliderWidth - 10
 
             initialValue: 0.667
 
@@ -77,7 +82,8 @@ Rectangle
             sliderName : "A"
 
             Layout.fillHeight: true
-            Layout.preferredWidth: hslSlider.sliderWidth
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: hslSlider.sliderWidth - 10
 
             initialValue: 0.7
 
