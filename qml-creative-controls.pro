@@ -34,7 +34,9 @@ SOURCES += \
 
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/
 
-OTHER_FILES += examples/Gallery.qml
+OTHER_FILES += \
+    examples/Gallery.qml \
+    examples/OssiaExample.qml
 
 OTHER_FILES += \
     CreativeControls/AngleSlider.qml \
