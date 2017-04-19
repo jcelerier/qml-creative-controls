@@ -65,7 +65,6 @@ bool XYTarget::contains(const QPointF& point) const
       && point.x() < (w + m_radius)
       && point.y() > (h - m_radius)
       && point.y() < (h + m_radius);
-
 }
 
 void XYTarget::updatePenWidth()
@@ -94,7 +93,7 @@ void XYTarget::setCenterX(double centerX)
   if (m_centerX == centerX)
     return;
 
-  m_centerX = centerX;
+  m_centerX = qBound(0., centerX, 1.);
   emit centerXChanged(centerX);
   update();
 }
@@ -104,7 +103,7 @@ void XYTarget::setCenterY(double centerY)
   if (m_centerY == centerY)
     return;
 
-  m_centerY = centerY;
+  m_centerY = qBound(0., centerY, 1.);
   emit centerYChanged(centerY);
   update();
 }

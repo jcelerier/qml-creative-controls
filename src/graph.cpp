@@ -10,7 +10,7 @@ Graph::Graph()
   setAntialiasing(true);
 }
 
-QColor Graph::graphColor() const
+QColor Graph::color() const
 {
   return m_graphColor;
 }
@@ -25,13 +25,13 @@ bool Graph::lines() const
   return m_lines;
 }
 
-void Graph::setGraphColor(QColor main)
+void Graph::setColor(QColor main)
 {
   if (m_graphColor == main)
     return;
 
   m_graphColor = main;
-  emit graphColorChanged(main);
+  emit colorChanged(main);
   update();
 }
 
@@ -59,14 +59,20 @@ QSGNode* Graph::updatePaintNode(
     QSGNode* oldNode,
     QQuickItem::UpdatePaintNodeData* )
 {
-  // Attention les yeux...
   QSGGeometryNode *dotsNode{};
   QSGGeometry *dotsGeometry{};
 
   const auto n_pts = m_values.size();
+
+  if(n_pts == 0)
+  {
+    if(dotsNode)
+      delete dotsNode;
+    return nullptr;
+  }
+
   if (!oldNode)
   {
-    // Ensuite un noeud ou on dessine les points
     dotsNode = new QSGGeometryNode;
     dotsGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), n_pts);
 
@@ -85,9 +91,9 @@ QSGNode* Graph::updatePaintNode(
   }
   else
   {
-    // Mise à jour si les noeuds ont déjà été créés.
     dotsNode = static_cast<QSGGeometryNode *>(oldNode);
     dotsGeometry = dotsNode->geometry();
+
     dotsGeometry->allocate(n_pts);
     dotsGeometry->setDrawingMode(m_lines ? QSGGeometry::DrawLineStrip : QSGGeometry::DrawPoints);
 
@@ -102,7 +108,7 @@ QSGNode* Graph::updatePaintNode(
 
   for (int i = 0; i < n_pts; ++i)
   {
-    dotsVertices[i].set(w - 2 * (n_pts - i),  h - h * (1. + m_values[i]) / 2.);
+    dotsVertices[i].set(w - 2. * (n_pts - i),  h - h * m_values[i]);
   }
 
   dotsNode->markDirty(QSGNode::DirtyGeometry);

@@ -1,7 +1,7 @@
 pragma Singleton
 
 import QtQuick 2.6
-
+import CreativeControls 1.0
 QtObject
 {
     property color base: "#666666"
@@ -14,4 +14,9 @@ QtObject
     property color blackKeyDetail: "#99BB99"
 
     property real cornerRadius : 20
+
+    function randomDetailColor()
+    {
+      return CppUtils.setHSVHue(detail, Math.random());
+    }
 }

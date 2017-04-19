@@ -2,6 +2,10 @@ import QtQuick 2.6
 import CreativeControls 1.0
 
 // A round 2D touch area. The ballpen automatically returns to center upon release.
+// Properties:
+// * stickX / stickY : the position of the stick between [-1; 1]
+// * stickR : the distance of the stick to the center between [0; 1]
+// * stickAngle : the angle in degrees; 0 is at the right, 90 at the top.
 Rectangle
 {
     id: pad
@@ -9,14 +13,18 @@ Rectangle
 
     state: "default"
 
-
-    width : Math.max(parent.width,parent.height)
-    height: Math.max(parent.width,parent.height)
-    radius: Math.max(parent.width,parent.height)/2
+    anchors.fill: parent
+    radius: Math.max(width, height) / 2
 
     border.color: Styles.detail
     border.width: 5.
 
+    property real stickX: 2.22 * ((stick.x + stick.radius) - width / 2) / width
+    property real stickY: 2.22 * (-(stick.y + stick.radius) + height / 2) / height
+    property real stickR: Utils.distance(stickX, stickY, 0, 0)
+    property real stickTheta: -Math.atan2(stickY, -stickX) * 360 / (2 * Math.PI) + 180
+
+    onStickThetaChanged: console.log(stickR, stickTheta)
     Rectangle
     {
         id: stick
@@ -24,18 +32,16 @@ Rectangle
         radius: pad.radius / 10
         height: radius* 2
         width: height
-
     }
 
     function moveStick(mouseX,mouseY)
     {
         var dist = Utils.distance(0,0, mouseX - pad.radius,mouseY- pad.radius);
         var theta = Math.atan2(mouseY - pad.radius, mouseX - pad.radius);
-
         var radius = Utils.clamp(dist, 0,pad.radius - stick.radius) ;
 
-        stick.x = radius* Math.cos(theta) + pad.radius- stick.radius;
-        stick.y = radius * Math.sin(theta) + pad.radius- stick.radius;
+        stick.x = radius * Math.cos(theta) + pad.radius - stick.radius;
+        stick.y = radius * Math.sin(theta) + pad.radius - stick.radius;
     }
 
     MouseArea
@@ -51,7 +57,8 @@ Rectangle
         onReleased: pad.state = "default"
     }
 
-    states: [ State {
+    states: [
+        State {
             id: def
             name: "default"
             AnchorChanges
@@ -60,7 +67,8 @@ Rectangle
                 anchors.horizontalCenter: pad.horizontalCenter
                 anchors.verticalCenter: pad.verticalCenter
             }
-        }, State {
+        },
+        State {
             id: move
             name: "move"
             AnchorChanges

@@ -1,7 +1,13 @@
 import QtQuick 2.6
 import CreativeControls 1.0
 
-Rectangle
+// An oscilliscope.
+// No user input.
+// Properties:
+// * points: an array of values that will be displayed.
+// * symmetrize: render a waveform instead of a scope
+// * yMin / yMax: bounds (in the value domain) that should be shown. Default is [-1; 1]
+Item
 {
     property alias points: scope.points
     property alias fillColor: scope.baseColor
@@ -10,26 +16,21 @@ Rectangle
     property alias yMin: scope.yMin
     property alias yMax: scope.yMax
 
-    radius: 5
-    color: Styles.base
     anchors.fill: parent
     ScopeImpl
     {
         id: scope
         anchors.fill: parent
-        points: [-0.5, 0, -1, -0.5, 0, 1.5, 1, 2];
-        yMin: -0.5
-        yMax: 2
+        yMin: -1
+        yMax: 1
         baseColor: Styles.dark
         detailColor: Styles.detail
-        symmetrize: true
+        symmetrize: false
     }
-
-    /* TEST
 
     Timer
     {
-        interval: 64
+        interval: 640
         triggeredOnStart: true
         repeat: true
         running: true
@@ -37,10 +38,10 @@ Rectangle
             var array = [];
             for(var i = 0; i < 10; i++)
             {
-                array.push(Math.random(2));
+                array.push(Math.random() * 2 - 1);
             }
             scope.points = array;
+            console.log(array)
         }
     }
-    */
 }

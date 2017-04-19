@@ -2,6 +2,12 @@ import QtQuick 2.6
 import CreativeControls 1.0
 
 // A piano keyboard.
+// Properties:
+// * pressedKeys:
+//      the keys that are currently being played.
+//      The objects in pressedKeys have the format: { key: v1, vel: v2 }
+//      where v1, v2 are between [0, 127]
+// * firstKey / lastKey : limits of the keyboard
 Item
 {
     anchors.fill : parent
@@ -22,6 +28,13 @@ Item
 
     property var pressedKeys : [ ]
 
+    onFirstKeyChanged: recomputePos();
+    onLastKeyChanged: recomputePos();
+    onXScaleChanged: recomputePos()
+    onYScaleChanged: recomputePos()
+    Component.onCompleted: recomputePos();
+
+    // Compute the graphical position of every piano key
     function recomputePos()
     {
         whitePos = [];
@@ -60,12 +73,6 @@ Item
         }
     }
 
-    onFirstKeyChanged: recomputePos();
-    onLastKeyChanged: recomputePos();
-    onXScaleChanged: recomputePos()
-    onYScaleChanged: recomputePos()
-    Component.onCompleted: recomputePos();
-
     function isBlackKey(key)
     {
         var mod = key % 12;
@@ -78,7 +85,54 @@ Item
         ctx.rect(cur_x, 0, xScale*blackWidth, yScale*blackHeight);
     }
 
-    function isPressed(key) { return pressedKeys.length > 0 && pressedKeys[0] === key; }
+    // Check if a piano key is pressed
+    function isPressed(key)
+    {
+        return pressedKeys.length > 0 && pressedKeys[0].key === key;
+    }
+
+    // Check if a position is in a given rectangle
+    function posInRect(theRect, mouseX, mouseY)
+    {
+        return mouseX >= theRect.x
+            && mouseX <= theRect.x + theRect.width
+            && mouseY >= theRect.y
+            && mouseY <= theRect.y + theRect.height;
+    }
+
+    // Get the index of a piano key from a position
+    function keyFromPos(mouseX, mouseY)
+    {
+        for(var it = 0; it < blackPos.length; ++it)
+        {
+            if(posInRect(blackPos[it].rect, mouseX, mouseY))
+            {
+                return {
+                    key: blackPos[it].key,
+                    vel: Utils.rescale(mouseY, 0, blackHeight * yScale, 0, 127)
+                };
+            }
+        }
+
+        for(var it = 0; it < whitePos.length; ++it)
+        {
+            if(posInRect(whitePos[it].rect, mouseX, mouseY))
+            {
+                return {
+                    key: whitePos[it].key,
+                    vel: Utils.rescale(mouseY, 0, whiteHeight * yScale, 0, 127)
+                };
+            }
+        }
+    }
+
+    // Compare two arrays to check if the same keys are pressed in it
+    function sameKeys(a1, a2) {
+        return a1.length == a2.length && a1.every(function(v,i)
+        { return v.key === a2[i].key;
+        });
+    }
+
     Canvas
     {
         id: canvas
@@ -152,38 +206,20 @@ Item
         }
     }
 
-    function posInRect(theRect, mouseX, mouseY)
-    {
-        return mouseX >= theRect.x
-            && mouseX <= theRect.x + theRect.width
-            && mouseY >= theRect.y
-            && mouseY <= theRect.y + theRect.height;
-    }
-
-    function keyFromPos(mouseX, mouseY)
-    {
-        for(var it = 0; it < blackPos.length; ++it)
-        {
-            if(posInRect(blackPos[it].rect, mouseX, mouseY))
-                return blackPos[it].key;
-        }
-
-        for(var it = 0; it < whitePos.length; ++it)
-        {
-            if(posInRect(whitePos[it].rect, mouseX, mouseY))
-                return whitePos[it].key;
-        }
-    }
-
     MouseArea {
         anchors.fill: parent
         onPressed: {
-            pressedKeys.push(keyFromPos(mouseX, mouseY))
+            pressedKeys = [ keyFromPos(mouseX, mouseY) ];
             canvas.requestPaint()
         }
+
         onPositionChanged: {
-            pressedKeys[0] = keyFromPos(mouseX, mouseY);
-            canvas.requestPaint()
+            var newKeys = [ keyFromPos(mouseX, mouseY) ];
+            if(!sameKeys(newKeys, pressedKeys))
+            {
+                pressedKeys = newKeys;
+                canvas.requestPaint()
+            }
         }
 
         onReleased: {

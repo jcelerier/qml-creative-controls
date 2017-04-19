@@ -2,7 +2,10 @@ import QtQuick 2.6
 import CreativeControls 1.0
 import QtQuick.Layouts 1.3
 
-// Three sliders to control hue, saturation, value, of a color
+// Sliders to control hue, saturation, value, alpha, of a color
+// Properties:
+// * enableAlpha: show the alpha channel slider
+// * color: the current color
 Rectangle
 {
     // add an alpha slider
@@ -36,10 +39,10 @@ Rectangle
 
             initialValue: 120./ 360.
 
-
             color : Qt.hsva(value ,0.5,0.5,1.)
             handleColor : Qt.hsva((1.-value),0.5,0.5,1.)
         }
+
         Slider
         {
             id : s
@@ -52,11 +55,10 @@ Rectangle
 
             initialValue: 0.182
 
-
-           color : Qt.hsva(1.0 ,value,0.5,1.)
-           handleColor : Qt.hsva(1.0,1.-value,0.5,1.)
-
+            color : Qt.hsva(1.0 ,value,0.5,1.)
+            handleColor : Qt.hsva(1.0,1.-value,0.5,1.)
         }
+
         Slider
         {
             id : v
@@ -67,11 +69,10 @@ Rectangle
 
             initialValue: 0.733
 
-
             color : Qt.hsva(0,0,value,1.)
             handleColor : Qt.hsva(0.,0.,1.-value,1.)
-
         }
+
         Slider
         {
             id : a

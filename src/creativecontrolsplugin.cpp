@@ -17,10 +17,10 @@ void CreativeControlsPlugin::registerTypes(const char *uri)
   qmlRegisterType<AngleSlider>(uri, 1, 0, "AngleSliderImpl");
   qmlRegisterType<Scope>(uri, 1, 0, "ScopeImpl");
   qmlRegisterType<Polygon>(uri, 1, 0, "Polygon");
-  qmlRegisterType<XYTarget>(uri, 1, 0, "XYTarget");
+  qmlRegisterType<XYTarget>(uri, 1, 0, "Crosshair");
 
   qmlRegisterSingletonType<CppUtils>(uri, 1, 0, "CppUtils",
-                                     [] (QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject* {
+                                     [] (QQmlEngine*, QJSEngine*) -> QObject* {
     return new CppUtils;
   });
 }

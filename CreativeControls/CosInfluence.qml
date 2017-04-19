@@ -1,23 +1,23 @@
 import QtQuick 2.6
 import CreativeControls 1.0
 
-// Cosine influence area
+// Cosine influence area.
+// Parameters:
+// * points: a list of points betwen (0;0) and (1;1).
+// * centerX / centerY: the position of the crosshair
+// * values: when the crosshair moves, values is updated to contain an array of distances
+//           to each point in points
 Item
 {
+    id: item
+    anchors.fill: parent
+
     property var points : [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
     property alias centerX : xy.centerX
     property alias centerY : xy.centerY
 
     property real sizeRatio : Math.min(item.width, item.height) / 15.
     property var values: []
-    onValuesChanged: console.log(values)
-
-    id: item
-    anchors.fill: parent
-
-    onCenterXChanged: updateValues()
-    onCenterYChanged: updateValues()
-    onPointsChanged: updateValues()
 
     function updateValues()
     {
@@ -35,7 +35,9 @@ Item
         values = newvalues;
     }
 
-    MouseArea {
+    // Mouse area for when the background is clicked
+    MouseArea
+    {
         function applyPos()
         {
             centerX = Utils.clamp(mouseX, 0, item.width) / width;
@@ -48,9 +50,9 @@ Item
         onReleased: applyPos()
     }
 
+    // The circles
     Repeater
     {
-        id: rpt
         model: points
         delegate: Polygon
         {
@@ -62,7 +64,7 @@ Item
             height: width
             borderWidth: 0.05 * sizeRatio
             fillColor: Styles.base
-            borderColor: CppUtils.setHSVHue(Styles.detail, Math.abs(Math.random(360)))
+            borderColor: Styles.randomDetailColor()
 
             Text
             {
@@ -71,9 +73,11 @@ Item
                 text: index
                 color: parent.borderColor
             }
+
             Drag.hotSpot: Qt.point(width / 2, height / 2)
 
-            MouseArea {
+            MouseArea
+            {
                 id: dragArea
                 anchors.fill: parent
 
@@ -87,10 +91,14 @@ Item
         }
     }
 
-    XYTarget {
+    // Crosshair. When clicked it will also move.
+    Crosshair {
         id: xy
         anchors.fill: parent
         color: Styles.detail
     }
 
+    onCenterXChanged: updateValues()
+    onCenterYChanged: updateValues()
+    onPointsChanged: updateValues()
 }
