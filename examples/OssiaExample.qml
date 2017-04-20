@@ -10,16 +10,18 @@ Item {
     Ossia.MidiSink
     {
         id: midiDevice
-        midiPort: 1
+        midiPort: 0
     }
 
+    // This example uses the oscquery_publication_example
+    // provided with libossia
     Ossia.OSCQueryClient
     {
         id: oscqDevice
         address: "ws://127.0.0.1:5678"
     }
 
-    Row {
+    Column {
         AngleSlider
         {
             width: 200
@@ -37,18 +39,47 @@ Item {
 
         Joystick
         {
+            id: joystick
             width: 200
             height: 200
-            property point stick: Qt.point(stickX, stickY)
 
-            // This example uses the oscquery_publication_example provided with libossia
-            // TODO add possibility to do a binding instead. eg
-            // Ossia.Binding { on: stickX + stickY, node: '/units/vec2' }
-            Ossia.Reader on stick {
+            // Send whenever the bound expression changes
+            Ossia.Binding {
+                on: Qt.point(joystick.stickX, joystick.stickX)
                 node: '/units/vec2'
                 device: oscqDevice
             }
+
+            // Modify a single propriety using a property value source
+            Ossia.Reader on stickR {
+                node: '/test/my_string'
+                device: oscqDevice
+            }
         }
+
+        // This updates the text according to what is sent
+        Text {
+            id: txt
+            font.pointSize: 50
+
+            Ossia.Callback
+            {
+                device: oscqDevice
+                onValueChanged: txt.text = "foo " + value + " bar"
+                node: '/test/my_float'
+            }
+        }
+
+        // More concise form using a property value source:
+        Text {
+            font.pointSize: 70
+            text: "foo"
+            Ossia.Writer on text {
+                node: '/test/my_float'
+                device: oscqDevice
+            }
+        }
+
     }
 
     Component.onCompleted:
@@ -58,5 +89,8 @@ Item {
         for(var midi in midi_ins)
             console.log(midi, midi_ins[midi])
         // midi_ins[midi] is the value to pass to "midiPort"
+
+        oscqDevice.openOSCQueryClient(oscqDevice.address, oscqDevice.localPort)
+        oscqDevice.remap(root)
     }
 }
