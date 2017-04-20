@@ -4,7 +4,9 @@ import QtQuick.Layouts 1.1
 import CreativeControls 1.0
 import Ossia 1.0 as Ossia
 
-Item {
+Rectangle {
+    width: 400
+    height: 200
     id: root
 
     Ossia.MidiSink
