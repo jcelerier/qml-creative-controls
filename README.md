@@ -1,8 +1,31 @@
 # QML Creative Controls
 
-Controls useful in a creative coding context
+Controls useful in a creative coding context.
 
-# Inspiration
+## Building
+
+    qmake
+    make -j
+
+## Using
+
+Put the `CreativeControls` folder in your Qt installation, so that it looks like:
+
+```
+    ~/Qt/5.8/gcc_64/qml/CreativeControls/libqml-creative-controls.so
+                                        /Foo.qml
+                                      # /etc...
+```
+
+If you do not wish to pollute your path, you will have to add the parent folder (the git repostiory)
+to your QML2_IMPORT_PATH, either through qmake, an environment variable, code...
+
+## Notes
+
+This library can be useful in conjunction with [libossia](https://github.com/OSSIA/libossia).
+See [OssiaExample.qml](examples/OssiaExample.qml).
+
+## Inspiration
 
 * [Lemur](https://liine.net)
 

@@ -4,7 +4,7 @@ import QtQuick 2.6
 Item
 {
     id: multiSlider
-    property var nbSliders : 10
+    property int nbSliders : 10
     property bool bVerticalSet : true
     property real spacing : 5.
 

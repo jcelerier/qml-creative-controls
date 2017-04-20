@@ -5,27 +5,58 @@ import CreativeControls 1.0
 import Ossia 1.0 as Ossia
 
 Item {
-
     id: root
-    AngleSlider
+
+    Ossia.MidiSink
     {
-        anchors.fill: parent
+        id: midiDevice
+        midiPort: 1
+    }
 
-        // Scale the angle between 0 - 127
-        property real midiangle: 127 * (180 + angle) / 360
+    Ossia.OSCQueryClient
+    {
+        id: oscqDevice
+        address: "ws://127.0.0.1:5678"
+    }
 
-        // The value changes are sent to CC 34 on Channel 1
-        Ossia.Reader on midiangle {
-            node: '/1/control/34'
+    Row {
+        AngleSlider
+        {
+            width: 200
+            height: 200
+
+            // Scale the angle between 0 - 127
+            property real midiangle: 127 * (180 + angle) / 360
+
+            // The value changes are sent to CC 34 on Channel 1
+            Ossia.Reader on midiangle {
+                node: '/1/control/34'
+                device: midiDevice
+            }
+        }
+
+        Joystick
+        {
+            width: 200
+            height: 200
+            property point stick: Qt.point(stickX, stickY)
+
+            // This example uses the oscquery_publication_example provided with libossia
+            // TODO add possibility to do a binding instead. eg
+            // Ossia.Binding { on: stickX + stickY, node: '/units/vec2' }
+            Ossia.Reader on stick {
+                node: '/units/vec2'
+                device: oscqDevice
+            }
         }
     }
 
     Component.onCompleted:
     {
-        var midi_ins = Ossia.SingleDevice.getMIDIInputDevices();
+        // List midi devices
+        var midi_ins = midiDevice.getMIDIOutputDevices();
         for(var midi in midi_ins)
             console.log(midi, midi_ins[midi])
-        Ossia.SingleDevice.openMIDIOutputDevice(1)
-        Ossia.SingleDevice.remap(root)
+        // midi_ins[midi] is the value to pass to "midiPort"
     }
 }

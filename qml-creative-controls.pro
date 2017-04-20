@@ -71,4 +71,5 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     CreativeControls/qmldir \
-    CreativeControls/designer/CreativeControls.metainfo
+    CreativeControls/designer/CreativeControls.metainfo \
+    README.md
