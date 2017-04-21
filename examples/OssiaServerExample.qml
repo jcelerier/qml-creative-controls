@@ -21,6 +21,9 @@ import Ossia 1.0 as Ossia
 Page {
     id: root
     header: Text { font.pointSize: 30 ; text: "Server example" }
+    width: 800
+    height: 500
+
 
     // From this point, we enter the /test relative namespace level
     // If no 'node' is given, the parent object's objectName will be used.
@@ -69,13 +72,18 @@ Page {
         }
 
         Text { Layout.row: 2; Layout.column: 0; width: 50; wrapMode: Text.Wrap;
-            text: "Angle slider (move the Joystick in Client)" }
+            text: "Angle slider (changes the text in client)" }
         AngleSlider {
             Layout.row: 2
             Layout.column: 1
 
             // Reads and writes from /test/angle
-            Ossia.Property on angle { }
+            Ossia.Property on angle {
+                // The value will be bounded between these:
+                min: -90
+                max: 0
+                bounding: Ossia.Context.Clip
+            }
         }
     }
 

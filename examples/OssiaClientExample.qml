@@ -17,7 +17,8 @@ import Ossia 1.0 as Ossia
  * that is, it connects to existing adresses / parameters of a remote
  * software / hardware.
  */
-Rectangle {
+Page {
+    header: Text { font.pointSize: 30 ; text: "Client example" }
     width: 800
     height: 500
 
