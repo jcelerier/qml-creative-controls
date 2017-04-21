@@ -31,6 +31,10 @@ This library can be useful in conjunction with [libossia](https://github.com/OSS
 See [OssiaClientExample.qml](examples/OssiaClientExample.qml) and [OssiaServerExample.qml](examples/OssiaServerExample.qml)
 This allwos to build pretty control interfaces for MIDI or OSC-able software.
 
+## Gallery
+
+![Gallery video](https://media.giphy.com/media/3ohzdHZPs69PwkfrHy/giphy.gif)
+
 ## Inspiration
 
 * [Lemur](https://liine.net)
