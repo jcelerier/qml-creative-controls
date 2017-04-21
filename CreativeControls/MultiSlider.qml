@@ -1,25 +1,49 @@
 import QtQuick 2.6
 
 // Vertical or horizontal set of sliders.
+// Parameters:
+// * count: the number of sliders
+// * orientation: vertical / horizontal
+// * spacing: spacing between sliders
+// * values: an array with all the output values.
 Item
 {
     id: multiSlider
-    property int nbSliders : 10
-    property bool bVerticalSet : true
+    property int count : 10
+    property int orientation : Qt.Vertical
     property real spacing : 5.
+    property var values: []
+
+    width: 200
+    height: 100
+
+    function recomputeValues()
+    {
+        var source = (orientation == Qt.Vertical) ? vSliders : hSliders;
+        var array = [];
+        for(var i = 0; i < count; i++)
+        {
+            var item = source.itemAt(i);
+            if(item !== null)
+                array.push(item.value)
+        }
+        values = array;
+    }
 
     Row
     {
-        spacing : multiSlider.spacing
+        spacing: multiSlider.spacing
 
         Repeater
         {
-            model : bVerticalSet ? 0 :  nbSliders
+            id: hSliders
+            model : (orientation == Qt.Vertical) ? 0 : multiSlider.count
             Slider
             {
                 height : multiSlider.height
-                width : (multiSlider.width-spacing*(nbSliders-1)) /nbSliders
+                width : (multiSlider.width - spacing * (multiSlider.count - 1)) / multiSlider.count
                 bVertical: true
+                onValueChanged: recomputeValues()
             }
         }
     }
@@ -29,14 +53,15 @@ Item
         spacing : multiSlider.spacing
         Repeater
         {
-            model : bVerticalSet ? nbSliders : 0
+            id: vSliders
+            model: (orientation == Qt.Vertical) ? multiSlider.count : 0
             Slider
             {
-                height : (multiSlider.height-spacing*(nbSliders-1)) / nbSliders
+                height : (multiSlider.height - spacing * (multiSlider.count - 1)) / multiSlider.count
                 width : multiSlider.width
                 bVertical: false
+                onValueChanged: recomputeValues()
             }
         }
-
     }
 }

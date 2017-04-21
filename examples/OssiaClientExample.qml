@@ -4,17 +4,32 @@ import QtQuick.Layouts 1.1
 import CreativeControls 1.0
 import Ossia 1.0 as Ossia
 
+/**
+ * This file presents an example of usage of the controls
+ * provided by this library, with libossia.
+ * libossia is a library that provides multiple network and message
+ * protocols useful for creative coding: MIDI, OSC, OSCQuery, etc.
+ *
+ * More information is available on :
+ * https://github.com/OSSIA/libossia
+ *
+ * In the current example, the application we are writing acts as a client:
+ * that is, it connects to existing adresses / parameters of a remote
+ * software / hardware.
+ */
 Item {
     id: root
 
+    // A midi device to which one can send messages to.
     Ossia.MidiSink
     {
         id: midiDevice
         midiPort: 0
     }
 
-    // This example uses the oscquery_publication_example
-    // provided with libossia
+    // This device uses the oscquery_publication_example
+    // provided with libossia as well as the OssiaServerExample provided
+    // next to this file
     Ossia.OSCQueryClient
     {
         id: oscqDevice
@@ -24,14 +39,15 @@ Item {
     Column {
         AngleSlider
         {
+            id: slider
             width: 200
             height: 200
 
-            // Scale the angle between 0 - 127
-            property real midiangle: 127 * (180 + angle) / 360
+            Ossia.Binding {
+                // Scale the angle between 0 - 127
+                on:  127 * (180 + slider.angle) / 360
 
-            // The value changes are sent to CC 34 on Channel 1
-            Ossia.Reader on midiangle {
+                // The value changes are sent to CC 34 on channel 1
                 node: '/1/control/34'
                 device: midiDevice
             }
@@ -43,30 +59,31 @@ Item {
             width: 200
             height: 200
 
-            // Send whenever the bound expression changes
-            Ossia.Binding {
-                on: Qt.point(joystick.stickX, joystick.stickX)
-                node: '/units/vec2'
+            // Modify a single propriety using a property value source
+            Ossia.Reader on stickR {
+                node: '/units/float'
                 device: oscqDevice
             }
 
-            // Modify a single propriety using a property value source
-            Ossia.Reader on stickR {
-                node: '/test/my_string'
+            // /units/vec2 will be updated whenever the bound expression changes
+            Ossia.Binding {
+                on: Qt.point(joystick.stickX, joystick.stickX)
+                node: '/test/values'
                 device: oscqDevice
             }
         }
 
-        // This updates the text according to what is sent
         Text {
             id: txt
             font.pointSize: 50
 
+            // This updates the text according to messages sent
+            // by the remote software
             Ossia.Callback
             {
                 device: oscqDevice
                 onValueChanged: txt.text = "foo " + value + " bar"
-                node: '/test/my_float'
+                node: '/test/angle'
             }
         }
 
@@ -75,11 +92,10 @@ Item {
             font.pointSize: 70
             text: "foo"
             Ossia.Writer on text {
-                node: '/test/my_float'
+                node: '/test/angle'
                 device: oscqDevice
             }
         }
-
     }
 
     Component.onCompleted:
@@ -90,6 +106,7 @@ Item {
             console.log(midi, midi_ins[midi])
         // midi_ins[midi] is the value to pass to "midiPort"
 
+        // Call this at the end to set-up the connections
         oscqDevice.openOSCQueryClient(oscqDevice.address, oscqDevice.localPort)
         oscqDevice.remap(root)
     }
