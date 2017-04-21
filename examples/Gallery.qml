@@ -86,7 +86,7 @@ Item {
                     Layout.row: 4
                     width: 200
                     height: 100
-                    nbSliders: 5
+                    count: 5
                 }
                 Text {
                     Layout.column: 1

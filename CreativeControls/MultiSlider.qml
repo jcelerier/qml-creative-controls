@@ -12,23 +12,11 @@ Item
     property int count : 10
     property int orientation : Qt.Vertical
     property real spacing : 5.
+    property bool __updating: false
     property var values: []
-
+    onValuesChanged: updateValues()
     width: 200
     height: 100
-
-    function recomputeValues()
-    {
-        var source = (orientation == Qt.Vertical) ? vSliders : hSliders;
-        var array = [];
-        for(var i = 0; i < count; i++)
-        {
-            var item = source.itemAt(i);
-            if(item !== null)
-                array.push(item.value)
-        }
-        values = array;
-    }
 
     Row
     {
@@ -63,5 +51,41 @@ Item
                 onValueChanged: recomputeValues()
             }
         }
+    }
+
+    // outside -> inside
+    function updateValues()
+    {
+        if(!__updating)
+        {
+            var source = (orientation == Qt.Vertical) ? vSliders : hSliders;
+            for(var i = 0; i < count; i++)
+            {
+                var item = source.itemAt(i);
+                if(item !== null)
+                {
+                    source.itemAt(i).value = values[i];
+                }
+            }
+        }
+    }
+
+    // inside -> outside
+    function recomputeValues()
+    {
+        var source = (orientation == Qt.Vertical) ? vSliders : hSliders;
+        var array = [];
+        for(var i = 0; i < count; i++)
+        {
+            var item = source.itemAt(i);
+            if(item !== null)
+            {
+                array.push(item.value)
+            }
+        }
+
+        __updating = true;
+        values = array;
+        __updating = false;
     }
 }

@@ -3,7 +3,7 @@
 #include <QSGFlatColorMaterial>
 #include <QSGGeometryNode>
 #include <QSGGeometry>
-
+#include <QtMath>
 Graph::Graph()
 {
   setFlag(ItemHasContents, true);
@@ -106,7 +106,9 @@ QSGNode* Graph::updatePaintNode(
 
   for (int i = 0; i < n_pts; ++i)
   {
-    dotsVertices[i].set(w -  2 * (n_pts - i),  h - h * m_values[i]);
+    const auto x = qBound(0., w - 2 * (n_pts - i), w);
+    const auto y = qBound(0., h - h * m_values[i], h);
+    dotsVertices[i].set(x, y);
   }
 
   dotsNode->markDirty(QSGNode::DirtyGeometry);

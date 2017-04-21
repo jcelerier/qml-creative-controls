@@ -17,25 +17,39 @@ import Ossia 1.0 as Ossia
  * that is, it connects to existing adresses / parameters of a remote
  * software / hardware.
  */
-Item {
+Rectangle {
+    width: 800
+    height: 500
+
     id: root
 
     // A midi device to which one can send messages to.
     Ossia.MidiSink
     {
-        id: midiDevice
+        id: midiOutDevice
+        // look at the console output to know MIDI devices' port number
+        // and report the one you want to use below
         midiPort: 0
     }
 
-    // This device uses the oscquery_publication_example
-    // provided with libossia as well as the OssiaServerExample provided
-    // next to this file
+    Ossia.MidiSource
+    {
+        id: midiInDevice
+        // look at the console output to know MIDI input devices' port number
+        // and report the one you want to use below
+        midiPort: 0
+    }
+
     Ossia.OSCQueryClient
     {
         id: oscqDevice
+        // Connect to an OSCQuery server. See for instance OssiaServerExample.qml
+        // or libossia's oscquery_publication_example
         address: "ws://127.0.0.1:5678"
     }
 
+    Row {
+        spacing: 100
     Column {
         AngleSlider
         {
@@ -49,10 +63,26 @@ Item {
 
                 // The value changes are sent to CC 34 on channel 1
                 node: '/1/control/34'
-                device: midiDevice
+                device: midiOutDevice
+
             }
         }
+        Label { text: "To Midi CC 34" }
 
+        AngleSlider
+        {
+            width: 200
+            height: 200
+            angle: 0
+
+            Ossia.Writer on angle {
+                node: '/1/control/13'
+                device: midiInDevice
+            }
+        }
+        Label { text: "From Midi CC 13" }
+    }
+    ColumnLayout {
         Joystick
         {
             id: joystick
@@ -67,43 +97,55 @@ Item {
 
             // /units/vec2 will be updated whenever the bound expression changes
             Ossia.Binding {
-                on: Qt.point(joystick.stickX, joystick.stickX)
+                on: Qt.point(0.5 * (1 + joystick.stickX), 0.5 * (1 + joystick.stickY))
                 node: '/test/values'
                 device: oscqDevice
             }
         }
+        Label { text: "To OSCQuery server (graph and sliders)" }
+
+        Item { height: 50 }
 
         Text {
             id: txt
-            font.pointSize: 50
+            anchors.topMargin: 50
+            text: "Callback from OSCQuery server (angle slider)"
 
             // This updates the text according to messages sent
             // by the remote software
             Ossia.Callback
             {
                 device: oscqDevice
-                onValueChanged: txt.text = "foo " + value + " bar"
+                onValueChanged: txt.text = "foo " + Utils.roundNum(value) + " bar"
                 node: '/test/angle'
             }
         }
 
         // More concise form using a property value source:
         Text {
-            font.pointSize: 70
-            text: "foo"
+            anchors.topMargin: 50
+            text: "Callback from OSCQuery server (angle slider)"
             Ossia.Writer on text {
                 node: '/test/angle'
                 device: oscqDevice
             }
         }
     }
+    }
 
     Component.onCompleted:
     {
         // List midi devices
-        var midi_ins = midiDevice.getMIDIOutputDevices();
+        console.log("get MIDI output devices...");
+        var midi_outs = midiOutDevice.getMIDIOutputDevices();
+        for(var midi in midi_outs)
+            console.log("device: '" + midi + "'\t\tport number: ", midi_outs[midi])
+        // midi_outs[midi] is the value to pass to "midiPort"
+
+        console.log("get MIDI input devices...");
+        var midi_ins = midiInDevice.getMIDIInputDevices();
         for(var midi in midi_ins)
-            console.log(midi, midi_ins[midi])
+            console.log("device: '" + midi + "'\t\tport number: ", midi_ins[midi])
         // midi_ins[midi] is the value to pass to "midiPort"
 
         // Call this at the end to set-up the connections

@@ -9,6 +9,8 @@ Rectangle
     property bool bVertical : true
     radius : Styles.cornerRadius
     clip: true
+    property bool __updating: false
+    onValueChanged: updateValue()
 
     property real sliderWidth : 100
 
@@ -23,7 +25,6 @@ Rectangle
 
     property var customMap: function(val){return val;}
 
-
     property var linearMap: function()
     {
         var mappedVal = 0.;
@@ -31,9 +32,8 @@ Rectangle
         if(bVertical)
             mappedVal = 1.0 - (handle.y - borderW) / (valueRange.y - valueRange.x);
         else
-           mappedVal = (handle.x - borderW) /  (valueRange.y - valueRange.x)
+            mappedVal = (handle.x - borderW) /  (valueRange.y - valueRange.x)
         return Utils.clamp(mappedVal,0,1);
-
     }
 
     property real initialValue : 0.5
@@ -68,9 +68,26 @@ Rectangle
         color : handleColor
     }
 
+    function updateValue()
+    {
+        // TODO use a function instead so that one can use linear, or log, or whatever mapping.
+        if(!__updating)
+        {
+            var borderW = border.width
+            if(bVertical)
+            {
+                handle.y = Utils.clamp((1.0 - value) * (valueRange.y - valueRange.x) + borderW, 0, height);
+            }
+            else
+            {
+                handle.x = Utils.clamp(value * (valueRange.y - valueRange.x) + borderW, 0, width);
+            }
+        }
+    }
 
     function moveCursor(mouseX,mouseY)
     {
+        __updating = true;
         if(background.bVertical)
         {
             handle.y = Utils.clamp(mouseY,
@@ -81,7 +98,7 @@ Rectangle
             handle.x = Utils.clamp(mouseX,
                                    valueRange.x ,valueRange.y ) - handleWidth/2;
         }
-
+        __updating = false;
     }
 
     MouseArea
