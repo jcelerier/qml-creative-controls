@@ -4,6 +4,7 @@ Controls useful in a creative coding context.
 
 ## Building
 
+    cd qml-creative-controls
     qmake
     make -j
 
@@ -20,10 +21,19 @@ Put the `CreativeControls` folder in your Qt installation, so that it looks like
 If you do not wish to pollute your path, you will have to add the parent folder (the git repostiory)
 to your QML2_IMPORT_PATH, either through qmake, an environment variable, code...
 
+To try an example, run for instance : 
+
+    ~/Qt/5.8/gcc_64/bin/qmlscene --multisample examples/Gallery.qml
+    
 ## Notes
 
 This library can be useful in conjunction with [libossia](https://github.com/OSSIA/libossia).
-See [OssiaExample.qml](examples/OssiaExample.qml).
+See [OssiaClientExample.qml](examples/OssiaClientExample.qml) and [OssiaServerExample.qml](examples/OssiaServerExample.qml)
+This allwos to build pretty control interfaces for MIDI or OSC-able software.
+
+## Gallery
+
+![Gallery video](https://media.giphy.com/media/3ohzdHZPs69PwkfrHy/giphy.gif)
 
 ## Inspiration
 
