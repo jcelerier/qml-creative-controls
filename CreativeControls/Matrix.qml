@@ -6,6 +6,7 @@ Grid
 {
     id: grid
     property bool togglable: false
+    property var pressed: []
 
     columns: 3
     rows: 3
@@ -36,8 +37,20 @@ Grid
             }
             MouseArea {
                 anchors.fill: parent
-                onPressed: if(togglable) toggled = !toggled; else toggled = true;
-                onReleased: if(togglable) ; else toggled = false;
+                onPressed: {
+                    if(togglable)
+                        toggled = !toggled;
+                    else
+                        toggled = true;
+                    grid.pressed = [ index ]
+                }
+                onReleased: {
+                    if(togglable)
+                        ;
+                    else
+                        toggled = false;
+                    grid.pressed = [ ]
+                }
             }
         }
     }

@@ -3,6 +3,8 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import CreativeControls 1.0
 Item {
+    width: 900
+    height: 1200
 
     SwipeView
     {
@@ -31,24 +33,28 @@ Item {
                     id: angleSlider
                     Layout.column: 0
                     Layout.row: 0
+                    Layout.alignment: Layout.Center
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "Angle slider: " + angleSlider.angle
+                    text: "Angle slider: " + Utils.roundNum(angleSlider.angle)
                 }
 
                 HSLSlider {
                     id: hslSlider
                     Layout.column: 0
                     Layout.row: 1
+                    Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "HSL Slider" + hslSlider.color
                 }
@@ -57,12 +63,14 @@ Item {
                     id: hsvSlider
                     Layout.column: 0
                     Layout.row: 2
+                    Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 2
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "HSV Slider: " + hsvSlider.color
                 }
@@ -71,12 +79,14 @@ Item {
                     id: rgbSlider
                     Layout.column: 0
                     Layout.row: 3
+                    Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 3
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "RGB Slider: " + rgbSlider.color
                 }
@@ -84,6 +94,7 @@ Item {
                 MultiSlider {
                     Layout.column: 0
                     Layout.row: 4
+                    Layout.alignment: Layout.Center
                     width: 200
                     height: 100
                     count: 5
@@ -91,14 +102,17 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 4
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Multi Slider"
                 }
 
+                /*
                 LogSlider
                 {
                     Layout.column: 0
                     Layout.row: 5
+                    Layout.alignment: Layout.Center
                     width: 50
                     height: 150
                 }
@@ -113,6 +127,7 @@ Item {
                 {
                     Layout.column: 0
                     Layout.row: 6
+                    Layout.alignment: Layout.Center
                 }
                 Text {
                     Layout.column: 1
@@ -120,6 +135,7 @@ Item {
                     font.pointSize: 20
                     text: "Range Slider"
                 }
+                */
             }
         }
 
@@ -145,6 +161,7 @@ Item {
                     height: 100
                     Layout.column: 0
                     Layout.row: 0
+                    Layout.alignment: Layout.Center
 
                     Timer {
                         id: tm
@@ -157,6 +174,7 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Graph"
                 }
@@ -168,6 +186,7 @@ Item {
                     height: 100
                     Layout.column: 0
                     Layout.row: 1
+                    Layout.alignment: Layout.Center
                     symmetrize: true
 
                     Timer
@@ -189,6 +208,7 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Scope"
                 }
@@ -217,10 +237,12 @@ Item {
                     height: 200
                     Layout.column: 0
                     Layout.row: 0
+                    Layout.alignment: Layout.Center
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Joystick: " + Utils.roundNum(joystick.stickX) + ", " + Utils.roundNum(joystick.stickY)
                 }
@@ -232,10 +254,12 @@ Item {
                     height: 200
                     Layout.column: 0
                     Layout.row: 1
+                    Layout.alignment: Layout.Center
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "X-Y Pad: " + xypad.stickX + ", " + xypad.stickY
                 }
@@ -247,10 +271,12 @@ Item {
                     height: 200
                     Layout.column: 0
                     Layout.row: 2
+                    Layout.alignment: Layout.Center
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 2
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Cosine Influence: " + prettyArray(cosinfluence.values)
 
@@ -289,8 +315,9 @@ Item {
                     id: kbd
                     Layout.column: 0
                     Layout.row: 0
+                    Layout.alignment: Layout.Center
 
-                    width: 400
+                    width: 200
                     height: 200
 
                     firstKey: 36
@@ -299,11 +326,12 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
-                           "Keyboard: " + kbd.pressedKeys[0].key + ", " + kbd.pressedKeys[0].vel
+                            "Keyboard: " + kbd.pressedKeys[0].key + ", " + kbd.pressedKeys[0].vel
                         else
                             "Keyboard"
                     }
@@ -311,8 +339,10 @@ Item {
 
                 Matrix
                 {
+                    id: matrix
                     Layout.column: 0
                     Layout.row: 1
+                    Layout.alignment: Layout.Center
 
                     width: 200
                     height: 200
@@ -320,14 +350,22 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "Matrix"
+                    text:
+                    {
+                        if(matrix.pressed.length > 0)
+                            "Matrix: " + matrix.pressed[0]
+                        else
+                            "Matrix"
+                    }
                 }
 
                 Leds
                 {
                     Layout.column: 0
                     Layout.row: 2
+                    Layout.alignment: Layout.Center
 
                     width: 200
                     height: 200
@@ -335,6 +373,7 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 2
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     text: "Leds"
                 }

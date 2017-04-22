@@ -51,6 +51,8 @@ See [OssiaExample.qml](examples/OssiaExample.qml).
 
 * [Dear ImGui](https://github.com/ocornut/imgui)
 
+* [nanogui](https://github.com/wjakob/nanogui)
+
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
 
 * [ofxCvGui](https://github.com/elliotwoods/ofxCvGui)
