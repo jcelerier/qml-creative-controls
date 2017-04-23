@@ -15,7 +15,7 @@ Rectangle
     border.width: 2
 
     // vertical or horizontal slider
-    property int orientation : Qt.vertical
+    property int orientation : Qt.Vertical
 
     // add an alpha slider
     property bool enableAlpha : false
@@ -39,7 +39,7 @@ Rectangle
 
             text : "H"
 
-            orientation : rgbSlider.orientation
+            orientation : hsvSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -57,7 +57,7 @@ Rectangle
 
             text : "S"
 
-            orientation : rgbSlider.orientation
+            orientation : hsvSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -75,7 +75,7 @@ Rectangle
 
             text : "V"
 
-            orientation : rgbSlider.orientation
+            orientation : hsvSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -94,7 +94,7 @@ Rectangle
             text : "A"
             visible : hsvSlider.enableAlpha
 
-            orientation : rgbSlider.orientation
+            orientation : hsvSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter

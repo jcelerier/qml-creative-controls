@@ -16,7 +16,7 @@ Rectangle
     border.width: 2
 
     // vertical or horizontal slider
-    property int orientation : Qt.vertical
+    property int orientation : Qt.Vertical
 
     property bool enableAlpha : false
     property real alphaValue : enableAlpha ? a.value : 1.0
@@ -38,7 +38,7 @@ Rectangle
 
             text : "H"
 
-            orientation : rgbSlider.orientation
+            orientation : hslSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -56,7 +56,7 @@ Rectangle
 
             text: "S"
 
-            orientation : rgbSlider.orientation
+            orientation : hslSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -73,7 +73,7 @@ Rectangle
             id : l
 
             text : "L"
-            orientation : rgbSlider.orientation
+            orientation : hslSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -92,7 +92,7 @@ Rectangle
             visible : enableAlpha
 
             text : "A"
-            orientation : rgbSlider.orientation
+            orientation : hslSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
