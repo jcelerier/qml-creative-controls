@@ -18,7 +18,6 @@ Rectangle
     // handle width and color
     property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
     property color handleColor: Styles.base
-    property bool ease : true
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
     property int orientation : Qt.Vertical //Qt.Horizontal
@@ -41,7 +40,7 @@ Rectangle
         else if(orientation == Qt.Horizontal)
             mappedVal = (handle.x - borderW) /  (valueRange.y - valueRange.x);
 
-        return Utils.clamp(mappedVal,0,1);
+        return Utils.clamp(mappedVal.toFixed(2),0.,1.);
     }
 
     // slider value range
@@ -51,15 +50,13 @@ Rectangle
                                   : Qt.point(border.width + handleWidth/2.,
                                              slider.width - border.width - handleWidth/2.)
 
-    // function called after the handle moved
-    // updates the value
+    // function called when updating the value from outside
     function updateValue()
     {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
         if(!__updating)
         {
             slider.value = linearMap();
-
         }
     }
 
@@ -67,7 +64,7 @@ Rectangle
     // moves the slider's handle to the mouse position
     function moveHandle(mouseX,mouseY)
     {
-        __updating = true;
+
         if(orientation == Qt.Vertical)
         {
             handle.y = Utils.clamp(mouseY,
@@ -78,46 +75,83 @@ Rectangle
             handle.x = Utils.clamp(mouseX,
                                    valueRange.x ,valueRange.y ) - handleWidth/2;
         }
-        __updating = false;
 
-        updateValue();
+        // __updating = false;
     }
-
 
     Rectangle
     {
         id: handle
 
-        color: handleColor
+        anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
+        anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
+
+        color :  handleColor
 
         width : orientation == Qt.Vertical? slider.width : handleWidth
+        onWidthChanged: updateHandle();
+
         height : orientation == Qt.Vertical? handleWidth : slider.height
+        onHeightChanged: updateHandle();
+
         radius : Styles.cornerRadius
 
         x: orientation == Qt.Horizontal ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
+        onXChanged : {if(!resize)slider.value = linearMap();}
+
+        Behavior on x {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
+
         y : orientation == Qt.Vertical ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
+        onYChanged : {if(!resize)slider.value = linearMap();}
 
-        Behavior on x {enabled : slider.ease; NumberAnimation {easing.type : Easing.OutQuint}}
-        Behavior on y {enabled : slider.ease; NumberAnimation {easing.type : Easing.OutQuint}}
+        Behavior on y {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
-        anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
-        anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
+        property bool ease : true
+        property bool resize : false
+
+        function updateHandle()
+        {
+            ease = false;
+            resize = true;
+            x = orientation == Qt.Horizontal ?
+                        (1. - slider.value) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.
+                      : 0 ;
+            y = orientation == Qt.Vertical ?
+                        (1. - slider.value) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.
+                      : 0
+        }
     }
+
     MouseArea
     {
         anchors.fill : parent
 
-        onPressed :  moveHandle(mouseX,mouseY);
+        onPressed :
+        {
+            __updating = true;
+            handle.ease = true;
+            handle.resize = false;
+            moveHandle(mouseX,mouseY);
+            //  slider.value = linearMap();
+        }
 
-        onPositionChanged: moveHandle(mouseX,mouseY);
+        onPositionChanged: {
+            handle.ease = false;
+            moveHandle(mouseX,mouseY);
+            //   slider.value = linearMap();
+        }
+        onReleased:
+        {
+            __updating = false;
+        }
     }
 
     // label
-    property alias sliderName : label.text
+    property alias text : label.text
     Text
     {
         id: label
-
+        text : value
         anchors.centerIn: slider
 
         font.bold: true

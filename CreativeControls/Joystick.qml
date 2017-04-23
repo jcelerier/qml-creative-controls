@@ -23,15 +23,6 @@ Rectangle
     property real stickR: Utils.distance(stickX, stickY, 0, 0)
     property real stickTheta: -Math.atan2(stickY, -stickX) * 360 / (2 * Math.PI) + 180
 
-    Rectangle
-    {
-        id: stick
-        color: Styles.detail
-        radius: pad.radius / 10
-        height: radius* 2
-        width: height
-    }
-
     function moveStick(mouseX,mouseY)
     {
         var dist = Utils.distance(0,0, mouseX - pad.radius,mouseY- pad.radius);
@@ -40,6 +31,16 @@ Rectangle
 
         stick.x = radius * Math.cos(theta) + pad.radius - stick.radius;
         stick.y = radius * Math.sin(theta) + pad.radius - stick.radius;
+    }
+
+
+    Rectangle
+    {
+        id: stick
+        color: Styles.detail
+        radius: pad.radius / 10
+        height: radius* 2
+        width: height
     }
 
     MouseArea

@@ -34,7 +34,7 @@ Rectangle
         {
             id : r
 
-            sliderName : "R"
+            text : "R"
             orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
@@ -50,7 +50,7 @@ Rectangle
         {
             id : g
 
-            sliderName : "G"
+            text : "G"
             orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
@@ -67,7 +67,7 @@ Rectangle
         {
             id : b
 
-            sliderName : "B"
+            text : "B"
             orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
@@ -86,7 +86,7 @@ Rectangle
 
             visible : rgbSlider.enableAlpha
 
-            sliderName : "A"
+            text : "A"
             orientation : rgbSlider.orientation
 
             Layout.fillHeight: true

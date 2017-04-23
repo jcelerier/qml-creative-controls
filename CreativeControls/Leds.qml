@@ -9,7 +9,7 @@ Grid
 
     columns: 3
     rows : 3
-    property real ledRadius : 20
+
 
     columnSpacing : Utils.clamp((ledsGrid.width - ledsGrid.ledRadius*2* ledsGrid.columns) / (ledsGrid.columns-1),
                                 0, parent.width)
@@ -17,9 +17,9 @@ Grid
                              0,parent.height)
 
 
+    property real ledRadius : 20
     property color ledColorOn: Styles.detail
     property color ledColorOff: Styles.base
-
 
 
     // intensity default values

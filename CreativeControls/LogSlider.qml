@@ -3,7 +3,7 @@ import CreativeControls 1.0
 
 Slider
 {
-    sliderName : value.toFixed(3)
+    text : value.toFixed(3)
 
 
     customMap: function(val)
