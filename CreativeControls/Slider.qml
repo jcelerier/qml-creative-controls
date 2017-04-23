@@ -29,7 +29,8 @@ Rectangle
     property bool __updating: false
 
     // value mapping
-    property var customMap: function(val){return val;}
+    property var mapFunc : linearMap
+
     property var linearMap: function()
     {
         var mappedVal = 0.;
@@ -56,7 +57,7 @@ Rectangle
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
         if(!__updating)
         {
-            slider.value = linearMap();
+            slider.value = mapFunc();
         }
     }
 
@@ -97,12 +98,12 @@ Rectangle
         radius : Styles.cornerRadius
 
         x: orientation == Qt.Horizontal ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
-        onXChanged : {if(!resize)slider.value = linearMap();}
+        onXChanged : {if(!resize)slider.value = mapFunc();}
 
         Behavior on x {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
         y : orientation == Qt.Vertical ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
-        onYChanged : {if(!resize)slider.value = linearMap();}
+        onYChanged : {if(!resize)slider.value = mapFunc();}
 
         Behavior on y {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
