@@ -18,16 +18,16 @@ Rectangle
     // handle width and color
     property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
     property color handleColor: Styles.base
+    property bool enableHandleAnimation : true
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
     property int orientation : Qt.Vertical //Qt.Horizontal
 
-
-    property bool __updating: false
-
     // the value is between 0 and 1.
     property real value : initialValue;
     property real initialValue : 0.5
+
+    property bool __updating: false
 
     // value mapping
     property var customMap: function(val){return val;}
@@ -51,6 +51,8 @@ Rectangle
                                   : Qt.point(border.width + handleWidth/2.,
                                              slider.width - border.width - handleWidth/2.)
 
+    // function called after the handle moved
+    // updates the value
     function updateValue()
     {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
@@ -61,7 +63,9 @@ Rectangle
         }
     }
 
-    function moveCursor(mouseX,mouseY)
+    // called when a mouse event (onPressed / onPositionChanged) is detected
+    // moves the slider's handle to the mouse position
+    function moveHandle(mouseX,mouseY)
     {
         __updating = true;
         if(orientation == Qt.Vertical)
@@ -93,6 +97,9 @@ Rectangle
         x: orientation == Qt.Horizontal ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
         y : orientation == Qt.Vertical ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
 
+        Behavior on x {enabled : slider.enableHandleAnimation; NumberAnimation {easing.type : Easing.OutQuint}}
+        Behavior on y {enabled : slider.enableHandleAnimation; NumberAnimation {easing.type : Easing.OutQuint}}
+
         anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
         anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
     }
@@ -100,9 +107,9 @@ Rectangle
     {
         anchors.fill : parent
 
-        onPressed :  moveCursor(mouseX,mouseY);
+        onPressed :  moveHandle(mouseX,mouseY);
 
-        onPositionChanged: moveCursor(mouseX,mouseY);
+        onPositionChanged: moveHandle(mouseX,mouseY);
     }
 
     // label
