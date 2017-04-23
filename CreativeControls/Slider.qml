@@ -18,7 +18,7 @@ Rectangle
     // handle width and color
     property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
     property color handleColor: Styles.base
-    property bool enableHandleAnimation : true
+    property bool ease : true
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
     property int orientation : Qt.Vertical //Qt.Horizontal
@@ -97,8 +97,8 @@ Rectangle
         x: orientation == Qt.Horizontal ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
         y : orientation == Qt.Vertical ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
 
-        Behavior on x {enabled : slider.enableHandleAnimation; NumberAnimation {easing.type : Easing.OutQuint}}
-        Behavior on y {enabled : slider.enableHandleAnimation; NumberAnimation {easing.type : Easing.OutQuint}}
+        Behavior on x {enabled : slider.ease; NumberAnimation {easing.type : Easing.OutQuint}}
+        Behavior on y {enabled : slider.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
         anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
         anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
