@@ -3,11 +3,15 @@ import CreativeControls 1.0
 
 Slider
 {
-    property var mapFunc : function(val){return Math.log(val)}// * Math.LOG10}
+    sliderName : value.toFixed(3)
+
+
     customMap: function(val)
     {
         return scale(mapFunc(val),0.,1);
     }
+
+    property var mapFunc : function(val){return Math.log(val)}// * Math.LOG10}
 
     function scale(mappedVal,min, max)
     {
@@ -18,5 +22,4 @@ Slider
 
     }
 
-    sliderName : value.toFixed(3)
 }

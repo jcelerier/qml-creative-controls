@@ -9,14 +9,17 @@ import QtQuick 2.6
 Item
 {
     id: multiSlider
+
+    width: 200
+    height: 100
+
     property int count : 10
     property int orientation : Qt.Vertical
     property real spacing : 5.
     property bool __updating: false
+
     property var values: []
     onValuesChanged: updateValues()
-    width: 200
-    height: 100
 
     Row
     {
@@ -25,12 +28,13 @@ Item
         Repeater
         {
             id: hSliders
-            model : (orientation == Qt.Vertical) ? 0 : multiSlider.count
+            model : (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
             Slider
             {
                 height : multiSlider.height
                 width : (multiSlider.width - spacing * (multiSlider.count - 1)) / multiSlider.count
-                bVertical: true
+                orientation : Qt.Vertical
+
                 onValueChanged: recomputeValues()
             }
         }
@@ -42,12 +46,13 @@ Item
         Repeater
         {
             id: vSliders
-            model: (orientation == Qt.Vertical) ? multiSlider.count : 0
+            model: (multiSlider.orientation == Qt.Horizontal) ? multiSlider.count : 0
             Slider
             {
                 height : (multiSlider.height - spacing * (multiSlider.count - 1)) / multiSlider.count
                 width : multiSlider.width
-                bVertical: false
+                orientation : Qt.Horizontal
+
                 onValueChanged: recomputeValues()
             }
         }

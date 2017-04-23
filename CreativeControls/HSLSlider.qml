@@ -8,31 +8,37 @@ import QtQuick.Layouts 1.3
 // * color: the current color
 Rectangle
 {
-    property bool enableAlpha : false
-    property real alphaValue : enableAlpha ? a.value : 1.0
+
+    id: hslSlider
 
     color : Qt.hsla(h.value,s.value,l.value,alphaValue)
     border.color: Styles.base
     border.width: 2
 
+    // vertical or horizontal slider
+    property int orientation : Qt.vertical
+
+    property bool enableAlpha : false
+    property real alphaValue : enableAlpha ? a.value : 1.0
+
+    property real sliderWidth : enableAlpha ? width/4. : width/3.
+
     RowLayout
     {
-        id: hslSlider
         width : parent.width
         height : parent.height * 2/3
         anchors.centerIn: parent
         spacing : 0.
 
-        property real sliderWidth : enableAlpha ?
-                                        parent.width/4.
-                                      : parent.width/3.
+
 
         Slider
         {
             id : h
+
             sliderName : "H"
 
-            bVertical : true
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -47,9 +53,10 @@ Rectangle
         Slider
         {
             id : s
+
             sliderName: "S"
 
-            bVertical: true
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -64,7 +71,9 @@ Rectangle
         Slider
         {
             id : l
+
             sliderName : "L"
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -79,7 +88,11 @@ Rectangle
         Slider
         {
             id : a
+
+            visible : enableAlpha
+
             sliderName : "A"
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -89,7 +102,6 @@ Rectangle
 
             color : Qt.hsla(0,0,0,value)
             handleColor : Qt.hsla(value,value,value,1.)
-            visible : enableAlpha
         }
     }
 

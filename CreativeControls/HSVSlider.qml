@@ -8,33 +8,38 @@ import QtQuick.Layouts 1.3
 // * color: the current color
 Rectangle
 {
-    // add an alpha slider
-    property bool bAlpha : false
-    property real alphaValue : bAlpha ? a.value : 1.0
+    id: hsvSlider
 
     color : Qt.hsva(h.value,s.value,v.value,alphaValue)
     border.color: Styles.base
     border.width: 2
 
+    // vertical or horizontal slider
+    property int orientation : Qt.vertical
+
+    // add an alpha slider
+    property bool enableAlpha : false
+    property real alphaValue : enableAlpha ? a.value : 1.0
+
+    property real sliderWidth : enableAlpha ? width/4. : width/3.
+
+
+
     RowLayout
     {
-        id: hsvSlider
         width : parent.width
         height : parent.height * 2/3
         anchors.centerIn: parent
-
-        property real sliderWidth : bAlpha ?
-                                        parent.width/4.
-                                      : parent.width/3.
 
         spacing : 0.
 
         Slider
         {
             id : h
+
             sliderName : "H"
 
-            bVertical : true
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -49,9 +54,10 @@ Rectangle
         Slider
         {
             id : s
+
             sliderName : "S"
 
-            bVertical : true
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -66,7 +72,10 @@ Rectangle
         Slider
         {
             id : v
+
             sliderName : "V"
+
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -81,7 +90,11 @@ Rectangle
         Slider
         {
             id : a
+
             sliderName : "A"
+            visible : hsvSlider.enableAlpha
+
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -91,7 +104,6 @@ Rectangle
 
             color : Qt.hsva(0,0,0,value)
             handleColor : Qt.hsva(value,value,value,1.)
-            visible : bAlpha
         }
     }
 

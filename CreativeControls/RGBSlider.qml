@@ -5,32 +5,37 @@ import QtQuick.Layouts 1.3
 // Four sliders to control R, G, B, alpha
 Rectangle
 {
-    // add an alpha slider
-    property bool bAlpha : false
-    property real alphaValue : bAlpha ? a.value : 1.0
+    id: rgbSlider
 
     color : Qt.rgba(r.value,g.value,b.value,alphaValue)
     border.color: Styles.base
     border.width: 2
 
+    // vertical or horizontal slider
+    property int orientation : Qt.Vertical
+
+    // add an alpha slider
+    property bool enableAlpha : false
+    property real alphaValue : enableAlpha ? a.value : 1.0
+
+    // slider width varies according to channel number (3 without alpha and 4 with alpha)
+    property real sliderWidth : enableAlpha ? width/4. : width/3.
+
 
     RowLayout
     {
-        id: rgbSlider
         width : parent.width
         height : parent.height * 2/3
         anchors.centerIn: parent
 
-        property real sliderWidth : bAlpha ?
-                                        parent.width/4.
-                                      : parent.width/3.
         spacing : 0.
 
         Slider
         {
             id : r
+
             sliderName : "R"
-            bVertical : true
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -44,15 +49,16 @@ Rectangle
         Slider
         {
             id : g
-            sliderName : "G"
 
-            bVertical : true
+            sliderName : "G"
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 187. / 255.
+
             color : Qt.rgba(0,value,0,1.)
             handleColor: Qt.rgba(0.,1.-value,0,1.)
 
@@ -60,13 +66,16 @@ Rectangle
         Slider
         {
             id : b
+
             sliderName : "B"
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 153. / 255.
+
             color : Qt.rgba(0,0,value,1.)
             handleColor : Qt.rgba(0.,0.,1.-value,1.)
 
@@ -74,7 +83,11 @@ Rectangle
         Slider
         {
             id : a
+
+            visible : rgbSlider.enableAlpha
+
             sliderName : "A"
+            orientation : rgbSlider.orientation
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -84,7 +97,6 @@ Rectangle
 
             color : Qt.rgba(0,0,0,value)
             handleColor : Qt.rgba(value,value,value,1.)
-            visible : bAlpha
         }
     }
 
