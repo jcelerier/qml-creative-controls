@@ -38,7 +38,7 @@ void XYTarget::mousePressEvent(QMouseEvent* event)
 
 void XYTarget::mouseDoubleClickEvent(QMouseEvent* event)
 {
-  event->ignore();
+   event->ignore();
 }
 
 void XYTarget::mouseMoveEvent(QMouseEvent* event)

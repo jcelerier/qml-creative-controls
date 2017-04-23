@@ -142,6 +142,12 @@ Rectangle
         {
             __updating = false;
         }
+
+        onDoubleClicked:
+        {
+            slider.value = slider.initialValue;
+            handle.updateHandle();
+        }
     }
 
     // label

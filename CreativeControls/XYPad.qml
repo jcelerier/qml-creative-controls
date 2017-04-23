@@ -6,7 +6,6 @@ Item
 {
     id: xyPad
 
-
     property alias centerX : xy.centerX
     property alias centerY : xy.centerY
 
@@ -20,9 +19,11 @@ Item
     MouseArea {
         anchors.fill: parent
 
-        onPressed: applyPos()
+        onPressed: applyPos();
         onPositionChanged: applyPos()
-        onReleased: applyPos()
+
+        onDoubleClicked: centerX = centerY = 0.5;
+
 
         function applyPos()
         {

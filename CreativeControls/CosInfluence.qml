@@ -14,6 +14,9 @@ Item
     property var points : [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
     property alias centerX : xy.centerX
     property alias centerY : xy.centerY
+    onCenterXChanged: updateValues()
+    onCenterYChanged: updateValues()
+    onPointsChanged: updateValues()
 
     property real sizeRatio : Math.min(cosInfluence.width, cosInfluence.height) / 15.
     property var values: []
@@ -34,6 +37,10 @@ Item
         values = newvalues;
     }
 
+
+
+
+
     // Mouse area for when the background is clicked
     MouseArea
     {
@@ -46,7 +53,7 @@ Item
         anchors.fill: parent
         onPressed: applyPos()
         onPositionChanged: applyPos()
-        onReleased: applyPos()
+
     }
 
     // The circles
@@ -99,7 +106,4 @@ Item
         color: Styles.detail
     }
 
-    onCenterXChanged: updateValues()
-    onCenterYChanged: updateValues()
-    onPointsChanged: updateValues()
 }

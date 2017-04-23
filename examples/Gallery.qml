@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import CreativeControls 1.0
+
 Item {
     width: 900
     height: 1200
@@ -56,7 +57,7 @@ Item {
                     Layout.row: 1
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "HSL Slider" + hslSlider.color
+                    text: "HSL Slider: " + hslSlider.color
                 }
 
                 HSVSlider {
@@ -107,7 +108,7 @@ Item {
                     text: "Multi Slider"
                 }
 
-                /*
+
                 LogSlider
                 {
                     Layout.column: 0
@@ -122,7 +123,7 @@ Item {
                     font.pointSize: 20
                     text: "Log Slider"
                 }
-
+/*
                 RangeSlider
                 {
                     Layout.column: 0
@@ -331,7 +332,7 @@ Item {
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
-                            "Keyboard: " + kbd.pressedKeys[0].key + ", " + kbd.pressedKeys[0].vel
+                            "Keyboard: " + kbd.pressedKeys[0].key.toFixed(0) + ", " + kbd.pressedKeys[0].vel.toFixed(0)
                         else
                             "Keyboard"
                     }
@@ -373,7 +374,8 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 2
-                    Layout.alignment: Layout.Center
+                    Layout.alignment: Qt.AlignLeft
+
                     font.pointSize: 20
                     text: "Leds"
                 }
