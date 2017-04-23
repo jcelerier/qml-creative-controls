@@ -12,5 +12,4 @@ Slider
     {
         return 1.+Math.log(linearMap());
     }
-
 }

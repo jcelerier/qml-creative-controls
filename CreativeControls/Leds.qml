@@ -7,14 +7,16 @@ Grid
 {
     id: ledsGrid
 
+    width : 200
+    height : 200
+
     columns: 3
     rows : 3
 
-
     columnSpacing : Utils.clamp((ledsGrid.width - ledsGrid.ledRadius*2* ledsGrid.columns) / (ledsGrid.columns-1),
-                                0, parent.width)
+                                0, ledsGrid.width)
     rowSpacing : Utils.clamp((ledsGrid.height - ledsGrid.ledRadius*2* ledsGrid.rows) / (ledsGrid.rows-1),
-                             0,parent.height)
+                             0,ledsGrid.height)
 
 
     property real ledRadius : 20

@@ -12,13 +12,19 @@ Rectangle
 
     radius : Styles.cornerRadius
 
+    width : 100
+    height : 200
+
+    onWidthChanged: handle.updateHandle();
+    onHeightChanged: handle.updateHandle();
+
     // slider width
     property real sliderWidth : 100
 
     // handle width and color
     property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
-    property color handleColor: Styles.base
-
+    //property color handleColor: Styles.base
+    property alias handleColor : handle.color
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
     property int orientation : Qt.Vertical //Qt.Horizontal
 
@@ -46,10 +52,8 @@ Rectangle
 
     // slider value range
     property point valueRange : orientation == Qt.Vertical?
-                                    Qt.point(border.width + handleWidth/2.,
-                                             slider.height - border.width - handleWidth/2.)
-                                  : Qt.point(border.width + handleWidth/2.,
-                                             slider.width - border.width - handleWidth/2.)
+                                    Qt.point( border.width, slider.height - border.width - handleWidth)
+                                  : Qt.point( border.width, slider.width - border.width - handleWidth)
 
     // function called when updating the value from outside
     function updateValue()
@@ -68,13 +72,11 @@ Rectangle
 
         if(orientation == Qt.Vertical)
         {
-            handle.y = Utils.clamp(mouseY,
-                                   valueRange.x , valueRange.y ) - handleWidth/2;
+            handle.y = Utils.clamp(mouseY, valueRange.x , valueRange.y ) ;
         }
         else
         {
-            handle.x = Utils.clamp(mouseX,
-                                   valueRange.x ,valueRange.y ) - handleWidth/2;
+            handle.x = Utils.clamp(mouseX, valueRange.x ,valueRange.y );
         }
 
         // __updating = false;
@@ -87,22 +89,19 @@ Rectangle
         anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
         anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
 
-        color :  handleColor
+        color :  Styles.base
 
         width : orientation == Qt.Vertical? slider.width : handleWidth
-        onWidthChanged: updateHandle();
-
         height : orientation == Qt.Vertical? handleWidth : slider.height
-        onHeightChanged: updateHandle();
 
         radius : Styles.cornerRadius
 
-        x: orientation == Qt.Horizontal ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
-        onXChanged : {if(!resize)slider.value = mapFunc();}
+        x: orientation == Qt.Horizontal ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
+        onXChanged : {if(!resize) slider.value = mapFunc();}
 
         Behavior on x {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
-        y : orientation == Qt.Vertical ? (1. - initialValue) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.: 0
+        y : orientation == Qt.Vertical ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
         onYChanged : {if(!resize)slider.value = mapFunc();}
 
         Behavior on y {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
@@ -114,12 +113,10 @@ Rectangle
         {
             ease = false;
             resize = true;
-            x = orientation == Qt.Horizontal ?
-                        (1. - slider.value) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.
-                      : 0 ;
-            y = orientation == Qt.Vertical ?
-                        (1. - slider.value) * (valueRange.y - valueRange.x) + valueRange.x - handleWidth/2.
-                      : 0
+
+            var mappedValue = Utils.rescale(slider.value, 0,1.,valueRange.x,valueRange.y);
+            x = orientation == Qt.Horizontal ? mappedValue : 0;
+            y = orientation == Qt.Vertical ? mappedValue : 0;
         }
     }
 

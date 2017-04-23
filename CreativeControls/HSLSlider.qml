@@ -30,8 +30,6 @@ Rectangle
         anchors.centerIn: parent
         spacing : 0.
 
-
-
         Slider
         {
             id : h
