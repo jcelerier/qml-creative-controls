@@ -40,7 +40,7 @@ Item {
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "Angle slider: " + Utils.roundNum(angleSlider.angle)
+                    text: "Angle slider: " + angleSlider.angle.toFixed(2)
                 }
 
                 HSLSlider {
@@ -244,7 +244,7 @@ Item {
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "Joystick: " + Utils.roundNum(joystick.stickX) + ", " + Utils.roundNum(joystick.stickY)
+                    text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
                 }
 
                 XYPad
@@ -285,7 +285,7 @@ Item {
                         var str = "";
                         for(var i = 0; i < arr.length; ++i)
                         {
-                            str += Utils.roundNum(arr[i]) + ", ";
+                            str += arr[i].toFixed(2) + ", ";
                         }
                         if(str.length > 0)
                             str = str.substring(0, str.length - 2)

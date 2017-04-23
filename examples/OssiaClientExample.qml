@@ -117,7 +117,7 @@ Page {
             Ossia.Callback
             {
                 device: oscqDevice
-                onValueChanged: txt.text = "foo " + Utils.roundNum(value) + " bar"
+                onValueChanged: txt.text = "foo " + value.toFixed(2) + " bar"
                 node: '/test/angle'
             }
         }
