@@ -88,13 +88,14 @@ Item {
                     text: "HSV Slider: " + hsvSlider.color
                 }
 
-                RGBSlider {
+                DonutSlider {
                     id: rgbSlider
                     Layout.column: 0
                     Layout.row: 3
                     Layout.alignment: Layout.Center
-                    width: 100
-                    height: 100
+
+                    width: 150
+                    height: 150
                 }
                 Text {
                     Layout.column: 1

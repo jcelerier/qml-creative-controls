@@ -4,8 +4,10 @@ classname CreativeControlsPlugin
 typeinfo plugins.qmltypes
 
 AngleSlider 1.0 AngleSlider.qml
+ArcSlider 1.0 ArcSlider.qml
 ColorChooser 1.0 ColorChooser.qml
 ColorWheel 1.0 ColorWheel.qml
+DonutSlider 1.0 DonutSlider.qml
 Frame 1.0 Frame.qml
 CosInfluence 1.0 CosInfluence.qml
 Graph2D 1.0 Graph2D.qml

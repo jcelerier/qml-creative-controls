@@ -39,9 +39,11 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     CreativeControls/AngleSlider.qml \
+    CreativeControls/ArcSlider.qml \
     CreativeControls/ColorChooser.qml \
     CreativeControls/ColorWheel.qml \
     CreativeControls/CosInfluence.qml \
+    CreativeControls/DonutSlider.qml \
     CreativeControls/Frame.qml \
     CreativeControls/Graph2D.qml \
     CreativeControls/Graph.qml \
