@@ -56,17 +56,37 @@ Item {
                     text: "Angle slider: " + angleSlider.angle.toFixed(2)
                 }
 
+                AngleSlider {
+                    id: angleSliderMinMax
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+                    width: 100
+                    height: 100
+                    angle: 0
+                    min: -120
+                    max: 120
+                    transform: Rotation { origin.x: 50; origin.y: 50; angle: -90}
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
+                }
+
                 HSLSlider {
                     id: hslSlider
                     Layout.column: 0
-                    Layout.row: 1
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 1
+                    Layout.row: 2
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "HSL Slider: " + hslSlider.color
@@ -75,14 +95,14 @@ Item {
                 HSVSlider {
                     id: hsvSlider
                     Layout.column: 0
-                    Layout.row: 2
+                    Layout.row: 3
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 2
+                    Layout.row: 3
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "HSV Slider: " + hsvSlider.color
@@ -91,7 +111,7 @@ Item {
                 DonutSlider {
                     id: rgbSlider
                     Layout.column: 0
-                    Layout.row: 3
+                    Layout.row: 4
                     Layout.alignment: Layout.Center
 
                     width: 150
@@ -99,7 +119,7 @@ Item {
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 3
+                    Layout.row: 4
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "RGB Slider: " + rgbSlider.color
@@ -107,7 +127,7 @@ Item {
 
                 MultiSlider {
                     Layout.column: 0
-                    Layout.row: 4
+                    Layout.row: 5
                     Layout.alignment: Layout.Center
                     width: 200
                     height: 100
@@ -115,7 +135,7 @@ Item {
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 4
+                    Layout.row: 5
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     text: "Multi Slider"
@@ -125,14 +145,14 @@ Item {
                 LogSlider
                 {
                     Layout.column: 0
-                    Layout.row: 5
+                    Layout.row: 6
                     Layout.alignment: Layout.Center
                     width: 50
                     height: 150
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 5
+                    Layout.row: 6
                     font.pointSize: 20
                     text: "Log Slider"
                 }

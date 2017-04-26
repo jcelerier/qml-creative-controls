@@ -27,6 +27,10 @@ void AngleSlider::paint(QPainter* painter)
   painter->drawEllipse(rect.center(), radius, radius);
 
   std::complex<double> pt = std::polar(radius - 2, angle() * deg_to_rad);
+  std::complex<double> pt_min = std::polar(radius - 2, min() * deg_to_rad);
+  std::complex<double> pt_min_end = std::polar(radius - 5, min() * deg_to_rad);
+  std::complex<double> pt_max = std::polar(radius - 2, max() * deg_to_rad);
+  std::complex<double> pt_max_end = std::polar(radius - 5, max() * deg_to_rad);
 
   const auto cx = rect.center().x();
   const auto cy = rect.center().y();
@@ -36,12 +40,24 @@ void AngleSlider::paint(QPainter* painter)
 
   p.setWidth(borderWidth * 0.75);
   painter->setPen(p);
-  painter->drawLine(cx + radius - 0.1 * radius, cy, cx + radius, cy);
+  painter->drawLine(QPointF{pt_min_end.real() + cx, pt_min_end.imag() + cy}, QPointF{pt_min.real() + cx, pt_min.imag() + cy});
+  painter->drawLine(QPointF{pt_max_end.real() + cx, pt_max_end.imag() + cy}, QPointF{pt_max.real() + cx, pt_max.imag() + cy});
+
 }
 
 qreal AngleSlider::angle() const
 {
   return m_angle;
+}
+
+qreal AngleSlider::min() const
+{
+    return m_min;
+}
+
+qreal AngleSlider::max() const
+{
+    return m_max;
 }
 
 QColor AngleSlider::baseColor() const
@@ -59,8 +75,31 @@ void AngleSlider::setAngle(qreal angle)
   if (m_angle == angle)
     return;
 
-  m_angle = angle;
-  emit angleChanged(angle);
+  if (angle < min())
+      m_angle = min();
+  else if (angle > max())
+      m_angle = max();
+  else
+    m_angle = angle;
+  emit angleChanged(m_angle);
+  update();
+}
+
+void AngleSlider::setMin(qreal angle)
+{
+  if (m_min == angle)
+    return;
+
+  m_min = angle;
+  update();
+}
+
+void AngleSlider::setMax(qreal angle)
+{
+  if (m_max == angle)
+    return;
+
+  m_max = angle;
   update();
 }
 
