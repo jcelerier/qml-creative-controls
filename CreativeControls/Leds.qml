@@ -5,7 +5,7 @@ import CreativeControls 1.0
 // No input
 Grid
 {
-    id: ledsGrid
+    id: leds
 
     width : 200
     height : 200
@@ -13,16 +13,16 @@ Grid
     columns: 3
     rows : 3
 
-    columnSpacing : Utils.clamp((ledsGrid.width - ledsGrid.ledRadius*2* ledsGrid.columns) / (ledsGrid.columns-1),
-                                0, ledsGrid.width)
-    rowSpacing : Utils.clamp((ledsGrid.height - ledsGrid.ledRadius*2* ledsGrid.rows) / (ledsGrid.rows-1),
-                             0,ledsGrid.height)
+    columnSpacing : Utils.clamp((leds.width - leds.radius*2* leds.columns) / (leds.columns-1),
+                                0, leds.width)
+    rowSpacing : Utils.clamp((leds.height - leds.radius*2* leds.rows) / (leds.rows-1),
+                             0,leds.height)
 
 
-    property real ledRadius : 20
+    property real radius : 20
     property color ledColorOn: Styles.detail
     property color ledColorOff: Styles.base
-
+    property bool easing : false
 
     // intensity default values
     property var intensity : [
@@ -31,11 +31,30 @@ Grid
         [0.7,0.8,0.9]
     ]
 
+    // toggle on/off
+    function toggle(index)
+    {
+        var indexRow = index% leds.columns;
+        var indexColumn = ( index - indexRow)/(leds.columns)
+
+        // modify the intensity matrix
+        var val = intensity[indexColumn][indexRow] > 0. ? 0. : 1.0;
+        intensity[indexColumn][indexRow] = val;
+
+        // set the led color
+        var item = repeater.itemAt(index)
+        if(item !== null)
+        {
+            item.color = Qt.darker(ledColorOn,val*10.)
+        }
+    }
+
+
     // set intensity for one led at index (1D index for the grid)
     function setIntensity(index,val)
     {
-        var indexRow = index% ledsGrid.columns;
-        var indexColumn = ( index - indexRow)/(ledsGrid.columns)
+        var indexRow = index% leds.columns;
+        var indexColumn = ( index - indexRow)/(leds.columns)
 
         // modify the intensity matrix
         intensity[indexColumn][indexRow] = val;
@@ -51,9 +70,9 @@ Grid
     function setIntensityForAll(val)
     {
         // modify the intensity matrix
-        for(var i = 0; i < ledsGrid.columns; i++)
+        for(var i = 0; i < leds.columns; i++)
         {
-            for(var j = 0; j < ledsGrid.rows; j++)
+            for(var j = 0; j < leds.rows; j++)
             {
                 intensity[i][j] = val;
 
@@ -61,7 +80,7 @@ Grid
         }
 
         // set the led color
-        for(var k = 0; k < ledsGrid.rows*ledsGrid.columns; k++)
+        for(var k = 0; k < leds.rows*leds.columns; k++)
         {
             var item = repeater.itemAt(k)
             if(item !== null)
@@ -75,19 +94,24 @@ Grid
 
     Repeater {
         id: repeater
-        model: ledsGrid.rows * ledsGrid.columns
+        model: leds.rows * leds.columns
+
         Rectangle {
             id: rect
-            width: ledsGrid.ledRadius * 2.; height: ledsGrid.ledRadius * 2.
-            radius : ledsGrid.ledRadius
+            width: leds.radius * 2.; height: leds.radius * 2.
+            radius : leds.radius
             border.width: 2
-            border.color: Qt.rgba(1.-color.g, 1.-color.g, 1.-color.g, color.a)
-
-            property real indexRow : index% ledsGrid.columns
-            property real indexColumn : ( index - indexRow)/(ledsGrid.columns)
+            border.color : Styles.base
 
             color: Qt.darker(ledColorOn, intensity[indexColumn][indexRow] *10.)
 
+            Behavior on color
+            {
+                enabled : leds.easing;
+                ColorAnimation{easing.type : Easing.InOutQuad; }
+            }
+            property real indexRow : index% leds.columns
+            property real indexColumn : ( index - indexRow)/(leds.columns)
         }
 
     }

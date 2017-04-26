@@ -71,8 +71,8 @@ Item
             width: 2. * sizeRatio
             height: width
             borderWidth: 0.05 * sizeRatio
-            fillColor: Styles.base
-            borderColor: Styles.randomDetailColor()
+            fillColor: Styles.randomDetailColor()
+            borderColor: Styles.base//randomDetailColor()
 
             Text
             {
@@ -103,7 +103,8 @@ Item
     Crosshair {
         id: xy
         anchors.fill: parent
-        color: Styles.detail
+        color: Styles.base
+
     }
 
 }

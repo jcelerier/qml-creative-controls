@@ -7,7 +7,7 @@ import CreativeControls 1.0
 GraphImpl {
     id: plot
 
-    color: Styles.detail
+    color: Styles.base
     lines: true
 
     // Use this function to add a value to the graph.

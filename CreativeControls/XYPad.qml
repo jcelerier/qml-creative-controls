@@ -9,11 +9,13 @@ Item
     property alias centerX : xy.centerX
     property alias centerY : xy.centerY
 
+
+
     Crosshair
     {
         id : xy
         anchors.fill: parent
-        color: Styles.detail
+        color: Styles.base
     }
 
     MouseArea {

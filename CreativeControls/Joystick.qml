@@ -9,13 +9,13 @@ import CreativeControls 1.0
 Rectangle
 {
     id: pad
-    color: Styles.base
+    color: Styles.detail//base
 
     state: "default"
 
     radius: Math.max(width, height) / 2
 
-    border.color: Styles.detail
+    border.color: Styles.base//detail
     border.width: 5.
 
     property real stickX: 2.22 * ((stick.x + stick.radius) - width / 2) / width
@@ -37,7 +37,7 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: Styles.detail
+        color: pad.border.color//Styles.detail
         radius: pad.radius / 10
         height: radius* 2
         width: height

@@ -7,6 +7,7 @@ Item {
     width: 900
     height: 1200
 
+
     SwipeView
     {
         id:view
@@ -15,8 +16,19 @@ Item {
         anchors.fill: parent
         interactive: false
 
+        background : Rectangle
+        {
+            anchors.fill : parent
+            color : Styles.background
+        }
         Page
         {
+
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
             leftPadding: 50
             header: Text
             {
@@ -123,7 +135,7 @@ Item {
                     font.pointSize: 20
                     text: "Log Slider"
                 }
-/*
+                /*
                 RangeSlider
                 {
                     Layout.column: 0
@@ -142,6 +154,11 @@ Item {
 
         Page
         {
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
             leftPadding: 50
             header: Text
             {
@@ -171,6 +188,7 @@ Item {
                         running: true
                         interval: 16
                     }
+                    Frame{}
                 }
                 Text {
                     Layout.column: 1
@@ -205,6 +223,7 @@ Item {
                             scope.points = array;
                         }
                     }
+                    Frame{}
                 }
                 Text {
                     Layout.column: 1
@@ -218,6 +237,11 @@ Item {
 
         Page
         {
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
             leftPadding: 50
             header: Text
             {
@@ -248,14 +272,20 @@ Item {
                     text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
                 }
 
+
+
                 XYPad
                 {
                     id: xypad
-                    width: 200
-                    height: 200
+
                     Layout.column: 0
                     Layout.row: 1
                     Layout.alignment: Layout.Center
+
+                    width: 200
+                    height: 200
+
+                    Frame{}
                 }
                 Text {
                     Layout.column: 1
@@ -273,6 +303,8 @@ Item {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
+
+                    Frame{}
                 }
                 Text {
                     Layout.column: 1
@@ -298,6 +330,11 @@ Item {
 
         Page
         {
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
             leftPadding: 50
             header: Text
             {
@@ -347,6 +384,15 @@ Item {
 
                     width: 200
                     height: 200
+                    onPressedChanged:
+                    {
+                        if(matrix.pressed.length > 0)
+                            leds.toggle(matrix.pressed[0]);
+
+                        //else
+                        //  leds.setIntensityForAll(0.0);
+                    }
+
                 }
                 Text {
                     Layout.column: 1
@@ -364,12 +410,22 @@ Item {
 
                 Leds
                 {
+                    id : leds
+
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
 
                     width: 200
                     height: 200
+                    easing : true
+
+                    // all leds to off
+                    intensity : [
+                        [1., 1.,1.],
+                        [1.,1.,1.],
+                        [1.,1.,1.]
+                    ]
                 }
                 Text {
                     Layout.column: 1

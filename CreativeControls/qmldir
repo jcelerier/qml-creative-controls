@@ -6,6 +6,7 @@ typeinfo plugins.qmltypes
 AngleSlider 1.0 AngleSlider.qml
 ColorChooser 1.0 ColorChooser.qml
 ColorWheel 1.0 ColorWheel.qml
+Frame 1.0 Frame.qml
 CosInfluence 1.0 CosInfluence.qml
 Graph2D 1.0 Graph2D.qml
 Graph 1.0 Graph.qml
