@@ -131,6 +131,23 @@ Item
         { return v.key === a2[i].key; });
     }
 
+    function setPressed(key){
+        if(key !== undefined)
+        {
+            var newKeys = [ key ];
+            if(!sameKeys(newKeys, pressedKeys))
+            {
+                pressedKeys = newKeys;
+            }
+        }
+        else
+        {
+            pressedKeys = [ ];
+        }
+
+        canvas.requestPaint()
+    }
+
     Canvas
     {
         id: canvas
