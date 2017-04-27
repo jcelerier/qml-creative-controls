@@ -40,7 +40,7 @@ Item {
             GridLayout
             {
                 rowSpacing: 20
-                columnSpacing: 10
+                columnSpacing: 20
 
                 AngleSlider {
                     id: angleSlider
@@ -52,14 +52,16 @@ Item {
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 200
+
                     font.pointSize: 20
                     text: "Angle slider: " + angleSlider.angle.toFixed(2)
                 }
 
                 AngleSlider {
                     id: angleSliderMinMax
-                    Layout.column: 0
-                    Layout.row: 1
+                    Layout.column: 2
+                    Layout.row: 0
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 100
@@ -69,9 +71,11 @@ Item {
                     transform: Rotation { origin.x: 50; origin.y: 50; angle: -90}
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 1
+                    Layout.column: 3
+                    Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
+                    wrapMode : Text.WordWrap
+                    Layout.preferredWidth: 200
                     font.pointSize: 20
                     text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
                 }
@@ -108,21 +112,39 @@ Item {
                     text: "HSV Slider: " + hsvSlider.color
                 }
 
-                DonutSlider {
+                RGBSlider {
                     id: rgbSlider
                     Layout.column: 0
                     Layout.row: 4
                     Layout.alignment: Layout.Center
 
-                    width: 150
-                    height: 150
+                    width: 100
+                    height: 100
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 4
                     Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 200
+
                     font.pointSize: 20
                     text: "RGB Slider: " + rgbSlider.color
+                }
+                DonutSlider {
+                    id: rgbDonutSlider
+                    Layout.column: 2
+                    Layout.row: 4
+                    Layout.alignment: Layout.Center
+
+                    width: 100
+                    height: 100
+                }
+                Text {
+                    Layout.column: 3
+                    Layout.row: 4
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    text: "RGB Slider: " + rgbDonutSlider.resColor
                 }
 
                 MultiSlider {

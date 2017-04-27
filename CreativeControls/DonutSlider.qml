@@ -9,7 +9,7 @@ Rectangle
     width : 200
     height : width
 
-   radius : width /2.
+    radius : width /2.
 
     color : "transparent"
 
@@ -17,7 +17,8 @@ Rectangle
     border.color : "black"
 
     property real channels : 3.
-    property real innerRadius : radius * 0.38
+    property real innerRadius : radius * 0.5//0.38
+    property color resColor : getResColor()
 
     function getResColor()
     {
@@ -33,25 +34,27 @@ Rectangle
 
     function updateColor()
     {
-        result.color = borderDonut.border.color = donutSlider.getResColor();
-        for(var i = 0; i < repeater.count; i++)
-        {
-            repeater.itemAt(i).handleColor = result.color;
-        }
+        donutSlider.resColor = donutSlider.getResColor();
+
     }
 
     Repeater
     {
         id: repeater
         model : donutSlider.channels
+
         delegate: ArcSlider
         {
             id : arcSlider
             num : index
 
-            anchors.fill : donutSlider
-           // innerRadius: donutSlider.innerRadius
-            handleColor : donutSlider.getResColor()
+            anchors.centerIn : donutSlider
+            width : donutSlider.width *0.8
+            height : donutSlider.height*0.8
+
+            // anchors.fill : donutSlider
+            innerRadius: donutSlider.width *0.7*0.5
+            //handleColor : donutSlider.getResColor()
             // handleColor: donutSlider.getColor(index,1.-arcSlider.value)
             onValueChanged :
             {
@@ -70,20 +73,31 @@ Rectangle
         radius : innerRadius
 
         anchors.centerIn: parent
-        color : donutSlider.getResColor()
-
+        color : donutSlider.resColor
+        MouseArea
+        {
+            anchors.fill : parent
+            onDoubleClicked:
+            {
+                for(var i = 0; i < repeater.count; i++)
+                {
+                    repeater.itemAt(i).reset();
+                }
+            }
+        }
     }
+
     Rectangle
     {
         id : borderDonut
         anchors.centerIn : parent
-        width : parent.width + border.width*2
-        height : parent.height + border.width*2
+        width : parent.width /**1.03*/+ border.width*2
+        height : parent.height/**1.03*/ + border.width*2
 
         color :"transparent"
-        radius : parent.radius + border.width
+        radius : width/2.
         border.width : 3.
-        border.color : donutSlider.getResColor()
+        border.color : donutSlider.resColor
     }
 
 }

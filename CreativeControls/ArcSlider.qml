@@ -26,12 +26,20 @@ Rectangle
     property var metric: Qt.rgba//function(){return Qt.rgba()}
 
     property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd)*0.5
+    Behavior on angle
+    {
+        id: easing
+        NumberAnimation{easing.type : Easing.InOutCubic}
+    }
+
     function moveHandle(newAngle )
     {
         arcSlider.angle = 180 / Math.PI *
                 Math.min(Math.max((newAngle),
                                   arcSlider.angleStart),
                          arcSlider.angleEnd);
+
+        handleColor = arcSlider.getColor(value);
     }
 
 
@@ -50,8 +58,13 @@ Rectangle
             return "transparent";
         }
     }
-    property color handleColor : Styles.base
 
+    function reset()
+    {
+        moveHandle((arcSlider.angleStart + arcSlider.angleEnd)*0.5);
+    }
+
+    property color handleColor : arcSlider.getColor(value);//Styles.base
     Rectangle
    {
        id : handle
@@ -59,13 +72,14 @@ Rectangle
        x: arcSlider.x + arcSlider.radius
        y: arcSlider.y + arcSlider.radius - height/2.
        width : arcSlider.radius
-       height : 6
+       height : 5
        color : handleColor
 
        transform: Rotation{id :rotation
            origin.x : 0 ;
            origin.y : handle.height/2.;
            angle: arcSlider.angle}
+
    }
 
     Canvas
@@ -79,7 +93,7 @@ Rectangle
             ctx. reset();
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 0;
 
             var center = arcSlider.innerRadius+ (arcSlider.radius-arcSlider.innerRadius)*0.5;
             var grd = ctx.createLinearGradient( arcSlider.radius + center * Math.cos(arcSlider.angleStart),
@@ -116,6 +130,8 @@ Rectangle
         propagateComposedEvents: true
         onPressed :
         {
+            easing.enabled = true;
+
             var dist = Utils.distance(mouseX,mouseY, handle.x, handle.y);
             var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x) ; //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
@@ -132,10 +148,12 @@ Rectangle
         }
         onPositionChanged:
         {
+            easing.enabled = false;
             var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x) ; //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
             moveHandle(angleRad);
         }
+        onDoubleClicked: reset();
     }
 
 }
