@@ -11,7 +11,7 @@ import CreativeControls 1.0
 // Functions:
 // * toggle(index):
 //      toggle the led at index(1D index for the grid) in the grid,
-//      switching them on or off
+//      switching it on or off
 // * setIntensity(index,val):
 //      set intensity at val for the led at index (1D index for the grid)
 // * setIntensityForAll(val):
@@ -55,15 +55,9 @@ Grid
 
         // modify the intensity matrix
         var val = intensity[indexColumn][indexRow] > 0. ? 0. : 1.0;
-        intensity[indexColumn][indexRow] = val;
-
-        // set the led color
-        var item = repeater.itemAt(index)
-        if(item !== null)
-        {
-            item.color = Qt.darker(ledColorOn,val*10.)
-        }
+        setIntensity(index,val);
     }
+
 
 
     // set intensity for one led at index (1D index for the grid)
@@ -101,7 +95,7 @@ Grid
             var item = repeater.itemAt(k)
             if(item !== null)
             {
-                item.color = Qt.darker(ledColorOn,val)
+                item.color = Qt.darker(ledColorOn,val * 10.)
             }
         }
 

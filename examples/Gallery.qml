@@ -40,7 +40,7 @@ Item {
             GridLayout
             {
                 rowSpacing: 20
-                columnSpacing: 20
+                columnSpacing: 10
 
                 AngleSlider {
                     id: angleSlider
@@ -63,6 +63,8 @@ Item {
                     Layout.column: 2
                     Layout.row: 0
                     Layout.alignment: Layout.Center
+                    Layout.leftMargin: 40
+
                     width: 100
                     height: 100
                     angle: 0
@@ -74,6 +76,7 @@ Item {
                     Layout.column: 3
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
+
                     wrapMode : Text.WordWrap
                     Layout.preferredWidth: 200
                     font.pointSize: 20
@@ -135,6 +138,7 @@ Item {
                     Layout.column: 2
                     Layout.row: 4
                     Layout.alignment: Layout.Center
+                    Layout.leftMargin: 40
 
                     width: 100
                     height: 100
@@ -383,7 +387,7 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
-                text: "Keys & Matrices"
+                text: "Keys & Matrices & Switch"
             }
 
             GridLayout
@@ -477,6 +481,28 @@ Item {
 
                     font.pointSize: 20
                     text: "Leds"
+                }
+
+                Switch
+                {
+                    id : toggleSwitch
+
+                    Layout.column: 2
+                    Layout.row: 2
+                    Layout.alignment: Layout.Center
+                    Layout.leftMargin: 100
+                    width: 50
+                    height: 50
+                    onToggle: leds.setIntensityForAll(!onoff);
+
+                }
+                Text {
+                    Layout.column: 3
+                    Layout.row: 2
+                    Layout.alignment: Qt.AlignLeft
+
+                    font.pointSize: 20
+                    text: "Switch"
                 }
             }
         }
