@@ -67,6 +67,7 @@ OTHER_FILES += \
     CreativeControls/Spectrum.qml \
     CreativeControls/Step.qml \
     CreativeControls/Styles.qml \
+    CreativeControls/Switch.qml \
     CreativeControls/Trajectory.qml \
     CreativeControls/Utils.qml \
     CreativeControls/XYPad.qml

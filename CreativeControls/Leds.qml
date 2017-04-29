@@ -1,8 +1,24 @@
 import QtQuick 2.6
 import CreativeControls 1.0
 
-// A LED matrix
-// No input
+// A LED matrix.
+
+// Property:
+// * intensity[]:
+//      array containing the color intensity for each led of the matrix
+
+
+// Functions:
+// * toggle(index):
+//      toggle the led at index(1D index for the grid) in the grid,
+//      switching them on or off
+// * setIntensity(index,val):
+//      set intensity at val for the led at index (1D index for the grid)
+// * setIntensityForAll(val):
+//      set intensity at val for all the leds in the matrix
+
+
+
 Grid
 {
     id: leds

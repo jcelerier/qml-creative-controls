@@ -1,7 +1,17 @@
 import QtQuick 2.6
 import CreativeControls 1.0
 
-// Simple slider : values are betweeen 0. and 1.
+// A simple slider
+
+// Properties:
+// * value: the slider value, between 0 and 1
+// * initialValue: the slider's initial value
+// * mapFunc:
+//      function to apply on the slider value
+//      which is already scaled linearly between 0 and 1
+// * orientation: vertical / horizontal
+// * text : the text to display on the slider
+
 Rectangle
 {
     id: slider
@@ -18,24 +28,22 @@ Rectangle
     onWidthChanged: handle.updateHandle();
     onHeightChanged: handle.updateHandle();
 
-    // slider width
-    property real sliderWidth : 100
-
-    // handle width and color
-    property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
-    //property color handleColor: Styles.base
-    property alias handleColor : handle.color
-    // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
-    property int orientation : Qt.Vertical //Qt.Horizontal
-
     // the value is between 0 and 1.
     property real value : initialValue;
     property real initialValue : 0.5
 
-    property bool __updating: false
-
     // value mapping
-    property var mapFunc : linearMap
+    property var mapFunc : function(linearVal){return linearVal}
+
+    // handle width and color
+    property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
+    property alias handleColor : handle.color
+
+    // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
+    property int orientation : Qt.Vertical //Qt.Horizontal
+
+
+    property bool __updating: false
 
     property var linearMap: function()
     {
@@ -69,19 +77,15 @@ Rectangle
     // moves the slider's handle to the mouse position
     function moveHandle(mouseX,mouseY)
     {
-
-        if(orientation == Qt.Vertical)
-        {
-            handle.y = Utils.clamp(mouseY, valueRange.x , valueRange.y ) ;
-        }
-        else
-        {
-            handle.x = Utils.clamp(mouseX, valueRange.x ,valueRange.y );
-        }
-
+        handle.y = (orientation == Qt.Vertical)? Utils.clamp(mouseY, valueRange.x , valueRange.y ) :  handle.y ;
+        handle.x = (orientation == Qt.Horizontal)? Utils.clamp(mouseX, valueRange.x ,valueRange.y ) :  handle.x ;
         // __updating = false;
     }
 
+    function reset(){
+        slider.value = slider.initialValue;
+        handle.updateHandle();
+    }
     Rectangle
     {
         id: handle
@@ -97,12 +101,12 @@ Rectangle
         radius : Styles.cornerRadius
 
         x: orientation == Qt.Horizontal ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
-        onXChanged : {if(!resize) slider.value = mapFunc();}
+        onXChanged : {if(!resize) slider.value = mapFunc(linearMap());}
 
         Behavior on x {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
         y : orientation == Qt.Vertical ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
-        onYChanged : {if(!resize)slider.value = mapFunc();}
+        onYChanged : {if(!resize) slider.value = mapFunc(linearMap());}
 
         Behavior on y {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
@@ -130,24 +134,17 @@ Rectangle
             handle.ease = true;
             handle.resize = false;
             moveHandle(mouseX,mouseY);
-            //  slider.value = linearMap();
         }
 
         onPositionChanged: {
             handle.ease = false;
             moveHandle(mouseX,mouseY);
-            //   slider.value = linearMap();
-        }
-        onReleased:
-        {
-            __updating = false;
         }
 
-        onDoubleClicked:
-        {
-            slider.value = slider.initialValue;
-            handle.updateHandle();
-        }
+        onReleased:  __updating = false
+
+
+        onDoubleClicked: slider.reset()
     }
 
     // label

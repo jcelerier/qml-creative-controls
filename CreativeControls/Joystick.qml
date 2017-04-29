@@ -6,6 +6,7 @@ import CreativeControls 1.0
 // * stickX / stickY : the position of the stick between [-1; 1]
 // * stickR : the distance of the stick to the center between [0; 1]
 // * stickAngle : the angle in degrees; 0 is at the right, 90 at the top.
+
 Rectangle
 {
     id: pad
