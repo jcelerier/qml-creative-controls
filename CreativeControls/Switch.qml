@@ -3,12 +3,11 @@ import CreativeControls 1.0
 
 // A simple toggle switch.
 
-// Property:
-// * toggled: the switch state, boolean for either ON or OFF
+// Signal:
+// * toggle(): signal, on toggled
 // Function:
-// * toggle(): toggle switch, by changing its state to ON or OFF
-// * onOn(): function called on switch toggled on
-// * onOff(): function called on switch toggled off
+// * switchState(): changes the switch state (on or off)
+
 Rectangle
 {
     id: toggleSwitch
@@ -17,21 +16,15 @@ Rectangle
     height : 200
     radius : width/2
 
+    border.color : Styles.base
+    border.width : width/10.
+
     color : (toggleSwitch.state == "ON")? Styles.detail : Styles.base
     property bool ease : true
     Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.InOutQuint}}
 
-    border.color : Styles.base
-    border.width : width/10.
-
-   // property bool toggled : toggleSwitch.state == "ON"
- //   onToggledChanged: {toggled ? onOn(): onOff()}
-   function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
-
- //   property var onOn: function(){console.log("ON")}
- //   property var onOff:function (){console.log("OFF")}
-
     signal toggle(bool onoff)
+    function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
 
     MouseArea
     {
