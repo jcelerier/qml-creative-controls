@@ -29,7 +29,7 @@ To try an example, run for instance :
 
 This library can be useful in conjunction with [libossia](https://github.com/OSSIA/libossia).
 See [OssiaClientExample.qml](examples/OssiaClientExample.qml) and [OssiaServerExample.qml](examples/OssiaServerExample.qml)
-This allwos to build pretty control interfaces for MIDI or OSC-able software.
+This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
 
