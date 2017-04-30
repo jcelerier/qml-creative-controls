@@ -13,7 +13,7 @@ Scope::Scope()
 
   m_scopePen.setCapStyle(Qt::RoundCap);
   m_scopePen.setJoinStyle(Qt::RoundJoin);
-  m_scopePen.setWidth(3);
+  m_scopePen.setWidth(2.);
   m_scopeBrush.setStyle(Qt::SolidPattern);
 }
 

@@ -9,12 +9,27 @@ import CreativeControls 1.0
 // * yMin / yMax: bounds (in the value domain) that should be shown. Default is [-1; 1]
 // TODO allow to display a "fill" under the scope in non-symmetrized mode
 
-ScopeImpl
+
+Item
 {
-    id: scope
-    yMin: -1
-    yMax: 1
-    baseColor: Styles.dark
-    detailColor: Styles.detail
-    symmetrize: false
+    property alias symmetrize: scope.symmetrize
+    property alias points: scope.points
+
+    Rectangle
+    {
+        anchors.fill : parent
+        color : Styles.background
+    }
+
+    ScopeImpl
+    {
+        anchors.fill: parent
+        id: scope
+        yMin: -1
+        yMax: 1
+        baseColor: Styles.colorOn
+        detailColor: Styles.base
+        symmetrize: false
+    }
+
 }
