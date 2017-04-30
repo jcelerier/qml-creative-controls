@@ -16,27 +16,25 @@ Rectangle
 {
     id: slider
 
+    width : 100
+    height : 200
+    onWidthChanged: handle.updateHandle();
+    onHeightChanged: handle.updateHandle();
+
     color : Styles.detail
-    border.width : handleWidth
+    border.width : width /35.
     border.color : handleColor
 
     radius : Styles.cornerRadius
 
-    width : 100
-    height : 200
-
-    onWidthChanged: handle.updateHandle();
-    onHeightChanged: handle.updateHandle();
-
     // the value is between 0 and 1.
-    property real value : initialValue;
+    property real value //: initialValue;
     property real initialValue : 0.5
 
     // value mapping
     property var mapFunc : function(linearVal){return linearVal}
 
-    // handle width and color
-    property real handleWidth : Math.min(slider.width,slider.height) * 1./15//bVertical ? height / 20 : width / 20
+    // handle color
     property alias handleColor : handle.color
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
@@ -51,17 +49,15 @@ Rectangle
         var borderW = border.width;
 
         if(orientation == Qt.Vertical)
-            mappedVal = 1.0 - (handle.y - borderW) / (valueRange.y - valueRange.x);
+            mappedVal = 1.0 - handle.height / (slider.height - 2.*borderW);
         else if(orientation == Qt.Horizontal)
-            mappedVal = (handle.x - borderW) /  (valueRange.y - valueRange.x);
+            mappedVal = handle.width /  (slider.width - 2.*borderW);
 
         return Utils.clamp(mappedVal.toFixed(2),0.,1.);
     }
 
-    // slider value range
-    property point valueRange : orientation == Qt.Vertical?
-                                    Qt.point( border.width, slider.height - border.width - handleWidth)
-                                  : Qt.point( border.width, slider.width - border.width - handleWidth)
+    // by reseting, the handle width and height are initialized according to the initalValue
+    Component.onCompleted: reset();
 
     // function called when updating the value from outside
     function updateValue()
@@ -77,8 +73,10 @@ Rectangle
     // moves the slider's handle to the mouse position
     function moveHandle(mouseX,mouseY)
     {
-        handle.y = (orientation == Qt.Vertical)? Utils.clamp(mouseY, valueRange.x , valueRange.y ) :  handle.y ;
-        handle.x = (orientation == Qt.Horizontal)? Utils.clamp(mouseX, valueRange.x ,valueRange.y ) :  handle.x ;
+        handle.height = (orientation == Qt.Vertical)?
+                    Utils.clamp(mouseY, 0 , slider.height - 2.*slider.border.width) :  handle.height ;
+        handle.width = (orientation == Qt.Horizontal)?
+                    Utils.clamp(mouseX, 0 , slider.width - 2.*slider.border.width) : handle.width ;
         // __updating = false;
     }
 
@@ -86,29 +84,22 @@ Rectangle
         slider.value = slider.initialValue;
         handle.updateHandle();
     }
+
     Rectangle
     {
         id: handle
 
-        anchors.verticalCenter: orientation == Qt.Horizontal? parent.verticalCenter : undefined
-        anchors.horizontalCenter: orientation == Qt.Vertical? parent.horizontalCenter : undefined
+        x : slider.border.width
+        y: slider.border.width
 
         color :  Styles.base
-
-        width : orientation == Qt.Vertical? slider.width : handleWidth
-        height : orientation == Qt.Vertical? handleWidth : slider.height
-
         radius : Styles.cornerRadius
 
-        x: orientation == Qt.Horizontal ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
-        onXChanged : {if(!resize) slider.value = mapFunc(linearMap());}
+        onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
+        Behavior on width {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
-        Behavior on x {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
-
-        y : orientation == Qt.Vertical ? Utils.rescale(slider.initialValue, 0,1.,valueRange.x,valueRange.y) : 0;
-        onYChanged : {if(!resize) slider.value = mapFunc(linearMap());}
-
-        Behavior on y {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
+        onHeightChanged : {if(!resize) slider.value = mapFunc(linearMap());}
+        Behavior on height {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
         property bool ease : true
         property bool resize : false
@@ -118,9 +109,10 @@ Rectangle
             ease = false;
             resize = true;
 
-            var mappedValue = Utils.rescale(slider.value, 0,1.,valueRange.x,valueRange.y);
-            x = orientation == Qt.Horizontal ? mappedValue : 0;
-            y = orientation == Qt.Vertical ? mappedValue : 0;
+            handle.width = orientation == Qt.Horizontal ?  slider.value * (slider.width- 2.*slider.border.width)
+                                                 : slider.width - 2.*slider.border.width;
+            handle.height = orientation == Qt.Vertical ? slider.value* (slider.height- 2.*slider.border.width)
+                                                : slider.height - 2.*slider.border.width;
         }
     }
 
@@ -147,15 +139,17 @@ Rectangle
         onDoubleClicked: slider.reset()
     }
 
+
     // label
     property alias text : label.text
     Text
     {
         id: label
-        text : value
+        //text : value
         anchors.centerIn: slider
 
         font.bold: true
-        color : handleColor
+        color : "black"//handleColor
     }
+
 }

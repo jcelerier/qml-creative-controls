@@ -9,6 +9,11 @@ Item
     property alias stickX : xy.centerX
     property alias stickY : xy.centerY
 
+    Rectangle
+    {
+        anchors.fill : parent
+        color : Styles.detail
+    }
 
     Crosshair
     {

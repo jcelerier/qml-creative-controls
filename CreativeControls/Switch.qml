@@ -16,7 +16,7 @@ Rectangle
     height : 200
     radius : width/2
 
-    border.color : Styles.base
+    border.color : "#666666"//Styles.base
     border.width : width/10.
 
     color : (toggleSwitch.state == "ON")? Styles.detail : Styles.base
@@ -25,6 +25,7 @@ Rectangle
 
     signal toggle(bool onoff)
     function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
+
 
     MouseArea
     {

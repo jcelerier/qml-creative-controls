@@ -4,7 +4,7 @@ import QtQuick 2.6
 import CreativeControls 1.0
 QtObject
 {
-    property color base: "#666666"
+    property color base: "#727472"//"#666666"
     property color detail: "#99BB99"
     property color dark: "#779977"
     property color background: "#aabb99"
