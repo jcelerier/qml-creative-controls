@@ -2,6 +2,8 @@
 #include <QQuickPaintedItem>
 #include <QPen>
 
+namespace CreativeControls
+{
 class Scope : public QQuickPaintedItem
 {
   Q_OBJECT
@@ -52,3 +54,4 @@ private:
   QBrush m_scopeBrush;
   bool m_symmetrize{true};
 };
+}

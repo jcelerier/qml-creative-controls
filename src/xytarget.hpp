@@ -2,6 +2,9 @@
 #include <QQuickPaintedItem>
 #include <QPen>
 #include <QBrush>
+
+namespace CreativeControls
+{
 class XYTarget : public QQuickPaintedItem
 {
   Q_OBJECT
@@ -46,3 +49,4 @@ private:
   QBrush m_brush;
   QPointF m_lastPos;
 };
+}

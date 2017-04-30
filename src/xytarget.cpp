@@ -2,6 +2,8 @@
 #include <QPainter>
 #include <QDebug>
 
+namespace CreativeControls
+{
 XYTarget::XYTarget()
 {
   setFlag(ItemHasContents, true);
@@ -118,4 +120,5 @@ void XYTarget::setColor(QColor color)
   m_brush.setColor(m_color);
   emit colorChanged(color);
   update();
+}
 }

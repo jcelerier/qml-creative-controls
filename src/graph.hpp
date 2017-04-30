@@ -3,6 +3,8 @@
 #include <QQmlListProperty>
 #include <QVector>
 
+namespace CreativeControls
+{
 class Graph : public QQuickItem
 {
   Q_OBJECT
@@ -34,3 +36,4 @@ private:
   QColor m_graphColor{};
   bool m_lines{};
 };
+}

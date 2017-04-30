@@ -1,13 +1,16 @@
 #pragma once
 #include <QQmlExtensionPlugin>
 
-class CreativeControlsPlugin : public QQmlExtensionPlugin
+namespace CreativeControls
+{
+class Plugin final : public QQmlExtensionPlugin
 {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
 public:
-  CreativeControlsPlugin();
+  Plugin();
 
 private:
   void registerTypes(const char *uri) final override;
 };
+}

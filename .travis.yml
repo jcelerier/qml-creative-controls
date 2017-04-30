@@ -1,0 +1,32 @@
+language: cpp
+
+branches:
+  except:
+    - gh-pages
+
+env:
+  global:
+    - GH_REPO_NAME: qml-creative-controls
+    - GH_REPO_REF: github.com/jcelerier/qml-creative-controls.git
+
+osx_image: xcode8.3
+dist: trusty
+sudo: required
+
+
+matrix:
+  exclude:
+    - os: linux
+    - os: osx
+
+  include:
+  - os: linux
+    dist: trusty
+
+  - os: osx
+    
+before_install:
+- "./travis/deps.sh"
+
+script:
+- "./travis/build.sh"
