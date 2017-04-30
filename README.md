@@ -33,7 +33,7 @@ This allwos to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
 
-![Gallery video](https://media.giphy.com/media/3ohzdHZPs69PwkfrHy/giphy.gif)
+![Gallery video](https://media.giphy.com/media/3o7bujgSZtw9earylq/giphy.gif)
 
 ## Inspiration
 
