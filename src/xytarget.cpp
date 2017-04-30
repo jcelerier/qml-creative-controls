@@ -1,6 +1,7 @@
 #include "xytarget.hpp"
 #include <QPainter>
 #include <QDebug>
+#include <cmath>
 
 namespace CreativeControls
 {
@@ -9,6 +10,7 @@ XYTarget::XYTarget()
   setFlag(ItemHasContents, true);
   setAcceptedMouseButtons(Qt::LeftButton);
   setAntialiasing(true);
+  m_pen.setCosmetic(true);
   m_brush.setStyle(Qt::SolidPattern);
 
   connect(this, &QQuickItem::widthChanged, this, &XYTarget::updatePenWidth);
@@ -20,10 +22,12 @@ void XYTarget::paint(QPainter* painter)
   const auto w = m_centerX * width();
   const auto h = m_centerY * height();
 
+  painter->setRenderHint(QPainter::RenderHint::Antialiasing, false);
   painter->setPen(m_pen);
   painter->setBrush(m_brush);
   painter->drawLine(w, 0., w, height());
   painter->drawLine(0., h, width(), h);
+  painter->setRenderHint(QPainter::RenderHint::Antialiasing, true);
   painter->drawEllipse(w - m_radius, h - m_radius, 2. * m_radius, 2. * m_radius);
 }
 
@@ -71,7 +75,8 @@ bool XYTarget::contains(const QPointF& point) const
 
 void XYTarget::updatePenWidth()
 {
-  m_pen.setWidth(std::min(height(), width()) / 35.);
+  m_pen.setWidthF(std::lround(std::min(height(), width()) / 40.));
+
   m_radius = std::min(height(), width()) / 35.;
 }
 
