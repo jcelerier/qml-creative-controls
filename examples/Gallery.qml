@@ -5,8 +5,15 @@ import CreativeControls 1.0
 
 Item {
     width: 900
-    height: 1200
+    height: 900
 
+    property font mainFont: Qt.font({
+        family: 'Monospace',
+        weight: Font.Black,
+        bold: true,
+        italic: false,
+        pointSize: 24
+    })
 
     SwipeView
     {
@@ -34,6 +41,8 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
+                font.family: mainFont
+
                 text: "Sliders"
             }
 
@@ -55,6 +64,7 @@ Item {
                     Layout.preferredWidth: 200
 
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Angle slider: " + angleSlider.angle.toFixed(2)
                 }
 
@@ -80,6 +90,7 @@ Item {
                     wrapMode : Text.WordWrap
                     Layout.preferredWidth: 200
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
                 }
 
@@ -96,6 +107,7 @@ Item {
                     Layout.row: 2
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "HSL Slider: " + hslSlider.color
                 }
 
@@ -112,6 +124,7 @@ Item {
                     Layout.row: 3
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "HSV Slider: " + hsvSlider.color
                 }
 
@@ -131,6 +144,7 @@ Item {
                     Layout.preferredWidth: 200
 
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "RGB Slider: " + rgbSlider.color
                 }
                 DonutSlider {
@@ -148,6 +162,7 @@ Item {
                     Layout.row: 4
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "RGB Donut: " + rgbDonutSlider.resColor
                 }
 
@@ -155,15 +170,16 @@ Item {
                     Layout.column: 0
                     Layout.row: 5
                     Layout.alignment: Layout.Center
-                    width: 200
+                    width: 140
                     height: 100
-                    count: 5
+                    count: 4
                 }
                 Text {
                     Layout.column: 1
                     Layout.row: 5
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Multi Slider"
                 }
 
@@ -180,6 +196,7 @@ Item {
                     Layout.column: 1
                     Layout.row: 6
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Log Slider"
                 }
                 /*
@@ -242,6 +259,7 @@ Item {
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Graph"
                 }
 
@@ -277,6 +295,7 @@ Item {
                     Layout.row: 1
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Scope"
                 }
             }
@@ -294,6 +313,7 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
+                font.family: mainFont
                 text: "Pads"
             }
 
@@ -316,6 +336,7 @@ Item {
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
                 }
 
@@ -339,6 +360,7 @@ Item {
                     Layout.row: 1
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "X-Y Pad: " + xypad.stickX + ", " + xypad.stickY
                 }
 
@@ -358,6 +380,7 @@ Item {
                     Layout.row: 2
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Cosine Influence: " + prettyArray(cosinfluence.values)
 
                     function prettyArray(arr)
@@ -387,6 +410,7 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
+                font.family: mainFont
                 text: "Keys & Matrices & Switch"
             }
 
@@ -412,7 +436,9 @@ Item {
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Qt.AlignLeft
+                    Layout.maximumWidth: 200
                     font.pointSize: 20
+                    font.family: mainFont
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
@@ -446,6 +472,7 @@ Item {
                     Layout.row: 1
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
+                    font.family: mainFont
                     text:
                     {
                         if(matrix.pressed.length > 0)
@@ -481,6 +508,7 @@ Item {
                     Layout.preferredWidth: 200
 
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Leds"
                 }
 
@@ -503,6 +531,7 @@ Item {
                     Layout.alignment: Qt.AlignLeft
 
                     font.pointSize: 20
+                    font.family: mainFont
                     text: "Switch"
                 }
             }

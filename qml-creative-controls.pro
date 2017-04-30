@@ -20,6 +20,7 @@ HEADERS += \
     src/angleslider.hpp \
     src/scope.hpp \
     src/circle.hpp \
+    src/painted_circle.hpp \
     src/cpputils.hpp \
     src/xytarget.hpp
 
@@ -29,6 +30,7 @@ SOURCES += \
     src/angleslider.cpp \
     src/scope.cpp \
     src/circle.cpp \
+    src/painted_circle.cpp \
     src/cpputils.cpp \
     src/xytarget.cpp
 

@@ -6,8 +6,8 @@ Item
 {
     id: xyPad
 
-    property alias centerX : xy.centerX
-    property alias centerY : xy.centerY
+    property alias stickX : xy.centerX
+    property alias stickY : xy.centerY
 
 
     Crosshair
@@ -23,13 +23,13 @@ Item
         onPressed: applyPos();
         onPositionChanged: applyPos()
 
-        onDoubleClicked: centerX = centerY = 0.5;
+        onDoubleClicked: stickX = stickY = 0.5;
 
 
         function applyPos()
         {
-            centerX = Utils.clamp(mouseX, 0, xyPad.width) / width;
-            centerY = Utils.clamp(mouseY, 0, xyPad.height) / height;
+            stickX = Utils.clamp(mouseX, 0, xyPad.width) / width;
+            stickY = Utils.clamp(mouseY, 0, xyPad.height) / height;
         }
     }
 
