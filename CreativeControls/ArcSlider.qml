@@ -34,8 +34,9 @@ Rectangle
 
     function moveHandle(newAngle)
     {
+
         arcSlider.angle = 180 / Math.PI * newAngle;
-        canvas.requestPaint()
+        canvas.requestPaint();
     }
 
 
@@ -66,6 +67,7 @@ Rectangle
         anchors.fill: parent
         antialiasing: true
         //anchors.fill : parent
+
         onPaint:
         {
             var ctx = getContext("2d")
@@ -130,17 +132,16 @@ Rectangle
 
         onPressed :
         {
-            easing.enabled = true;
-
+            //easing.enabled = true;
             var angleRad = Math.atan2(mouseY - arcSlider.radius, mouseX - arcSlider.radius) ; //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
             //  angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
 
-            if(angleRad > arcSlider.angleStart
-                    && angleRad < arcSlider.angleEnd )
+            if(angleRad >= arcSlider.angleStart
+                    && angleRad <= arcSlider.angleEnd )
             {
                 moveHandle(angleRad);
-                mouse.accepted = true
+                mouse.accepted = true;
             }
             else
                 mouse.accepted = false;
