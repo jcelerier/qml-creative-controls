@@ -74,10 +74,10 @@ Rectangle
     function moveHandle(mouseX,mouseY)
     {
         handle.height = (orientation == Qt.Vertical)?
-                    mouseY - slider.border.width
+                    Utils.clamp(mouseY,0,slider.height) - slider.border.width
                   :  handle.height ;
         handle.width = (orientation == Qt.Horizontal)?
-                  mouseX - slider.border.width
+                  Utils.clamp(mouseY,0,slider.width) - mouseX - slider.border.width
                   : handle.width ;
         // __updating = false;
     }
