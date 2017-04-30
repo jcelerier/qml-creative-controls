@@ -8,14 +8,9 @@ case "$TRAVIS_OS_NAME" in
     QT_ENV_SCRIPT=$(find /opt -name 'qt*-env.sh')
     source $QT_ENV_SCRIPT
     export LD_LIBRARY_PATH="/usr/lib64:$LD_LIBRARY_PATH"
-
-    if [[ "$BUILD_TYPE" == "Docs" ]] ; then
-      exit 0
-    fi
-    
+   
     qmake 
     make -j2
-    
   ;;
 
   osx)
