@@ -23,7 +23,7 @@ environment:
 before_build:
   - set PATH=%QTDIR%\bin;%PATH%
   - if %QTDIR:_64=%==%QTDIR% (set ARCH=x86) else (set ARCH=x64)
-  - call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
+  - call "%ProgramFiles(x86)%\Microsoft Visual Studio 2015\VC\vcvarsall.bat" %ARCH%
 
 build_script:
   - qmake qml-creative-controls.pro -r 
