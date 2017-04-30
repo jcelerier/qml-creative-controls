@@ -1,8 +1,10 @@
-#include "circle.hpp"
+#include "polygon.hpp"
 #include <QSGFlatColorMaterial>
 #include <QSGGeometryNode>
 #include <QtMath>
 
+namespace CreativeControls
+{
 Polygon::Polygon()
 {
   setFlag(ItemHasContents, true);
@@ -172,4 +174,5 @@ void Polygon::setRotation(qreal rotation)
   m_rotation = rotation;
   emit rotationChanged(rotation);
   update();
+}
 }

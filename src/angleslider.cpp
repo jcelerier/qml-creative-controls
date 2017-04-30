@@ -3,6 +3,8 @@
 #include <complex>
 #include <QtMath>
 
+namespace CreativeControls
+{
 static const constexpr auto deg_to_rad = 2. * M_PI / 360.;
 static const constexpr auto rad_to_deg = 360. / (2. * M_PI);
 
@@ -155,4 +157,5 @@ void AngleSlider::mouseReleaseEvent(QMouseEvent* event)
 {
 
   event->accept();
+}
 }

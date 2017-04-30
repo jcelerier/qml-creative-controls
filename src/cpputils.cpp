@@ -1,5 +1,7 @@
 #include "cpputils.hpp"
 
+namespace CreativeControls
+{
 CppUtils::CppUtils(QObject *parent) : QObject(parent)
 {
 
@@ -42,4 +44,5 @@ QColor CppUtils::setHSVValue(QColor col, double v)
   auto s = col.hsvSaturationF();
 
   return QColor::fromHsvF(h, s, v);
+}
 }

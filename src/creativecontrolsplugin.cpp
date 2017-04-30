@@ -2,17 +2,20 @@
 #include "graph.hpp"
 #include "angleslider.hpp"
 #include "scope.hpp"
-#include "circle.hpp"
-#include "painted_circle.hpp"
+#include "polygon.hpp"
+#include "painted_polygon.hpp"
 #include "cpputils.hpp"
 #include "xytarget.hpp"
 
-CreativeControlsPlugin::CreativeControlsPlugin()
+namespace CreativeControls
+{
+
+Plugin::Plugin()
 {
 
 }
 
-void CreativeControlsPlugin::registerTypes(const char *uri)
+void Plugin::registerTypes(const char *uri)
 {
   qmlRegisterType<Graph>(uri, 1, 0, "GraphImpl");
   qmlRegisterType<AngleSlider>(uri, 1, 0, "AngleSliderImpl");
@@ -25,4 +28,4 @@ void CreativeControlsPlugin::registerTypes(const char *uri)
     return new CppUtils;
   });
 }
-
+}

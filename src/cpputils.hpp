@@ -2,7 +2,9 @@
 #include <QObject>
 #include <QColor>
 
-class CppUtils : public QObject
+namespace CreativeControls
+{
+class CppUtils final : public QObject
 {
   Q_OBJECT
 public:
@@ -19,3 +21,4 @@ public slots:
   QColor setHSVSaturation(QColor col, double s);
   QColor setHSVValue(QColor col, double v);
 };
+}

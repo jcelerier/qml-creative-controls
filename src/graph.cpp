@@ -4,6 +4,9 @@
 #include <QSGGeometryNode>
 #include <QSGGeometry>
 #include <QtMath>
+
+namespace CreativeControls
+{
 Graph::Graph()
 {
   setFlag(ItemHasContents, true);
@@ -115,3 +118,5 @@ QSGNode* Graph::updatePaintNode(
 
   return dotsNode;
 }
+}
+

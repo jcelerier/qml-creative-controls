@@ -1,9 +1,11 @@
-#include "painted_circle.hpp"
+#include "painted_polygon.hpp"
 #include <QPainter>
 #include <QSGFlatColorMaterial>
 #include <QSGGeometryNode>
 #include <QtMath>
 
+namespace CreativeControls
+{
 PaintedPolygon::PaintedPolygon()
 {
   setFlag(ItemHasContents, true);
@@ -110,3 +112,5 @@ void PaintedPolygon::paint(QPainter* painter)
   painter->setBrush(m_color);
   painter->drawConvexPolygon(poly);
 }
+}
+

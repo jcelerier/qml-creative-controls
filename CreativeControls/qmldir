@@ -1,6 +1,6 @@
 module CreativeControls
 plugin qml-creative-controls
-classname CreativeControlsPlugin
+classname CreativeControls::Plugin
 typeinfo plugins.qmltypes
 
 AngleSlider 1.0 AngleSlider.qml

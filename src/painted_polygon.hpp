@@ -1,7 +1,9 @@
 #pragma once
-#include <QQuickItem>
+#include <QQuickPaintedItem>
 
-class Polygon : public QQuickItem
+namespace CreativeControls
+{
+class PaintedPolygon : public QQuickPaintedItem
 {
   Q_OBJECT
   Q_PROPERTY(int sides READ sides WRITE setSides NOTIFY sidesChanged FINAL)
@@ -11,7 +13,7 @@ class Polygon : public QQuickItem
   Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor NOTIFY fillColorChanged FINAL)
 
 public:
-  Polygon();
+  PaintedPolygon();
 
   int sides() const;
   QColor borderColor() const;
@@ -34,7 +36,7 @@ signals:
   void rotationChanged(qreal rotation);
 
 private:
-  QSGNode* updatePaintNode(QSGNode*, UpdatePaintNodeData*) final override;
+  void paint(QPainter* painter) final override;
 
   int m_sides = 64;
   QColor m_borderColor = Qt::red;
@@ -42,3 +44,4 @@ private:
   qreal m_borderWidth = 4;
   qreal m_rotation = 0;
 };
+}

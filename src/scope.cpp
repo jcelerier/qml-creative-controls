@@ -2,6 +2,8 @@
 #include <QPainter>
 #include <cmath>
 
+namespace CreativeControls
+{
 Scope::Scope()
 {
   setAntialiasing(true);
@@ -30,7 +32,6 @@ void Scope::paint(QPainter* painter)
   {
     painter->drawLines(m_data);
   }
-
 }
 
 QVector<qreal> Scope::points() const
@@ -125,12 +126,6 @@ void Scope::setSymmetrize(bool symmetrize)
   updatePath();
 }
 
-
-auto ease(double x, double min, double max)
-{
-  return min + x * (max - min);
-}
-
 void Scope::updatePath()
 {
   if(!m_symmetrize)
@@ -142,7 +137,7 @@ void Scope::updatePath()
     const auto h0 = height();
     const auto h1 = 0;
     const auto coeff = (h1 - h0) / (y1 - y0);
-    auto scale = [=] (auto val) { return h0 + coeff * (val - y0); };
+    auto scale = [=] (qreal val) { return h0 + coeff * (val - y0); };
 
     m_data.resize(2 * m_points.size());
     if(m_points.size() > 0)
@@ -153,7 +148,8 @@ void Scope::updatePath()
       auto x = 0.;
       QPointF start{x, scale(*it)};
       int i = 0;
-      for(; it != m_points.cend(); ++it)
+      const auto end = m_points.cend();
+      for(; it != end; ++it)
       {
         m_data[i] = start;
         ++i;
@@ -166,7 +162,6 @@ void Scope::updatePath()
   }
   else
   {
-
     // yMin is not used, we assume it's zero
     // y = yMax -> 0 for the upper part, height for the lower part
 
@@ -176,7 +171,7 @@ void Scope::updatePath()
     const auto h0 = height() / 2.;
     const auto h1 = 0.;
     const auto coeff = (h1 - h0) / (y1 - y0);
-    auto scale = [=] (auto val) { return h0 + coeff * (std::fabs(val) - y0); };
+    auto scale = [=] (qreal val) { return h0 + coeff * (std::fabs(val) - y0); };
 
     m_data.resize(2 * m_points.size());
 
@@ -203,4 +198,5 @@ void Scope::updatePath()
   }
 
   update();
+}
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <QQuickPaintedItem>
 
+namespace CreativeControls
+{
 class AngleSlider : public QQuickPaintedItem
 {
   Q_OBJECT
@@ -31,13 +33,13 @@ signals:
   void baseColorChanged(QColor baseColor);
   void detailColorChanged(QColor detailColor);
 
-
 private:
   void paint(QPainter* painter) final override;
   void mousePressEvent(QMouseEvent* event) final override;
   void mouseDoubleClickEvent(QMouseEvent* event) final override;
   void mouseMoveEvent(QMouseEvent* event) final override;
   void mouseReleaseEvent(QMouseEvent* event) final override;
+
   void updateAngle(QPointF point);
 
   qreal m_angle{};
@@ -46,3 +48,4 @@ private:
   QColor m_baseColor{Qt::blue};
   QColor m_detailColor{Qt::black};
 };
+}
