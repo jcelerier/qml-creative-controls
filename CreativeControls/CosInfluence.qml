@@ -39,8 +39,12 @@ Item
 
 
 
-
-
+    //background color
+    Rectangle
+    {
+        anchors.fill : parent
+        color : Styles.background
+    }
     // Mouse area for when the background is clicked
     MouseArea
     {
@@ -103,7 +107,7 @@ Item
     Crosshair {
         id: xy
         anchors.fill: parent
-        color: Styles.base
+        color: Styles.colorOn
 
     }
 

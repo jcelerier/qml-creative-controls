@@ -31,17 +31,17 @@ Grid
             height: grid.height / grid.rows - 5
             radius: 14
 
-            color: Styles.detail
+            color: Styles.colorOn
             border.width: 3
-            border.color: Styles.base
+            border.color: Styles.background
 
             property bool toggled : false
 
             onToggledChanged: {
                 if(toggled)
-                    rect.color = Styles.dark;
-                else
                     rect.color = Styles.detail;
+                else
+                    rect.color = Styles.colorOn;
             }
 
             MouseArea {

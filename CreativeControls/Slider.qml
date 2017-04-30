@@ -21,9 +21,9 @@ Rectangle
     onWidthChanged: handle.updateHandle();
     onHeightChanged: handle.updateHandle();
 
-    color : Styles.detail
-    border.width : width /35.
-    border.color : handleColor
+    color : Styles.colorOn
+    border.width : width / 25.
+    border.color : Styles.background
 
     radius : Styles.cornerRadius
 
@@ -92,7 +92,7 @@ Rectangle
         x : slider.border.width
         y: slider.border.width
 
-        color :  Styles.base
+        color :  Styles.colorOff
         radius : Styles.cornerRadius
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
@@ -149,7 +149,7 @@ Rectangle
         anchors.centerIn: slider
 
         font.bold: true
-        color : "black"//handleColor
+        color : Styles.background
     }
 
 }

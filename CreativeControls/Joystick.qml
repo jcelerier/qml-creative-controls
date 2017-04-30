@@ -10,7 +10,7 @@ import CreativeControls 1.0
 Rectangle
 {
     id: pad
-    color: Styles.detail//base
+    color: Styles.colorOff//base
 
     state: "default"
 

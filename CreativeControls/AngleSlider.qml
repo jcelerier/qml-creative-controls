@@ -8,7 +8,7 @@ AngleSliderImpl
 {
     width: 100
     height: 100
-    baseColor: Styles.detail
+    baseColor: Styles.background
     detailColor: Styles.base
     angle: 0
 }

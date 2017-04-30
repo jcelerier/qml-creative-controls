@@ -19,7 +19,7 @@ Rectangle
     border.color : "#666666"//Styles.base
     border.width : width/10.
 
-    color : (toggleSwitch.state == "ON")? Styles.detail : Styles.base
+    color : (toggleSwitch.state == "ON")? Styles.colorOn : Styles.colorOff
     property bool ease : true
     Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.InOutQuint}}
 

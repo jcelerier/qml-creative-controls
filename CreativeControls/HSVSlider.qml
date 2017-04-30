@@ -39,6 +39,7 @@ Rectangle
             id : h
 
             text : "H"
+            border.width : 0
 
             orientation : hsvSlider.orientation
 
@@ -57,6 +58,7 @@ Rectangle
             id : s
 
             text : "S"
+            border.width : 0
 
             orientation : hsvSlider.orientation
 
@@ -75,6 +77,7 @@ Rectangle
             id : v
 
             text : "V"
+            border.width : 0
 
             orientation : hsvSlider.orientation
 
@@ -94,6 +97,7 @@ Rectangle
 
             text : "A"
             visible : hsvSlider.enableAlpha
+            border.width : 0
 
             orientation : hsvSlider.orientation
 

@@ -12,14 +12,14 @@ Item
     Rectangle
     {
         anchors.fill : parent
-        color : Styles.detail
+        color : Styles.background
     }
 
     Crosshair
     {
         id : xy
         anchors.fill: parent
-        color: Styles.base
+        color: Styles.colorOn
     }
 
     MouseArea {

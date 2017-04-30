@@ -36,8 +36,8 @@ Rectangle
             id : h
 
             text : "H"
-
             orientation : hslSlider.orientation
+            border.width : 0
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -46,7 +46,6 @@ Rectangle
             initialValue: 120. / 360.
 
             color: Qt.hsla(value, 0.5, 0.5, 1.)
-            handleColor: Qt.hsla((value + 0.5) % 1, 0.5, 0.5, 1.)
         }
 
         Slider
@@ -54,8 +53,8 @@ Rectangle
             id : s
 
             text: "S"
-
             orientation : hslSlider.orientation
+            border.width : 0
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -64,7 +63,6 @@ Rectangle
             initialValue: 0.2
 
             color: Qt.hsla(h.value, value, 0.5, 1.)
-            handleColor: Qt.hsla((h.value + 0.5) % 1, 1.-value, 0.5, 1.)
         }
 
         Slider
@@ -73,6 +71,7 @@ Rectangle
 
             text : "L"
             orientation : hslSlider.orientation
+            border.width : 0
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -81,7 +80,6 @@ Rectangle
             initialValue: 0.667
 
             color : Qt.hsla(0,0,value,1.)
-            handleColor : Qt.hsla(0.,0.,1.-value,1.)
         }
 
         Slider
@@ -92,6 +90,7 @@ Rectangle
 
             text : "A"
             orientation : hslSlider.orientation
+            border.width : 0
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -100,7 +99,6 @@ Rectangle
             initialValue: 0.7
 
             color : Qt.hsla(0,0,0,value)
-            handleColor : Qt.hsla(value,value,value,1.)
         }
     }
 

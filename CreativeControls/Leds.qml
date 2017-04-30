@@ -36,8 +36,8 @@ Grid
 
 
     property real radius : 20
-    property color ledColorOn: Styles.detail
-    property color ledColorOff: Styles.base
+    property color ledColorOn: Styles.colorOn
+    property color ledColorOff: Styles.colorOff
     property bool easing : false
 
     // intensity default values

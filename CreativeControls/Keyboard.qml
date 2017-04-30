@@ -20,7 +20,7 @@ Item
     property real whiteHeight : 100
 
     property real blackHeight : 55;
-    property real blackWidth : 20;
+    property real blackWidth : 13;
 
     property var whitePos: []
     property var blackPos: []
@@ -63,7 +63,7 @@ Item
             case 7: cur_x += xScale * keyWidth / 2; break;
             case 8: blackPos.push({ key: it, rect: Qt.rect(cur_x, 0, xScale*blackWidth, yScale*blackHeight) });
                     cur_x += xScale * keyWidth / 2; break;
-            case 9: cur_x += xScale * keyWidth / 2; break;
+            case 9: cur_x += xScale * blackWidth / 2; break;
             case 10: blackPos.push({ key: it, rect: Qt.rect(cur_x, 0, xScale*blackWidth, yScale*blackHeight) });
                      cur_x += xScale * keyWidth / 2; break;
             case 11: cur_x += xScale * keyWidth; break;
@@ -187,7 +187,7 @@ Item
             ctx.beginPath();
             ctx.fillStyle = Styles.blackKeyColor;
             ctx.strokeStyle = Styles.blackKeyDetail;
-            cur_x = 0;
+            cur_x = - blackWidth/2;//0;
 
             for(var it = firstKey; it < lastKey; ++it) {
 
@@ -196,17 +196,17 @@ Item
                 }
 
                 switch(it % 12) {
-                case 0: cur_x += xScale * keyWidth / 2; break;
-                case 1: drawBlackKey(it, ctx, cur_x); cur_x += xScale * keyWidth / 2; break;
-                case 2: cur_x += xScale * keyWidth / 2; break;
-                case 3: drawBlackKey(it, ctx, cur_x); cur_x += xScale * keyWidth / 2; break;
-                case 4: cur_x += xScale * keyWidth ; break;
-                case 5: cur_x += xScale * keyWidth / 2; break;
-                case 6: drawBlackKey(it, ctx, cur_x); cur_x += xScale * keyWidth / 2; break;
-                case 7: cur_x += xScale * keyWidth / 2; break;
-                case 8: drawBlackKey(it, ctx, cur_x); cur_x += xScale * keyWidth / 2; break;
-                case 9: cur_x += xScale * keyWidth / 2; break;
-                case 10: drawBlackKey(it, ctx, cur_x); cur_x += xScale * keyWidth / 2; break;
+                case 0: cur_x += xScale * (keyWidth ); break;
+                case 1: drawBlackKey(it, ctx, cur_x); break;
+                case 2: cur_x += xScale *(keyWidth ); break;
+                case 3: drawBlackKey(it, ctx, cur_x ); break;
+                case 4: cur_x += xScale * (keyWidth ); break;
+                case 5: cur_x += xScale * (keyWidth ); break;
+                case 6: drawBlackKey(it, ctx, cur_x ); break;
+                case 7: cur_x += xScale * keyWidth ; break;
+                case 8: drawBlackKey(it, ctx, cur_x ); break;
+                case 9: cur_x += xScale * keyWidth; break;
+                case 10: drawBlackKey(it, ctx, cur_x ); break;
                 case 11: cur_x += xScale * keyWidth; break;
                 default: break;
                 }
@@ -255,4 +255,5 @@ Item
             canvas.requestPaint();
         }
     }
+
 }

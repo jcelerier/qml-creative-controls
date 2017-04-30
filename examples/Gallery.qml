@@ -26,7 +26,7 @@ Item {
         background : Rectangle
         {
             anchors.fill : parent
-            color : "lightGrey"
+            color : Styles.colorOff
         }
         Page
         {
@@ -426,8 +426,8 @@ Item {
                     Layout.row: 0
                     Layout.alignment: Layout.Center
 
-                    width: 200
-                    height: 200
+                    width: 250
+                    height: 100
 
                     firstKey: 36
                     lastKey: 53
