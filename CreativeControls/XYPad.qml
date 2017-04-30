@@ -10,7 +10,6 @@ Item
     property alias centerY : xy.centerY
 
 
-
     Crosshair
     {
         id : xy

@@ -19,7 +19,7 @@ Item {
         background : Rectangle
         {
             anchors.fill : parent
-            color : Styles.background
+            color : "lightGrey"
         }
         Page
         {
@@ -148,7 +148,7 @@ Item {
                     Layout.row: 4
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
-                    text: "RGB Slider: " + rgbDonutSlider.resColor
+                    text: "RGB Donut: " + rgbDonutSlider.resColor
                 }
 
                 MultiSlider {
@@ -462,7 +462,7 @@ Item {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
-
+                    Layout.preferredWidth: 200
                     width: 200
                     height: 200
                     easing : true
@@ -478,6 +478,7 @@ Item {
                     Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 200
 
                     font.pointSize: 20
                     text: "Leds"
