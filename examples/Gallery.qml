@@ -147,15 +147,25 @@ Item {
                     font.family: mainFont
                     text: "RGB Slider: " + rgbSlider.color
                 }
-                DonutSlider {
-                    id: rgbDonutSlider
+                Rectangle {
+                    color: Styles.background
+                    border.color : Styles.base
+                    border.width: 3
+                    radius : 10
+                    width: 150
+                    height: 150
                     Layout.column: 2
                     Layout.row: 4
                     Layout.alignment: Layout.Center
                     Layout.leftMargin: 40
 
-                    width: 100
-                    height: 100
+                    DonutSlider {
+                        x: parent.radius
+                        y: parent.radius
+                        id: rgbDonutSlider
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                    }
                 }
                 Text {
                     Layout.column: 3
@@ -170,8 +180,6 @@ Item {
                     Layout.column: 0
                     Layout.row: 5
                     Layout.alignment: Layout.Center
-                    Layout.preferredWidth:  140
-                    Layout.preferredHeight: 100
                     count: 4
                 }
                 Text {

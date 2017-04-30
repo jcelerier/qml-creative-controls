@@ -91,7 +91,7 @@ Rectangle
     {
         id: handle
 
-        x : slider.border.width
+        x: slider.border.width
         y: slider.border.width
 
         color :  Styles.background
@@ -111,10 +111,16 @@ Rectangle
             ease = false;
             resize = true;
 
-            handle.width = orientation == Qt.Horizontal ?  slider.value * (slider.width- 2.*slider.border.width)
-                                                 : slider.width - 2.*slider.border.width;
-            handle.height = orientation == Qt.Vertical ? slider.value* (slider.height- 2.*slider.border.width)
-                                                : slider.height - 2.*slider.border.width;
+            if(orientation == Qt.Horizontal)
+            {
+                handle.width = slider.value * (slider.width - 2. * slider.border.width);
+                handle.height = slider.height - 2.*slider.border.width;
+            }
+            else
+            {
+                handle.width = slider.width - 2. * slider.border.width;
+                handle.height = slider.value * (slider.height - 2. * slider.border.width);
+            }
         }
     }
 
