@@ -170,8 +170,8 @@ Item {
                     Layout.column: 0
                     Layout.row: 5
                     Layout.alignment: Layout.Center
-                    width: 140
-                    height: 100
+                    Layout.preferredWidth:  140
+                    Layout.preferredHeight: 100
                     count: 4
                 }
                 Text {
