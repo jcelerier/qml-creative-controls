@@ -1,9 +1,4 @@
 #!/bin/bash -eux
-if [[ "$BUILD_TYPE" == "Docs" ]] ; then
-  sudo apt-get update -qq
-  sudo apt-get install -qq doxygen doxygen-doc doxygen-gui graphviz
-  exit 0
-fi
 
 case "$TRAVIS_OS_NAME" in
   linux)
