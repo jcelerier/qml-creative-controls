@@ -424,10 +424,10 @@ Item {
                     id: kbd
                     Layout.column: 0
                     Layout.row: 0
-                    Layout.alignment: Layout.Center
+                    Layout.preferredHeight: 100
+                    Layout.preferredWidth: 200
 
-                    width: 250
-                    height: 100
+                    Layout.alignment: Layout.Center
 
                     firstKey: 36
                     lastKey: 53
