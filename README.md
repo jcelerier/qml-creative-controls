@@ -1,5 +1,6 @@
 # QML Creative Controls
 
+* Linux, OS X : [![Build Status](https://travis-ci.org/jcelerier/qml-creative-controls.svg)](https://travis-ci.org/jcelerier/qml-creative-controls)
 Controls useful in a creative coding context.
 
 ## Building
