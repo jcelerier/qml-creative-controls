@@ -74,9 +74,11 @@ Rectangle
     function moveHandle(mouseX,mouseY)
     {
         handle.height = (orientation == Qt.Vertical)?
-                    Utils.clamp(mouseY, 0 , slider.height - 2.*slider.border.width) :  handle.height ;
+                    mouseY - slider.border.width
+                  :  handle.height ;
         handle.width = (orientation == Qt.Horizontal)?
-                    Utils.clamp(mouseX, 0 , slider.width - 2.*slider.border.width) : handle.width ;
+                  mouseX - slider.border.width
+                  : handle.width ;
         // __updating = false;
     }
 
@@ -145,7 +147,7 @@ Rectangle
     Text
     {
         id: label
-        //text : value
+        text : value
         anchors.centerIn: slider
 
         font.bold: true
