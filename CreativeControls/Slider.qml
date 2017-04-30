@@ -92,7 +92,7 @@ Rectangle
         x : slider.border.width
         y: slider.border.width
 
-        color :  Styles.colorOff
+        color :  Styles.background
         radius : Styles.cornerRadius
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
@@ -149,7 +149,7 @@ Rectangle
         anchors.centerIn: slider
 
         font.bold: true
-        color : Styles.background
+        color : Styles.colorOff
     }
 
 }
