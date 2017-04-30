@@ -12,6 +12,8 @@ Rectangle
 {
     id: rgbSlider
 
+    height : 200
+    width : 200
     color : Qt.rgba(r.value,g.value,b.value,alphaValue)
     border.color: Styles.base
     border.width: 2
@@ -44,7 +46,7 @@ Rectangle
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: rgbSlider.sliderWidth - 10
+           Layout.preferredWidth: rgbSlider.sliderWidth - 10
 
             initialValue: 153. / 255.
 
