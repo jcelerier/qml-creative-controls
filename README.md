@@ -5,7 +5,7 @@ Controls useful in a creative coding context.
 Requirements:
 
 * Qt >= 5.7
-* Tested on Windows, Linux, macOS. Should work everywhere.
+* Tested on Windows, Linux, macOS, Android. Should work everywhere.
 
 [![Build Status](https://travis-ci.org/jcelerier/qml-creative-controls.svg)](https://travis-ci.org/jcelerier/qml-creative-controls)
 [![Build status](https://ci.appveyor.com/api/projects/status/j07ij1y6tf6awey5?svg=true)](https://ci.appveyor.com/project/JeanMichalCelerier/qml-creative-controls)

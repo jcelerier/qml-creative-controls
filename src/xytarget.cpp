@@ -75,7 +75,8 @@ bool XYTarget::contains(const QPointF& point) const
 
 void XYTarget::updatePenWidth()
 {
-  m_pen.setWidthF(std::lround(std::min(height(), width()) / 40.));
+  using namespace std;
+  m_pen.setWidthF(lround(std::min(height(), width()) / 40.));
 
   m_radius = std::min(height(), width()) / 35.;
 }

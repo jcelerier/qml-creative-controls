@@ -26,7 +26,7 @@ QSGNode* Polygon::updatePaintNode(
     fillGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), m_sides );
 
     fillGeometry->setLineWidth(0);
-    fillGeometry->setDrawingMode(GL_POLYGON);
+    fillGeometry->setDrawingMode(GL_TRIANGLE_FAN);
 
     fillNode->setGeometry(fillGeometry);
     fillNode->setFlag(QSGNode::OwnsGeometry);
