@@ -18,21 +18,23 @@ Rectangle
     property real channels : 3
     property real num : 0
 
-    property real angleStart : num *2*Math.PI /channels
-    property real angleEnd : (num+1) *2*Math.PI /channels
+    property real angleStart : num * 2 * Math.PI / channels
+    property real angleEnd : (num+1) * 2 * Math.PI / channels
 
-    property real value : (angle*Math.PI/180. - angleStart)/(angleEnd -angleStart)
+    property real value : (angle * Math.PI/180. - angleStart) / (angleEnd - angleStart)
 
     property var metric: Qt.rgba//function(){return Qt.rgba()}
 
-    property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd)*0.5
+    property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd) * 0.5
+    property color handleColor : arcSlider.getColor(value);
+
     Behavior on angle
     {
         id: easing
         NumberAnimation{easing.type : Easing.InOutCubic}
     }
 
-    function moveHandle(newAngle )
+    function moveHandle(newAngle)
     {
         arcSlider.angle = 180 / Math.PI *
                 Math.min(Math.max((newAngle),
@@ -64,28 +66,31 @@ Rectangle
         moveHandle((arcSlider.angleStart + arcSlider.angleEnd)*0.5);
     }
 
-    property color handleColor : arcSlider.getColor(value);//Styles.base
     Rectangle
-   {
-       id : handle
+    {
+        antialiasing: true
+        id : handle
 
-       x: arcSlider.x + arcSlider.radius
-       y: arcSlider.y + arcSlider.radius - height/2.
-       width : arcSlider.radius
-       height : 5
-       color : handleColor
+        x: arcSlider.x + arcSlider.radius
+        y: arcSlider.y + arcSlider.radius - height/2.
+        width : arcSlider.radius
+        height : 5
+        color : handleColor
 
-       transform: Rotation{id :rotation
-           origin.x : 0 ;
-           origin.y : handle.height/2.;
-           angle: arcSlider.angle}
-
-   }
+        transform: Rotation
+        {
+            id :rotation
+            origin.x : 0 ;
+            origin.y : handle.height/2.;
+            angle: arcSlider.angle
+        }
+    }
 
     Canvas
     {
         id : canvas
         anchors.fill: parent
+        antialiasing: true
         //anchors.fill : parent
         onPaint:
         {
@@ -108,7 +113,7 @@ Rectangle
             ctx.strokeStyle = grd;//arcSlider.background ;
             ctx.fillStyle = grd;
             ctx.beginPath()
-            ctx.lineCap= "round";
+            ctx.lineCap = "round";
             ctx.lineJoin = "round";
 
             var origin = Qt.point(canvas.width/2., canvas.height/2.);
@@ -119,7 +124,6 @@ Rectangle
 
             ctx.fill();
             ctx.stroke();
-
         }
     }
 
@@ -128,6 +132,7 @@ Rectangle
     {
         anchors.fill : parent
         propagateComposedEvents: true
+
         onPressed :
         {
             easing.enabled = true;
@@ -148,6 +153,7 @@ Rectangle
             else
                 mouse.accepted = false;
         }
+
         onPositionChanged:
         {
             easing.enabled = false;

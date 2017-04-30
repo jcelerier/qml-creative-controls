@@ -248,7 +248,7 @@ Item {
                     Timer {
                         id: tm
                         repeat: true
-                        onTriggered: { graph.pushValue(Math.random()); }
+                        onTriggered: { graph.pushValue(0.1 + 0.8*Math.random()); }
                         running: true
                         interval: 16
                     }
@@ -283,7 +283,7 @@ Item {
                             var array = [];
                             for(var i = 0; i < 10; i++)
                             {
-                                array.push(Math.random() * 2 - 1);
+                                array.push(0.8 * (Math.random() * 2 - 1));
                             }
                             scope.points = array;
                         }

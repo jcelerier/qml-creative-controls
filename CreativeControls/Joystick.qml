@@ -10,7 +10,7 @@ import CreativeControls 1.0
 Rectangle
 {
     id: pad
-    color: Styles.colorOff//base
+    color: Styles.background
 
     state: "default"
 
@@ -38,7 +38,7 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: pad.border.color//Styles.detail
+        color: Styles.colorOn
         radius: pad.radius / 10
         height: radius* 2
         width: height
