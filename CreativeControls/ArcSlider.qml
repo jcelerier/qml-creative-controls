@@ -149,7 +149,7 @@ Rectangle
         onPositionChanged:
         {
             easing.enabled = false;
-            var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x) ; //+ (2.* Math.PI);
+            var angleRad = Utils.clamp(Math.atan2(mouseY - handle.y, mouseX - handle.x),arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
             moveHandle(angleRad);
         }
