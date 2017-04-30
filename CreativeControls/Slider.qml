@@ -22,7 +22,7 @@ Rectangle
     onHeightChanged: handle.updateHandle();
 
     color : Styles.colorOn
-    border.width : width / 25.
+    border.width : orientation ==  Qt.Vertical ? width / 25. : height / 25.
     border.color : Styles.background
 
     radius : Styles.cornerRadius

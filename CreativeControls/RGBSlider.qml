@@ -15,7 +15,7 @@ Rectangle
     height : 200
     width : 200
     color : Qt.rgba(r.value,g.value,b.value,alphaValue)
-    border.color: Styles.detail
+    border.color: Styles.base
     border.width: 2
 
     // vertical or horizontal slider

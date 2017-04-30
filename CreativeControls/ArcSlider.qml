@@ -135,6 +135,8 @@ Rectangle
             var dist = Utils.distance(mouseX,mouseY, handle.x, handle.y);
             var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x) ; //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
+            angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
+
             if(dist < arcSlider.radius
                     && dist > arcSlider.innerRadius
                     && angleRad > arcSlider.angleStart

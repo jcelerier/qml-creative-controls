@@ -50,7 +50,6 @@ Rectangle
             initialValue: 120./ 360.
 
             color : Qt.hsva(value ,0.5,0.5,1.)
-            handleColor : Qt.hsva((value + 0.5) % 1,0.5,0.7,1.)
         }
 
         Slider
@@ -69,7 +68,6 @@ Rectangle
             initialValue: 0.182
 
             color : Qt.hsva(1.0 ,value,0.5,1.)
-            handleColor : Qt.hsva((h.value + 0.5) % 1,1.-value,0.7,1.)
         }
 
         Slider
@@ -88,7 +86,6 @@ Rectangle
             initialValue: 0.733
 
             color : Qt.hsva(0,0,value,1.)
-            handleColor : Qt.hsva(0.,0.,1.-value,1.)
         }
 
         Slider
@@ -108,7 +105,6 @@ Rectangle
             initialValue: 0.7
 
             color : Qt.hsva(0,0,0,value)
-            handleColor : Qt.hsva(value,value,value,1.)
         }
     }
 

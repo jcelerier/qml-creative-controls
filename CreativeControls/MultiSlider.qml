@@ -15,7 +15,11 @@ Item
 
     property int count : 10
     property int orientation : Qt.Vertical
-    property real spacing : 5.
+    property real spacing : 0.
+    property real sliderWidth : (multiSlider.orientation == Qt.Vertical) ?
+                                    multiSlider.width / count
+                                  : multiSlider.height / count
+
     property bool __updating: false
 
     property var values: []
@@ -28,11 +32,12 @@ Item
         Repeater
         {
             id: hSliders
+
             model : (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
             Slider
             {
                 height : multiSlider.height
-                width : (multiSlider.width - spacing * (multiSlider.count - 1)) / multiSlider.count
+                width : multiSlider.sliderWidth
                 orientation : Qt.Vertical
 
                 onValueChanged: recomputeValues()
@@ -46,10 +51,11 @@ Item
         Repeater
         {
             id: vSliders
+
             model: (multiSlider.orientation == Qt.Horizontal) ? multiSlider.count : 0
             Slider
             {
-                height : (multiSlider.height - spacing * (multiSlider.count - 1)) / multiSlider.count
+                height : multiSlider.sliderWidth
                 width : multiSlider.width
                 orientation : Qt.Horizontal
 
