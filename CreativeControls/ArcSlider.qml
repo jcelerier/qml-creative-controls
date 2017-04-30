@@ -16,7 +16,7 @@ Rectangle
 
     property real innerRadius : radius * 0.5
     property real channels : 3
-    property real num : 0
+    property real num : 1
 
     property real angleStart : num * 2 * Math.PI / channels
     property real angleEnd : (num+1) * 2 * Math.PI / channels
@@ -26,8 +26,6 @@ Rectangle
     property var metric: Qt.rgba//function(){return Qt.rgba()}
 
     property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd) * 0.5
-    property color handleColor : arcSlider.getColor(value);
-
     Behavior on angle
     {
         id: easing
@@ -36,12 +34,8 @@ Rectangle
 
     function moveHandle(newAngle)
     {
-        arcSlider.angle = 180 / Math.PI *
-                Math.min(Math.max((newAngle),
-                                  arcSlider.angleStart),
-                         arcSlider.angleEnd);
-
-        handleColor = arcSlider.getColor(value);
+        arcSlider.angle = 180 / Math.PI * newAngle;
+        canvas.requestPaint()
     }
 
 
@@ -66,26 +60,6 @@ Rectangle
         moveHandle((arcSlider.angleStart + arcSlider.angleEnd)*0.5);
     }
 
-    Rectangle
-    {
-        antialiasing: true
-        id : handle
-
-        x: arcSlider.x + arcSlider.radius
-        y: arcSlider.y + arcSlider.radius - height/2.
-        width : arcSlider.radius
-        height : 5
-        color : handleColor
-
-        transform: Rotation
-        {
-            id :rotation
-            origin.x : 0 ;
-            origin.y : handle.height/2.;
-            angle: arcSlider.angle
-        }
-    }
-
     Canvas
     {
         id : canvas
@@ -105,28 +79,49 @@ Rectangle
                                                arcSlider.radius + center * Math.sin(arcSlider.angleStart),
                                                arcSlider.radius + center * Math.cos(arcSlider.angleEnd),
                                                arcSlider.radius + center * Math.sin(arcSlider.angleEnd));
+            var origin = Qt.point(canvas.width/2., canvas.height/2.);
+
             for(var i = 0; i < 50 ; i++)
             {
                 grd.addColorStop(i/50., arcSlider.getColor(i/50.));
             }
 
-            ctx.strokeStyle = grd;//arcSlider.background ;
+            ctx.strokeStyle = grd;
             ctx.fillStyle = grd;
-            ctx.beginPath()
+
+            ctx.lineWidth = 1;
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
 
-            var origin = Qt.point(canvas.width/2., canvas.height/2.);
-
-            ctx.arc(origin.x, origin.y,arcSlider.innerRadius,arcSlider.angleStart,arcSlider.angleEnd);
-            ctx.arc(origin.x, origin.y,arcSlider.radius,arcSlider.angleEnd,arcSlider.angleStart-2.*Math.PI );
+            ctx.beginPath();
+            ctx.arc(origin.x, origin.y,arcSlider.innerRadius, arcSlider.angleStart, arcSlider.angleEnd);
+            ctx.arc(origin.x, origin.y,arcSlider.radius, arcSlider.angleEnd, arcSlider.angleStart-2.*Math.PI );
             ctx.closePath();
 
             ctx.fill();
+
+            ctx.lineWidth = 10;
+
+            ctx.beginPath();
+
+            var perimeter = 2. * Math.PI * (0.7 * arcSlider.radius) *  (arcSlider.angleEnd - arcSlider.angleStart) /( 2. * Math.PI);
+            var angleOffset = (ctx.lineWidth*0.5) / perimeter * (arcSlider.angleEnd - arcSlider.angleStart);
+            var clampedAngle = Utils.clamp(Math.PI /180. * arcSlider.angle,
+                                           arcSlider.angleStart + angleOffset,
+                                           arcSlider.angleEnd - angleOffset);
+            var angleToDeg = Math.PI /180. * arcSlider.angle;
+            ctx.moveTo(origin.x + 0.7 * arcSlider.radius * Math.cos(clampedAngle) ,
+                       origin.y + 0.7 * arcSlider.radius * Math.sin(clampedAngle));
+            ctx.lineTo(origin.x + 0.7 * arcSlider.radius * Math.cos(clampedAngle)
+                       - 0.5 * arcSlider.radius * Math.cos(clampedAngle),
+                       origin.y + 0.7 * arcSlider.radius * Math.sin(clampedAngle)
+                       -0.5 * arcSlider.radius * Math.sin(clampedAngle));
             ctx.stroke();
+            ctx.fill();
+
+
         }
     }
-
 
     MouseArea
     {
@@ -137,14 +132,11 @@ Rectangle
         {
             easing.enabled = true;
 
-            var dist = Utils.distance(mouseX,mouseY, handle.x, handle.y);
-            var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x) ; //+ (2.* Math.PI);
+            var angleRad = Math.atan2(mouseY - arcSlider.radius, mouseX - arcSlider.radius) ; //+ (2.* Math.PI);
             angleRad += angleRad < 0 ? 2.*Math.PI : 0;
-            angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
+            //  angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
 
-            if(dist < arcSlider.radius
-                    && dist > arcSlider.innerRadius
-                    && angleRad > arcSlider.angleStart
+            if(angleRad > arcSlider.angleStart
                     && angleRad < arcSlider.angleEnd )
             {
                 moveHandle(angleRad);
@@ -157,11 +149,16 @@ Rectangle
         onPositionChanged:
         {
             easing.enabled = false;
-            var angleRad = Math.atan2(mouseY - handle.y, mouseX - handle.x);
-            angleRad += angleRad < 0 ? 2.*Math.PI : 0;
-            angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
+            var angleRad = Math.atan2(mouseY - arcSlider.radius, mouseX - arcSlider.radius);
 
-            moveHandle(angleRad);
+            angleRad+= angleRad < 0. ? 2.*Math.PI : 0;
+            angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
+            if(angleRad > arcSlider.angleStart
+                    && angleRad < arcSlider.angleEnd )
+            {
+                moveHandle(angleRad);
+            }
+
         }
         onDoubleClicked: reset();
     }
