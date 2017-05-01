@@ -8,24 +8,23 @@ Rectangle
 {
     id: arcSlider
     width : 200
-    height : 200
+    height : width
 
 
     radius : width /2.
 
     color : "transparent"
-    property color background : getColor(1.0)
 
     property real innerRadius : radius * 0.7 / 0.9 * 0.5
     property real channels : 3
-    property real channelIndex : 2
+    property real channelIndex : 0
 
     property real angleStart : channelIndex * 2 * Math.PI / channels
     property real angleEnd : (channelIndex+1) * 2 * Math.PI / channels
 
     property real value : (angle * Math.PI/180. - angleStart) / (angleEnd - angleStart)
 
-    property var colorSpace: Qt.rgba//function(){return Qt.rgba()}
+    property var colorSpace: Qt.hsla//function(){return Qt.rgba()}
 
     property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd) * 0.5
     Behavior on angle
@@ -71,7 +70,6 @@ Rectangle
     function updateHue(h)
     {
         arcSlider.hue = h;
-
         canvas.requestPaint();
     }
 
@@ -80,11 +78,20 @@ Rectangle
         moveHandle((arcSlider.angleStart + arcSlider.angleEnd)*0.5);
     }
 
+
+    property bool drawHue : arcSlider.channelIndex == 0
+                            && (arcSlider.colorSpace === Qt.hsla || arcSlider.colorSpace === Qt.hsva)
+
     Canvas
     {
         id : canvas
+        // width : parent.width *2.
+        // height : parent.width *2.
         anchors.fill: parent
         antialiasing: true
+        smooth: true
+        visible : true
+        //visible : !shader.visible
         //anchors.fill : parent
 
         onPaint:
@@ -96,31 +103,75 @@ Rectangle
             ctx.lineWidth = 0;
 
             var center = arcSlider.innerRadius+ (arcSlider.radius-arcSlider.innerRadius)*0.5;
+            /*  var grd = ctx.createLinearlGradient( arcSlider.radius + center * Math.cos(arcSlider.angleStart),
+                                               arcSlider.radius + center * Math.sin(arcSlider.angleStart),
+
+                                               arcSlider.radius + center * Math.cos(arcSlider.angleEnd),
+                                               arcSlider.radius + center * Math.sin(arcSlider.angleEnd));*/
+            var origin = Qt.point(canvas.width/2., canvas.height/2.);
             var grd = ctx.createLinearGradient( arcSlider.radius + center * Math.cos(arcSlider.angleStart),
                                                arcSlider.radius + center * Math.sin(arcSlider.angleStart),
                                                arcSlider.radius + center * Math.cos(arcSlider.angleEnd),
                                                arcSlider.radius + center * Math.sin(arcSlider.angleEnd));
-            var origin = Qt.point(canvas.width/2., canvas.height/2.);
-
             for(var i = 0; i < 50 ; i++)
             {
                 grd.addColorStop(i/50., arcSlider.getColor(i/50.));
             }
 
-            ctx.strokeStyle = grd;
+            ctx.strokeStyle = Styles.background;
             ctx.fillStyle = grd;
 
-            ctx.lineWidth = 0;
+            ctx.lineWidth = 1;
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
 
-            ctx.beginPath();
-            ctx.arc(origin.x, origin.y,arcSlider.innerRadius, arcSlider.angleStart, arcSlider.angleEnd);
-            ctx.arc(origin.x, origin.y,arcSlider.radius, arcSlider.angleEnd, arcSlider.angleStart-2.*Math.PI );
-            ctx.closePath();
-            ctx.fill();
+            if(!arcSlider.drawHue)
+            {
+
+
+                ctx.beginPath();
+                ctx.arc(origin.x, origin.y,arcSlider.innerRadius, arcSlider.angleStart, arcSlider.angleEnd);
+                ctx.arc(origin.x, origin.y,arcSlider.radius, arcSlider.angleEnd, arcSlider.angleStart-2.*Math.PI );
+                ctx.closePath();
+                //ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fill();
+            }
+            else{
+                var nbLines = 300
+                for(var i = 0; i < nbLines ; i++)
+                {
+                    var iAng = arcSlider.angleStart +i * (arcSlider.angleEnd- arcSlider.angleStart)/nbLines;
+                    /*  var ang = Math.PI - Math.atan2(arcSlider.radius *Math.cos(iAng) - radius*2.,
+                                                   arcSlider.radius *Math.sin(iAng) - radius*2.) ;
+                    ang -= Math.PI/2. ;
+                    ang += ang < 0. ? 2.*Math.PI : 0.;*/
+                    var color = (iAng - arcSlider.angleStart)/(arcSlider.angleEnd - arcSlider.angleStart);
+                    ctx.strokeStyle = Qt.hsla(color, 1.,0.5,1.0);
+                    ctx.lineWidth = 1.;
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(arcSlider.radius + (arcSlider.innerRadius + ctx.lineWidth*0.5)* Math.cos(iAng),
+                               arcSlider.radius + (arcSlider.innerRadius + ctx.lineWidth*0.5)* Math.sin(iAng));
+                    ctx.lineTo(arcSlider.radius + (arcSlider.radius- ctx.lineWidth) * Math.cos(iAng),
+                               arcSlider.radius + (arcSlider.radius- ctx.lineWidth) * Math.sin(iAng));
+                    ctx.stroke();
+
+                }
+
+            }
+            // if(shader.visible)ctx.stroke();
 
             ctx.lineWidth =  0.2 * arcSlider.innerRadius;
+
+            if(arcSlider.drawHue)
+            {
+                ctx.strokeStyle = arcSlider.getColor(arcSlider.value);
+                ctx.fillStyle = arcSlider.getColor(arcSlider.value);
+            }
+            else
+                ctx.strokeStyle = grd;
 
             ctx.beginPath();
 
@@ -149,12 +200,12 @@ Rectangle
             return true;
         return false;
     }
-
+    /*
     Text
     {
         x : arcSlider.radius + 0.2 * arcSlider.radius * Math.cos(Math.PI /180. * arcSlider.angle)
         y : arcSlider.radius + 0.2 * arcSlider.radius * Math.sin(Math.PI /180. * arcSlider.angle)
         color : "red"
         text : channelIndex
-    }
+    }*/
 }

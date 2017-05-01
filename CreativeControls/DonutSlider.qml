@@ -15,17 +15,17 @@ Rectangle
     width : 200
     height : width
 
-    radius : width /2.
+   radius : width /2.
 
     color : "transparent"
 
-    border.width : 3.
-    border.color : donutSlider.resColor
+  //  border.width : 3.
+  //  border.color : donutSlider.resColor
 
     property real channels : 3.
     property real innerRadius : radius * 0.4//0.38
     property color resColor : Styles.detail
-    property var colorSpace: Qt.rgba
+    property var colorSpace: Qt.hsla
 
     function updateColor()
     {
@@ -56,9 +56,7 @@ Rectangle
             channelIndex : index
             colorSpace: donutSlider.colorSpace
 
-            anchors.centerIn : donutSlider
-            width : donutSlider.width *0.95
-            height : donutSlider.height*0.95
+            anchors.fill : parent
 
             innerRadius: donutSlider.innerRadius * 1.5
             onValueChanged :  donutSlider.updateColor()
@@ -79,6 +77,32 @@ Rectangle
         color : donutSlider.resColor
         visible : true
     }
+    Rectangle
+    {
+        id: border
+
+       anchors.fill : parent
+       radius : parent.radius
+       color : "transparent"
+
+       border.width : 3.
+       border.color : donutSlider.resColor
+
+    }
+    /*Rectangle
+    {
+        id: innerBorder
+
+       anchors.centerIn : parent
+       width : radius *2.
+       height : radius *2.
+
+       radius : donutSlider.innerRadius * 1.5
+       color : "transparent"
+
+       border.width : 3.
+       border.color : donutSlider.resColor
+    }*/
 
     function updateSliders(ptX,ptY)
     {

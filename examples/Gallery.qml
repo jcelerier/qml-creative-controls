@@ -199,7 +199,7 @@ Item {
                     DonutSlider {
                         x: parent.radius
                         y: parent.radius
-                        id: rgbDonutSlider
+                        id: hslDonutSlider
                         width: parent.width - 2 * parent.radius
                         height: parent.height - 2 * parent.radius
                         colorSpace : Qt.hsla
@@ -211,7 +211,7 @@ Item {
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     font.family: mainFont
-                    text: "HSL Donut: " + rgbDonutSlider.resColor
+                    text: "HSL Donut: " + hslDonutSlider.resColor
                 }
 
                 HSVSlider {
@@ -230,6 +230,7 @@ Item {
                     font.family: mainFont
                     text: "HSV Slider: " + hsvSlider.color
                 }
+
                 Rectangle {
 
                     Layout.column: 2
@@ -260,7 +261,7 @@ Item {
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     font.family: mainFont
-                    text: "HSV Donut: " + rgbDonutSlider.resColor
+                    text: "HSV Donut: " + hsvDonutSlider.resColor
                 }
 
                 RGBSlider {
@@ -299,7 +300,7 @@ Item {
                     DonutSlider {
                         x: parent.radius
                         y: parent.radius
-                        id: hslDonutSlider
+                        id: rgbDonutSlider
                         width: parent.width - 2 * parent.radius
                         height: parent.height - 2 * parent.radius
                         colorSpace : Qt.rgba
