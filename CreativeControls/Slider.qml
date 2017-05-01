@@ -157,7 +157,7 @@ Rectangle
         anchors.centerIn: slider
 
         font.bold: true
-        color : Styles.colorOff
+        color : Styles.base
     }
 
 }

@@ -37,44 +37,55 @@ Item {
                 anchors.fill : parent
                 color : "transparent"
             }
-            leftPadding: 50
+
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.family: mainFont
-
+                font.bold : true
+                color : Styles.background
+                height : 100
+                y : 20
                 text: "Sliders"
             }
 
             GridLayout
             {
+                anchors.horizontalCenter: parent.horizontalCenter
+                rows : 4
+                columns : 2
                 rowSpacing: 20
-                columnSpacing: 10
+                columnSpacing: 200
 
                 AngleSlider {
                     id: angleSlider
                     Layout.column: 0
                     Layout.row: 0
+                    width : 100
+                    height : 100
+
                     Layout.alignment: Layout.Center
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
-                    Layout.preferredWidth: 200
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment:  Layout.Center
+                    Layout.preferredWidth: 100
+                    horizontalAlignment: Text.AlignHCenter
 
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Angle slider: " + angleSlider.angle.toFixed(2)
                 }
 
                 AngleSlider {
                     id: angleSliderMinMax
-                    Layout.column: 2
+                    Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
-                    Layout.leftMargin: 40
 
                     width: 100
                     height: 100
@@ -84,38 +95,46 @@ Item {
                     transform: Rotation { origin.x: 50; origin.y: 50; angle: -90}
                 }
                 Text {
-                    Layout.column: 3
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignTop
 
                     wrapMode : Text.WordWrap
                     Layout.preferredWidth: 200
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
                 }
 
 
                 MultiSlider {
                     Layout.column: 0
-                    Layout.row: 5
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
-                    count: 4
+                    width : 300
+                    height : 200
+                    count: 6
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 5
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Multi Slider"
                 }
 
 
                 LogSlider
                 {
-                    Layout.column: 0
-                    Layout.row: 6
+                    Layout.column: 1
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 150
                     height: 50
@@ -123,9 +142,13 @@ Item {
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 6
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
+
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Log Slider"
                 }
                 /*
@@ -152,21 +175,25 @@ Item {
                 anchors.fill : parent
                 color : "transparent"
             }
-            leftPadding: 50
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.family: mainFont
-
+                font.bold : true
+                color : Styles.background
                 text: "Colors"
+                height : 100
+                y : 20
             }
 
             GridLayout
             {
+                rows : 3
+                columns : 2
                 rowSpacing: 20
-                columnSpacing: 10
-
+                columnSpacing: 200
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 HSLSlider {
                     id: hslSlider
@@ -177,15 +204,17 @@ Item {
                     height: 100
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "HSL Slider: " + hslSlider.color
                 }
                 Rectangle {
-                    Layout.column: 2
+                    Layout.column: 1
                     Layout.row: 0
 
                     color: Styles.background
@@ -208,35 +237,40 @@ Item {
                     }
                 }
                 Text {
-                    Layout.column: 3
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment:Layout.Center
+
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "HSL Donut: " + hslDonutSlider.resColor
                 }
 
                 HSVSlider {
                     id: hsvSlider
                     Layout.column: 0
-                    Layout.row: 1
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 100
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "HSV Slider: " + hsvSlider.color
                 }
 
                 Rectangle {
 
-                    Layout.column: 2
-                    Layout.row: 1
+                    Layout.column: 1
+                    Layout.row: 2
 
                     color: Styles.background
                     border.color : Styles.base
@@ -246,7 +280,6 @@ Item {
                     height: 150
 
                     Layout.alignment: Layout.Center
-                    Layout.leftMargin: 40
 
                     DonutSlider {
                         x: parent.radius
@@ -258,36 +291,40 @@ Item {
                     }
                 }
                 Text {
-                    Layout.column: 3
-                    Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 1
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "HSV Donut: " + hsvDonutSlider.resColor
                 }
 
                 RGBSlider {
                     id: rgbSlider
                     Layout.column: 0
-                    Layout.row: 2
+                    Layout.row: 4
                     Layout.alignment: Layout.Center
 
                     width: 100
                     height: 100
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 2
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 5
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 200
 
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "RGB Slider: " + rgbSlider.color
                 }
                 Rectangle {
-                    Layout.column: 2
-                    Layout.row: 2
+                    Layout.column: 1
+                    Layout.row: 4
 
                     color: Styles.background
                     border.color : Styles.base
@@ -297,7 +334,6 @@ Item {
                     height: 150
 
                     Layout.alignment: Layout.Center
-                    Layout.leftMargin: 40
 
                     DonutSlider {
                         x: parent.radius
@@ -309,11 +345,13 @@ Item {
                     }
                 }
                 Text {
-                    Layout.column: 3
-                    Layout.row: 2
+                    Layout.column: 1
+                    Layout.row: 5
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "RGB Donut: " + rgbDonutSlider.resColor
                 }
 
@@ -328,24 +366,28 @@ Item {
                 anchors.fill : parent
                 color : "transparent"
             }
-            leftPadding: 50
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
+                font.bold : true
+                color : Styles.background
                 text: "Graphs"
+                height : 100
+                y : 20
             }
 
             GridLayout
             {
                 rowSpacing: 20
-                columnSpacing: 10
+                //columnSpacing: 100
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Graph
                 {
                     id: graph
-                    width: 200
-                    height: 100
+                    width: 300
+                    height: 200
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -360,21 +402,23 @@ Item {
                     Frame{}
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Graph"
                 }
 
                 Scope
                 {
                     id: scope
-                    width: 200
-                    height: 100
+                    width: 300
+                    height: 200
                     Layout.column: 0
-                    Layout.row: 1
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
                     symmetrize: true
 
@@ -396,11 +440,13 @@ Item {
                     Frame{}
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Scope"
                 }
             }
@@ -419,40 +465,25 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.family: mainFont
+                font.bold : true
+                color : Styles.background
                 text: "Pads"
+                height : 100
+                y : 20
             }
 
             GridLayout
             {
                 rowSpacing: 20
-                columnSpacing: 10
-
-                Joystick
-                {
-                    id: joystick
-                    width: 200
-                    height: 200
-                    Layout.column: 0
-                    Layout.row: 0
-                    Layout.alignment: Layout.Center
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
-                }
-
-
+                columnSpacing: 100
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 XYPad
                 {
                     id: xypad
 
                     Layout.column: 0
-                    Layout.row: 1
+                    Layout.row: 0
                     Layout.alignment: Layout.Center
 
                     width: 200
@@ -461,12 +492,14 @@ Item {
                     Frame{}
                 }
                 Text {
-                    Layout.column: 1
+                    Layout.column: 0
                     Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    text: "X-Y Pad: " + xypad.stickX + ", " + xypad.stickY
+                    font.bold : true
+                    color : Styles.background
+                    text: "X-Y Pad: " + xypad.stickX.toFixed(2) + ", " + xypad.stickY.toFixed(2)
                 }
 
                 CosInfluence
@@ -474,18 +507,20 @@ Item {
                     id: cosinfluence
                     width: 200
                     height: 200
-                    Layout.column: 0
-                    Layout.row: 2
+                    Layout.column: 1
+                    Layout.row: 0
                     Layout.alignment: Layout.Center
 
                     Frame{}
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 2
+                    Layout.row: 1
                     Layout.alignment: Qt.AlignLeft
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Cosine Influence: " + prettyArray(cosinfluence.values)
 
                     function prettyArray(arr)
@@ -500,6 +535,27 @@ Item {
                         return str;
                     }
                 }
+                Joystick
+                {
+                    id: joystick
+                    width: 200
+                    height: 200
+                    Layout.column: 0
+                    Layout.row: 2
+                    Layout.alignment: Layout.Center
+                }
+                Text {
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
+                }
+
+
             }
         }
 
@@ -510,40 +566,56 @@ Item {
                 anchors.fill : parent
                 color : "transparent"
             }
-            leftPadding: 50
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.family: mainFont
+                font.bold : true
+                color : Styles.background
                 text: "Keys & Matrices & Switch"
+                height : 100
+                y : 20
             }
 
             GridLayout
             {
-                rowSpacing: 20
-                columnSpacing: 10
-
-                Keyboard
+                rowSpacing: 50
+                columnSpacing: 100
+                anchors.horizontalCenter: parent.horizontalCenter
+                Rectangle
                 {
-                    id: kbd
-                    Layout.column: 0
-                    Layout.row: 0
-                    Layout.preferredHeight: 100
-                    Layout.preferredWidth: 200
-
                     Layout.alignment: Layout.Center
 
-                    firstKey: 36
-                    lastKey: 53
+                    color: Styles.background
+                    border.color : Styles.base
+                    border.width: 3
+                    radius : 10
+                    width: 300
+                    height: 120
+
+                    Keyboard
+                    {
+                        id: kbd
+                        Layout.column: 0
+                        Layout.row: 0
+                        anchors.centerIn: parent
+                        height : parent.height - 20
+                        width : parent.width - 20
+
+                        firstKey: 36
+                        lastKey: 62
+                    }
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
                     Layout.maximumWidth: 200
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
@@ -552,12 +624,35 @@ Item {
                             "Keyboard"
                     }
                 }
+                Switch
+                {
+                    id : toggleSwitch
 
+                    Layout.column: 1
+                    Layout.row: 0
+                    Layout.alignment: Layout.Center
+
+                    width: 50
+                    height: 50
+                    onToggle: leds.setIntensityForAll(!onoff);
+
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    text: "Switch: " + toggleSwitch.state
+                }
                 Matrix
                 {
                     id: matrix
                     Layout.column: 0
-                    Layout.row: 1
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
 
                     width: 200
@@ -573,11 +668,13 @@ Item {
 
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text:
                     {
                         if(matrix.pressed.length > 0)
@@ -591,7 +688,7 @@ Item {
                 {
                     id : leds
 
-                    Layout.column: 0
+                    Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Layout.Center
                     Layout.preferredWidth: 200
@@ -608,54 +705,70 @@ Item {
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 2
-                    Layout.alignment: Qt.AlignLeft
-                    Layout.preferredWidth: 200
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
 
                     font.pointSize: 20
                     font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
                     text: "Leds"
                 }
 
-                Switch
-                {
-                    id : toggleSwitch
 
-                    Layout.column: 2
-                    Layout.row: 2
-                    Layout.alignment: Layout.Center
-                    Layout.leftMargin: 100
-                    width: 50
-                    height: 50
-                    onToggle: leds.setIntensityForAll(!onoff);
-
-                }
-                Text {
-                    Layout.column: 3
-                    Layout.row: 2
-                    Layout.alignment: Qt.AlignLeft
-
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "Switch"
-                }
             }
         }
     }
     Row{
 
+        height : 50
+        spacing : 5
         Button
         {
-            onClicked: view.currentIndex = Math.max(view.currentIndex - 1, 0)
-            text: "Previous"
+            id: btnPrevious
+
             width: parent.width / 2
+            height: parent.height
+
+            onClicked: view.currentIndex = Math.max(view.currentIndex - 1, 0)
+
+            background: Rectangle{
+                anchors.fill : parent
+                color : btnPrevious.pressed ? Styles.colorOn : Styles.background
+            }
+            font.bold : true
+            contentItem: Text {
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                color: btnPrevious.pressed ? Styles.detail:Styles.colorOff
+                font.pointSize: 15
+                font.family: mainFont
+                text: "Previous"
+            }
         }
 
         Button
         {
-            onClicked: view.currentIndex = Math.min(view.currentIndex + 1, view.count - 1)
-            text: "Next"
+            id: btnNext
+
             width: parent.width / 2
+            height: parent.height
+
+            onClicked: view.currentIndex = Math.min(view.currentIndex + 1, view.count - 1)
+
+            background: Rectangle{
+                anchors.fill : parent
+                color : btnNext.pressed ? Styles.colorOn : Styles.background
+            }
+            font.bold : true
+            contentItem: Text {
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                color: btnNext.pressed ? Styles.detail:Styles.colorOff
+                font.pointSize: 15
+                font.family: mainFont
+                text: "Next"
+            }
         }
 
         anchors.bottom: parent.bottom

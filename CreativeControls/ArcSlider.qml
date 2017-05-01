@@ -9,7 +9,8 @@ Rectangle
     id: arcSlider
     width : 200
     height : width
-
+    onWidthChanged: canvas.requestPaint()
+    onHeightChanged: canvas.requestPaint()
 
     radius : width /2.
 
@@ -138,7 +139,7 @@ Rectangle
                 ctx.fill();
             }
             else{
-                var nbLines = 300
+                var nbLines = arcSlider.width /2.
                 for(var i = 0; i < nbLines ; i++)
                 {
                     var iAng = arcSlider.angleStart +i * (arcSlider.angleEnd- arcSlider.angleStart)/nbLines;
@@ -148,7 +149,7 @@ Rectangle
                     ang += ang < 0. ? 2.*Math.PI : 0.;*/
                     var color = (iAng - arcSlider.angleStart)/(arcSlider.angleEnd - arcSlider.angleStart);
                     ctx.strokeStyle = Qt.hsla(color, 1.,0.5,1.0);
-                    ctx.lineWidth = 1.;
+                    ctx.lineWidth = 3.;
 
                     ctx.beginPath();
 
