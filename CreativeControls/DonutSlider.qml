@@ -97,21 +97,21 @@ Rectangle
         }
     }
 
-    MouseArea
+    TouchArea
     {
         anchors.fill : parent
         onPressed: {
             var distToCenter = Utils.distance(mouseX,mouseY,parent.radius,parent.radius);
             if(distToCenter > innerRadius)
             {
-                updateSliders(mouseX,mouseY);
+                updateSliders(point.x,point.y);
             }
         }
-        onPositionChanged:updateSliders(mouseX,mouseY)
+        onPositionChanged:updateSliders(point.x,point.y)
 
         onDoubleClicked:
         {
-            var distToCenter = Utils.distance(mouseX,mouseY,parent.radius,parent.radius);
+            var distToCenter = Utils.distance(point.x,point.y,parent.radius,parent.radius);
             if(distToCenter < innerRadius)
             {
                 for(var i = 0; i < repeater.count; i++)
