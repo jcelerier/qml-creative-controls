@@ -7,7 +7,7 @@ import CreativeControls 1.0
 // * centerX / centerY: the position of the crosshair
 // * values: when the crosshair moves, values is updated to contain an array of distances
 //           to each point in points
-Item
+Rectangle
 {
     id: cosInfluence
 
@@ -18,6 +18,7 @@ Item
     onCenterYChanged: updateValues()
     onPointsChanged: updateValues()
 
+    color : Styles.background
     property real sizeRatio : Math.min(cosInfluence.width, cosInfluence.height) / 15.
     property var values: []
 
@@ -37,27 +38,18 @@ Item
         values = newvalues;
     }
 
-
-
-    //background color
-    Rectangle
-    {
-        anchors.fill : parent
-        color : Styles.background
-    }
     // Mouse area for when the background is clicked
-    MouseArea
+    TouchArea
     {
-        function applyPos()
-        {
-            centerX = Utils.clamp(mouseX, 0, cosInfluence.width) / width;
-            centerY = Utils.clamp(mouseY, 0, cosInfluence.height) / height;
-        }
-
         anchors.fill: parent
         onPressed: applyPos()
         onPositionChanged: applyPos()
 
+        function applyPos()
+        {
+            centerX = Utils.clamp(point.x, 0, cosInfluence.width) / width;
+            centerY = Utils.clamp(point.y, 0, cosInfluence.height) / height;
+        }
     }
 
     // The circles
@@ -108,7 +100,6 @@ Item
         id: xy
         anchors.fill: parent
         color: Styles.colorOn
-
     }
 
 }

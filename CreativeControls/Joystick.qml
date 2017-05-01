@@ -44,16 +44,16 @@ Rectangle
         width: height
     }
 
-    MouseArea
+    TouchArea
     {
         id: area
         anchors.fill: parent
         onPressed: {
             pad.state = "move"
-            moveStick(mouseX,mouseY);
+            moveStick(point.x, point.y);
         }
 
-        onPositionChanged: moveStick(mouseX,mouseY)
+        onPositionChanged: moveStick(point.x, point.y)
         onReleased: pad.state = "default"
     }
 

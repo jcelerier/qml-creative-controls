@@ -27,7 +27,7 @@ Rectangle
     function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
 
 
-    MouseArea
+    TouchArea
     {
         anchors.fill : parent
         onPressed : {

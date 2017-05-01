@@ -155,7 +155,13 @@ void AngleSlider::mouseMoveEvent(QMouseEvent* event)
 
 void AngleSlider::mouseReleaseEvent(QMouseEvent* event)
 {
+  event->accept();
+}
 
+void AngleSlider::touchEvent(QTouchEvent* event)
+{
+  if(!event->touchPoints().empty())
+    updateAngle(event->touchPoints().first().pos());
   event->accept();
 }
 }

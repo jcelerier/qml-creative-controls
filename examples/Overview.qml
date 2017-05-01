@@ -7,15 +7,14 @@ Item {
     width: 900
     height: 900
 
-    ColumnLayout {
-    MultiSlider {
-        orientation: Qt.Horizontal
-        count: 4
+    Row {
+    Joystick{
+        width: 500
+        height: 500
     }
-
-    MultiSlider {
-        orientation: Qt.Vertical
-        count: 4
+    Joystick{
+        width: 500
+        height: 500
     }
     }
 }
