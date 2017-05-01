@@ -7,34 +7,36 @@ import QtGraphicalEffects 1.0
 Rectangle
 {
     id: arcSlider
-    anchors.fill : parent
+    width : 200
+    height : 200
+
 
     radius : width /2.
 
     color : "transparent"
     property color background : getColor(1.0)
 
-    property real innerRadius : radius * 0.5
+    property real innerRadius : radius * 0.7 / 0.9 * 0.5
     property real channels : 3
-    property real num : 1
+    property real channelIndex : 2
 
-    property real angleStart : num * 2 * Math.PI / channels
-    property real angleEnd : (num+1) * 2 * Math.PI / channels
+    property real angleStart : channelIndex * 2 * Math.PI / channels
+    property real angleEnd : (channelIndex+1) * 2 * Math.PI / channels
 
     property real value : (angle * Math.PI/180. - angleStart) / (angleEnd - angleStart)
 
-    property var metric: Qt.rgba//function(){return Qt.rgba()}
+    property var colorSpace: Qt.rgba//function(){return Qt.rgba()}
 
     property real angle : 180 / Math.PI * (arcSlider.angleStart + arcSlider.angleEnd) * 0.5
     Behavior on angle
     {
         id: easing
+        enabled : false
         NumberAnimation{easing.type : Easing.InOutCubic}
     }
 
     function moveHandle(newAngle)
     {
-
         arcSlider.angle = 180 / Math.PI * newAngle;
         canvas.requestPaint();
     }
@@ -43,17 +45,34 @@ Rectangle
 
     function getColor(c)
     {
-        switch(num)
+        switch(channelIndex)
         {
         case 0:
-            return metric(c+0.3,0.,0.,1.);
+            return colorSpace === Qt.rgba ?
+                        colorSpace(c,0.,0.,1.)
+                      : colorSpace === Qt.hsva ?
+                            colorSpace(c,1.,1.0,1.)
+                          : colorSpace(c,1.,0.5,1.);
         case 1:
-            return metric(0.,c+0.3,0.,1.);
+            return colorSpace === Qt.rgba ?
+                        colorSpace(0.,c,0.,1.)
+                      : colorSpace(hue,0.5,c,1.);
         case 2:
-            return metric(0.,0.,c+0.3,1.);
+            return colorSpace == Qt.rgba ?
+                        colorSpace(0.,0.,c,1.)
+                      : colorSpace(hue,0.5,c,1.)
+
         default :
             return "transparent";
         }
+    }
+
+    property real hue : 0.
+    function updateHue(h)
+    {
+        arcSlider.hue = h;
+
+        canvas.requestPaint();
     }
 
     function reset()
@@ -91,7 +110,7 @@ Rectangle
             ctx.strokeStyle = grd;
             ctx.fillStyle = grd;
 
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0;
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
 
@@ -99,25 +118,23 @@ Rectangle
             ctx.arc(origin.x, origin.y,arcSlider.innerRadius, arcSlider.angleStart, arcSlider.angleEnd);
             ctx.arc(origin.x, origin.y,arcSlider.radius, arcSlider.angleEnd, arcSlider.angleStart-2.*Math.PI );
             ctx.closePath();
-
             ctx.fill();
 
-            ctx.lineWidth = 10;
+            ctx.lineWidth =  0.2 * arcSlider.innerRadius;
 
             ctx.beginPath();
 
-            var perimeter = 2. * Math.PI * (0.7 * arcSlider.radius) *  (arcSlider.angleEnd - arcSlider.angleStart) /( 2. * Math.PI);
+            var lineLength = 0.84 * arcSlider.innerRadius;
+
+            var perimeter = 2. * Math.PI * lineLength *  (arcSlider.angleEnd - arcSlider.angleStart) /( 2. * Math.PI);
             var angleOffset = (ctx.lineWidth*0.5) / perimeter * (arcSlider.angleEnd - arcSlider.angleStart);
             var clampedAngle = Utils.clamp(Math.PI /180. * arcSlider.angle,
                                            arcSlider.angleStart + angleOffset,
                                            arcSlider.angleEnd - angleOffset);
             var angleToDeg = Math.PI /180. * arcSlider.angle;
-            ctx.moveTo(origin.x + 0.7 * arcSlider.radius * Math.cos(clampedAngle) ,
-                       origin.y + 0.7 * arcSlider.radius * Math.sin(clampedAngle));
-            ctx.lineTo(origin.x + 0.7 * arcSlider.radius * Math.cos(clampedAngle)
-                       - 0.5 * arcSlider.radius * Math.cos(clampedAngle),
-                       origin.y + 0.7 * arcSlider.radius * Math.sin(clampedAngle)
-                       -0.5 * arcSlider.radius * Math.sin(clampedAngle));
+            ctx.moveTo(origin.x + (lineLength) * Math.cos(clampedAngle) ,
+                       origin.y + (lineLength)  * Math.sin(clampedAngle));
+            ctx.lineTo(origin.x, origin.y);
             ctx.stroke();
             ctx.fill();
 
@@ -125,43 +142,19 @@ Rectangle
         }
     }
 
-    MouseArea
+    function isInside(angleRad)
     {
-        anchors.fill : parent
-        propagateComposedEvents: true
-
-        onPressed :
-        {
-            //easing.enabled = true;
-            var angleRad = Math.atan2(mouseY - arcSlider.radius, mouseX - arcSlider.radius) ; //+ (2.* Math.PI);
-            angleRad += angleRad < 0 ? 2.*Math.PI : 0;
-            //  angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
-
-            if(angleRad >= arcSlider.angleStart
-                    && angleRad <= arcSlider.angleEnd )
-            {
-                moveHandle(angleRad);
-                mouse.accepted = true;
-            }
-            else
-                mouse.accepted = false;
-        }
-
-        onPositionChanged:
-        {
-            easing.enabled = false;
-            var angleRad = Math.atan2(mouseY - arcSlider.radius, mouseX - arcSlider.radius);
-
-            angleRad+= angleRad < 0. ? 2.*Math.PI : 0;
-            angleRad = Utils.clamp(angleRad,arcSlider.angleStart, arcSlider.angleEnd ); //+ (2.* Math.PI);
-            if(angleRad > arcSlider.angleStart
-                    && angleRad < arcSlider.angleEnd )
-            {
-                moveHandle(angleRad);
-            }
-
-        }
-        onDoubleClicked: reset();
+        if(angleRad > arcSlider.angleStart
+                && angleRad < arcSlider.angleEnd )
+            return true;
+        return false;
     }
 
+    Text
+    {
+        x : arcSlider.radius + 0.2 * arcSlider.radius * Math.cos(Math.PI /180. * arcSlider.angle)
+        y : arcSlider.radius + 0.2 * arcSlider.radius * Math.sin(Math.PI /180. * arcSlider.angle)
+        color : "red"
+        text : channelIndex
+    }
 }

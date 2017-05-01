@@ -8,12 +8,12 @@ Item {
     height: 900
 
     property font mainFont: Qt.font({
-        family: 'Monospace',
-        weight: Font.Black,
-        bold: true,
-        italic: false,
-        pointSize: 24
-    })
+                                        family: 'Monospace',
+                                        weight: Font.Black,
+                                        bold: true,
+                                        italic: false,
+                                        pointSize: 24
+                                    })
 
     SwipeView
     {
@@ -94,87 +94,6 @@ Item {
                     text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
                 }
 
-                HSLSlider {
-                    id: hslSlider
-                    Layout.column: 0
-                    Layout.row: 2
-                    Layout.alignment: Layout.Center
-                    width: 100
-                    height: 100
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 2
-                    Layout.alignment: Qt.AlignLeft
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "HSL Slider: " + hslSlider.color
-                }
-
-                HSVSlider {
-                    id: hsvSlider
-                    Layout.column: 0
-                    Layout.row: 3
-                    Layout.alignment: Layout.Center
-                    width: 100
-                    height: 100
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 3
-                    Layout.alignment: Qt.AlignLeft
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "HSV Slider: " + hsvSlider.color
-                }
-
-                RGBSlider {
-                    id: rgbSlider
-                    Layout.column: 0
-                    Layout.row: 4
-                    Layout.alignment: Layout.Center
-
-                    width: 100
-                    height: 100
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 4
-                    Layout.alignment: Qt.AlignLeft
-                    Layout.preferredWidth: 200
-
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "RGB Slider: " + rgbSlider.color
-                }
-                Rectangle {
-                    color: Styles.background
-                    border.color : Styles.base
-                    border.width: 3
-                    radius : 10
-                    width: 150
-                    height: 150
-                    Layout.column: 2
-                    Layout.row: 4
-                    Layout.alignment: Layout.Center
-                    Layout.leftMargin: 40
-
-                    DonutSlider {
-                        x: parent.radius
-                        y: parent.radius
-                        id: rgbDonutSlider
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
-                    }
-                }
-                Text {
-                    Layout.column: 3
-                    Layout.row: 4
-                    Layout.alignment: Qt.AlignLeft
-                    font.pointSize: 20
-                    font.family: mainFont
-                    text: "RGB Donut: " + rgbDonutSlider.resColor
-                }
 
                 MultiSlider {
                     Layout.column: 0
@@ -221,6 +140,181 @@ Item {
                     text: "Range Slider"
                 }
                 */
+            }
+        }
+        Page
+        {
+
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
+            leftPadding: 50
+            header: Text
+            {
+                horizontalAlignment: Text.AlignHCenter
+                font.pointSize: 30
+                font.family: mainFont
+
+                text: "Colors"
+            }
+
+            GridLayout
+            {
+                rowSpacing: 20
+                columnSpacing: 10
+
+
+                HSLSlider {
+                    id: hslSlider
+                    Layout.column: 0
+                    Layout.row: 0
+                    Layout.alignment: Layout.Center
+                    width: 100
+                    height: 100
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "HSL Slider: " + hslSlider.color
+                }
+                Rectangle {
+                    Layout.column: 2
+                    Layout.row: 0
+
+                    color: Styles.background
+                    border.color : Styles.base
+                    border.width: 3
+                    radius : 10
+                    width: 150
+                    height: 150
+
+                    Layout.alignment: Layout.Center
+                    Layout.leftMargin: 40
+
+                    DonutSlider {
+                        x: parent.radius
+                        y: parent.radius
+                        id: rgbDonutSlider
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        colorSpace : Qt.hsla
+                    }
+                }
+                Text {
+                    Layout.column: 3
+                    Layout.row: 0
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "HSL Donut: " + rgbDonutSlider.resColor
+                }
+
+                HSVSlider {
+                    id: hsvSlider
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+                    width: 100
+                    height: 100
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "HSV Slider: " + hsvSlider.color
+                }
+                Rectangle {
+
+                    Layout.column: 2
+                    Layout.row: 1
+
+                    color: Styles.background
+                    border.color : Styles.base
+                    border.width: 3
+                    radius : 10
+                    width: 150
+                    height: 150
+
+                    Layout.alignment: Layout.Center
+                    Layout.leftMargin: 40
+
+                    DonutSlider {
+                        x: parent.radius
+                        y: parent.radius
+                        id: hsvDonutSlider
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        colorSpace : Qt.hsva
+                    }
+                }
+                Text {
+                    Layout.column: 3
+                    Layout.row: 1
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "HSV Donut: " + rgbDonutSlider.resColor
+                }
+
+                RGBSlider {
+                    id: rgbSlider
+                    Layout.column: 0
+                    Layout.row: 2
+                    Layout.alignment: Layout.Center
+
+                    width: 100
+                    height: 100
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 2
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 200
+
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "RGB Slider: " + rgbSlider.color
+                }
+                Rectangle {
+                    Layout.column: 2
+                    Layout.row: 2
+
+                    color: Styles.background
+                    border.color : Styles.base
+                    border.width: 3
+                    radius : 10
+                    width: 150
+                    height: 150
+
+                    Layout.alignment: Layout.Center
+                    Layout.leftMargin: 40
+
+                    DonutSlider {
+                        x: parent.radius
+                        y: parent.radius
+                        id: hslDonutSlider
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        colorSpace : Qt.rgba
+                    }
+                }
+                Text {
+                    Layout.column: 3
+                    Layout.row: 2
+                    Layout.alignment: Qt.AlignLeft
+                    font.pointSize: 20
+                    font.family: mainFont
+                    text: "RGB Donut: " + rgbDonutSlider.resColor
+                }
+
+
             }
         }
 

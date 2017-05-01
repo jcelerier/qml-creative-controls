@@ -6,6 +6,7 @@ import QtQuick.Controls.Styles 1.4
 
 // Properties:
 // * resColor: the current color
+// * colorSpace: choose the colorSpace for the slider (Qt.rgba/Qt.hsla/Qt.hsva)
 
 Rectangle
 {
@@ -18,20 +19,29 @@ Rectangle
 
     color : "transparent"
 
-    border.width : 2.
-    border.color : "black"
+    border.width : 3.
+    border.color : donutSlider.resColor
 
     property real channels : 3.
-    property real innerRadius : radius * 0.5//0.38
+    property real innerRadius : radius * 0.4//0.38
     property color resColor : Styles.detail
+    property var colorSpace: Qt.rgba
 
     function updateColor()
     {
+        if(repeater.itemAt(2) !== null && (colorSpace === Qt.hsla || colorSpace === Qt.hsva ))
+        {
+            for(var i = 1; i < repeater.count; i++)
+            {
+
+                repeater.itemAt(i).updateHue(repeater.itemAt(0).value);
+            }
+        }
         donutSlider.resColor = (repeater.itemAt(2) !== null) ?
-                    Qt.rgba(repeater.itemAt(0).value,
-                            repeater.itemAt(1).value,
-                            repeater.itemAt(2).value,
-                            1.)
+                    colorSpace(repeater.itemAt(0).value,
+                               repeater.itemAt(1).value,
+                               repeater.itemAt(2).value,
+                               1.)
                   : Styles.detail;
     }
 
@@ -43,13 +53,14 @@ Rectangle
         delegate: ArcSlider
         {
             id : arcSlider
-            num : index
+            channelIndex : index
+            colorSpace: donutSlider.colorSpace
 
             anchors.centerIn : donutSlider
-            width : donutSlider.width *0.8
-            height : donutSlider.height*0.8
+            width : donutSlider.width *0.95
+            height : donutSlider.height*0.95
 
-            innerRadius: donutSlider.width *0.7*0.5
+            innerRadius: donutSlider.innerRadius * 1.5
             onValueChanged :  donutSlider.updateColor()
 
         }
@@ -66,32 +77,62 @@ Rectangle
 
         anchors.centerIn: parent
         color : donutSlider.resColor
-        MouseArea
+        visible : true
+    }
+
+    function updateSliders(ptX,ptY)
+    {
+        var angleRad =Math.PI-Math.atan2(ptX - donutSlider.radius, ptY - donutSlider.radius) ; //+ (2.* Math.PI);
+        angleRad -= Math.PI/2. ;
+
+        angleRad += angleRad < 0 ? 2.*Math.PI : 0;
+
+        for(var i = 0; i < repeater.count; i++)
         {
-            anchors.fill : parent
-            onDoubleClicked:
+            if(repeater.itemAt(i).isInside(angleRad))
+            {
+                repeater.itemAt(i).moveHandle(angleRad);
+                return true;
+            }
+        }
+    }
+
+    MouseArea
+    {
+        anchors.fill : parent
+        onPressed: {
+            var distToCenter = Utils.distance(mouseX,mouseY,parent.radius,parent.radius);
+            if(distToCenter > innerRadius)
+            {
+                updateSliders(mouseX,mouseY);
+            }
+        }
+        onPositionChanged:updateSliders(mouseX,mouseY)
+
+        onDoubleClicked:
+        {
+            var distToCenter = Utils.distance(mouseX,mouseY,parent.radius,parent.radius);
+            if(distToCenter < innerRadius)
             {
                 for(var i = 0; i < repeater.count; i++)
                 {
                     repeater.itemAt(i).reset();
                 }
             }
+            else
+            {
+                for(var i = 0; i < repeater.count; i++)
+                {
+                    if(repeater.itemAt(i).isInside(angleRad))
+                    {
+                        repeater.itemAt(i).reset();
+                        return true;
+                    }
+                }
+            }
         }
     }
 
-    Rectangle
-    {
-        id : borderDonut
 
-        anchors.centerIn : parent
-        width : parent.width + border.width*2
-        height : parent.height + border.width*2
-
-        radius : width/2.
-        color :"transparent"
-
-        border.width : 3.
-        border.color : donutSlider.resColor
-    }
 
 }
