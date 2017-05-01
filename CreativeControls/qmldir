@@ -8,6 +8,7 @@ ArcSlider 1.0 ArcSlider.qml
 ColorChooser 1.0 ColorChooser.qml
 ColorSlider 1.0 ColorSlider.qml
 ColorWheel 1.0 ColorWheel.qml
+Container 1.0 Container.qml
 DonutSlider 1.0 DonutSlider.qml
 Frame 1.0 Frame.qml
 CosInfluence 1.0 CosInfluence.qml

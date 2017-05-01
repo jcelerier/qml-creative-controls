@@ -42,6 +42,7 @@ OTHER_FILES += \
     CreativeControls/ColorChooser.qml \
     CreativeControls/ColorSlider.qml \
     CreativeControls/ColorWheel.qml \
+    CreativeControls/Container.qml \
     CreativeControls/CosInfluence.qml \
     CreativeControls/DonutSlider.qml \
     CreativeControls/Frame.qml \

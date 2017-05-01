@@ -110,14 +110,20 @@ Item {
                     text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
                 }
 
-
-                MultiSlider {
+                Container
+                {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
                     width : 300
                     height : 200
-                    count: 6
+
+                    MultiSlider {
+                        anchors.centerIn: parent
+                        width : parent.width - 2 * parent.radius
+                        height : parent.height - 2 * parent.radius
+                        count: 6
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -130,15 +136,20 @@ Item {
                     text: "Multi Slider"
                 }
 
-
-                LogSlider
+                Container
                 {
                     Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 150
                     height: 50
-                    orientation: Qt.Horizontal
+                    LogSlider
+                    {
+                        anchors.centerIn : parent
+                        width : parent.width - 2 * parent.radius
+                        height : parent.height - 2 * parent.radius
+                        orientation: Qt.Horizontal
+                    }
                 }
                 Text {
                     Layout.column: 1
@@ -194,14 +205,19 @@ Item {
                 rowSpacing: 20
                 columnSpacing: 200
                 anchors.horizontalCenter: parent.horizontalCenter
-
-                HSLSlider {
-                    id: hslSlider
+                Container
+                {
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
-                    width: 150
-                    height: 150
+
+                    HSLSlider {
+                        id: hslSlider
+
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        anchors.centerIn: parent
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -213,21 +229,12 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                   text: "HSL Slider: " + hslSlider.color
+                    text: "HSL Slider: " + hslSlider.color
                 }
-                Rectangle {
+                Container {
                     Layout.column: 1
                     Layout.row: 0
-
-                    color: Styles.background
-                    border.color : Styles.base
-                    border.width: 3
-                    radius : 10
-                    width: 150
-                    height: 150
-
                     Layout.alignment: Layout.Center
-                    Layout.leftMargin: 40
 
                     DonutSlider {
                         x: parent.radius
@@ -250,14 +257,19 @@ Item {
                     color : Styles.background
                     text: "HSL Donut: " + hslDonutSlider.resColor
                 }
-
-                HSVSlider {
-                    id: hsvSlider
+                Container {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
-                    width: 150
-                    height: 150
+
+                    HSVSlider {
+                        id: hsvSlider
+
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        anchors.centerIn: parent
+
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -271,18 +283,10 @@ Item {
                     text: "HSV Slider: " + hsvSlider.color
                 }
 
-                Rectangle {
+                Container {
 
                     Layout.column: 1
                     Layout.row: 2
-
-                    color: Styles.background
-                    border.color : Styles.base
-                    border.width: 3
-                    radius : 10
-                    width: 150
-                    height: 150
-
                     Layout.alignment: Layout.Center
 
                     DonutSlider {
@@ -306,14 +310,18 @@ Item {
                     text: "HSV Donut: " + hsvDonutSlider.resColor
                 }
 
-                RGBSlider {
-                    id: rgbSlider
+                Container{
                     Layout.column: 0
                     Layout.row: 4
                     Layout.alignment: Layout.Center
 
-                    width: 150
-                    height: 150
+                    RGBSlider {
+                        id: rgbSlider
+
+                        width: parent.width - 2 * parent.radius
+                        height: parent.height - 2 * parent.radius
+                        anchors.centerIn: parent
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -327,17 +335,9 @@ Item {
                     color : Styles.background
                     text: "RGB Slider: " + rgbSlider.color
                 }
-                Rectangle {
+                Container {
                     Layout.column: 1
                     Layout.row: 4
-
-                    color: Styles.background
-                    border.color : Styles.base
-                    border.width: 3
-                    radius : 10
-                    width: 150
-                    height: 150
-
                     Layout.alignment: Layout.Center
 
                     DonutSlider {
@@ -589,25 +589,21 @@ Item {
                 rowSpacing: 50
                 columnSpacing: 100
                 anchors.horizontalCenter: parent.horizontalCenter
-                Rectangle
-                {
+                Container {
                     Layout.alignment: Layout.Center
+                    Layout.column: 0
+                    Layout.row: 0
 
-                    color: Styles.background
-                    border.color : Styles.base
-                    border.width: 3
-                    radius : 10
                     width: 300
                     height: 120
 
                     Keyboard
                     {
                         id: kbd
-                        Layout.column: 0
-                        Layout.row: 0
+
                         anchors.centerIn: parent
-                        height : parent.height - 20
-                        width : parent.width - 20
+                        height : parent.height - parent.radius*2.
+                        width : parent.width - parent.radius*2.
 
                         firstKey: 36
                         lastKey: 62
@@ -630,18 +626,23 @@ Item {
                             "Keyboard"
                     }
                 }
-                Switch
-                {
-                    id : toggleSwitch
-
+                Container {
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
+                    height: 100
+                    width: 100
+                    Switch
+                    {
+                        id : toggleSwitch
 
-                    width: 50
-                    height: 50
-                    onToggle: leds.setIntensityForAll(!onoff);
+                        anchors.centerIn: parent
 
+                        width: 50
+                        height: 50
+                        onToggle: leds.setIntensityForAll(!onoff);
+
+                    }
                 }
                 Text {
                     Layout.column: 1
@@ -654,15 +655,20 @@ Item {
                     color : Styles.background
                     text: "Switch: " + toggleSwitch.state
                 }
-                Matrix
+                Container
                 {
-                    id: matrix
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
+                    width: 240
+                    height: 240
 
-                    width: 200
-                    height: 200
+                Matrix
+                {
+                    id: matrix
+                    anchors.centerIn: parent
+                    height : parent.height - parent.radius*4.
+                    width : parent.width - parent.radius*4.
                     onPressedChanged:
                     {
                         if(matrix.pressed.length > 0)
@@ -671,7 +677,7 @@ Item {
                         //else
                         //  leds.setIntensityForAll(0.0);
                     }
-
+                }
                 }
                 Text {
                     Layout.column: 0
@@ -689,25 +695,29 @@ Item {
                             "Matrix"
                     }
                 }
-
-                Leds
-                {
-                    id : leds
-
+                Container{
                     Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Layout.Center
-                    Layout.preferredWidth: 200
-                    width: 200
-                    height: 200
-                    easing : true
+                    width: 240
+                    height: 240
 
-                    // all leds to off
-                    intensity : [
-                        [1., 1.,1.],
-                        [1.,1.,1.],
-                        [1.,1.,1.]
-                    ]
+                    Leds
+                    {
+                        id : leds
+
+                        anchors.centerIn: parent
+                        height : parent.height - parent.radius*4.
+                        width : parent.width - parent.radius*4.
+                        easing : true
+
+                        // all leds to off
+                        intensity : [
+                            [1., 1.,1.],
+                            [1.,1.,1.],
+                            [1.,1.,1.]
+                        ]
+                    }
                 }
                 Text {
                     Layout.column: 1

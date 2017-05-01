@@ -17,8 +17,7 @@ Rectangle
     width : 200
 
     color : colorSpace(x.value,y.value,z.value,alphaValue)
-    border.color: Styles.base
-    border.width: 2
+
 
     // vertical or horizontal slider
     property int orientation : Qt.Vertical

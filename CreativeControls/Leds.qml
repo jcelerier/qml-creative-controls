@@ -110,8 +110,8 @@ Grid
             id: rect
             width: leds.radius * 2.; height: leds.radius * 2.
             radius : leds.radius
-            border.width: 2
-            border.color : Styles.base
+          //  border.width: 2
+          //  border.color : Styles.base
 
             color: Qt.darker(ledColorOn, intensity[indexColumn][indexRow] *10.)
 
