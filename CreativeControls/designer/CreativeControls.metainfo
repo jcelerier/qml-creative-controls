@@ -1,12 +1,14 @@
 MetaInfo {
     Type {
         name: "CreativeControls.AngleSlider"
-        
+        icon: "angleSlider16.png"
+
         ItemLibraryEntry {
             name: "Angle Slider"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "angleSlider16.png"
         }
     }
     
@@ -33,22 +35,27 @@ MetaInfo {
     }
     Type {
         name: "CreativeControls.Container"
+        icon: "container16.png"
 
         ItemLibraryEntry {
             name: "Container"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "container16.png"
         }
     }
     Type {
         name: "CreativeControls.CosInfluence"
-        
+        icon: "pad16.png"
+
         ItemLibraryEntry {
             name: "Cosine Influence"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "pad16.png"
+
         }
     }
     Type {
@@ -74,45 +81,52 @@ MetaInfo {
     
     Type {
         name: "CreativeControls.Graph"
-        
+        icon: "graph16.png"
+
         ItemLibraryEntry {
             name: "1D Graph"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "graph16.png"
         }
     }
     
     Type {
         name: "CreativeControls.HSVSlider"
-        
+         icon: "hsvSlider16.png"
         ItemLibraryEntry {
             name: "HSV Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "hsvSlider16.png"
         }
     }
 
     Type {
         name: "CreativeControls.HSLSlider"
+        icon: "hsvSlider16.png"
 
         ItemLibraryEntry {
             name: "HSL Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "hsvSlider16.png"
         }
     }
     
     Type {
         name: "CreativeControls.Joystick"
-        
+        icon: "joystick16.png"
+
         ItemLibraryEntry {
             name: "Joystick"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "joystick16.png"
         }
     }
     
@@ -129,45 +143,54 @@ MetaInfo {
     
     Type {
         name: "CreativeControls.Leds"
-        
+        icon: "leds16.png"
+
         ItemLibraryEntry {
             name: "Leds"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "leds16.png"
         }
     }
     
     Type {
         name: "CreativeControls.LogSlider"
-        
+        icon: "slider16.png"
+
         ItemLibraryEntry {
             name: "Log Slider"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "slider16.png"
         }
     }
     
     Type {
         name: "CreativeControls.Matrix"
-        
+        icon: "matrix16.png"
+
         ItemLibraryEntry {
             name: "Button Matrix"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "matrix16.png"
         }
     }
     
     Type {
         name: "CreativeControls.MultiSlider"
-        
+        icon: "multislider16.png"
+
         ItemLibraryEntry {
             name: "Multi-Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "multislider16.png"
+
         }
     }
     
@@ -206,12 +229,14 @@ MetaInfo {
 
     Type {
         name: "CreativeControls.RGBSlider"
+        icon: "rgbSlider16.png"
 
         ItemLibraryEntry {
             name: "RGB Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "rgbSlider16.png"
         }
     }
 
@@ -228,23 +253,27 @@ MetaInfo {
     
     Type {
         name: "CreativeControls.Scope"
-        
+        icon: "scope16.png"
+
         ItemLibraryEntry {
             name: "Scope"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "scope16.png"
         }
     }
     
     Type {
         name: "CreativeControls.Slider"
-        
+        icon: "slider16.png"
+
         ItemLibraryEntry {
             name: "Slider"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "slider16.png"
         }
     }
     
@@ -282,12 +311,14 @@ MetaInfo {
     }
     Type {
         name: "CreativeControls.Switch"
+        icon: "switch16.png"
 
         ItemLibraryEntry {
             name: "Switch"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "switch16.png"
         }
     }
 
@@ -304,12 +335,14 @@ MetaInfo {
     
     Type {
         name: "CreativeControls.XYPad"
-        
+        icon: "pad16.png"
+
         ItemLibraryEntry {
             name: "X-Y Pad"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "pad16.png"
         }
     }
 }

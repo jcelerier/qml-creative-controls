@@ -10,11 +10,15 @@ import CreativeControls 1.0
 Rectangle
 {
     id: pad
+
+    width : 200
+    height : 200
+    radius: Math.max(width, height) / 2
+
     color: Styles.background
 
     state: "default"
 
-    radius: Math.max(width, height) / 2
 
     border.color: Styles.base//detail
     border.width: 5.
