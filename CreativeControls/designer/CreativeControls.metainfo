@@ -89,12 +89,14 @@ MetaInfo {
     
     Type {
         name: "CreativeControls.Keyboard"
-        
+        icon: "keyboard16.png"
+
         ItemLibraryEntry {
             name: "Piano Keyboard"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
+            libraryIcon: "keyboard16.png"
         }
     }
     
