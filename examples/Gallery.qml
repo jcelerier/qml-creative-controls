@@ -116,8 +116,8 @@ Item {
                     Layout.column: 0
                     Layout.row: 6
                     Layout.alignment: Layout.Center
-                    width: 50
-                    height: 150
+                    width: 150
+                    height: 50
                 }
                 Text {
                     Layout.column: 1

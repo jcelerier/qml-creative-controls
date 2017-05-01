@@ -21,7 +21,7 @@ Rectangle
     onWidthChanged: handle.updateHandle();
     onHeightChanged: handle.updateHandle();
 
-    color : Styles.colorOn
+    color : Styles.background
     border.width : orientation ==  Qt.Vertical ? width / 25. : height / 25.
     border.color : Styles.background
 
@@ -38,7 +38,7 @@ Rectangle
     property alias handleColor : handle.color
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
-    property int orientation : Qt.Vertical //Qt.Horizontal
+    property int orientation : Qt.Horizontal
 
 
     property bool __updating: false
@@ -49,7 +49,7 @@ Rectangle
         var borderW = border.width;
 
         if(orientation == Qt.Vertical)
-            mappedVal = 1.0 - handle.height / (slider.height - 2.*borderW);
+            mappedVal = handle.height / (slider.height - 2.*borderW);
         else if(orientation == Qt.Horizontal)
             mappedVal = handle.width /  (slider.width - 2.*borderW);
 
@@ -74,10 +74,10 @@ Rectangle
     function moveHandle(mouseX,mouseY)
     {
         handle.height = (orientation == Qt.Vertical)?
-                    Utils.clamp(mouseY,0,slider.height) - slider.border.width
+                    Utils.clamp(slider.height - mouseY,0,slider.height -slider.border.width) - slider.border.width
                   :  handle.height ;
         handle.width = (orientation == Qt.Horizontal)?
-                  Utils.clamp(mouseY,0,slider.width) - mouseX - slider.border.width
+                   Utils.clamp(mouseX,0,slider.width - slider.border.width) - slider.border.width
                   : handle.width ;
         // __updating = false;
     }
@@ -91,10 +91,10 @@ Rectangle
     {
         id: handle
 
-        x: slider.border.width
-        y: slider.border.width
+        x:  slider.border.width
+        y: (orientation == Qt.Vertical) ?  slider.height - handle.height -slider.border.width: slider.border.width
 
-        color :  Styles.background
+        color :  Styles.colorOn
         radius : Styles.cornerRadius
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
