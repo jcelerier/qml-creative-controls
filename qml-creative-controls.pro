@@ -40,6 +40,7 @@ OTHER_FILES += \
     CreativeControls/AngleSlider.qml \
     CreativeControls/ArcSlider.qml \
     CreativeControls/ColorChooser.qml \
+    CreativeControls/ColorSlider.qml \
     CreativeControls/ColorWheel.qml \
     CreativeControls/CosInfluence.qml \
     CreativeControls/DonutSlider.qml \

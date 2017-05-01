@@ -200,18 +200,20 @@ Item {
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
-                    width: 100
-                    height: 100
+                    width: 150
+                    height: 150
                 }
                 Text {
                     Layout.column: 0
                     Layout.row: 1
-                    Layout.alignment: Layout.Center
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
+
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "HSL Slider: " + hslSlider.color
+                   text: "HSL Slider: " + hslSlider.color
                 }
                 Rectangle {
                     Layout.column: 1
@@ -239,7 +241,8 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 1
-                    Layout.alignment:Layout.Center
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
 
                     font.pointSize: 20
                     font.family: mainFont
@@ -253,13 +256,14 @@ Item {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
-                    width: 100
-                    height: 100
+                    width: 150
+                    height: 150
                 }
                 Text {
                     Layout.column: 0
                     Layout.row: 3
-                    Layout.alignment: Layout.Center
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
@@ -293,7 +297,8 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 3
-                    Layout.alignment: Layout.Center
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
@@ -307,14 +312,14 @@ Item {
                     Layout.row: 4
                     Layout.alignment: Layout.Center
 
-                    width: 100
-                    height: 100
+                    width: 150
+                    height: 150
                 }
                 Text {
                     Layout.column: 0
                     Layout.row: 5
-                    Layout.alignment: Layout.Center
-                    Layout.preferredWidth: 200
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
 
                     font.pointSize: 20
                     font.family: mainFont
@@ -348,6 +353,7 @@ Item {
                     Layout.column: 1
                     Layout.row: 5
                     Layout.alignment: Qt.AlignLeft
+                    Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true

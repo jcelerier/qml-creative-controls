@@ -131,7 +131,7 @@ Rectangle
                 updateSliders(point.x,point.y);
             }
         }
-        onPositionChanged:updateSliders(point.x,point.y)
+        onPositionChanged: updateSliders(point.x,point.y)
 
         onDoubleClicked:
         {
