@@ -7,13 +7,14 @@ Item {
     width: 900
     height: 900
 
-    property font mainFont: Qt.font({
-                                        family: 'Monospace',
-                                        weight: Font.Black,
-                                        bold: true,
-                                        italic: false,
-                                        pointSize: 24
-                                    })
+    property font mainFont:
+        Qt.font({
+                    family: 'Monospace',
+                    weight: Font.Black,
+                    bold: true,
+                    italic: false,
+                    pointSize: 24
+                })
 
     SwipeView
     {
@@ -118,6 +119,7 @@ Item {
                     Layout.alignment: Layout.Center
                     width: 150
                     height: 50
+                    orientation: Qt.Horizontal
                 }
                 Text {
                     Layout.column: 1

@@ -42,10 +42,10 @@ Rectangle
     TouchArea
     {
         anchors.fill: parent
-        onPressed: applyPos()
-        onPositionChanged: applyPos()
+        onPressed: applyPos(point)
+        onPositionChanged: applyPos(point)
 
-        function applyPos()
+        function applyPos(point)
         {
             centerX = Utils.clamp(point.x, 0, cosInfluence.width) / width;
             centerY = Utils.clamp(point.y, 0, cosInfluence.height) / height;
