@@ -101,7 +101,7 @@ Rectangle
     {
         anchors.fill : parent
         onPressed: {
-            var distToCenter = Utils.distance(mouseX,mouseY,parent.radius,parent.radius);
+            var distToCenter = Utils.distance(point.x,point.y,parent.radius,parent.radius);
             if(distToCenter > innerRadius)
             {
                 updateSliders(point.x,point.y);

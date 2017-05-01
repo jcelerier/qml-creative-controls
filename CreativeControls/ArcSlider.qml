@@ -56,7 +56,7 @@ Rectangle
         case 1:
             return colorSpace === Qt.rgba ?
                         colorSpace(0.,c,0.,1.)
-                      : colorSpace(hue,0.5,c,1.);
+                      : colorSpace(hue,c,0.5,1.);
         case 2:
             return colorSpace == Qt.rgba ?
                         colorSpace(0.,0.,c,1.)
