@@ -41,6 +41,7 @@ Item {
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
@@ -67,18 +68,20 @@ Item {
 
                     Layout.alignment: Layout.Center
                 }
+
                 Text {
                     Layout.column: 0
                     Layout.row: 1
                     Layout.alignment:  Layout.Center
                     Layout.preferredWidth: 100
                     horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
 
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Angle slider: " + angleSlider.angle.toFixed(2)
+                    text: "Angle slider\n" + angleSlider.angle.toFixed(2)
                 }
 
                 AngleSlider {
@@ -99,7 +102,7 @@ Item {
                     Layout.row: 1
                     Layout.alignment: Layout.Center
                     horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignTop
+                    verticalAlignment: Text.AlignVCenter
 
                     wrapMode : Text.WordWrap
                     Layout.preferredWidth: 200
@@ -107,7 +110,7 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Rotated angle slider with min and max: " + angleSliderMinMax.angle.toFixed(2)
+                    text: "Rotated with\nmin & max\n" + angleSliderMinMax.angle.toFixed(2)
                 }
 
                 Container
@@ -125,6 +128,7 @@ Item {
                         count: 6
                     }
                 }
+
                 Text {
                     Layout.column: 0
                     Layout.row: 3
@@ -133,6 +137,8 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     text: "Multi Slider"
                 }
 
@@ -160,6 +166,8 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     text: "Log Slider"
                 }
                 /*
@@ -222,14 +230,16 @@ Item {
                 Text {
                     Layout.column: 0
                     Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
 
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "HSL Slider: " + hslSlider.color
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "HSL Slider\n" + hslSlider.color
                 }
                 Container {
                     Layout.column: 1
@@ -248,14 +258,16 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
 
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "HSL Donut: " + hslDonutSlider.resColor
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "HSL Donut\n" + hslDonutSlider.resColor
                 }
                 Container {
                     Layout.column: 0
@@ -274,13 +286,15 @@ Item {
                 Text {
                     Layout.column: 0
                     Layout.row: 3
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "HSV Slider: " + hsvSlider.color
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "HSV Slider\n" + hsvSlider.color
                 }
 
                 Container {
@@ -301,13 +315,15 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 3
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "HSV Donut: " + hsvDonutSlider.resColor
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "HSV Donut\n" + hsvDonutSlider.resColor
                 }
 
                 Container{
@@ -326,14 +342,16 @@ Item {
                 Text {
                     Layout.column: 0
                     Layout.row: 5
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
 
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "RGB Slider: " + rgbSlider.color
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "RGB Slider\n" + rgbSlider.color
                 }
                 Container {
                     Layout.column: 1
@@ -352,13 +370,15 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 5
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "RGB Donut: " + rgbDonutSlider.resColor
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "RGB Donut\n" + rgbDonutSlider.resColor
                 }
 
 
@@ -414,6 +434,8 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     color : Styles.background
                     text: "Graph"
                 }
@@ -452,6 +474,8 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     color : Styles.background
                     text: "Scope"
                 }
@@ -505,7 +529,9 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "X-Y Pad: " + xypad.stickX.toFixed(2) + ", " + xypad.stickY.toFixed(2)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "X-Y Pad\n" + xypad.stickX.toFixed(2) + ", " + xypad.stickY.toFixed(2)
                 }
 
                 CosInfluence
@@ -522,12 +548,14 @@ Item {
                 Text {
                     Layout.column: 1
                     Layout.row: 1
-                    Layout.alignment: Qt.AlignLeft
+                    Layout.alignment: Qt.AlignCenter
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Cosine Influence: " + prettyArray(cosinfluence.values)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Cosine Influence\n" + prettyArray(cosinfluence.values)
 
                     function prettyArray(arr)
                     {
@@ -558,7 +586,9 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Joystick: " + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Joystick\n" + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
                 }
 
 
@@ -617,13 +647,15 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     color : Styles.background
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
-                            "Keyboard: " + kbd.pressedKeys[0].key.toFixed(0) + ", " + kbd.pressedKeys[0].vel.toFixed(0)
+                            "Keyboard\n" + kbd.pressedKeys[0].key.toFixed(0) + ", " + kbd.pressedKeys[0].vel.toFixed(0)
                         else
-                            "Keyboard"
+                            "Keyboard\n"
                     }
                 }
                 Container {
@@ -653,7 +685,9 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Switch: " + toggleSwitch.state
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Switch\n" + toggleSwitch.state
                 }
                 Container
                 {
@@ -686,13 +720,15 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     color : Styles.background
                     text:
                     {
                         if(matrix.pressed.length > 0)
-                            "Matrix: " + matrix.pressed[0]
+                            "Matrix\n" + matrix.pressed[0]
                         else
-                            "Matrix"
+                            "Matrix\n"
                     }
                 }
                 Container{
@@ -727,8 +763,10 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     color : Styles.background
-                    text: "Leds"
+                    text: "Leds\n"
                 }
 
 
