@@ -63,6 +63,49 @@ void XYTarget::mouseReleaseEvent(QMouseEvent* event)
   event->accept();
 }
 
+void XYTarget::touchEvent(QTouchEvent* event)
+{
+  if(!event->touchPoints().empty())
+  {
+    const auto& first = event->touchPoints().first();
+    switch(first.state())
+    {
+      case Qt::TouchPointPressed:
+      {
+        if(contains(first.pos()))
+        {
+          m_lastPos = first.pos();
+          event->accept();
+        }
+        else
+        {
+          event->ignore();
+        }
+        break;
+      }
+      case Qt::TouchPointMoved:
+      {
+        auto new_x = first.pos().x() / width();
+        auto new_y = first.pos().y() / height();
+
+        m_lastPos = first.pos();
+        setCenterX(new_x);
+        setCenterY(new_y);
+        event->accept();
+
+        break;
+      }
+      case Qt::TouchPointStationary:
+        break;
+      case Qt::TouchPointReleased:
+        event->accept();
+        break;
+      default:
+        break;
+    }
+  }
+}
+
 bool XYTarget::contains(const QPointF& point) const
 {
   const auto w = m_centerX * width();

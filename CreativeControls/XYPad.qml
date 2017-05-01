@@ -22,20 +22,18 @@ Item
         color: Styles.colorOn
     }
 
-    MouseArea {
+    TouchArea {
         anchors.fill: parent
 
-        onPressed: applyPos();
-        onPositionChanged: applyPos()
+        onPressed: applyPos(point);
+        onPositionChanged: applyPos(point)
 
         onDoubleClicked: stickX = stickY = 0.5;
 
-
-        function applyPos()
+        function applyPos(point)
         {
-            stickX = Utils.clamp(mouseX, 0, xyPad.width) / width;
-            stickY = Utils.clamp(mouseY, 0, xyPad.height) / height;
+            stickX = Utils.clamp(point.x, 0, xyPad.width) / width;
+            stickY = Utils.clamp(point.y, 0, xyPad.height) / height;
         }
     }
-
 }

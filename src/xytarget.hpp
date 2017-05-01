@@ -35,6 +35,7 @@ private:
   void mouseDoubleClickEvent(QMouseEvent* event) final override;
   void mouseMoveEvent(QMouseEvent* event) final override;
   void mouseReleaseEvent(QMouseEvent* event) final override;
+  void touchEvent(QTouchEvent* event) final override;
   bool contains(const QPointF &point) const final override;
 
   void updatePenWidth();
