@@ -39,6 +39,7 @@ private:
   void mouseDoubleClickEvent(QMouseEvent* event) final override;
   void mouseMoveEvent(QMouseEvent* event) final override;
   void mouseReleaseEvent(QMouseEvent* event) final override;
+  void touchEvent(QTouchEvent*) final override;
 
   void updateAngle(QPointF point);
 

@@ -17,6 +17,7 @@ HEADERS += \
     src/cpputils.hpp \
     src/xytarget.hpp \
     src/polygon.hpp \
+    src/toucharea.hpp \
     src/painted_polygon.hpp
 
 SOURCES += \
@@ -27,6 +28,7 @@ SOURCES += \
     src/cpputils.cpp \
     src/xytarget.cpp \
     src/polygon.cpp \
+    src/toucharea.cpp \
     src/painted_polygon.cpp
 
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/

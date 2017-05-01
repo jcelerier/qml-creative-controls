@@ -128,7 +128,6 @@ Rectangle
     MouseArea
     {
         anchors.fill : parent
-        propagateComposedEvents: true
 
         onPressed :
         {

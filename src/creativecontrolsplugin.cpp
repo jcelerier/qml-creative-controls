@@ -6,6 +6,7 @@
 #include "painted_polygon.hpp"
 #include "cpputils.hpp"
 #include "xytarget.hpp"
+#include "toucharea.hpp"
 
 namespace CreativeControls
 {
@@ -22,6 +23,7 @@ void Plugin::registerTypes(const char *uri)
   qmlRegisterType<Scope>(uri, 1, 0, "ScopeImpl");
   qmlRegisterType<PaintedPolygon>(uri, 1, 0, "Polygon");
   qmlRegisterType<XYTarget>(uri, 1, 0, "Crosshair");
+  qmlRegisterType<TouchArea>(uri, 1, 0, "TouchArea");
 
   qmlRegisterSingletonType<CppUtils>(uri, 1, 0, "CppUtils",
                                      [] (QQmlEngine*, QJSEngine*) -> QObject* {
