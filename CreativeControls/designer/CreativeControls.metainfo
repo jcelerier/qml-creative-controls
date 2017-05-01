@@ -11,28 +11,6 @@ MetaInfo {
             libraryIcon: "angleSlider16.png"
         }
     }
-    
-    Type {
-        name: "CreativeControls.ColorChooser"
-        
-        ItemLibraryEntry {
-            name: "Color Chooser"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
-    
-    Type {
-        name: "CreativeControls.ColorWheel"
-        
-        ItemLibraryEntry {
-            name: "Color Wheel"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
     Type {
         name: "CreativeControls.Container"
         icon: "container16.png"
@@ -58,27 +36,6 @@ MetaInfo {
 
         }
     }
-    Type {
-        name: "CreativeControls.DonutSlider"
-
-        ItemLibraryEntry {
-            name: "Donut Slider"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
-    Type {
-        name: "CreativeControls.Graph2D"
-        
-        ItemLibraryEntry {
-            name: "2D Graph"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
-    
     Type {
         name: "CreativeControls.Graph"
         icon: "graph16.png"
@@ -194,6 +151,120 @@ MetaInfo {
         }
     }
     
+
+    Type {
+        name: "CreativeControls.RGBSlider"
+        icon: "rgbSlider16.png"
+
+        ItemLibraryEntry {
+            name: "RGB Sliders"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "rgbSlider16.png"
+        }
+    }
+
+    
+    Type {
+        name: "CreativeControls.Scope"
+        icon: "scope16.png"
+
+        ItemLibraryEntry {
+            name: "Scope"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "scope16.png"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Slider"
+        icon: "slider16.png"
+
+        ItemLibraryEntry {
+            name: "Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "slider16.png"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Switch"
+        icon: "switch16.png"
+
+        ItemLibraryEntry {
+            name: "Switch"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "switch16.png"
+        }
+    }
+    Type {
+        name: "CreativeControls.XYPad"
+        icon: "pad16.png"
+
+        ItemLibraryEntry {
+            name: "X-Y Pad"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "pad16.png"
+        }
+    }
+    
+    
+    
+    
+    /* 
+    Type {
+        name: "CreativeControls.ColorChooser"
+        
+        ItemLibraryEntry {
+            name: "Color Chooser"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.ColorWheel"
+        
+        ItemLibraryEntry {
+            name: "Color Wheel"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.DonutSlider"
+
+        ItemLibraryEntry {
+            name: "Donut Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
+    Type {
+        name: "CreativeControls.Graph2D"
+        
+        ItemLibraryEntry {
+            name: "2D Graph"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+    
     Type {
         name: "CreativeControls.Random1D"
         
@@ -226,57 +297,6 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-
-    Type {
-        name: "CreativeControls.RGBSlider"
-        icon: "rgbSlider16.png"
-
-        ItemLibraryEntry {
-            name: "RGB Sliders"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "rgbSlider16.png"
-        }
-    }
-
-    Type {
-        name: "CreativeControls.Scale"
-        
-        ItemLibraryEntry {
-            name: "Linear Scale"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
-    
-    Type {
-        name: "CreativeControls.Scope"
-        icon: "scope16.png"
-
-        ItemLibraryEntry {
-            name: "Scope"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "scope16.png"
-        }
-    }
-    
-    Type {
-        name: "CreativeControls.Slider"
-        icon: "slider16.png"
-
-        ItemLibraryEntry {
-            name: "Slider"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "slider16.png"
-        }
-    }
-    
     Type {
         name: "CreativeControls.Spat"
         
@@ -309,18 +329,6 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    Type {
-        name: "CreativeControls.Switch"
-        icon: "switch16.png"
-
-        ItemLibraryEntry {
-            name: "Switch"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "switch16.png"
-        }
-    }
 
     Type {
         name: "CreativeControls.Trajectory"
@@ -332,17 +340,16 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    
     Type {
-        name: "CreativeControls.XYPad"
-        icon: "pad16.png"
-
+        name: "CreativeControls.Scale"
+        
         ItemLibraryEntry {
-            name: "X-Y Pad"
+            name: "Linear Scale"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "pad16.png"
         }
     }
+    
+    */
 }
