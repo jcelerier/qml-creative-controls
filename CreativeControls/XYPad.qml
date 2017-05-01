@@ -6,6 +6,9 @@ Item
 {
     id: xyPad
 
+    width : 200
+    height : 200
+
     property alias stickX : xy.centerX
     property alias stickY : xy.centerY
 

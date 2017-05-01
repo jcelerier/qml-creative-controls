@@ -10,6 +10,8 @@ import CreativeControls 1.0
 // * firstKey / lastKey : limits of the keyboard
 Item
 {
+    width : 200
+    height : 100
     property real xScale : Math.max(width / (34 * keyWidth),1.0)
     property real yScale : Math.max(height / whiteHeight,1.0)
 
