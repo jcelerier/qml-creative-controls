@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.3
 
 // Sliders to control hue, saturation, value, alpha, of a color
 // Properties:
+// * color: the current color
 // * enableAlpha: show the alpha channel slider
 ColorSlider
 {

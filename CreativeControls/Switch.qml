@@ -12,8 +12,8 @@ Rectangle
 {
     id: toggleSwitch
 
-    width : 200
-    height : 200
+    width : 50
+    height : 50
     radius : width/2
 
     border.color : "#666666"//Styles.base

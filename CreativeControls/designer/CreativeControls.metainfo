@@ -31,7 +31,16 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    
+    Type {
+        name: "CreativeControls.Container"
+
+        ItemLibraryEntry {
+            name: "Container"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
     Type {
         name: "CreativeControls.CosInfluence"
         
@@ -42,7 +51,16 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    
+    Type {
+        name: "CreativeControls.DonutSlider"
+
+        ItemLibraryEntry {
+            name: "Donut Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
     Type {
         name: "CreativeControls.Graph2D"
         
@@ -70,6 +88,17 @@ MetaInfo {
         
         ItemLibraryEntry {
             name: "HSV Sliders"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+
+    Type {
+        name: "CreativeControls.HSLSlider"
+
+        ItemLibraryEntry {
+            name: "HSL Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
@@ -174,7 +203,18 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    
+
+    Type {
+        name: "CreativeControls.RGBSlider"
+
+        ItemLibraryEntry {
+            name: "RGB Sliders"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+
     Type {
         name: "CreativeControls.Scale"
         
@@ -240,7 +280,17 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    
+    Type {
+        name: "CreativeControls.Switch"
+
+        ItemLibraryEntry {
+            name: "Switch"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+
     Type {
         name: "CreativeControls.Trajectory"
         
