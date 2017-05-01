@@ -41,7 +41,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
 
-![Gallery video](http://gifly.com/media_gifly/tmp/dKPd)
+![Gallery video](https://media.giphy.com/media/xUPGcIekebnYNZhBnO/giphy.gif)
 
 ## Inspiration
 
