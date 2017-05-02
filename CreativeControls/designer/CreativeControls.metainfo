@@ -37,6 +37,18 @@ MetaInfo {
         }
     }
     Type {
+        name: "CreativeControls.DonutSlider"
+        icon: "donutSlider16.png"
+
+        ItemLibraryEntry {
+            name: "Donut Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "donutSlider16.png"
+        }
+    }
+    Type {
         name: "CreativeControls.Graph"
         icon: "graph16.png"
 
@@ -245,16 +257,7 @@ MetaInfo {
         }
     }
     
-    Type {
-        name: "CreativeControls.DonutSlider"
 
-        ItemLibraryEntry {
-            name: "Donut Slider"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
     
     Type {
         name: "CreativeControls.Graph2D"
