@@ -43,7 +43,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ![Gallery video](https://media.giphy.com/media/xUPGcIekebnYNZhBnO/giphy.gif)
 
-![QtDesigner](http://i.imgur.com/KjG6rq7.png)
+![QtDesigner](http://i.imgur.com/t0OTkcJ.png)
 
 ## Inspiration
 
