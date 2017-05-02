@@ -1,4 +1,4 @@
-# QML Creative Controls
+ <h1> <img src="logo.png" width="100" align="center"> QML Creative Controls  </h1>
 
 Controls useful in a creative coding context.
 
