@@ -73,6 +73,8 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 * [nanogui](https://github.com/wjakob/nanogui)
 
+* [ofxMightyUI](https://github.com/kritzikratzi/ofxMightyUI)
+
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
 
 * [ofxCvGui](https://github.com/elliotwoods/ofxCvGui)
