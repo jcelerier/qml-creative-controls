@@ -48,45 +48,26 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 ## Inspiration
 
 * [Lemur](https://liine.net)
-
 * [HOALibrary](https://cycling74.com/toolbox/hoalibrary-v2/)
-
 * [Musinekit](http://www.sensomusic.org/musinekit/en)
-
 * [TouchOSC](https://hexler.net/software/touchosc)
-
 * [Audiomulch](http://www.audiomulch.com/)
-
 * [ofxDatGui](https://github.com/braitsch/ofxDatGui)
-
 * [Luminosus](https://www.luminosus.org)
-
 * [oui.js](https://github.com/wearekuva/oui)
-
 * [dat.gui](http://workshop.chromeexperiments.com/examples/gui)
-
 * [p5.gui](https://github.com/bitcraftlab/p5.gui)
-
 * [controlp5](https://github.com/sojamo/controlp5)
-
 * [Dear ImGui](https://github.com/ocornut/imgui)
-
 * [nanogui](https://github.com/wjakob/nanogui)
-
+* [Open Stage Control](https://github.com/jean-emmanuel/open-stage-control)
 * [ofxMightyUI](https://github.com/kritzikratzi/ofxMightyUI)
-
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
-
 * [ofxCvGui](https://github.com/elliotwoods/ofxCvGui)
-
 * [quickcollider](https://github.com/jleben/quickcollider)
-
 * [QtQuickVcp](https://github.com/qtquickvcp/QtQuickVcp)
-
 * [FlatUI](https://github.com/obeezzy/FlatUI)
-
 * [spatium](https://vimeo.com/52321647)
-
 * [qml-color-picker](https://github.com/astorije/qml-color-picker)
 
 
