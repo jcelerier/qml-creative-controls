@@ -143,7 +143,6 @@ Rectangle
 
         onReleased:  __updating = false
 
-
         onDoubleClicked: slider.reset()
     }
 
@@ -153,7 +152,7 @@ Rectangle
     Text
     {
         id: label
-        text : value
+        text : value.toFixed(2)
         anchors.centerIn: slider
 
         font.bold: true

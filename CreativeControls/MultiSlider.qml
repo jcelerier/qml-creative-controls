@@ -10,6 +10,7 @@ Item
 {
     id: multiSlider
 
+    objectName: "multiSlider"
     width: 200
     height: 100
 

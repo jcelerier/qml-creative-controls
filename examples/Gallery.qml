@@ -59,14 +59,24 @@ Item {
                 rowSpacing: 20
                 columnSpacing: 200
 
-                AngleSlider {
-                    id: angleSlider
+                Container
+                {
                     Layout.column: 0
                     Layout.row: 0
-                    width : 100
-                    height : 100
-
                     Layout.alignment: Layout.Center
+
+                    width: 200
+                    height: 200
+                    title: angleSlider.angle.toFixed(2)
+
+                    AngleSlider {
+                        id: angleSlider
+
+
+                        width: Math.min(parent.width,parent.height)
+                        height: width
+                        anchors.centerIn: parent
+                    }
                 }
 
                 Text {
@@ -81,21 +91,30 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Angle slider\n" + angleSlider.angle.toFixed(2)
+                    text: "Angle slider"
                 }
-
-                AngleSlider {
-                    id: angleSliderMinMax
+                Container
+                {
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
 
-                    width: 100
-                    height: 100
-                    angle: 0
-                    min: -120
-                    max: 120
-                    transform: Rotation { origin.x: 50; origin.y: 50; angle: -90}
+                    width: 200
+                    height: 200
+
+                    title: angleSliderMinMax.angle.toFixed(2)
+
+                    AngleSlider {
+                        id: angleSliderMinMax
+
+                        width: Math.min(parent.width,parent.height)
+                        height: width
+                        anchors.centerIn: parent
+                        angle: 0
+                        min: -120
+                        max: 120
+                        rotation: -90
+                    }
                 }
                 Text {
                     Layout.column: 1
@@ -110,7 +129,7 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
-                    text: "Rotated with\nmin & max\n" + angleSliderMinMax.angle.toFixed(2)
+                    text: "Rotated with\nmin & max\n"
                 }
 
                 Container
@@ -120,11 +139,9 @@ Item {
                     Layout.alignment: Layout.Center
                     width : 300
                     height : 200
-
+                    title: "label"
                     MultiSlider {
-                        anchors.centerIn: parent
-                        width : parent.width - 2 * parent.radius
-                        height : parent.height - 2 * parent.radius
+                        anchors.fill: parent
                         count: 6
                     }
                 }
@@ -147,13 +164,12 @@ Item {
                     Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Layout.Center
-                    width: 150
-                    height: 50
+                    width: 200
+                    height: 100
+                   //  title: "label"
                     LogSlider
                     {
-                        anchors.centerIn : parent
-                        width : parent.width - 2 * parent.radius
-                        height : parent.height - 2 * parent.radius
+                        anchors.fill : parent
                         orientation: Qt.Horizontal
                     }
                 }
@@ -170,20 +186,35 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     text: "Log Slider"
                 }
-                /*
-                RangeSlider
+              /*  Container
                 {
-                    Layout.column: 0
-                    Layout.row: 6
+                    Layout.column: 1
+                    Layout.row: 4
                     Layout.alignment: Layout.Center
+                    width: 50
+                    height: 150
+
+                    RangeSlider
+                    {
+                        anchors.centerIn : parent
+                        width : parent.width - 2 * parent.radius
+                        height : parent.height - 2 * parent.radius
+                        orientation: Qt.Vertical
+                    }
                 }
                 Text {
                     Layout.column: 1
-                    Layout.row: 6
+                    Layout.row: 5
+
                     font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     text: "Range Slider"
-                }
-                */
+                }*/
+
             }
         }
         Page
@@ -209,22 +240,25 @@ Item {
             GridLayout
             {
                 rows : 3
-                columns : 2
+                columns : 3
                 rowSpacing: 20
-                columnSpacing: 200
+                columnSpacing: 50
                 anchors.horizontalCenter: parent.horizontalCenter
                 Container
                 {
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
+                    width: 200
+                    height : 200
+
+                    color: hslSlider.color
+                    title: hslSlider.color
 
                     HSLSlider {
                         id: hslSlider
 
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
-                        anchors.centerIn: parent
+                        anchors.fill: parent
                     }
                 }
                 Text {
@@ -239,48 +273,24 @@ Item {
                     color : Styles.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: "HSL Slider\n" + hslSlider.color
+                    text: "HSL Slider"
                 }
-                Container {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Layout.Center
 
-                    DonutSlider {
-                        x: parent.radius
-                        y: parent.radius
-                        id: hslDonutSlider
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
-                        colorSpace : Qt.hsla
-                    }
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 1
-                    Layout.alignment: Layout.Center
-                    Layout.preferredWidth: 100
-
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : Styles.background
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "HSL Donut\n" + hslDonutSlider.resColor
-                }
                 Container {
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
+                    width: 200
+                    height : 200
+                    title:  hslDonutSlider.resColor
+                    DonutSlider {
+                        id: hslDonutSlider
 
-                    HSVSlider {
-                        id: hsvSlider
-
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
+                        width: Math.min(parent.width,parent.height)
+                        height: width
                         anchors.centerIn: parent
 
+                        colorSpace : Qt.hsla
                     }
                 }
                 Text {
@@ -288,13 +298,43 @@ Item {
                     Layout.row: 3
                     Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
+
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
                     color : Styles.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: "HSV Slider\n" + hsvSlider.color
+                    text: "HSL Donut"
+                }
+                Container
+                {
+                    Layout.column: 1
+                    Layout.row: 0
+                    Layout.alignment: Layout.Center
+                    width: 200
+                    height : 200
+
+                    color: hsvSlider.color
+                    title: hsvSlider.color
+
+                    HSVSlider {
+                        id: hsvSlider
+                        anchors.fill: parent
+                    }
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+                    Layout.preferredWidth: 100
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "HSV Slider"
                 }
 
                 Container {
@@ -303,12 +343,16 @@ Item {
                     Layout.row: 2
                     Layout.alignment: Layout.Center
 
+                    width: 200
+                    height : 200
+                    title:  hsvDonutSlider.resColor
+
                     DonutSlider {
-                        x: parent.radius
-                        y: parent.radius
                         id: hsvDonutSlider
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
+
+                        width: Math.min(parent.width,parent.height)
+                        height: width
+                        anchors.centerIn: parent
                         colorSpace : Qt.hsva
                     }
                 }
@@ -323,25 +367,28 @@ Item {
                     color : Styles.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: "HSV Donut\n" + hsvDonutSlider.resColor
+                    text: "HSV Donut"
                 }
 
-                Container{
-                    Layout.column: 0
-                    Layout.row: 4
+                Container
+                {
+                    Layout.column: 2
+                    Layout.row: 0
                     Layout.alignment: Layout.Center
+                    width: 200
+                    height : 200
+
+                    color: rgbSlider.color
+                    title: rgbSlider.color
 
                     RGBSlider {
                         id: rgbSlider
-
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
-                        anchors.centerIn: parent
+                        anchors.fill: parent
                     }
                 }
                 Text {
-                    Layout.column: 0
-                    Layout.row: 5
+                    Layout.column: 2
+                    Layout.row: 1
                     Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
 
@@ -354,22 +401,25 @@ Item {
                     text: "RGB Slider\n" + rgbSlider.color
                 }
                 Container {
-                    Layout.column: 1
-                    Layout.row: 4
+                    Layout.column: 2
+                    Layout.row: 2
                     Layout.alignment: Layout.Center
 
+                    width: 200
+                    height : 200
+                    title:  rgbDonutSlider.resColor
                     DonutSlider {
-                        x: parent.radius
-                        y: parent.radius
                         id: rgbDonutSlider
-                        width: parent.width - 2 * parent.radius
-                        height: parent.height - 2 * parent.radius
+
+                        width: Math.min(parent.width,parent.height)
+                        height: width
+                        anchors.centerIn: parent
                         colorSpace : Qt.rgba
                     }
                 }
                 Text {
-                    Layout.column: 1
-                    Layout.row: 5
+                    Layout.column: 2
+                    Layout.row: 3
                     Layout.alignment: Layout.Center
                     Layout.preferredWidth: 100
                     font.pointSize: 20
@@ -378,7 +428,7 @@ Item {
                     color : Styles.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: "RGB Donut\n" + rgbDonutSlider.resColor
+                    text: "RGB Donut"
                 }
 
 
@@ -697,21 +747,21 @@ Item {
                     width: 240
                     height: 240
 
-                Matrix
-                {
-                    id: matrix
-                    anchors.centerIn: parent
-                    height : parent.height - parent.radius*4.
-                    width : parent.width - parent.radius*4.
-                    onPressedChanged:
+                    Matrix
                     {
-                        if(matrix.pressed.length > 0)
-                            leds.toggle(matrix.pressed[0]);
+                        id: matrix
+                        anchors.centerIn: parent
+                        height : parent.height - parent.radius*4.
+                        width : parent.width - parent.radius*4.
+                        onPressedChanged:
+                        {
+                            if(matrix.pressed.length > 0)
+                                leds.toggle(matrix.pressed[0]);
 
-                        //else
-                        //  leds.setIntensityForAll(0.0);
+                            //else
+                            //  leds.setIntensityForAll(0.0);
+                        }
                     }
-                }
                 }
                 Text {
                     Layout.column: 0

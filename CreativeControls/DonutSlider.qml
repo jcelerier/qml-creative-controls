@@ -15,12 +15,12 @@ Rectangle
     width : 200
     height : width
 
-   radius : width /2.
+    radius : width /2.
 
     color : "transparent"
 
-  //  border.width : 3.
-  //  border.color : donutSlider.resColor
+    //  border.width : 3.
+    //  border.color : donutSlider.resColor
 
     property real channels : 3.
     property real innerRadius : radius * 0.4//0.38
@@ -81,12 +81,12 @@ Rectangle
     {
         id: border
 
-       anchors.fill : parent
-       radius : parent.radius
-       color : "transparent"
+        anchors.fill : parent
+        radius : parent.radius
+        color : "transparent"
 
-       border.width : 3.
-       border.color : donutSlider.resColor
+        border.width : 3.
+        border.color : donutSlider.resColor
 
     }
     /*Rectangle
