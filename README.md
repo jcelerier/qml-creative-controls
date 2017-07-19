@@ -55,6 +55,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 * [ofxDatGui](https://github.com/braitsch/ofxDatGui)
 * [Luminosus](https://www.luminosus.org)
 * [oui.js](https://github.com/wearekuva/oui)
+* [nuklear](https://github.com/vurtun/nuklear)
 * [dat.gui](http://workshop.chromeexperiments.com/examples/gui)
 * [p5.gui](https://github.com/bitcraftlab/p5.gui)
 * [controlp5](https://github.com/sojamo/controlp5)
