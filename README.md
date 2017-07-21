@@ -61,6 +61,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 * [controlp5](https://github.com/sojamo/controlp5)
 * [Dear ImGui](https://github.com/ocornut/imgui)
 * [nanogui](https://github.com/wjakob/nanogui)
+* [Bach](http://www.bachproject.net/) slots
 * [Open Stage Control](https://github.com/jean-emmanuel/open-stage-control)
 * [ofxMightyUI](https://github.com/kritzikratzi/ofxMightyUI)
 * [ofxAVUI](https://github.com/AVUIs/ofxAVUI)
