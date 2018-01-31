@@ -52,6 +52,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 * [Musinekit](http://www.sensomusic.org/musinekit/en)
 * [TouchOSC](https://hexler.net/software/touchosc)
 * [Audiomulch](http://www.audiomulch.com/)
+* [NexusUI](https://nexus-js.github.io/ui/)
 * [ofxDatGui](https://github.com/braitsch/ofxDatGui)
 * [Luminosus](https://www.luminosus.org)
 * [oui.js](https://github.com/wearekuva/oui)
