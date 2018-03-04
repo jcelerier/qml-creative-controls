@@ -27,6 +27,11 @@ Rectangle
 
     radius : Styles.cornerRadius
 
+    function updateHandle() { handle.updateHandle(); }
+
+    property alias ease: handle.ease
+    property alias interactive: mouseArea.enabled
+
     // the value is between 0 and 1.
     property real value //: initialValue;
     property real initialValue : 0.5
@@ -98,17 +103,16 @@ Rectangle
         radius : Styles.cornerRadius
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
-        Behavior on width {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
+        Behavior on width {enabled : handle.ease; NumberAnimation { duration: 100}}
 
         onHeightChanged : {if(!resize) slider.value = mapFunc(linearMap());}
         Behavior on height {enabled : handle.ease; NumberAnimation {easing.type : Easing.OutQuint}}
 
-        property bool ease : true
+        property bool ease : false
         property bool resize : false
 
         function updateHandle()
         {
-            ease = false;
             resize = true;
 
             if(orientation == Qt.Horizontal)
@@ -126,6 +130,7 @@ Rectangle
 
     MouseArea
     {
+        id: mouseArea
         anchors.fill : parent
 
         onPressed :
@@ -149,6 +154,7 @@ Rectangle
 
     // label
     property alias text : label.text
+    property alias textVisible: label.visible
     Text
     {
         id: label
