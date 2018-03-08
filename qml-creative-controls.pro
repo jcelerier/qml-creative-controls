@@ -81,4 +81,6 @@ OTHER_FILES += \
 DISTFILES += \
     examples/OssiaClientExample.qml \
     examples/OssiaServerExample.qml \
-    examples/Overview.qml
+    examples/Overview.qml \
+    examples/ContainerExample.qml \
+    examples/Spectrogram.qml \
