@@ -121,7 +121,7 @@ void XYTarget::updatePenWidth()
   using namespace std;
   m_pen.setWidthF(lround(std::min(height(), width()) / 40.));
 
-  m_radius = std::min(height(), width()) / 35.;
+  m_radius = std::min(height(), width()) / m_radiusScale;
 }
 
 double XYTarget::centerX() const
@@ -132,6 +132,11 @@ double XYTarget::centerX() const
 double XYTarget::centerY() const
 {
   return m_centerY;
+}
+
+double XYTarget::radiusScale() const
+{
+  return m_radiusScale;
 }
 
 QColor XYTarget::color() const
@@ -156,6 +161,17 @@ void XYTarget::setCenterY(double centerY)
 
   m_centerY = qBound(0., centerY, 1.);
   emit centerYChanged(centerY);
+  update();
+}
+
+void XYTarget::setRadiusScale(double radiusScale)
+{
+  if (m_radiusScale == radiusScale)
+    return;
+
+  m_radiusScale = radiusScale;
+  emit radiusScaleChanged(radiusScale);
+  updatePenWidth();
   update();
 }
 

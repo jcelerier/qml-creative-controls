@@ -12,6 +12,10 @@ import CreativeControls 1.0
 // * orientation: vertical / horizontal
 // * text : the text to display on the slider
 
+
+// BUG
+// double click and move -> text is not updated
+
 Rectangle
 {
     id: slider
@@ -94,7 +98,7 @@ Rectangle
         x:  slider.border.width
         y: (orientation == Qt.Vertical) ?  slider.height - handle.height -slider.border.width: slider.border.width
 
-        color :  Styles.colorOn
+        color :  mouseArea.pressed ? Styles.base :  Styles.colorOn
         radius : Styles.cornerRadius
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
@@ -126,6 +130,7 @@ Rectangle
 
     MouseArea
     {
+        id: mouseArea
         anchors.fill : parent
 
         onPressed :
@@ -156,7 +161,7 @@ Rectangle
         anchors.centerIn: slider
 
         font.bold: true
-        color : Styles.base
+        color : mouseArea.pressed ? Styles.colorOn : Styles.base
     }
 
 }

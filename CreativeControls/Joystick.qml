@@ -20,7 +20,7 @@ Rectangle
     state: "default"
 
 
-    border.color: Styles.base//detail
+    border.color: Styles.base//pad.state !== "move" ? Styles.base : Styles.colorOn//detail
     border.width: 5.
 
     property real stickX: 2.22 * ((stick.x + stick.radius) - width / 2) / width
@@ -42,8 +42,8 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: Styles.colorOn
-        radius: pad.radius / 10
+        color: pad.state === "move" ? Styles.base : Styles.colorOn
+        radius: pad.state === "move" ? pad.radius / 6 * 1.1 : pad.radius / 6
         height: radius* 2
         width: height
     }
