@@ -72,5 +72,5 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 * [FlatUI](https://github.com/obeezzy/FlatUI)
 * [spatium](https://vimeo.com/52321647)
 * [qml-color-picker](https://github.com/astorije/qml-color-picker)
-
+* [Interface.js](http://charlie-roberts.com/interface/)
 
