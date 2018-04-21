@@ -24,5 +24,16 @@ QtObject
         return b0 + coeff * (val - a0);
     }
 
+    function clampRescale(val, a0, a1, b0, b1)
+    {
+        return rescale(clamp(val,a0,a1), a0, a1, b0, b1);
+    }
+
+    function inside(x, y, areaX,areaY,areaWidth,areaHeight)
+    {
+        return x > areaX && y > areaY
+                && x < (areaX + areaWidth)
+                && y < (areaY + areaHeight)
+    }
 
 }

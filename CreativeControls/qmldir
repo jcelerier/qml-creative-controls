@@ -38,6 +38,9 @@ Trajectory 1.0 Trajectory.qml
 XYPad 1.0 XYPad.qml
 
 singleton Styles 1.0 Styles.qml
+singleton DarkStyle 1.0 DarkStyle.qml
+singleton LightStyle 1.0 LightStyle.qml
+
 singleton Utils 1.0 Utils.qml
 designersupported
 

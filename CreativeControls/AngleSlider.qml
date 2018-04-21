@@ -11,4 +11,5 @@ AngleSliderImpl
     baseColor: Styles.background
     detailColor: Styles.base
     angle: 0
+
 }

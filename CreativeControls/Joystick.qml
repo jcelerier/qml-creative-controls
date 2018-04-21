@@ -42,7 +42,7 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: pad.state === "move" ? Styles.base : Styles.colorOn
+        color: pad.state === "move" ? Styles.colorOn : Styles.base
         radius: pad.state === "move" ? pad.radius / 6 * 1.1 : pad.radius / 6
         height: radius* 2
         width: height
