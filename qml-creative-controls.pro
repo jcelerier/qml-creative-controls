@@ -44,15 +44,19 @@ OTHER_FILES += \
     CreativeControls/ColorWheel.qml \
     CreativeControls/Container.qml \
     CreativeControls/CosInfluence.qml \
+    CreativeControls/DarkStyle.qml \
     CreativeControls/DonutSlider.qml \
     CreativeControls/Frame.qml \
     CreativeControls/Graph2D.qml \
     CreativeControls/Graph.qml \
+    CreativeControls/HSlider.qml \
     CreativeControls/HSLSlider.qml \
     CreativeControls/HSVSlider.qml \
     CreativeControls/Joystick.qml \
     CreativeControls/Keyboard.qml \
+    CreativeControls/Label.qml \
     CreativeControls/Leds.qml \
+    CreativeControls/LightStyle.qml \
     CreativeControls/LogSlider.qml \
     CreativeControls/Matrix.qml \
     CreativeControls/MultiSlider.qml \
@@ -71,12 +75,13 @@ OTHER_FILES += \
     CreativeControls/Switch.qml \
     CreativeControls/Trajectory.qml \
     CreativeControls/Utils.qml \
+    CreativeControls/VSlider.qml \
     CreativeControls/XYPad.qml
 
 OTHER_FILES += \
     CreativeControls/qmldir \
     CreativeControls/designer/CreativeControls.metainfo \
-    README.md
+    README.md \
 
 DISTFILES += \
     examples/OssiaClientExample.qml \
