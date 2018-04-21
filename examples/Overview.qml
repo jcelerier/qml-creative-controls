@@ -4,17 +4,61 @@ import QtQuick.Layouts 1.1
 import CreativeControls 1.0
 
 Item {
-    width: 900
-    height: 900
+    width: 1920
+    height: 1080
 
-    Row {
-    Joystick{
-        width: 500
-        height: 500
+    Rectangle {
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+        color: "#555"
     }
-    Joystick{
-        width: 500
-        height: 500
-    }
-    }
+
+        GridLayout {
+            x: 0
+            y: 0
+
+
+            scale: 1
+            rows: 4
+            columns: 8
+
+            AngleSlider { }
+            ArcSlider { }
+            ColorChooser { }
+            ColorSlider { }
+            ColorWheel { }
+            CosInfluence { }
+            DonutSlider { }
+            Frame { }
+
+            Graph { }
+            Graph2D { }
+            HSLSlider { }
+            HSVSlider { }
+            Joystick { }
+            Keyboard { }
+            Leds { }
+            LogSlider { }
+
+            Matrix { }
+            MultiSlider { }
+            Random1D { }
+            Random2D { }
+            Random3D { }
+            RangeSlider { }
+            RGBSlider { }
+            Scale { }
+
+            Scope { }
+            Slider { }
+            Spat { }
+            Spectrum { }
+            Step { }
+            Switch { }
+            Trajectory { }
+            XYPad { }
+        }
+
 }
