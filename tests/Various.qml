@@ -4,10 +4,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow
 {
-    Row
-    {
-        spacing: 16
-        CC.HSlider { }
-        CC.VSlider { }
+    CC.CosInfluence {
+        anchors.fill: parent
     }
 }

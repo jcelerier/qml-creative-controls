@@ -287,8 +287,6 @@ Item {
                     RangeSlider
                     {
                         anchors.fill : parent
-
-                        orientation: Qt.Vertical
                     }
                 }
                  Text {
