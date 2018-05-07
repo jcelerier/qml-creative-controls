@@ -12,6 +12,9 @@ Item
 {
     width : 200
     height : 100
+
+    property var styles: DarkStyle
+
     property real xScale : Math.max(width / (34 * keyWidth),1.0)
     property real yScale : Math.max(height / whiteHeight,1.0)
 
@@ -174,15 +177,15 @@ Item
             var N = lastKey - firstKey;
 
             ctx.beginPath();
-            ctx.strokeStyle = Styles.whiteKeyDetail;
-            ctx.fillStyle = Styles.whiteKeyColor;
+            ctx.strokeStyle = styles.keyBorder;
+            ctx.fillStyle = styles.whiteKeyColor;
             ctx.lineWidth = 1;
 
             for(var it = firstKey; it < lastKey; ++it) {
                 if(!isBlackKey(it)) {
 
                     if(isPressed(it)) {
-                        ctx.fillStyle = Styles.whiteKeyDetail;
+                        ctx.fillStyle = styles.whiteKeyDetail;
                     }
 
                     ctx.fillRect(cur_x, 0, xScale * keyWidth, yScale*whiteHeight);
@@ -190,7 +193,7 @@ Item
                     cur_x += xScale * keyWidth;
 
                     if(isPressed(it)) {
-                        ctx.fillStyle = Styles.whiteKeyColor;
+                        ctx.fillStyle = styles.whiteKeyColor;
                     }
                 }
             }
@@ -199,14 +202,14 @@ Item
             ctx.closePath();
 
             ctx.beginPath();
-            ctx.fillStyle = Styles.blackKeyColor;
-            ctx.strokeStyle = Styles.blackKeyDetail;
+            ctx.fillStyle = styles.blackKeyColor;
+            ctx.strokeStyle = styles.keyBorder;
             cur_x = 0;
 
             for(var it = firstKey; it < lastKey; ++it) {
 
                 if(isPressed(it)) {
-                    ctx.fillStyle = Styles.blackKeyDetail;
+                    ctx.fillStyle = styles.blackKeyDetail;
                 }
 
                 switch(it % 12) {
@@ -226,7 +229,7 @@ Item
                 }
 
                 if(isPressed(it)) {
-                    ctx.fillStyle = Styles.blackKeyColor;
+                    ctx.fillStyle = styles.blackKeyColor;
                 }
 
             }

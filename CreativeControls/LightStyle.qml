@@ -7,18 +7,29 @@ QtObject
 
     property color base: "#561C49"
     property color baseLighter: "#561C49"
-
-    property color detail: "#3a4407"
-    property color colorOn:  "orange"
-    property color colorOff:  "#7f8287"
+    property color detail: "#3d1233"
+    property color borderColor: "#6d3160"
     property color background: "#ffffff"
 
-    property color whiteKeyColor: colorOff
-    property color blackKeyColor: background
-    property color whiteKeyDetail: base
+    // slider colors
+    property color sliderBackgroundColor: background
+    property color handleColor: colorOn
+    property color pressedHandleColor: colorOnLighter
+
+    // switch, leds, matrix color
+    property color colorOn:  "orange"
+    property color colorOff:  "#8c5580"
+    property color colorOnLighter: "#ffb20c"
+
+    // keyboard colors
+    property color keyBorder: detail
+    property color whiteKeyColor: background
+    property color blackKeyColor: detail
+    property color whiteKeyDetail: colorOn
     property color blackKeyDetail: colorOn
 
-    property color labelColor:  "#CCCCCC"
+    // label text color (e.g. sliders)
+    property color labelColor:  "#561C49"
 
     property real cornerRadius : 0.
 

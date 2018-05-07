@@ -23,9 +23,9 @@ Rectangle
 
     property var styles: DarkStyle
 
-    color : styles.background
+    color : styles.sliderBackgroundColor
     border.width : width / 25.
-    border.color : styles.background
+    border.color : styles.sliderBackgroundColor
 
     radius : styles.cornerRadius
 
@@ -96,7 +96,7 @@ Rectangle
 
         anchors.centerIn: parent
 
-        color :  mouseArea.pressed ? styles.colorOnLighter :  styles.colorOn
+        color :  mouseArea.pressed ? styles.pressedHandleColor :  styles.handleColor
 
     }
 
@@ -162,6 +162,7 @@ Rectangle
     Label{
         id: label
         text : slider.value.toFixed(2)
+        styles: slider.styles
         selected: mouseArea.pressed
         anchors{
             horizontalCenter: slider.horizontalCenter
