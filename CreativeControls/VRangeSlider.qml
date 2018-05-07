@@ -59,11 +59,9 @@ Rectangle
 
         anchors{
             top:maxHandle.bottom
-            right: undefined
             horizontalCenter: rangeSlider.horizontalCenter
-            verticalCenter: undefined
-
         }
+
         width: rangeSlider.width - rangeSlider.border.width * 2
         height: minHandle.y - (maxHandle.y + maxHandle.height)
 
@@ -93,8 +91,8 @@ Rectangle
 
         x: rangeSlider.border.width
 
-        y: Utils.rescale(1. - rangeSlider.minValue,0.,1.,3. * handleSize / 2.,
-                         rangeSlider.height - handleSize/2.) - handleSize/2.
+        y: Utils.rescale(1. - rangeSlider.minValue,0.,1.,3. * handleSize / 2. ,
+                         rangeSlider.height - handleSize/2. ) - handleSize/2.
 
         color: mouseArea.handlePressed == minHandle ?  styles.pressedHandlesColor: styles.handlesColor
 
@@ -120,8 +118,6 @@ Rectangle
 
         x: rangeSlider.border.width
         y: Utils.rescale(1. - rangeSlider.maxValue,0.,1., handleSize/2.,rangeSlider.height - 3.*handleSize/2. ) - handleSize/2.
-
-
 
         color: mouseArea.handlePressed == maxHandle ?  styles.pressedHandlesColor: styles.handlesColor
 
