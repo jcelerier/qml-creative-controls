@@ -41,6 +41,7 @@ void XYTarget::mousePressEvent(QMouseEvent* event)
     m_lastPos = event->pos();
     setCenterX(new_x);
     setCenterY(new_y);
+    setPressed(true);
     event->accept();
     return;
   }
@@ -65,6 +66,7 @@ void XYTarget::mouseMoveEvent(QMouseEvent* event)
 
 void XYTarget::mouseReleaseEvent(QMouseEvent* event)
 {
+  setPressed(false);
   event->accept();
 }
 
@@ -72,6 +74,7 @@ void XYTarget::touchEvent(QTouchEvent* event)
 {
   if(!event->touchPoints().empty())
   {
+    setPressed(true);
     const auto& first = event->touchPoints().first();
     switch(first.state())
     {
@@ -108,6 +111,10 @@ void XYTarget::touchEvent(QTouchEvent* event)
       default:
         break;
     }
+  }
+  else
+  {
+    setPressed(false);
   }
 }
 
