@@ -9,9 +9,11 @@ Rectangle
     height: 150
     radius : 10
 
-    color: Styles.background
-    border.color: Styles.base
-    border.width: 3
+    property var styles: DarkStyle
+
+    color: styles.background
+    border.color: styles.base
+    border.width: styles.containerCornerRadius
 
     default property alias data : content.data
     Item{
