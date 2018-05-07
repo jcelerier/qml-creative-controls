@@ -143,6 +143,7 @@ Rectangle
         id: label
         text : slider.value.toFixed(2)
         selected: mouseArea.pressed
+        styles: slider.styles
 
         anchors{
             verticalCenter: slider.verticalCenter

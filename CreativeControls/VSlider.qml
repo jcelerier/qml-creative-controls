@@ -21,7 +21,7 @@ Rectangle
     onWidthChanged: updateAntiHandle();
     onHeightChanged: updateAntiHandle();
 
-    property var styles: DarkStyle
+    property var styles: LightStyle
 
     color : styles.background
     border.width : width / 25.
@@ -162,6 +162,7 @@ Rectangle
     Label{
         id: label
         text : slider.value.toFixed(2)
+        styles: slider.styles
         selected: mouseArea.pressed
         anchors{
             horizontalCenter: slider.horizontalCenter
