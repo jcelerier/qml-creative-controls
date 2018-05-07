@@ -11,8 +11,8 @@ Item
     id: multiSlider
 
     objectName: "multiSlider"
-    width: 200
-    height: 100
+    width: orientation ==  Qt.Vertical ? 500 : 400
+    height: orientation ==  Qt.Vertical ? 200 : 500
 
     property int count : 10
     property int orientation : Qt.Vertical
@@ -38,14 +38,13 @@ Item
             id: hSliders
 
             model : (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
-            Slider
+            VSlider
             {
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive
                 height : multiSlider.height
                 width : multiSlider.sliderWidth
-                orientation : Qt.Vertical
 
                 onValueChanged: recomputeValues()
             }
@@ -60,14 +59,13 @@ Item
             id: vSliders
 
             model: (multiSlider.orientation == Qt.Horizontal) ? multiSlider.count : 0
-            Slider
+            HSlider
             {
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive
                 height : multiSlider.sliderWidth
                 width : multiSlider.width
-                orientation : Qt.Horizontal
 
                 onValueChanged: recomputeValues()
             }
