@@ -34,7 +34,7 @@ Grid
     rowSpacing : Utils.clamp((leds.height - leds.radius*2* leds.rows) / (leds.rows-1),
                              0,leds.height)
 
-    property var styles: LightStyle
+    property var styles: DarkStyle
 
     property real radius : 20
     property color ledColorOn: styles.colorOn

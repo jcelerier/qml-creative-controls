@@ -14,6 +14,8 @@ Item
     width: orientation ==  Qt.Vertical ? 500 : 400
     height: orientation ==  Qt.Vertical ? 200 : 500
 
+    property var styles: DarkStyle
+
     property int count : 10
     property int orientation : Qt.Vertical
     property bool textVisible: true
@@ -28,7 +30,6 @@ Item
 
     property var values: []
     onValuesChanged: updateValues()
-
     Row
     {
         spacing: multiSlider.spacing
@@ -40,6 +41,8 @@ Item
             model : (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
             VSlider
             {
+                styles: multiSlider.styles
+
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive
@@ -61,6 +64,8 @@ Item
             model: (multiSlider.orientation == Qt.Horizontal) ? multiSlider.count : 0
             HSlider
             {
+                styles: multiSlider.styles
+
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive

@@ -6,10 +6,12 @@ import CreativeControls 1.0
 // TODO: infinite mode that uses the delta instead of the position.
 AngleSliderImpl
 {
+    property var styles: DarkStyle
+
     width: 100
     height: 100
-    baseColor: Styles.background
-    detailColor: Styles.base
+    baseColor: styles.background
+    detailColor: styles.base
     angle: 0
 
 }

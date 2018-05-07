@@ -47,7 +47,7 @@ Rectangle
 
         font.bold: true
         font.capitalization: Font.AllUppercase
-        color : Styles.base
+        color : styles.base
     }
 
 }

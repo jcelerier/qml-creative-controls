@@ -16,6 +16,8 @@ Item {
                     pointSize: 24
                 })
 
+    property var galleryStyle: DarkStyle
+
     SwipeView
     {
         id:view
@@ -27,8 +29,10 @@ Item {
         background : Rectangle
         {
             anchors.fill : parent
-            color : Styles.colorOff
+            color : galleryStyle.background
+
         }
+
         Page
         {
 
@@ -45,7 +49,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 height : 100
                 y : 20
                 text: "Sliders"
@@ -61,6 +65,8 @@ Item {
 
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -72,6 +78,7 @@ Item {
                     AngleSlider {
                         id: angleSlider
 
+                        styles: galleryStyle
 
                         width: Math.min(parent.width,parent.height)
                         height: width
@@ -90,11 +97,13 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     text: "Angle slider"
                 }
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -106,6 +115,8 @@ Item {
 
                     AngleSlider {
                         id: angleSliderMinMax
+
+                        styles: galleryStyle
 
                         width: Math.min(parent.width,parent.height)
                         height: width
@@ -128,10 +139,10 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     text: "Rotated with\nmin & max\n"
                 }
-/*
+                /*
                 Container
                 {
                     Layout.column: 0
@@ -153,7 +164,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Multi Slider"
@@ -183,7 +194,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Log Slider"
@@ -211,7 +222,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Range Slider"
@@ -235,7 +246,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 height : 100
                 y : 20
                 text: "Sliders"
@@ -250,6 +261,8 @@ Item {
                 columnSpacing: 200
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -257,6 +270,8 @@ Item {
                     height : 200
                     title: "label"
                     MultiSlider {
+                        styles: galleryStyle
+
                         anchors.fill: parent
                         count: 6
                     }
@@ -269,7 +284,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Multi Slider"
@@ -278,18 +293,22 @@ Item {
 
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 300
 
-                    RangeSlider
+                    VRangeSlider
                     {
+                        styles: galleryStyle
+
                         anchors.fill : parent
                     }
                 }
-                 Text {
+                Text {
                     Layout.column: 0
                     Layout.row: 3
                     Layout.alignment: Layout.Center
@@ -297,7 +316,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Range Slider"
@@ -318,7 +337,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 text: "Colors"
                 height : 100
                 y : 20
@@ -333,6 +352,8 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -357,13 +378,15 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSL Slider"
                 }
 
                 Container {
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
@@ -389,13 +412,15 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSL Donut"
                 }
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -418,13 +443,15 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSV Slider"
                 }
 
                 Container {
+
+                    styles: galleryStyle
 
                     Layout.column: 1
                     Layout.row: 2
@@ -451,7 +478,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSV Donut"
@@ -459,6 +486,8 @@ Item {
 
                 Container
                 {
+                    styles: galleryStyle
+
                     Layout.column: 2
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -482,12 +511,14 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "RGB Slider\n" + rgbSlider.color
                 }
                 Container {
+                    styles: galleryStyle
+
                     Layout.column: 2
                     Layout.row: 2
                     Layout.alignment: Layout.Center
@@ -512,7 +543,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "RGB Donut"
@@ -534,7 +565,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 text: "Graphs"
                 height : 100
                 y : 20
@@ -549,6 +580,9 @@ Item {
                 Graph
                 {
                     id: graph
+
+                    styles: galleryStyle
+
                     width: 300
                     height: 200
                     Layout.column: 0
@@ -562,7 +596,9 @@ Item {
                         running: true
                         interval: 16
                     }
-                    Frame{}
+                    Frame{
+                        styles: galleryStyle
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -573,13 +609,16 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : Styles.background
+                    color : galleryStyle.background
                     text: "Graph"
                 }
 
                 Scope
                 {
                     id: scope
+
+                    styles: galleryStyle
+
                     width: 300
                     height: 200
                     Layout.column: 0
@@ -602,7 +641,9 @@ Item {
                             scope.points = array;
                         }
                     }
-                    Frame{}
+                    Frame{
+                        styles: galleryStyle
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -613,7 +654,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : Styles.background
+                    color : galleryStyle.background
                     text: "Scope"
                 }
             }
@@ -633,7 +674,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 text: "Pads"
                 height : 100
                 y : 20
@@ -649,6 +690,8 @@ Item {
                 {
                     id: xypad
 
+                    styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -656,7 +699,9 @@ Item {
                     width: 200
                     height: 200
 
-                    Frame{}
+                    Frame{
+                        styles: galleryStyle
+                    }
                 }
                 Text {
                     Layout.column: 0
@@ -665,7 +710,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "X-Y Pad\n" + xypad.stickX.toFixed(2) + ", " + xypad.stickY.toFixed(2)
@@ -674,13 +719,18 @@ Item {
                 CosInfluence
                 {
                     id: cosinfluence
+
+                    styles: galleryStyle
+
                     width: 200
                     height: 200
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
 
-                    Frame{}
+                    Frame{
+                        styles: galleryStyle
+                    }
                 }
                 Text {
                     Layout.column: 1
@@ -689,7 +739,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Cosine Influence\n" + prettyArray(cosinfluence.values)
@@ -709,6 +759,9 @@ Item {
                 Joystick
                 {
                     id: joystick
+
+                    styles: galleryStyle
+
                     width: 200
                     height: 200
                     Layout.column: 0
@@ -722,7 +775,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Joystick\n" + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
@@ -745,7 +798,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : Styles.background
+                color : galleryStyle.base
                 text: "Keys & Matrices & Switch"
                 height : 100
                 y : 20
@@ -757,6 +810,8 @@ Item {
                 columnSpacing: 100
                 anchors.horizontalCenter: parent.horizontalCenter
                 Container {
+                    styles: galleryStyle
+
                     Layout.alignment: Layout.Center
                     Layout.column: 0
                     Layout.row: 0
@@ -767,6 +822,8 @@ Item {
                     Keyboard
                     {
                         id: kbd
+
+                        styles: galleryStyle
 
                         anchors.centerIn: parent
                         height : parent.height - parent.radius*2.
@@ -786,7 +843,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : Styles.background
+                    color : galleryStyle.background
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
@@ -796,6 +853,8 @@ Item {
                     }
                 }
                 Container {
+                    styles: galleryStyle
+
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
@@ -804,6 +863,8 @@ Item {
                     Switch
                     {
                         id : toggleSwitch
+
+                        styles: galleryStyle
 
                         anchors.centerIn: parent
 
@@ -821,13 +882,14 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : Styles.background
+                    color : galleryStyle.background
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Switch\n" + toggleSwitch.state
                 }
                 Container
                 {
+                    styles: galleryStyle
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
@@ -837,6 +899,8 @@ Item {
                     Matrix
                     {
                         id: matrix
+                        styles: galleryStyle
+
                         anchors.centerIn: parent
                         height : parent.height - parent.radius*4.
                         width : parent.width - parent.radius*4.
@@ -859,7 +923,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : Styles.background
+                    color : galleryStyle.background
                     text:
                     {
                         if(matrix.pressed.length > 0)
@@ -874,10 +938,11 @@ Item {
                     Layout.alignment: Layout.Center
                     width: 240
                     height: 240
-
+                    styles: galleryStyle
                     Leds
                     {
                         id : leds
+                        styles: galleryStyle
 
                         anchors.centerIn: parent
                         height : parent.height - parent.radius*4.
@@ -902,7 +967,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : Styles.background
+                    color : galleryStyle.background
                     text: "Leds\n"
                 }
 
@@ -914,9 +979,13 @@ Item {
 
         height : 50
         spacing : 5
+
+
         Button
         {
             id: btnPrevious
+
+            opacity: view.currentIndex > 0
 
             width: parent.width / 2
             height: parent.height
@@ -925,15 +994,16 @@ Item {
 
             background: Rectangle{
                 anchors.fill : parent
-                color : btnPrevious.pressed ? Styles.colorOn : Styles.background
+                color : btnPrevious.pressed ? galleryStyle.colorOn : galleryStyle.background
             }
             font.bold : true
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: btnPrevious.pressed ? Styles.detail:Styles.colorOff
+                color: btnPrevious.pressed ? galleryStyle.detail : galleryStyle.colorOn
                 font.pointSize: 15
                 font.family: mainFont
+                font.bold: true
                 text: "Previous"
             }
         }
@@ -942,6 +1012,7 @@ Item {
         {
             id: btnNext
 
+            opacity: view.currentIndex < (view.count - 1)
             width: parent.width / 2
             height: parent.height
 
@@ -949,14 +1020,15 @@ Item {
 
             background: Rectangle{
                 anchors.fill : parent
-                color : btnNext.pressed ? Styles.colorOn : Styles.background
+                color : btnNext.pressed ? galleryStyle.colorOn : galleryStyle.background
             }
             font.bold : true
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: btnNext.pressed ? Styles.detail:Styles.colorOff
+                color: btnNext.pressed ? galleryStyle.detail : galleryStyle.colorOn
                 font.pointSize: 15
+                font.bold: true
                 font.family: mainFont
                 text: "Next"
             }
@@ -964,5 +1036,73 @@ Item {
 
         anchors.bottom: parent.bottom
         width: parent.width
+    }
+
+    Row{
+        anchors{
+            top: parent.top
+            topMargin: 20
+            left: parent.left
+            leftMargin: 20
+        }
+        spacing: 20
+        Rectangle{
+            width: 100
+            height: 30
+            color: galleryStyle == LightStyle ?
+                       LightStyle.colorOn
+                     : LightStyle.background
+
+            border.color: LightStyle.detail
+            border.width: 2
+            Text{
+                anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+                font.bold: true
+                text: "LightStyle"
+                color: galleryStyle == LightStyle ?
+                           LightStyle.detail
+                         : LightStyle.labelColor
+
+            }
+
+            MouseArea{
+                anchors.fill: parent
+                enabled : true
+
+                onPressed: galleryStyle = LightStyle
+            }
+        }
+        Rectangle{
+            width: 100
+            height: 30
+            color: galleryStyle == DarkStyle ?
+                       DarkStyle.colorOn
+                     : DarkStyle.background
+
+            border.color: DarkStyle.detail
+            border.width: 2
+            Text{
+                anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+                font.bold: true
+                text: "DarkStyle"
+                color: galleryStyle == DarkStyle ?
+                           DarkStyle.detail
+                         : DarkStyle.labelColor
+
+            }
+
+            MouseArea{
+                anchors.fill: parent
+                enabled : true
+
+                onPressed: galleryStyle = DarkStyle
+            }
+        }
     }
 }

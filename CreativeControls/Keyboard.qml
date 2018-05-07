@@ -14,7 +14,7 @@ Item
     height : 100
 
     property var styles: DarkStyle
-
+    onStylesChanged: canvas.requestPaint()
     property real xScale : Math.max(width / (34 * keyWidth),1.0)
     property real yScale : Math.max(height / whiteHeight,1.0)
 

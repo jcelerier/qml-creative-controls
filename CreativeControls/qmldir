@@ -14,6 +14,7 @@ DonutSlider 1.0 DonutSlider.qml
 Frame 1.0 Frame.qml
 Graph 1.0 Graph.qml
 Graph2D 1.0 Graph2D.qml
+HRangeSlider 1.0 HRangeSlider.qml
 HSlider 1.0 HSlider.qml
 HSLSlider 1.0 HSLSlider.qml
 HSVSlider 1.0 HSVSlider.qml
@@ -27,7 +28,6 @@ MultiSlider 1.0 MultiSlider.qml
 Random1D 1.0 Random1D.qml
 Random2D 1.0 Random2D.qml
 Random3D 1.0 Random3D.qml
-RangeSlider 1.0 RangeSlider.qml
 RGBSlider 1.0 RGBSlider.qml
 Scale 1.0 Scale.qml
 Scope 1.0 Scope.qml
@@ -37,6 +37,7 @@ Spectrum 1.0 Spectrum.qml
 Step 1.0 Step.qml
 Switch 1.0 Switch.qml
 Trajectory 1.0 Trajectory.qml
+VRangeSlider 1.0 VRangeSlider.qml
 VSlider 1.0 VSlider.qml
 XYPad 1.0 XYPad.qml
 
