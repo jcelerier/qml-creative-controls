@@ -3,20 +3,26 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import CreativeControls 1.0
 
-Page
+Rectangle
 {
+    color: DarkStyle.background
     Timer {
         running: true
         interval: 200
         repeat: true
         onTriggered: step.nextStep()
     }
-
-    Step {
-        id: step
-        width: parent.width
-        onStep: {
-            console.log(values)
+    Container {
+        width: 600
+        height: step.height + 10
+        Step {
+            id: step
+            width: parent.width
+            onStep: {
+                console.log(values)
+            }
         }
+
     }
+
 }
