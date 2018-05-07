@@ -67,11 +67,14 @@ Item {
         horizontalItemAlignment : Grid.AlignHCenter
         verticalItemAlignment : Grid.AlignVCenter
 
+        property real contentWidth: (width - padding *2 - spacing * columns)
+        property real contentHeight: (height - padding *2 - spacing * rows)
+
         Repeater {
             id: rects
             model: parent.columns * parent.rows
 
-            anchors.fill: parent
+            anchors.centerIn: parent
             delegate: Rectangle {
                 id: rect
                 property bool toggled : false
@@ -85,11 +88,15 @@ Item {
                     return rem;
                 }
 
-                width: grid.width / maxStep - 5
-                height: grid.height / numValues - 5
-                radius: 14
+                width: grid.contentWidth / maxStep
+                height: grid.contentHeight / numValues
+                radius: styles.stepRectCornerRadius
 
-                color: toggled ? styles.colorOn : styles.colorOffDarker
+
+                color: !toggled ? styles.colorOffDarker
+                                : step == currentStep ?
+                                      styles.colorOn
+                                    : styles.colorOnLighter
                 border.width: 3
                 border.color: step == currentStep ? styles.colorOnLighter : styles.colorOff;
 

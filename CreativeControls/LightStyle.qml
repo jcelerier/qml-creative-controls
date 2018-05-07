@@ -25,6 +25,10 @@ QtObject
     property color colorOn:  "orange"
     property color colorOff:  "#8c5580"
     property color colorOnLighter: "#ffb20c"
+    property color colorOffDarker: "#230a1d"
+
+    // step properties
+    property real stepRectCornerRadius: 5
 
     // keyboard colors
     property color keyBorder: detail
