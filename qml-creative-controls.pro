@@ -49,6 +49,7 @@ OTHER_FILES += \
     CreativeControls/Frame.qml \
     CreativeControls/Graph2D.qml \
     CreativeControls/Graph.qml \
+    CreativeControls/HRangeSlider.qml \
     CreativeControls/HSlider.qml \
     CreativeControls/HSLSlider.qml \
     CreativeControls/HSVSlider.qml \
@@ -62,7 +63,6 @@ OTHER_FILES += \
     CreativeControls/Random1D.qml \
     CreativeControls/Random2D.qml \
     CreativeControls/Random3D.qml \
-    CreativeControls/RangeSlider.qml \
     CreativeControls/RGBSlider.qml \
     CreativeControls/Scale.qml \
     CreativeControls/Scope.qml \
@@ -73,6 +73,7 @@ OTHER_FILES += \
     CreativeControls/Switch.qml \
     CreativeControls/Trajectory.qml \
     CreativeControls/Utils.qml \
+    CreativeControls/VRangeSlider.qml \
     CreativeControls/VSlider.qml \
     CreativeControls/XYPad.qml
 
