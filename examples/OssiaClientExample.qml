@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import CreativeControls 1.0
+import com.github.jcelerier.CreativeControls 1.0
 import Ossia 1.0 as Ossia
 
 /**

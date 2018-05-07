@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import CreativeControls 1.0
+import com.github.jcelerier.CreativeControls 1.0
 import QtQuick.Controls.Styles 1.4
 
 //  A RGB slider shaped in donut

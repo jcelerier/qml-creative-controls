@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import CreativeControls 1.0
+import com.github.jcelerier.CreativeControls 1.0
 
 // An oscilliscope.
 // No user input.

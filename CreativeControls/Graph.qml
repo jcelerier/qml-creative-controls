@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import CreativeControls 1.0
+import com.github.jcelerier.CreativeControls 1.0
 
 // Displays input messages in a graph
 // No UI input.
