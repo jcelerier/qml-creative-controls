@@ -5,6 +5,9 @@ import CreativeControls 1.0
 
 Rectangle
 {
+    width: 800
+    height: step.height + 10
+
     color: DarkStyle.background
     Timer {
         running: true
@@ -13,10 +16,12 @@ Rectangle
         onTriggered: step.nextStep()
     }
     Container {
-        width: 600
+        width: 800
         height: step.height + 10
         Step {
             id: step
+            anchors.centerIn: parent
+
             width: parent.width
             onStep: {
                 console.log(values)
