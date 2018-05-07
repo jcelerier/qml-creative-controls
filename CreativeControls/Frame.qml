@@ -7,6 +7,8 @@ Rectangle
 {
     id: container
 
+    property var styles: DarkStyle
+
     anchors.centerIn : parent
 
     width : parent.width + border.width *2
@@ -14,6 +16,6 @@ Rectangle
     color : "transparent"
 
     border.width : 3
-    border.color : Styles.base
+    border.color : styles.base
     radius : 10
 }

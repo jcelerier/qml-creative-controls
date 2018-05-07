@@ -14,11 +14,12 @@ Item
 {
     property alias symmetrize: scope.symmetrize
     property alias points: scope.points
+    property var styles: DarkStyle
 
     Rectangle
     {
         anchors.fill : parent
-        color : Styles.background
+        color : styles.background
     }
 
     ScopeImpl
@@ -27,8 +28,8 @@ Item
         id: scope
         yMin: -1
         yMax: 1
-        baseColor: Styles.colorOn
-        detailColor: Styles.base
+        baseColor: styles.colorOn
+        detailColor: styles.base
         symmetrize: false
     }
 

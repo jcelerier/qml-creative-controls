@@ -6,7 +6,9 @@ import com.github.jcelerier.CreativeControls 1.0
 // * lines: will display lines between dots
 Rectangle
 {
-    color: Styles.background
+    property var styles: DarkStyle
+
+    color: styles.background
     property alias lines: plot.lines
 
     // Use this function to add a value to the graph.
@@ -20,7 +22,7 @@ Rectangle
         id: plot
         anchors.fill: parent
 
-        color: Styles.base
+        color: styles.base
         lines: true
     }
 }
