@@ -17,10 +17,9 @@ Rectangle
     width : 200
 
     color : colorSpace(x.value,y.value,z.value,alphaValue)
-
-
-    // vertical or horizontal slider
-    property int orientation : Qt.Vertical
+    property color contourColor: colorSpace(x.value,
+                                             y.value,
+                                             1. - z.value,0.5)
 
     // add an alpha slider
     property bool enableAlpha : false
@@ -30,22 +29,20 @@ Rectangle
     property real sliderWidth : enableAlpha ? width/4. : width/3.
     property var colorSpace: Qt.hsla
 
-
     RowLayout
     {
         width : parent.width
         height : parent.height * 2/3
         anchors.centerIn: parent
 
-        spacing : 0.
-
-        Slider
+        VSlider
         {
             id : x
 
-            text : colorSpace == Qt.rgba ? "R" : "H"
-            orientation : colorSlider.orientation
-            border.width : 0
+            text: colorSpace == Qt.rgba ? "R" : "H"
+
+            border.width: 2
+            border.color: colorSlider.contourColor
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -53,18 +50,18 @@ Rectangle
 
             initialValue: 153. / 255.
 
-            handleColor :  colorSpace == Qt.rgba ?
+            handleColor:  colorSpace == Qt.rgba ?
                                colorSpace(value,0,0,1.)
                              : colorSpace(value,0.5,0.5,1.)
         }
-        Slider
+        VSlider
         {
             id : y
 
             text : colorSpace == Qt.rgba ? "G" :"S"
 
-            orientation : colorSlider.orientation
-            border.width : 0
+            border.width : 2
+            border.color : colorSlider.contourColor
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -75,14 +72,14 @@ Rectangle
                               colorSpace(0,value,0.,1.)
                             : colorSpace(x.value,value,0.5,1.)
         }
-        Slider
+        VSlider
         {
             id : z
             text : colorSpace == Qt.rgba ? "B" :
                                            colorSpace == Qt.hsla ? "L" : "V"
 
-            orientation : colorSlider.orientation
-            border.width : 0
+            border.width : 2
+            border.color : colorSlider.contourColor
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
@@ -94,14 +91,16 @@ Rectangle
                               colorSpace(0,0.,value,1.)
                             : colorSpace(x.value,0.5,value,1.)
         }
-        Slider
+        VSlider
         {
             id : a
 
             visible : colorSlider.enableAlpha
-            border.width : 0
             text : "A"
-            orientation : colorSlider.orientation
+
+            border.width : 2
+            border.color : colorSlider.contourColor
+
 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignHCenter
