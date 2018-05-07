@@ -18,8 +18,10 @@ Rectangle
     onCenterYChanged: updateValues()
     onPointsChanged: updateValues()
 
-    color : Styles.background
-    property real sizeRatio : Math.min(cosInfluence.width, cosInfluence.height) / 15.
+    property var styles: DarkStyle
+    color : styles.background
+
+    property real sizeRatio : Math.min(cosInfluence.width, cosInfluence.height) / 13.
     property var values: []
 
     function updateValues()
@@ -41,6 +43,7 @@ Rectangle
     // Mouse area for when the background is clicked
     TouchArea
     {
+        id:touchArea
         anchors.fill: parent
         onPressed: applyPos(point)
         onPositionChanged: applyPos(point)
@@ -67,12 +70,15 @@ Rectangle
             width: 2. * sizeRatio
             height: width
             borderWidth: 0.05 * sizeRatio
-            fillColor: Styles.randomDetailColor()
-            borderColor: Styles.base//randomDetailColor()
+            fillColor: styles.randomDetailColor()
+            borderColor: dragArea.pressed ? styles.textPressedColor : styles.background
 
             Text
             {
                 anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
                 font.pointSize: Math.max(2, 1.1 * sizeRatio)
                 text: index
                 color: parent.borderColor
@@ -99,6 +105,7 @@ Rectangle
     Crosshair {
         id: xy
         anchors.fill: parent
-        color: Styles.colorOn
+        color: xy.pressed || touchArea.pressState? styles.colorOn :  styles.colorOff
+        radiusScale: xy.pressed  || touchArea.pressState? 25 : 35
     }
 }

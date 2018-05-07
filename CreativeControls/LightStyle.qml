@@ -37,6 +37,9 @@ QtObject
     property color whiteKeyDetail: colorOn
     property color blackKeyDetail: colorOn
 
+    // CosInfluence text color
+    property color textPressedColor: colorOnLighter
+
     // label text color (e.g. sliders)
     property color labelColor:  "#561C49"
 
@@ -44,6 +47,6 @@ QtObject
 
     function randomDetailColor()
     {
-      return CppUtils.setHSVHue(detail, Math.random());
+      return CppUtils.setHSVHue(borderColor, Math.random());
     }
 }
