@@ -1,5 +1,5 @@
 {
-  "name": "com.github.jcelerier.CreativeControls",
+  "name": "com.github.jcelerier.qml-creative-controls",
   "description": "",
   "author": {
     "name": "Jean-Michaël Celerier",
@@ -17,6 +17,6 @@
   "dependencies": [
   ],
   "license": "AGPL_3_0",
-  "pri_filename": "com_github_jcelerier_CreativeControls.pri",
+  "pri_filename": "com_github_jcelerier_qml-creative-controls.pri",
   "webpage": ""
 }
