@@ -25,6 +25,7 @@ QtObject
     property color colorOn: "#7b9a4a"
     property color colorOff: "#7f8287"
     property color colorOnLighter: "#93a54d"
+    property color colorOffDarker: "#4c4e51"
 
     // keyboard colors
     property color keyBorder: detail

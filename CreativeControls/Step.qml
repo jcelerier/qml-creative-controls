@@ -12,6 +12,7 @@ Item {
     property int numValues: 4
 
     property var steps: []
+    property var styles: DarkStyle
 
     onMaxStepChanged: initSteps()
     onNumValuesChanged: initSteps()
@@ -55,21 +56,6 @@ Item {
         step(getStep(currentStep))
     }
 
-    Row {
-        anchors.fill: parent
-        spacing: 1
-        padding: 0.5
-        Repeater {
-            model: grid.columns
-            Rectangle {
-                color: (index === currentStep) ? Qt.lighter(Styles.colorOn) : "#00000000"
-                radius: 12
-                width: root.width / maxStep - 3
-                height: root.height - 5
-            }
-        }
-    }
-
     Grid
     {
         id: grid
@@ -90,24 +76,22 @@ Item {
                 id: rect
                 property bool toggled : false
 
+                property int step: computeStep()
+                function computeStep()
+                {
+                    var idx = index;
+                    var quo = Math.floor(idx / maxStep);
+                    var rem = idx - quo * maxStep;
+                    return rem;
+                }
+
                 width: grid.width / maxStep - 5
                 height: grid.height / numValues - 5
                 radius: 14
 
-                color: Styles.detail
+                color: toggled ? styles.colorOn : styles.colorOffDarker
                 border.width: 3
-                border.color: Styles.background
-
-                onToggledChanged: {
-                    if(toggled)
-                    {
-                        rect.color = Styles.colorOn;
-                    }
-                    else
-                    {
-                        rect.color = Styles.detail;
-                    }
-                }
+                border.color: step == currentStep ? styles.colorOnLighter : styles.colorOff;
 
                 MouseArea {
                     anchors.fill: parent

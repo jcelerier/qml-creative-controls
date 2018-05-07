@@ -34,7 +34,7 @@ Grid
 
             color: styles.colorOff;
             border.width: 3
-            border.color: styles.colorOff
+            border.color: styles.colorOnLighter
 
             property bool toggled : false
 
