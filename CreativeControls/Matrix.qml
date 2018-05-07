@@ -16,9 +16,11 @@ Grid
     horizontalItemAlignment : Grid.AlignHCenter
     verticalItemAlignment : Grid.AlignVCenter
 
+    property real radius: styles.cornerRadius
+
     property bool togglable: false
     property var pressed: []
-    property var styles: LightStyle
+    property var styles: DarkStyle
 
     Repeater {
         model: parent.columns * parent.rows
@@ -30,7 +32,7 @@ Grid
 
             width: grid.width / grid.columns - 5
             height: grid.height / grid.rows - 5
-            radius: 14
+            radius: grid.radius
 
             color: styles.colorOff;
             border.width: 3

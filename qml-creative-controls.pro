@@ -36,9 +36,6 @@ SOURCES += \
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/
 
 OTHER_FILES += \
-    examples/Gallery.qml
-
-OTHER_FILES += \
     CreativeControls/AngleSlider.qml \
     CreativeControls/ArcSlider.qml \
     CreativeControls/ColorChooser.qml \
@@ -85,6 +82,8 @@ OTHER_FILES += \
     README.md \
 
 DISTFILES += \
+    examples/Limiter.qml \
+    examples/Gallery.qml \
     examples/OssiaClientExample.qml \
     examples/OssiaServerExample.qml \
     examples/Overview.qml \
