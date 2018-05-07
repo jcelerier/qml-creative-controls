@@ -16,10 +16,12 @@ Rectangle
     height : 50
     radius : width/2
 
-    border.color : "#666666"//Styles.base
+    property var styles: LightStyle
+
+    border.color : styles.borderColor
     border.width : width/10.
 
-    color : (toggleSwitch.state == "ON")? Styles.colorOn : Styles.colorOff
+    color : (toggleSwitch.state == "ON")? styles.colorOn : styles.colorOff
     property bool ease : true
     Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.InOutQuint}}
 

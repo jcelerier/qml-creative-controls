@@ -8,6 +8,7 @@ QtObject
     property color base: "#561C49"
     property color baseLighter: "#561C49"
     property color detail: "#3a4407"
+    property color borderColor: "#822a6f"
 
     property color colorOn:  "orange"
     property color colorOff:  "#7f8287"
@@ -20,7 +21,7 @@ QtObject
     property color whiteKeyDetail: base
     property color blackKeyDetail: colorOn
 
-    property color labelColor:  "purple"
+    property color labelColor:  "#561C49"
 
     property real cornerRadius : 0.
 

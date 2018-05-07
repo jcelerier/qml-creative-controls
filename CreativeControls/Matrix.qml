@@ -18,6 +18,7 @@ Grid
 
     property bool togglable: false
     property var pressed: []
+    property var styles: LightStyle
 
     Repeater {
         model: parent.columns * parent.rows
@@ -31,17 +32,17 @@ Grid
             height: grid.height / grid.rows - 5
             radius: 14
 
-            color: Styles.colorOn
+            color: styles.detail;
             border.width: 3
-            border.color: Styles.background
+            border.color: styles.detail
 
             property bool toggled : false
 
             onToggledChanged: {
                 if(toggled)
-                    rect.color = Styles.detail;
+                    rect.color = styles.colorOn;
                 else
-                    rect.color = Styles.colorOn;
+                    rect.color = styles.detail;
             }
 
             MouseArea {

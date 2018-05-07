@@ -15,12 +15,13 @@ Rectangle
     height : 200
     radius: Math.max(width, height) / 2
 
-    color: Styles.background
+    property var styles: LightStyle
+    color: styles.background
 
     state: "default"
 
 
-    border.color: Styles.base//pad.state !== "move" ? Styles.base : Styles.colorOn//detail
+    border.color: styles.base
     border.width: 5.
 
     property real stickX: 2.22 * ((stick.x + stick.radius) - width / 2) / width
@@ -42,7 +43,7 @@ Rectangle
     Rectangle
     {
         id: stick
-        color: pad.state === "move" ? Styles.colorOn : Styles.base
+        color: pad.state === "move" ? styles.colorOn : styles.base
         radius: pad.state === "move" ? pad.radius / 6 * 1.1 : pad.radius / 6
         height: radius* 2
         width: height
