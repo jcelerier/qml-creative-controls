@@ -167,10 +167,11 @@ Item {
                     width: 200
                     height: 100
                    //  title: "label"
-                    LogSlider
+                    HSlider
                     {
+                        text : value.toFixed(3)
+                        mapFunc: Utils.sliderLogMap()
                         anchors.fill : parent
-                        orientation: Qt.Horizontal
                     }
                 }
                 Text {

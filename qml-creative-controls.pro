@@ -57,7 +57,6 @@ OTHER_FILES += \
     CreativeControls/Label.qml \
     CreativeControls/Leds.qml \
     CreativeControls/LightStyle.qml \
-    CreativeControls/LogSlider.qml \
     CreativeControls/Matrix.qml \
     CreativeControls/MultiSlider.qml \
     CreativeControls/Random1D.qml \
@@ -67,7 +66,6 @@ OTHER_FILES += \
     CreativeControls/RGBSlider.qml \
     CreativeControls/Scale.qml \
     CreativeControls/Scope.qml \
-    CreativeControls/Slider.qml \
     CreativeControls/Spat.qml \
     CreativeControls/Spectrum.qml \
     CreativeControls/Step.qml \

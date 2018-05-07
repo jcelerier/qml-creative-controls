@@ -4,6 +4,11 @@ import QtQuick 2.6
 
 QtObject
 {
+    function sliderLogMap()
+    {
+        return 1. + Math.log(linearMap());
+    }
+
     function distance(x1,y1,x2,y2)
     {
         var a = x1 - x2
