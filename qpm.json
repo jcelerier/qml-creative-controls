@@ -1,0 +1,22 @@
+{
+  "name": "com.github.jcelerier.CreativeControls",
+  "description": "",
+  "author": {
+    "name": "Jean-Michaël Celerier",
+    "email": "jeanmichael.celerier@gmail.com"
+  },
+  "repository": {
+    "type": "GITHUB",
+    "url": "https://github.com/jcelerier/qml-creative-controls"
+  },
+  "version": {
+    "label": "0.0.1",
+    "revision": "",
+    "fingerprint": ""
+  },
+  "dependencies": [
+  ],
+  "license": "AGPL_3_0",
+  "pri_filename": "com_github_jcelerier_CreativeControls.pri",
+  "webpage": ""
+}
