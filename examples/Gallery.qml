@@ -131,7 +131,7 @@ Item {
                     color : Styles.background
                     text: "Rotated with\nmin & max\n"
                 }
-
+/*
                 Container
                 {
                     Layout.column: 0
@@ -166,7 +166,7 @@ Item {
                     Layout.alignment: Layout.Center
                     width: 200
                     height: 100
-                   //  title: "label"
+                    //  title: "label"
                     LogSlider
                     {
                         anchors.fill : parent
@@ -186,9 +186,9 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     text: "Log Slider"
                 }
-              /*  Container
+                Container
                 {
-                    Layout.column: 1
+                    Layout.column: 0
                     Layout.row: 4
                     Layout.alignment: Layout.Center
                     width: 50
@@ -202,7 +202,7 @@ Item {
                         orientation: Qt.Vertical
                     }
                 }
-                Text {
+                 Text {
                     Layout.column: 1
                     Layout.row: 5
 
@@ -213,8 +213,121 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Range Slider"
-                }*/
+                }
+*/
+            }
+        }
+        Page
+        {
 
+            background : Rectangle
+            {
+                anchors.fill : parent
+                color : "transparent"
+            }
+
+            header: Text
+            {
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 30
+                font.family: mainFont
+                font.bold : true
+                color : Styles.background
+                height : 100
+                y : 20
+                text: "Sliders"
+            }
+
+            GridLayout
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                rows : 4
+                columns : 2
+                rowSpacing: 20
+                columnSpacing: 200
+                Container
+                {
+                    Layout.column: 0
+                    Layout.row: 0
+                    Layout.alignment: Layout.Center
+                    width : 300
+                    height : 200
+                    title: "label"
+                    MultiSlider {
+                        anchors.fill: parent
+                        count: 6
+                    }
+                }
+
+                Text {
+                    Layout.column: 0
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Multi Slider"
+                }
+
+                Container
+                {
+                    Layout.column: 1
+                    Layout.row: 0
+                    Layout.alignment: Layout.Center
+                    width: 200
+                    height: 100
+                    //  title: "label"
+                    LogSlider
+                    {
+                        anchors.fill : parent
+                        orientation: Qt.Horizontal
+                    }
+                }
+                Text {
+                    Layout.column: 1
+                    Layout.row: 1
+                    Layout.alignment: Layout.Center
+
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Log Slider"
+                }
+                Container
+                {
+                    Layout.column: 0
+                    Layout.row: 2
+                    Layout.alignment: Layout.Center
+                    width: 100
+                    height: 300
+
+                    RangeSlider
+                    {
+                        anchors.fill : parent
+
+                        orientation: Qt.Vertical
+                    }
+                }
+                 Text {
+                    Layout.column: 0
+                    Layout.row: 3
+                    Layout.alignment: Layout.Center
+
+                    font.pointSize: 20
+                    font.family: mainFont
+                    font.bold : true
+                    color : Styles.background
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "Range Slider"
+                }
             }
         }
         Page
