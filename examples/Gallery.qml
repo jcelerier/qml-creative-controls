@@ -166,11 +166,13 @@ Item {
                     Layout.alignment: Layout.Center
                     width: 200
                     height: 100
-                    //  title: "label"
-                    LogSlider
+
+                   //  title: "label"
+                    HSlider
                     {
+                        text : value.toFixed(3)
+                        mapFunc: Utils.sliderLogMap()
                         anchors.fill : parent
-                        orientation: Qt.Horizontal
                     }
                 }
                 Text {
@@ -273,33 +275,7 @@ Item {
                     text: "Multi Slider"
                 }
 
-                Container
-                {
-                    Layout.column: 1
-                    Layout.row: 0
-                    Layout.alignment: Layout.Center
-                    width: 200
-                    height: 100
-                    //  title: "label"
-                    LogSlider
-                    {
-                        anchors.fill : parent
-                        orientation: Qt.Horizontal
-                    }
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 1
-                    Layout.alignment: Layout.Center
 
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : Styles.background
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "Log Slider"
-                }
                 Container
                 {
                     Layout.column: 0

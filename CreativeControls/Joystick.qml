@@ -15,7 +15,7 @@ Rectangle
     height : 200
     radius: Math.max(width, height) / 2
 
-    property var styles: LightStyle
+    property var styles: DarkStyle
     color: styles.background
 
     state: "default"

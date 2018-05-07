@@ -40,7 +40,6 @@ Item {
             Joystick { }
             Keyboard { }
             Leds { }
-            LogSlider { }
 
             Matrix { }
             MultiSlider { }
@@ -52,7 +51,6 @@ Item {
             Scale { }
 
             Scope { }
-            Slider { }
             Spat { }
             Spectrum { }
             Step { }

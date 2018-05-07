@@ -12,7 +12,8 @@ Item
     property alias stickX : xy.centerX
     property alias stickY : xy.centerY
 
-    property bool selected: false
+    property var styles: DarkStyle
+
     Rectangle
     {
         anchors.fill : parent
@@ -23,12 +24,14 @@ Item
     {
         id : xy
         anchors.fill: parent
-        color: selected? Styles.base :  Styles.colorOn
+        color: touchArea.selected? styles.colorOn :  styles.colorOff
         radiusScale: selected ? 25 : 35
     }
 
     TouchArea {
+        id: touchArea
         anchors.fill: parent
+        property bool selected: false // for the cross hair color
 
         onPressed: applyPos(point);
         onPositionChanged: applyPos(point)
