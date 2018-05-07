@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/com/github/jcelerier/qml-creative-controls">
-        <file alias="qmldir">CreativeControls/qmldir</file>
+        <file alias="qmldir">CreativeControls/qmldir-qpm</file>
         <file alias="AngleSlider.qml">CreativeControls/AngleSlider.qml</file>
         <file alias="ArcSlider.qml">CreativeControls/ArcSlider.qml</file>
         <file alias="ColorChooser.qml">CreativeControls/ColorChooser.qml</file>
@@ -44,7 +44,7 @@
     </qresource>
 
     <qresource prefix="/qt-project.org/imports/com/github/jcelerier/CreativeControls">
-        <file alias="qmldir">CreativeControls/qmldir</file>
+        <file alias="qmldir">CreativeControls/qmldir-qpm</file>
         <file alias="AngleSlider.qml">CreativeControls/AngleSlider.qml</file>
         <file alias="ArcSlider.qml">CreativeControls/ArcSlider.qml</file>
         <file alias="ColorChooser.qml">CreativeControls/ColorChooser.qml</file>
