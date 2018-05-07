@@ -7,8 +7,8 @@ QtObject
 
     property color base: "#561C49"
     property color baseLighter: "#561C49"
-    property color detail: "#3a4407"
-    property color borderColor: "#822a6f"
+    property color detail: "#3d1233"
+    property color borderColor: "#6d3160"
 
     property color colorOn:  "orange"
     property color colorOff:  "#7f8287"

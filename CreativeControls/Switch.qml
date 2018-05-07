@@ -16,7 +16,7 @@ Rectangle
     height : 50
     radius : width/2
 
-    property var styles: LightStyle
+    property var styles: DarkStyle
 
     border.color : styles.borderColor
     border.width : width/10.
