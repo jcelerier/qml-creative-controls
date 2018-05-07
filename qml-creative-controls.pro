@@ -2,6 +2,8 @@ QT += qml quick
 CONFIG += c++11 plugin
 TEMPLATE = lib
 
+# QMAKE_CXXFLAGS += -fsanitize=address -fsanitize=undefined -O0
+# QMAKE_LFLAGS += -fsanitize=address -fsanitize=undefined -O0
 QML_IMPORT_PATH += $$PWD
 QML2_IMPORT_PATH += $$PWD
 QML_DESIGNER_IMPORT_PATH += $$PWD
