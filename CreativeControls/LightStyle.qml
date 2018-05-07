@@ -11,6 +11,9 @@ QtObject
     property color borderColor: "#6d3160"
     property color background: "#ffffff"
 
+    // container properties
+    property real containerCornerRadius: 3
+
     // slider colors
     property color sliderBackgroundColor: background
     property color handleColor: colorOn

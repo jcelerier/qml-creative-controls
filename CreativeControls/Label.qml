@@ -14,7 +14,7 @@ Text
     property bool selected: false
     property var styles : DarkStyle
 
-    color : styles.labelColor//selected ? Styles.colorOn : Styles.base
+    color : styles.labelColor
 
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
