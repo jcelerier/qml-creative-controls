@@ -33,18 +33,15 @@ Item
     TouchArea {
         id: touchArea
         anchors.fill: parent
-        property bool selected: false // for the cross hair color
 
         onPressed: applyPos(point);
         onPositionChanged: applyPos(point)
 
         onDoubleClicked: stickX = stickY = 0.5;
 
-        onReleased: selected = false;
 
         function applyPos(point)
         {
-            selected = true;
 
             stickX = Utils.clamp(point.x, 0, xyPad.width) / width;
             stickY = Utils.clamp(point.y, 0, xyPad.height) / height;

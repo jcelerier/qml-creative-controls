@@ -30,6 +30,9 @@ QtObject
     // step properties
     property real stepRectCornerRadius: 8
 
+    // CosInfluence text color
+    property color textPressedColor: base
+
     // keyboard colors
     property color keyBorder: detail
     property color whiteKeyColor: colorOff
@@ -44,6 +47,6 @@ QtObject
 
     function randomDetailColor()
     {
-      return CppUtils.setHSVHue(detail, Math.random());
+      return CppUtils.setHSVHue(colorOn, Math.random());
     }
 }
