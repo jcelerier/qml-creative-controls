@@ -18,8 +18,8 @@ Rectangle
 
     width : 100
     height : 200
-    onWidthChanged: updateAntiHandle();
-    onHeightChanged: updateAntiHandle();
+    onWidthChanged: updateHandle();
+    onHeightChanged: updateHandle();
 
     property var styles: DarkStyle
 
@@ -29,7 +29,7 @@ Rectangle
 
     radius : styles.cornerRadius
 
-    function updateAntiHandle() { antiHandle.update(); }
+    function updateHandle() { antiHandle.update(); }
 
 
     property alias ease: antiHandle.ease
@@ -84,7 +84,7 @@ Rectangle
 
     function reset(){
         slider.value = slider.initialValue;
-        updateAntiHandle();
+        updateHandle();
     }
 
     Rectangle
