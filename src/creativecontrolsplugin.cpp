@@ -31,3 +31,12 @@ void Plugin::registerTypes(const char *uri)
   });
 }
 }
+
+#if defined(QPM_INIT)
+static void creative_controls_init()
+{
+    static CreativeControls::Plugin p;
+    p.registerTypes("com.github.jcelerier.CreativeControls");
+}
+Q_COREAPP_STARTUP_FUNCTION(creative_controls_init)
+#endif
