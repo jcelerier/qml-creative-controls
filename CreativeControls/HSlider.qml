@@ -41,7 +41,7 @@ Rectangle
     property real initialValue : 0.5
 
     // value mapping
-    property var mapFunc : function(linearVal){return linearVal}
+    property var mapFunc : function(linearVal) { return linearVal; }
 
     // handle color
     property alias handleColor : handle.color
@@ -93,7 +93,7 @@ Rectangle
 
         height: slider.height - slider.border.width *2
 
-        color :  mouseArea.pressed ? styles.colorOnLighter :  styles.colorOn
+        color : mouseArea.pressed ? styles.colorOnLighter :  styles.colorOn
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
         Behavior on width {enabled : handle.ease; NumberAnimation { duration: 100}}

@@ -90,3 +90,4 @@ DISTFILES += \
     examples/SimpleStep.qml \
     examples/ContainerExample.qml \
     examples/Spectrogram.qml \
+    tests/SliderTest.qml \

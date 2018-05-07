@@ -9,15 +9,17 @@ ColorChooser 1.0 ColorChooser.qml
 ColorSlider 1.0 ColorSlider.qml
 ColorWheel 1.0 ColorWheel.qml
 Container 1.0 Container.qml
+CosInfluence 1.0 CosInfluence.qml
 DonutSlider 1.0 DonutSlider.qml
 Frame 1.0 Frame.qml
-CosInfluence 1.0 CosInfluence.qml
-Graph2D 1.0 Graph2D.qml
 Graph 1.0 Graph.qml
+Graph2D 1.0 Graph2D.qml
+HSlider 1.0 HSlider.qml
 HSLSlider 1.0 HSLSlider.qml
 HSVSlider 1.0 HSVSlider.qml
 Joystick 1.0 Joystick.qml
 Keyboard 1.0 Keyboard.qml
+Label 1.0 Label.qml
 Leds 1.0 Leds.qml
 LogSlider 1.0 LogSlider.qml
 Matrix 1.0 Matrix.qml
@@ -35,6 +37,7 @@ Spectrum 1.0 Spectrum.qml
 Step 1.0 Step.qml
 Switch 1.0 Switch.qml
 Trajectory 1.0 Trajectory.qml
+VSlider 1.0 VSlider.qml
 XYPad 1.0 XYPad.qml
 
 singleton Styles 1.0 Styles.qml
