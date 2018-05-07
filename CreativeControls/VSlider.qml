@@ -159,7 +159,7 @@ Rectangle
 
     Label{
         id: label
-        text : slider.value
+        text : slider.value.toFixed(2)
         selected: mouseArea.pressed
         anchors{
             horizontalCenter: slider.horizontalCenter
