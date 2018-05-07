@@ -1,89 +1,89 @@
 <RCC>
     <qresource prefix="/com/github/jcelerier/qml-creative-controls">
-        <file>CreativeControls/qmldir</file>
-        <file>CreativeControls/AngleSlider.qml</file>
-        <file>CreativeControls/ArcSlider.qml</file>
-        <file>CreativeControls/ColorChooser.qml</file>
-        <file>CreativeControls/ColorSlider.qml</file>
-        <file>CreativeControls/ColorWheel.qml</file>
-        <file>CreativeControls/Container.qml</file>
-        <file>CreativeControls/CosInfluence.qml</file>
-        <file>CreativeControls/DarkStyle.qml</file>
-        <file>CreativeControls/DonutSlider.qml</file>
-        <file>CreativeControls/Frame.qml</file>
-        <file>CreativeControls/Graph.qml</file>
-        <file>CreativeControls/Graph2D.qml</file>
-        <file>CreativeControls/HRangeSlider.qml</file>
-        <file>CreativeControls/HSlider.qml</file>
-        <file>CreativeControls/HSLSlider.qml</file>
-        <file>CreativeControls/HSVSlider.qml</file>
-        <file>CreativeControls/Joystick.qml</file>
-        <file>CreativeControls/Keyboard.qml</file>
-        <file>CreativeControls/Label.qml</file>
-        <file>CreativeControls/Leds.qml</file>
-        <file>CreativeControls/LightStyle.qml</file>
-        <file>CreativeControls/Matrix.qml</file>
-        <file>CreativeControls/MultiSlider.qml</file>
-        <file>CreativeControls/Random1D.qml</file>
-        <file>CreativeControls/Random2D.qml</file>
-        <file>CreativeControls/Random3D.qml</file>
-        <file>CreativeControls/RangeSlider.qml</file>
-        <file>CreativeControls/RGBSlider.qml</file>
-        <file>CreativeControls/Scale.qml</file>
-        <file>CreativeControls/Scope.qml</file>
-        <file>CreativeControls/Spat.qml</file>
-        <file>CreativeControls/Spectrum.qml</file>
-        <file>CreativeControls/Step.qml</file>
-        <file>CreativeControls/Styles.qml</file>
-        <file>CreativeControls/Switch.qml</file>
-        <file>CreativeControls/Trajectory.qml</file>
-        <file>CreativeControls/Utils.qml</file>
-        <file>CreativeControls/VRangeSlider.qml</file>
-        <file>CreativeControls/VSlider.qml</file>
-        <file>CreativeControls/XYPad.qml</file>
+        <file alias="qmldir">CreativeControls/qmldir</file>
+        <file alias="AngleSlider.qml">CreativeControls/AngleSlider.qml</file>
+        <file alias="ArcSlider.qml">CreativeControls/ArcSlider.qml</file>
+        <file alias="ColorChooser.qml">CreativeControls/ColorChooser.qml</file>
+        <file alias="ColorSlider.qml">CreativeControls/ColorSlider.qml</file>
+        <file alias="ColorWheel.qml">CreativeControls/ColorWheel.qml</file>
+        <file alias="Container.qml">CreativeControls/Container.qml</file>
+        <file alias="CosInfluence.qml">CreativeControls/CosInfluence.qml</file>
+        <file alias="DarkStyle.qml">CreativeControls/DarkStyle.qml</file>
+        <file alias="DonutSlider.qml">CreativeControls/DonutSlider.qml</file>
+        <file alias="Frame.qml">CreativeControls/Frame.qml</file>
+        <file alias="Graph.qml">CreativeControls/Graph.qml</file>
+        <file alias="Graph2D.qml">CreativeControls/Graph2D.qml</file>
+        <file alias="HRangeSlider.qml">CreativeControls/HRangeSlider.qml</file>
+        <file alias="HSlider.qml">CreativeControls/HSlider.qml</file>
+        <file alias="HSLSlider.qml">CreativeControls/HSLSlider.qml</file>
+        <file alias="HSVSlider.qml">CreativeControls/HSVSlider.qml</file>
+        <file alias="Joystick.qml">CreativeControls/Joystick.qml</file>
+        <file alias="Keyboard.qml">CreativeControls/Keyboard.qml</file>
+        <file alias="Label.qml">CreativeControls/Label.qml</file>
+        <file alias="Leds.qml">CreativeControls/Leds.qml</file>
+        <file alias="LightStyle.qml">CreativeControls/LightStyle.qml</file>
+        <file alias="Matrix.qml">CreativeControls/Matrix.qml</file>
+        <file alias="MultiSlider.qml">CreativeControls/MultiSlider.qml</file>
+        <file alias="Random1D.qml">CreativeControls/Random1D.qml</file>
+        <file alias="Random2D.qml">CreativeControls/Random2D.qml</file>
+        <file alias="Random3D.qml">CreativeControls/Random3D.qml</file>
+        <file alias="RangeSlider.qml">CreativeControls/RangeSlider.qml</file>
+        <file alias="RGBSlider.qml">CreativeControls/RGBSlider.qml</file>
+        <file alias="Scale.qml">CreativeControls/Scale.qml</file>
+        <file alias="Scope.qml">CreativeControls/Scope.qml</file>
+        <file alias="Spat.qml">CreativeControls/Spat.qml</file>
+        <file alias="Specturm.qml">CreativeControls/Spectrum.qml</file>
+        <file alias="Step.qml">CreativeControls/Step.qml</file>
+        <file alias="Styles.qml">CreativeControls/Styles.qml</file>
+        <file alias="Switch.qml">CreativeControls/Switch.qml</file>
+        <file alias="Trajectory.qml">CreativeControls/Trajectory.qml</file>
+        <file alias="Utils.qml">CreativeControls/Utils.qml</file>
+        <file alias="VRangeSlider.qml">CreativeControls/VRangeSlider.qml</file>
+        <file alias="VSlider.qml">CreativeControls/VSlider.qml</file>
+        <file alias="XYPad.qml">CreativeControls/XYPad.qml</file>
     </qresource>
 
-<qresource prefix="/qt-project.org/imports/com/github/jcelerier/CreativeControls">
-    <file>CreativeControls/qmldir</file>
-    <file>CreativeControls/AngleSlider.qml</file>
-    <file>CreativeControls/ArcSlider.qml</file>
-    <file>CreativeControls/ColorChooser.qml</file>
-    <file>CreativeControls/ColorSlider.qml</file>
-    <file>CreativeControls/ColorWheel.qml</file>
-    <file>CreativeControls/Container.qml</file>
-    <file>CreativeControls/CosInfluence.qml</file>
-    <file>CreativeControls/DarkStyle.qml</file>
-    <file>CreativeControls/DonutSlider.qml</file>
-    <file>CreativeControls/Frame.qml</file>
-    <file>CreativeControls/Graph.qml</file>
-    <file>CreativeControls/Graph2D.qml</file>
-    <file>CreativeControls/HRangeSlider.qml</file>
-    <file>CreativeControls/HSlider.qml</file>
-    <file>CreativeControls/HSLSlider.qml</file>
-    <file>CreativeControls/HSVSlider.qml</file>
-    <file>CreativeControls/Joystick.qml</file>
-    <file>CreativeControls/Keyboard.qml</file>
-    <file>CreativeControls/Label.qml</file>
-    <file>CreativeControls/Leds.qml</file>
-    <file>CreativeControls/LightStyle.qml</file>
-    <file>CreativeControls/Matrix.qml</file>
-    <file>CreativeControls/MultiSlider.qml</file>
-    <file>CreativeControls/Random1D.qml</file>
-    <file>CreativeControls/Random2D.qml</file>
-    <file>CreativeControls/Random3D.qml</file>
-    <file>CreativeControls/RangeSlider.qml</file>
-    <file>CreativeControls/RGBSlider.qml</file>
-    <file>CreativeControls/Scale.qml</file>
-    <file>CreativeControls/Scope.qml</file>
-    <file>CreativeControls/Spat.qml</file>
-    <file>CreativeControls/Spectrum.qml</file>
-    <file>CreativeControls/Step.qml</file>
-    <file>CreativeControls/Styles.qml</file>
-    <file>CreativeControls/Switch.qml</file>
-    <file>CreativeControls/Trajectory.qml</file>
-    <file>CreativeControls/Utils.qml</file>
-    <file>CreativeControls/VRangeSlider.qml</file>
-    <file>CreativeControls/VSlider.qml</file>
-    <file>CreativeControls/XYPad.qml</file>
-</qresource>
+    <qresource prefix="/qt-project.org/imports/com/github/jcelerier/CreativeControls">
+        <file alias="qmldir">CreativeControls/qmldir</file>
+        <file alias="AngleSlider.qml">CreativeControls/AngleSlider.qml</file>
+        <file alias="ArcSlider.qml">CreativeControls/ArcSlider.qml</file>
+        <file alias="ColorChooser.qml">CreativeControls/ColorChooser.qml</file>
+        <file alias="ColorSlider.qml">CreativeControls/ColorSlider.qml</file>
+        <file alias="ColorWheel.qml">CreativeControls/ColorWheel.qml</file>
+        <file alias="Container.qml">CreativeControls/Container.qml</file>
+        <file alias="CosInfluence.qml">CreativeControls/CosInfluence.qml</file>
+        <file alias="DarkStyle.qml">CreativeControls/DarkStyle.qml</file>
+        <file alias="DonutSlider.qml">CreativeControls/DonutSlider.qml</file>
+        <file alias="Frame.qml">CreativeControls/Frame.qml</file>
+        <file alias="Graph.qml">CreativeControls/Graph.qml</file>
+        <file alias="Graph2D.qml">CreativeControls/Graph2D.qml</file>
+        <file alias="HRangeSlider.qml">CreativeControls/HRangeSlider.qml</file>
+        <file alias="HSlider.qml">CreativeControls/HSlider.qml</file>
+        <file alias="HSLSlider.qml">CreativeControls/HSLSlider.qml</file>
+        <file alias="HSVSlider.qml">CreativeControls/HSVSlider.qml</file>
+        <file alias="Joystick.qml">CreativeControls/Joystick.qml</file>
+        <file alias="Keyboard.qml">CreativeControls/Keyboard.qml</file>
+        <file alias="Label.qml">CreativeControls/Label.qml</file>
+        <file alias="Leds.qml">CreativeControls/Leds.qml</file>
+        <file alias="LightStyle.qml">CreativeControls/LightStyle.qml</file>
+        <file alias="Matrix.qml">CreativeControls/Matrix.qml</file>
+        <file alias="MultiSlider.qml">CreativeControls/MultiSlider.qml</file>
+        <file alias="Random1D.qml">CreativeControls/Random1D.qml</file>
+        <file alias="Random2D.qml">CreativeControls/Random2D.qml</file>
+        <file alias="Random3D.qml">CreativeControls/Random3D.qml</file>
+        <file alias="RangeSlider.qml">CreativeControls/RangeSlider.qml</file>
+        <file alias="RGBSlider.qml">CreativeControls/RGBSlider.qml</file>
+        <file alias="Scale.qml">CreativeControls/Scale.qml</file>
+        <file alias="Scope.qml">CreativeControls/Scope.qml</file>
+        <file alias="Spat.qml">CreativeControls/Spat.qml</file>
+        <file alias="Specturm.qml">CreativeControls/Spectrum.qml</file>
+        <file alias="Step.qml">CreativeControls/Step.qml</file>
+        <file alias="Styles.qml">CreativeControls/Styles.qml</file>
+        <file alias="Switch.qml">CreativeControls/Switch.qml</file>
+        <file alias="Trajectory.qml">CreativeControls/Trajectory.qml</file>
+        <file alias="Utils.qml">CreativeControls/Utils.qml</file>
+        <file alias="VRangeSlider.qml">CreativeControls/VRangeSlider.qml</file>
+        <file alias="VSlider.qml">CreativeControls/VSlider.qml</file>
+        <file alias="XYPad.qml">CreativeControls/XYPad.qml</file>
+    </qresource>
 </RCC>

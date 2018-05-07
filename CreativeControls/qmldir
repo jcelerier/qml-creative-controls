@@ -1,4 +1,4 @@
-module CreativeControls
+module com.github.jcelerier.CreativeControls
 plugin qml-creative-controls
 classname CreativeControls::Plugin
 typeinfo plugins.qmltypes
