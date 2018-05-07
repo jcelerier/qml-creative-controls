@@ -17,7 +17,7 @@ Item
     Rectangle
     {
         anchors.fill : parent
-        color : Styles.background
+        color : styles.background
     }
 
 

@@ -55,35 +55,35 @@ Item {
                 text: "Sliders"
             }
 
+            Container
+            {
+                styles: galleryStyle
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -100
+
+                width: 800
+                height: 400
+            }
             GridLayout
             {
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -100
+
                 rows : 4
                 columns : 2
                 rowSpacing: 20
                 columnSpacing: 200
 
-                Container
-                {
-                    styles: galleryStyle
 
+                AngleSlider {
+                    id: angleSlider
+                    width: 200
+                    height: 200
+                    styles: galleryStyle
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
 
-                    width: 200
-                    height: 200
-                    title: angleSlider.angle.toFixed(2)
-
-                    AngleSlider {
-                        id: angleSlider
-
-                        styles: galleryStyle
-
-                        width: Math.min(parent.width,parent.height)
-                        height: width
-                        anchors.centerIn: parent
-                    }
                 }
 
                 Text {
@@ -98,35 +98,26 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : textColor
-                    text: "Angle slider"
+                    text: "Angle slider \n"+ angleSlider.angle.toFixed(2)
                 }
-                Container
-                {
-                    styles: galleryStyle
+
+                AngleSlider {
+                    id: angleSliderMinMax
 
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
 
+                    styles: galleryStyle
                     width: 200
                     height: 200
 
-                    title: angleSliderMinMax.angle.toFixed(2)
-
-                    AngleSlider {
-                        id: angleSliderMinMax
-
-                        styles: galleryStyle
-
-                        width: Math.min(parent.width,parent.height)
-                        height: width
-                        anchors.centerIn: parent
-                        angle: 0
-                        min: -120
-                        max: 120
-                        rotation: -90
-                    }
+                    angle: 0
+                    min: -120
+                    max: 120
+                    rotation: -90
                 }
+
                 Text {
                     Layout.column: 1
                     Layout.row: 1
@@ -140,8 +131,9 @@ Item {
                     font.family: mainFont
                     font.bold : true
                     color : textColor
-                    text: "Rotated with\nmin & max\n"
+                    text: "Rotated with\nmin & max\n" + angleSliderMinMax.angle.toFixed(2)
                 }
+                //    }
                 /*
                 Container
                 {
@@ -254,11 +246,12 @@ Item {
 
             GridLayout
             {
-                anchors.horizontalCenter: parent.horizontalCenter
-                rows : 4
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -100
+                rows : 2
                 columns : 2
                 rowSpacing: 20
-                columnSpacing: 200
+                columnSpacing: 100
                 Container
                 {
                     styles: galleryStyle
@@ -295,8 +288,8 @@ Item {
                 {
                     styles: galleryStyle
 
-                    Layout.column: 0
-                    Layout.row: 2
+                    Layout.column: 1
+                    Layout.row: 0
                     Layout.alignment: Layout.Center
                     width: 100
                     height: 300
@@ -309,8 +302,8 @@ Item {
                     }
                 }
                 Text {
-                    Layout.column: 0
-                    Layout.row: 3
+                    Layout.column: 1
+                    Layout.row: 1
                     Layout.alignment: Layout.Center
 
                     font.pointSize: 20
@@ -349,7 +342,9 @@ Item {
                 columns : 3
                 rowSpacing: 20
                 columnSpacing: 50
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: -50
+
                 Container
                 {
                     styles: galleryStyle
@@ -780,8 +775,6 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     text: "Joystick\n" + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
                 }
-
-
             }
         }
 
@@ -804,11 +797,20 @@ Item {
                 y : 20
             }
 
+            Container{
+                anchors.centerIn: parent
+                anchors.horizontalCenterOffset: 20
+                anchors.verticalCenterOffset: 70
+                width: 700
+                height: 380
+                styles: galleryStyle
+            }
             GridLayout
             {
                 rowSpacing: 50
-                columnSpacing: 100
+                columnSpacing: 80
                 anchors.horizontalCenter: parent.horizontalCenter
+
                 Container {
                     styles: galleryStyle
 
@@ -887,31 +889,25 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     text: "Switch\n" + toggleSwitch.state
                 }
-                Container
+
+                Matrix
                 {
+                    id: matrix
                     styles: galleryStyle
+
                     Layout.column: 0
                     Layout.row: 2
                     Layout.alignment: Layout.Center
+
                     width: 240
                     height: 240
-
-                    Matrix
+                    onPressedChanged:
                     {
-                        id: matrix
-                        styles: galleryStyle
+                        if(matrix.pressed.length > 0)
+                            leds.toggle(matrix.pressed[0]);
 
-                        anchors.centerIn: parent
-                        height : parent.height - parent.radius*4.
-                        width : parent.width - parent.radius*4.
-                        onPressedChanged:
-                        {
-                            if(matrix.pressed.length > 0)
-                                leds.toggle(matrix.pressed[0]);
-
-                            //else
-                            //  leds.setIntensityForAll(0.0);
-                        }
+                        //else
+                        //  leds.setIntensityForAll(0.0);
                     }
                 }
                 Text {
@@ -932,30 +928,25 @@ Item {
                             "Matrix\n"
                     }
                 }
-                Container{
+
+                Leds
+                {
+                    id : leds
+                    styles: galleryStyle
+
                     Layout.column: 1
                     Layout.row: 2
                     Layout.alignment: Layout.Center
                     width: 240
                     height: 240
-                    styles: galleryStyle
-                    Leds
-                    {
-                        id : leds
-                        styles: galleryStyle
+                    easing : true
 
-                        anchors.centerIn: parent
-                        height : parent.height - parent.radius*4.
-                        width : parent.width - parent.radius*4.
-                        easing : true
-
-                        // all leds to off
-                        intensity : [
-                            [1., 1.,1.],
-                            [1.,1.,1.],
-                            [1.,1.,1.]
-                        ]
-                    }
+                    // all leds to off
+                    intensity : [
+                        [1., 1.,1.],
+                        [1.,1.,1.],
+                        [1.,1.,1.]
+                    ]
                 }
                 Text {
                     Layout.column: 1
