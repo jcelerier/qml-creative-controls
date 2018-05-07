@@ -24,10 +24,11 @@ Rectangle
     border.color: styles.base
     border.width: 5.
 
-    property real stickX: 2.22 * ((stick.x + stick.radius) - width / 2) / width
-    property real stickY: 2.22 * (-(stick.y + stick.radius) + height / 2) / height
+    property real stickX: Utils.rescale(stick.x,0,pad.width - stick.width,-1,1)
+    property real stickY: Utils.rescale(stick.y,0,pad.height - stick.height,-1,1)
     property real stickR: Utils.distance(stickX, stickY, 0, 0)
-    property real stickTheta: -Math.atan2(stickY, -stickX) * 360 / (2 * Math.PI) + 180
+    property real stickTheta: Math.atan2(stick.y + stick.radius - pad.radius,
+                                         stick.x + stick.radius- pad.radius);
 
     function moveStick(mouseX,mouseY)
     {
@@ -61,6 +62,7 @@ Rectangle
         onPositionChanged: moveStick(point.x, point.y)
         onReleased: pad.state = "default"
     }
+
 
     states: [
         State {
