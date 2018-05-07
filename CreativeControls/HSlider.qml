@@ -24,9 +24,9 @@ Rectangle
 
     property var styles: DarkStyle
 
-    color : styles.background
+    color : styles.sliderBackgroundColor
     border.width : height / 25.
-    border.color : styles.background
+    border.color : styles.sliderBackgroundColor
 
     radius : styles.cornerRadius
 
@@ -93,7 +93,7 @@ Rectangle
 
         height: slider.height - slider.border.width *2
 
-        color :  mouseArea.pressed ? styles.colorOnLighter :  styles.colorOn
+        color :  mouseArea.pressed ? styles.pressedHandleColor :  styles.handleColor
 
         onWidthChanged : {if(!resize) slider.value = mapFunc(linearMap());}
         Behavior on width {enabled : handle.ease; NumberAnimation { duration: 100}}
