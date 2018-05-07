@@ -17,7 +17,7 @@ Item {
                 })
 
     property var galleryStyle: DarkStyle
-
+    property color textColor: galleryStyle.base
     SwipeView
     {
         id:view
@@ -49,7 +49,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : galleryStyle.base
+                color : textColor
                 height : 100
                 y : 20
                 text: "Sliders"
@@ -97,7 +97,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     text: "Angle slider"
                 }
                 Container
@@ -139,7 +139,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     text: "Rotated with\nmin & max\n"
                 }
                 /*
@@ -246,7 +246,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : galleryStyle.base
+                color : textColor
                 height : 100
                 y : 20
                 text: "Sliders"
@@ -284,7 +284,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Multi Slider"
@@ -316,7 +316,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Range Slider"
@@ -337,7 +337,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : galleryStyle.base
+                color : textColor
                 text: "Colors"
                 height : 100
                 y : 20
@@ -378,7 +378,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSL Slider"
@@ -412,7 +412,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSL Donut"
@@ -443,7 +443,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSV Slider"
@@ -478,7 +478,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "HSV Donut"
@@ -511,7 +511,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "RGB Slider\n" + rgbSlider.color
@@ -543,7 +543,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "RGB Donut"
@@ -565,7 +565,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 30
                 font.bold : true
-                color : galleryStyle.base
+                color : textColor
                 text: "Graphs"
                 height : 100
                 y : 20
@@ -609,7 +609,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : galleryStyle.background
+                    color : textColor
                     text: "Graph"
                 }
 
@@ -654,7 +654,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : galleryStyle.background
+                    color : textColor
                     text: "Scope"
                 }
             }
@@ -710,7 +710,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "X-Y Pad\n" + xypad.stickX.toFixed(2) + ", " + xypad.stickY.toFixed(2)
@@ -739,7 +739,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Cosine Influence\n" + prettyArray(cosinfluence.values)
@@ -775,7 +775,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Joystick\n" + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
@@ -798,7 +798,7 @@ Item {
                 font.pointSize: 30
                 font.family: mainFont
                 font.bold : true
-                color : galleryStyle.base
+                color : textColor
                 text: "Keys & Matrices & Switch"
                 height : 100
                 y : 20
@@ -843,7 +843,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : galleryStyle.background
+                    color : textColor
                     text:
                     {
                         if(kbd.pressedKeys.length > 0)
@@ -882,7 +882,7 @@ Item {
                     font.pointSize: 20
                     font.family: mainFont
                     font.bold : true
-                    color : galleryStyle.background
+                    color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "Switch\n" + toggleSwitch.state
@@ -923,7 +923,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : galleryStyle.background
+                    color : textColor
                     text:
                     {
                         if(matrix.pressed.length > 0)
@@ -967,7 +967,7 @@ Item {
                     font.bold : true
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    color : galleryStyle.background
+                    color : textColor
                     text: "Leds\n"
                 }
 
