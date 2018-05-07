@@ -12,6 +12,7 @@ class XYTarget : public QQuickPaintedItem
   Q_PROPERTY(double centerY READ centerY WRITE setCenterY NOTIFY centerYChanged FINAL)
   Q_PROPERTY(double radiusScale READ radiusScale WRITE setRadiusScale NOTIFY radiusScaleChanged FINAL)
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged FINAL)
+  Q_PROPERTY(bool pressed READ pressed WRITE setPressed NOTIFY pressedChanged FINAL)
 
 public:
   XYTarget();
@@ -20,18 +21,21 @@ public:
   double centerY() const;
   double radiusScale() const;
   QColor color() const;
+  bool pressed() const;
 
 public slots:
   void setCenterX(double centerX);
   void setCenterY(double centerY);
   void setRadiusScale(double radiusScale);
   void setColor(QColor color);
+  void setPressed(bool pressed);
 
 signals:
   void centerXChanged(double centerX);
   void centerYChanged(double centerY);
   void radiusScaleChanged(double radiusScale);
   void colorChanged(QColor color);
+  void pressedChanged(bool pressed);
 
 private:
   void paint(QPainter* painter) final override;
@@ -47,12 +51,14 @@ private:
   double m_centerX{0.5};
   double m_centerY{0.5};
   double m_width{};
-  double m_radius{35};
-  double m_radiusScale{};
+  double m_radius{35.};
+  double m_radiusScale{35.};
 
   QColor m_color{};
   QPen m_pen;
   QBrush m_brush;
-  QPointF m_lastPos;
+  QPointF m_lastPos{};
+
+  bool m_pressed{};
 };
 }

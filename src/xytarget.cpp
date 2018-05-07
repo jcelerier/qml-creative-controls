@@ -35,7 +35,12 @@ void XYTarget::mousePressEvent(QMouseEvent* event)
 {
   if(contains(event->pos()))
   {
+    auto new_x = event->pos().x() / width();
+    auto new_y = event->pos().y() / height();
+
     m_lastPos = event->pos();
+    setCenterX(new_x);
+    setCenterY(new_y);
     event->accept();
     return;
   }
@@ -144,6 +149,11 @@ QColor XYTarget::color() const
   return m_color;
 }
 
+bool XYTarget::pressed() const
+{
+  return m_pressed;
+}
+
 void XYTarget::setCenterX(double centerX)
 {
   if (m_centerX == centerX)
@@ -185,5 +195,14 @@ void XYTarget::setColor(QColor color)
   m_brush.setColor(m_color);
   emit colorChanged(color);
   update();
+}
+
+void XYTarget::setPressed(bool pressed)
+{
+  if(pressed != m_pressed)
+  {
+    m_pressed = pressed;
+    pressedChanged(m_pressed);
+  }
 }
 }

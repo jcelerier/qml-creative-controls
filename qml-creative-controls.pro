@@ -89,3 +89,4 @@ DISTFILES += \
     examples/ContainerExample.qml \
     examples/Spectrogram.qml \
     tests/SliderTest.qml \
+    tests/Various.qml

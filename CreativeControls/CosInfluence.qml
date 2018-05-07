@@ -101,5 +101,4 @@ Rectangle
         anchors.fill: parent
         color: Styles.colorOn
     }
-
 }
