@@ -6,14 +6,14 @@ Rectangle
 {
     id: rangeSlider
 
-    width : 200
-    height : 100
+    width : 100
+    height : 200
     // onWidthChanged: handle.updateHandle();
     // onHeightChanged: handle.updateHandle();
     property var styles: DarkStyle
 
     color : styles.sliderBackgroundColor
-    border.width : orientation ==  Qt.Vertical ? width / 25. : height / 25.
+    border.width : width / 25.
     border.color : styles.sliderBackgroundColor
 
     radius : styles.cornerRadius
@@ -31,7 +31,7 @@ Rectangle
     property var mapFunc : function(linearVal){return linearVal}
 
     // vertical (Qt.Vertical) or horizontal (Qt.Horizontal) slider
-    property int orientation : Qt.Horizontal
+    property int orientation : Qt.Vertical
 
     property bool __updating: false
 
@@ -66,8 +66,8 @@ Rectangle
             verticalCenter: (orientation == Qt.Vertical) ? undefined: rangeSlider.verticalCenter
 
         }
-        width: (orientation == Qt.Vertical) ? rangeSlider.width * 0.9 :  maxHandle.x - (minHandle.x + minHandle.width)
-        height: (orientation == Qt.Vertical) ? minHandle.y - (maxHandle.y + maxHandle.height) : rangeSlider.height *0.9
+        width: (orientation == Qt.Vertical) ? rangeSlider.width - rangeSlider.border.width * 2:  maxHandle.x - (minHandle.x + minHandle.width)
+        height: (orientation == Qt.Vertical) ? minHandle.y - (maxHandle.y + maxHandle.height) : rangeSlider.height - rangeSlider.border.width * 2
 
         color: styles.colorOn
 
@@ -79,33 +79,25 @@ Rectangle
                 var yMax = maxHandle.y + offset;
                 var yMin = minHandle.y + offset;
 
-                var clampedMaxY = Utils.clamp(yMax + handleSize/2., handleSize/2., minHandle.y -  handleSize/2.);
-                var clampedMinY = Utils.clamp(yMin+ handleSize/2., yMax + 3.*handleSize/2., rangeSlider.height -  handleSize/2.);
+                var clampedMaxY = Utils.clamp(yMax + handleSize/2., handleSize/2., minHandle.y -  handleSize/2. );
+                var clampedMinY = Utils.clamp(yMin+ handleSize/2., yMax + 3.*handleSize/2., rangeSlider.height  -  handleSize/2.);
 
-                rangeSlider.maxValue = Utils.clamp(Utils.rescale(rangeSlider.height - clampedMaxY, 3.*handleSize/2.,rangeSlider.height - handleSize/2., 0., 1.)
+                rangeSlider.maxValue = Utils.clamp(Utils.rescale(rangeSlider.height - clampedMaxY, 3.*handleSize/2.,rangeSlider.height - handleSize/2. , 0., 1.)
                                                    ,0,1);
                 rangeSlider.minValue = Utils.clamp(Utils.rescale(rangeSlider.height - clampedMinY, handleSize/2., rangeSlider.height - 3.*handleSize/2., 0., 1.)
                                                    ,0,1);
             }
             else if(orientation == Qt.Horizontal)
             {
-                console.log("maxHandle.x "+maxHandle.x)
                 var xMax = maxHandle.x + offset;
                 var xMin = minHandle.x + offset;
 
                 var clampedMaxX =  Utils.clamp(xMax + handleSize/2., minHandle.x + 3.*handleSize/2., rangeSlider.width -  handleSize/2.);
                 var clampedMinX = Utils.clamp(xMin + handleSize/2., handleSize/2., xMax -  handleSize/2.);
 
-                console.log((xMax+ handleSize/2.)+" max, after " + clampedMaxX)
-                console.log("rescale min" +(  minHandle.x +3.*handleSize/2.))
-                console.log("rescale max" +(rangeSlider.width - handleSize/2.))
-
-             //   rangeSlider.maxValue = Utils.clamp(Utils.rescale(clampedMaxX, 3.*handleSize/2.,rangeSlider.width - handleSize/2., 0., 1.)
-               //                                    ,0,1);
-            var tmp = Utils.clamp(Utils.rescale(clampedMaxX, 3.*handleSize/2.,rangeSlider.width - handleSize/2., 0., 1.)
-                                                                       ,0,1);
-                console.log("maxValue" +tmp)
-               rangeSlider.maxValue = tmp
+                var tmp = Utils.clamp(Utils.rescale(clampedMaxX, 3.*handleSize/2.,rangeSlider.width - handleSize/2., 0., 1.)
+                                      ,0,1);
+                rangeSlider.maxValue = tmp
 
                 rangeSlider.minValue = Utils.clamp(Utils.rescale(clampedMinX, handleSize/2., rangeSlider.width - 3.*handleSize/2., 0., 1.)
                                                    ,0,1);
@@ -116,27 +108,17 @@ Rectangle
     Rectangle{
         id: minHandle
 
-        width: (orientation == Qt.Vertical) ? rangeSlider.width : handleSize
-        height: (orientation == Qt.Vertical) ? handleSize : rangeSlider.height
+        width: (orientation == Qt.Vertical) ? rangeSlider.width - rangeSlider.border.width * 2: handleSize
+        height: (orientation == Qt.Vertical) ? handleSize : rangeSlider.height - rangeSlider.border.width * 2
 
-        x: (orientation == Qt.Vertical) ? 0 : Utils.rescale(rangeSlider.minValue,0.,1.,
-                                                            handleSize / 2.,
-                                                            rangeSlider.width - 3.*handleSize/2.) - handleSize/2.;
+        x: (orientation == Qt.Vertical) ? rangeSlider.border.width : Utils.rescale(rangeSlider.minValue,0.,1.,
+                                                                                   handleSize / 2.,
+                                                                                   rangeSlider.width - 3.*handleSize/2.) - handleSize/2.;
         y: (orientation == Qt.Vertical) ? Utils.rescale(1. - rangeSlider.minValue,0.,1.,
                                                         3. * handleSize / 2.,
                                                         rangeSlider.height - handleSize/2.) - handleSize/2.
-                                        : 0;
-        color: styles.background//range.color
-        // border.color: Styles.background
-        // border.width: 4
-        /*
-        Rectangle{
-            id: top
-            width: (orientation == Qt.Vertical) ? minHandle.width : 3
-            height: (orientation == Qt.Vertical) ? 3 : minHandle.height
-            color: Styles.background
-        }*/
-
+                                        : rangeSlider.border.width;
+        color: styles.detail
 
         function moveHandle(mouseX,mouseY)
         {
@@ -150,7 +132,6 @@ Rectangle
                 var clampedX = Utils.clamp(mouseX, handleSize/2., maxHandle.x - handleSize/2.);
                 rangeSlider.minValue = Utils.rescale(clampedX, handleSize/2.,rangeSlider.width - 3.*handleSize/2.,0.,1.);
 
-                //rangeSlider.minValue = Utils.clampRescale(mouseX, minHandle.width/2.,rangeSlider.width - minHandle.width/2.,0.,rangeSlider.maxValue);
             }
 
             // __updating = false;
@@ -164,26 +145,18 @@ Rectangle
     Rectangle{
         id: maxHandle
 
-        width: (orientation == Qt.Vertical) ? rangeSlider.width : handleSize
-        height: (orientation == Qt.Vertical) ? handleSize : rangeSlider.height
+        width: (orientation == Qt.Vertical) ?   rangeSlider.width - rangeSlider.border.width * 2 : handleSize
+        height: (orientation == Qt.Vertical) ? handleSize : rangeSlider.height - rangeSlider.border.width * 2
 
-        x: (orientation == Qt.Vertical) ? 0 : Utils.rescale(rangeSlider.maxValue,0.,1.,
-                                                            handleSize/2., rangeSlider.width- handleSize/2.) - handleSize/2.;
-        y: (orientation == Qt.Vertical) ? Utils.rescale(1. - rangeSlider.maxValue,0.,1.,
-                                                        handleSize/2.,rangeSlider.height - 3.*handleSize/2.) - handleSize/2.
-                                        : 0
+        x:  (orientation == Qt.Vertical) ? rangeSlider.border.width
+                                         : Utils.rescale(1. - rangeSlider.maxValue,0.,1., handleSize/2.,rangeSlider.width - 3.*handleSize/2. ) - handleSize/2.
+
+        y: (orientation == Qt.Vertical) ? Utils.rescale(1. - rangeSlider.maxValue,0.,1., handleSize/2.,rangeSlider.height - 3.*handleSize/2. ) - handleSize/2.
+                                        :rangeSlider.border.width
 
 
-        color: styles.background//range.color//Styles.base
-        //border.color: Styles.background
-        //border.width: 4
-        /* Rectangle{
-            x: (orientation == Qt.Vertical) ? 0 : maxHandle.width
-            y: (orientation == Qt.Vertical) ? maxHandle.height : 0
-            width: (orientation == Qt.Vertical) ? maxHandle.width : 3
-            height: (orientation == Qt.Vertical) ? 3 : maxHandle.height
-            color: Styles.background
-        }*/
+        color: styles.detail
+
         function moveHandle(mouseX,mouseY)
         {
             if(orientation == Qt.Vertical)
@@ -284,11 +257,11 @@ Rectangle
                 }
                 else if(orientation == Qt.Horizontal)
                 {
-                   newVal = Utils.clamp(mouseX-offset,handleSize,rangeSlider.width-(range.width + handleSize));
-                   newVal -= range.x;
+                    newVal = Utils.clamp(mouseX-offset,handleSize,rangeSlider.width-(range.width + handleSize));
+                    newVal -= range.x;
                 }
 
-               range.updateValues(newVal)
+                range.updateValues(newVal)
             }
 
         }

@@ -16,6 +16,11 @@ QtObject
     property color handleColor: colorOn
     property color pressedHandleColor: colorOnLighter
 
+    // range slider colors
+    property color handlesColor: detail
+    property color pressedHandlesColor: borderColor
+    property color handlesValueColor: colorOnLighter
+
     // switch, leds, matrix color
     property color colorOn: "#7b9a4a"
     property color colorOff: "#7f8287"
