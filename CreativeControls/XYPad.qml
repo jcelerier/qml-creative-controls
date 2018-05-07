@@ -20,12 +20,14 @@ Item
         color : Styles.background
     }
 
+
+
     Crosshair
     {
         id : xy
         anchors.fill: parent
-        color: touchArea.selected? styles.colorOn :  styles.colorOff
-        radiusScale: selected ? 25 : 35
+        color: touchArea.pressState ? styles.colorOn :  styles.colorOff
+        radiusScale: touchArea.pressState ? 25 : 35
     }
 
     TouchArea {

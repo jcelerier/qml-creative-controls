@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow
 {
-    CC.CosInfluence {
+    CC.XYPad {
         anchors.fill: parent
     }
 }
