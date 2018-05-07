@@ -15,7 +15,7 @@ Page
                 Repeater {
                     model :5
                     Column {
-                        Slider
+                        HSlider
                         {
                             height: 50
 
@@ -32,7 +32,7 @@ Page
         }
 
         Container {
-            Slider {
+            VSlider {
                 anchors.fill: parent
             }
         }
