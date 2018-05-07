@@ -12,10 +12,6 @@ import CreativeControls 1.0
 // * orientation: vertical / horizontal
 // * text : the text to display on the slider
 
-
-// BUG
-// double click and move -> text is not updated
-
 Rectangle
 {
     id: slider
@@ -127,6 +123,7 @@ Rectangle
             resize = true;
             antiHandle.height = slider.value *(slider.height - slider.border.width);
         }
+
     }
 
     MouseArea
@@ -143,13 +140,18 @@ Rectangle
         }
 
         onPositionChanged: {
+            antiHandle.resize = false;
             antiHandle.ease = false;
             moveHandle(mouseX,mouseY);
         }
 
         onReleased:  __updating = false
 
-        onDoubleClicked: slider.reset()
+        onDoubleClicked: {
+            antiHandle.ease = true;
+            antiHandle.resize = false;
+            slider.reset()
+        }
     }
 
 

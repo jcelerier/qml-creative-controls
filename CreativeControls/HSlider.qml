@@ -13,9 +13,6 @@ import CreativeControls 1.0
 // * text : the text to display on the slider
 
 
-// BUG
-// double click and move -> text is not updated
-
 Rectangle
 {
     id: slider
@@ -125,8 +122,10 @@ Rectangle
             moveHandle(mouseX,mouseY);
         }
 
-        onPositionChanged: {
+        onPositionChanged:
+        {
             handle.ease = false;
+            handle.resize = false;
             moveHandle(mouseX,mouseY);
         }
 
