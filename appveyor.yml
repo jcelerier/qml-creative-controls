@@ -5,19 +5,19 @@ environment:
   matrix:
     - platform: Win32
       configuration: Debug
-      QTDIR: C:\Qt\5.11\msvc2017
+      QTDIR: C:\Qt\5.11\msvc2015
       CMAKE_GENERATOR_NAME: Visual Studio 15 2017
     - platform: Win32
       configuration: Release
-      QTDIR: C:\Qt\5.11\msvc2017
+      QTDIR: C:\Qt\5.11\msvc2015
       CMAKE_GENERATOR_NAME: Visual Studio 15 2017
     - platform: x64
       configuration: Debug
-      QTDIR: C:\Qt\5.11\msvc2015_64
+      QTDIR: C:\Qt\5.11\msvc2017_64
       CMAKE_GENERATOR_NAME: Visual Studio 15 2017 Win64
     - platform: x64
       configuration: Release
-      QTDIR: C:\Qt\5.11\msvc2015_64
+      QTDIR: C:\Qt\5.11\msvc2017_64
       CMAKE_GENERATOR_NAME: Visual Studio 15 2017 Win64
 
 before_build:
