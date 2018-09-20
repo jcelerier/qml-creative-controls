@@ -34,6 +34,7 @@ Spat 1.0 Spat.qml
 Spectrum 1.0 Spectrum.qml
 Step 1.0 Step.qml
 Switch 1.0 Switch.qml
+ToggleSwitch 1.0 ToggleSwitch.qml
 Trajectory 1.0 Trajectory.qml
 VSlider 1.0 VSlider.qml
 XYPad 1.0 XYPad.qml
