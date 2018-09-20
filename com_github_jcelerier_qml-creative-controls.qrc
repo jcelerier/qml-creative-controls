@@ -36,7 +36,7 @@
         <file alias="Step.qml">CreativeControls/Step.qml</file>
         <file alias="Styles.qml">CreativeControls/Styles.qml</file>
         <file alias="Switch.qml">CreativeControls/Switch.qml</file>
-        <file alias="ToggleSwitch.qml">CreativeControls/Switch.qml</file>
+        <file alias="ToggleSwitch.qml">CreativeControls/ToggleSwitch.qml</file>
         <file alias="Trajectory.qml">CreativeControls/Trajectory.qml</file>
         <file alias="Utils.qml">CreativeControls/Utils.qml</file>
         <file alias="VRangeSlider.qml">CreativeControls/VRangeSlider.qml</file>
@@ -81,7 +81,7 @@
         <file alias="Step.qml">CreativeControls/Step.qml</file>
         <file alias="Styles.qml">CreativeControls/Styles.qml</file>
         <file alias="Switch.qml">CreativeControls/Switch.qml</file>
-        <file alias="ToggleSwitch.qml">CreativeControls/Switch.qml</file>
+        <file alias="ToggleSwitch.qml">CreativeControls/ToggleSwitch.qml</file>
         <file alias="Trajectory.qml">CreativeControls/Trajectory.qml</file>
         <file alias="Utils.qml">CreativeControls/Utils.qml</file>
         <file alias="VRangeSlider.qml">CreativeControls/VRangeSlider.qml</file>
