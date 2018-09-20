@@ -55,15 +55,7 @@ Item {
                 text: "Sliders"
             }
 
-            Container
-            {
-                styles: galleryStyle
-                anchors.centerIn: parent
-                anchors.verticalCenterOffset: -100
 
-                width: 800
-                height: 400
-            }
             GridLayout
             {
                 anchors.centerIn: parent
@@ -75,6 +67,7 @@ Item {
                 columnSpacing: 200
 
 
+
                 AngleSlider {
                     id: angleSlider
                     width: 200
@@ -83,6 +76,7 @@ Item {
                     Layout.column: 0
                     Layout.row: 0
                     Layout.alignment: Layout.Center
+
 
                 }
 
@@ -133,93 +127,7 @@ Item {
                     color : textColor
                     text: "Rotated with\nmin & max\n" + angleSliderMinMax.angle.toFixed(2)
                 }
-                //    }
-                /*
-                Container
-                {
-                    Layout.column: 0
-                    Layout.row: 2
-                    Layout.alignment: Layout.Center
-                    width : 300
-                    height : 200
-                    title: "label"
-                    MultiSlider {
-                        anchors.fill: parent
-                        count: 6
-                    }
-                }
 
-                Text {
-                    Layout.column: 0
-                    Layout.row: 3
-                    Layout.alignment: Layout.Center
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : galleryStyle.background
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "Multi Slider"
-                }
-
-                Container
-                {
-                    Layout.column: 1
-                    Layout.row: 2
-                    Layout.alignment: Layout.Center
-                    width: 200
-                    height: 100
-
-                   //  title: "label"
-                    HSlider
-                    {
-                        text : value.toFixed(3)
-                        mapFunc: Utils.sliderLogMap()
-                        anchors.fill : parent
-                    }
-                }
-                Text {
-                    Layout.column: 1
-                    Layout.row: 3
-                    Layout.alignment: Layout.Center
-
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : galleryStyle.background
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "Log Slider"
-                }
-                Container
-                {
-                    Layout.column: 0
-                    Layout.row: 4
-                    Layout.alignment: Layout.Center
-                    width: 50
-                    height: 150
-
-                    RangeSlider
-                    {
-                        anchors.centerIn : parent
-                        width : parent.width - 2 * parent.radius
-                        height : parent.height - 2 * parent.radius
-                        orientation: Qt.Vertical
-                    }
-                }
-                 Text {
-                    Layout.column: 1
-                    Layout.row: 5
-
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : galleryStyle.background
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "Range Slider"
-                }
-*/
             }
         }
         Page
@@ -799,11 +707,12 @@ Item {
 
             Container{
                 anchors.centerIn: parent
-                anchors.horizontalCenterOffset: 20
-                anchors.verticalCenterOffset: 70
+                anchors.horizontalCenterOffset: 0
+                anchors.verticalCenterOffset: 50
                 width: 700
                 height: 380
                 styles: galleryStyle
+                visible: false
             }
             GridLayout
             {
@@ -860,35 +769,71 @@ Item {
                     Layout.column: 1
                     Layout.row: 0
                     Layout.alignment: Layout.Center
+
                     height: 100
-                    width: 100
-                    Switch
-                    {
-                        id : toggleSwitch
+                    width: 300
 
-                        styles: galleryStyle
-
+                    Row{
                         anchors.centerIn: parent
+                        width: 250
+                        spacing: 100
+                        ToggleSwitch
+                        {
+                            id : toggleSwitch
 
-                        width: 50
-                        height: 50
-                        onToggle: leds.setIntensityForAll(!onoff);
+                            styles: galleryStyle
 
+                            width: 80
+                            height: 50
+                            onToggle: leds.setIntensityForAll(!onoff);
+
+                        }
+                        Switch
+                        {
+                            id : pressSwitch
+
+                            styles: galleryStyle
+
+                            width: 50
+                            height: 50
+                            onPressed: leds.setIntensityForAll(0);
+                            onReleased: leds.setIntensityForAll(1);
+
+                        }
                     }
+
                 }
-                Text {
+                Row{
                     Layout.column: 1
                     Layout.row: 1
                     Layout.alignment: Layout.Center
+                    Layout.topMargin: -30
+                    width: 250
+                    spacing: 30
+                    Text {
 
-                    font.pointSize: 20
-                    font.family: mainFont
-                    font.bold : true
-                    color : textColor
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    text: "Switch\n" + toggleSwitch.state
+
+                        font.pointSize: 20
+                        font.family: mainFont
+                        font.bold : true
+                        color : textColor
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        text: "ToggleSwitch\n" + toggleSwitch.state
+                    }
+                    Text {
+
+
+                        font.pointSize: 20
+                        font.family: mainFont
+                        font.bold : true
+                        color : textColor
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        text: "PressSwitch\n" + pressSwitch.state
+                    }
                 }
+
 
                 Matrix
                 {
@@ -1052,7 +997,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
 
                 font.bold: true
-                text: "LightStyle"
+                text: "Light Style"
                 color: galleryStyle == LightStyle ?
                            LightStyle.detail
                          : LightStyle.labelColor
@@ -1081,7 +1026,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
 
                 font.bold: true
-                text: "DarkStyle"
+                text: "Dark Style"
                 color: galleryStyle == DarkStyle ?
                            DarkStyle.detail
                          : DarkStyle.labelColor

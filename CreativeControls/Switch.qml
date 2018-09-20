@@ -4,13 +4,12 @@ import com.github.jcelerier.CreativeControls 1.0
 // A simple toggle switch.
 
 // Signal:
-// * toggle(): signal, on toggled
-// Function:
-// * switchState(): changes the switch state (on or off)
+// * pressed(): signal, on pressed
+// * released(): signal, on released
 
 Rectangle
 {
-    id: toggleSwitch
+    id: pressSwitch
 
     width : 50
     height : 50
@@ -21,23 +20,26 @@ Rectangle
     border.color : styles.borderColor
     border.width : width/10.
 
-    color : (toggleSwitch.state == "ON")? styles.colorOn : styles.colorOff
+    color : (pressSwitch.state == "ON")? styles.colorOn : styles.colorOff
     property bool ease : true
-    Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.InOutQuint}}
+    Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.OutQuint}}
 
-    signal toggle(bool onoff)
-    function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
 
+    signal pressed();
+    signal released();
 
     TouchArea
     {
         anchors.fill : parent
         onPressed : {
-            toggleSwitch.switchState();
-            toggle(toggleSwitch.state == "ON");
+            pressSwitch.pressed();
+            pressSwitch.state = "ON"
+        }
+        onReleased: {
+            pressSwitch.released();
+            pressSwitch.state = "OFF"
         }
     }
-
     state : "OFF"
     states: [
         State {name : "ON"},

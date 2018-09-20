@@ -69,6 +69,7 @@ OTHER_FILES += \
     $$PWD/CreativeControls/Spectrum.qml \
     $$PWD/CreativeControls/Step.qml \
     $$PWD/CreativeControls/Switch.qml \
+    $$PWD/CreativeControls/ToggleSwitch.qml \
     $$PWD/CreativeControls/Trajectory.qml \
     $$PWD/CreativeControls/Utils.qml \
     $$PWD/CreativeControls/VRangeSlider.qml \
