@@ -86,4 +86,5 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 * [spatium](https://vimeo.com/52321647)
 * [qml-color-picker](https://github.com/astorije/qml-color-picker)
 * [Interface.js](http://charlie-roberts.com/interface/)
+* [ofxDmtrUI3](https://github.com/dimitre/ofxDmtrUI3)
 
