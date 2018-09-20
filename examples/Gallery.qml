@@ -974,14 +974,14 @@ Item {
         width: parent.width
     }
 
-    Row{
+    Column{
         anchors{
             top: parent.top
             topMargin: 20
             left: parent.left
             leftMargin: 20
         }
-        spacing: 20
+        spacing: 5
         Rectangle{
             width: 100
             height: 30
