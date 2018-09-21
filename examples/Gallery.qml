@@ -675,7 +675,9 @@ Item {
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: "Joystick\n" + joystick.stickX.toFixed(2) + ", " + joystick.stickY.toFixed(2)
+                    text: "Joystick\n"
+                          + "X: " + joystick.stickX.toFixed(2) + ", Y: " + joystick.stickY.toFixed(2)
+                          +"\nR: "+ joystick.stickR.toFixed(2) + ", θ: " + joystick.stickTheta.toFixed(2)
                 }
             }
         }

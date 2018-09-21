@@ -24,22 +24,35 @@ Rectangle
     border.color: styles.base
     border.width: 5.
 
-    property real stickX: Utils.rescale(stick.x,0,pad.width - stick.width,-1,1)
-    property real stickY: Utils.rescale(stick.y,0,pad.height - stick.height,-1,1)
-    property real stickR: Utils.distance(stickX, stickY, 0, 0)
-    property real stickTheta: Math.atan2(stick.y + stick.radius - pad.radius,
-                                         stick.x + stick.radius- pad.radius);
+    property real stickX: 0
+    property real stickY: 0
+    property real stickR: 0
+    property real stickTheta: 0
 
     function moveStick(mouseX,mouseY)
     {
         var dist = Utils.distance(0,0, mouseX - pad.radius,mouseY- pad.radius);
-        var theta = Math.atan2(mouseY - pad.radius, mouseX - pad.radius);
+        stickTheta = mouseY === pad.radius && mouseX === pad.radius ?
+                    0
+                  : Math.atan2(mouseY - pad.radius, mouseX - pad.radius);
         var radius = Utils.clamp(dist, 0,pad.radius - stick.radius) ;
 
-        stick.x = radius * Math.cos(theta) + pad.radius - stick.radius;
-        stick.y = radius * Math.sin(theta) + pad.radius - stick.radius;
+        stick.x = radius * Math.cos(stickTheta) + pad.radius - stick.radius;
+        stick.y = radius * Math.sin(stickTheta) + pad.radius - stick.radius;
+
+        // rescale between 0 and 1
+        stickX = Utils.rescale(stick.x,0,pad.width - stick.width,-1.00,1.00)
+        stickY = -Utils.rescale(stick.y,0,pad.height - stick.height,-1,1)
+        stickR = Utils.distance(stickX, stickY, 0, 0)
     }
 
+    function releaseStick()
+    {
+        stickX = 0
+        stickY = 0
+        stickTheta = 0
+        stickR = 0
+    }
 
     Rectangle
     {
@@ -60,7 +73,10 @@ Rectangle
         }
 
         onPositionChanged: moveStick(point.x, point.y)
-        onReleased: pad.state = "default"
+        onReleased: {
+            pad.state = "default"
+            releaseStick();
+        }
     }
 
 
