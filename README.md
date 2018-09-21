@@ -1,5 +1,9 @@
  <h1> <img src="https://raw.githubusercontent.com/jcelerier/qml-creative-controls/master/logo.png" width="100" align="center"> QML Creative Controls  </h1>
 
+<p align="center">
+  <img src="https://media.giphy.com/media/LV9hbOzEIzGt20qThr/giphy.gif" />
+</p>
+
 Controls useful in a creative coding context.
 
 Requirements:
@@ -9,6 +13,7 @@ Requirements:
 
 [![Build Status](https://travis-ci.org/jcelerier/qml-creative-controls.svg)](https://travis-ci.org/jcelerier/qml-creative-controls)
 [![Build status](https://ci.appveyor.com/api/projects/status/j07ij1y6tf6awey5?svg=true)](https://ci.appveyor.com/project/JeanMichalCelerier/qml-creative-controls)
+
 
 ## Building
 
@@ -53,8 +58,6 @@ See [OssiaClientExample.qml](examples/OssiaClientExample.qml) and [OssiaServerEx
 This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
-
-![Gallery video](https://media.giphy.com/media/LV9hbOzEIzGt20qThr/giphy.gif)
 
 ![QtDesigner](https://i.imgur.com/IctZ1HX.png)
 
