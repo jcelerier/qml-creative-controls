@@ -9,11 +9,14 @@ Item {
 
     property font mainFont:
         Qt.font({
-                    family: 'Monospace',
-                    weight: Font.Black,
-                    bold: true,
-                    italic: false,
+                    family: 'Fira Sans',
                     pointSize: 24
+                })
+    property font headerFont:
+        Qt.font({
+                    family: 'Fira Sans',
+                    pointSize: 30,
+                    bold: true
                 })
 
     property var galleryStyle: DarkStyle
@@ -46,9 +49,7 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.pointSize: 30
-                font.family: mainFont
-                font.bold : true
+                font: headerFont
                 color : textColor
                 height : 100
                 y : 20
@@ -90,7 +91,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     text: "Angle slider \n"+ angleSlider.angle.toFixed(2)
                 }
@@ -123,7 +124,7 @@ Item {
                     Layout.preferredWidth: 200
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     text: "Rotated with\nmin & max\n" + angleSliderMinMax.angle.toFixed(2)
                 }
@@ -143,9 +144,7 @@ Item {
             {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.pointSize: 30
-                font.family: mainFont
-                font.bold : true
+                font: headerFont
                 color : textColor
                 height : 100
                 y : 20
@@ -184,7 +183,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -216,7 +215,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -235,9 +234,7 @@ Item {
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 30
-                font.family: mainFont
-                font.bold : true
+                font: headerFont
                 color : textColor
                 text: "Colors"
                 height : 100
@@ -280,7 +277,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -314,7 +311,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -345,7 +342,7 @@ Item {
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -380,7 +377,7 @@ Item {
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -413,7 +410,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -445,7 +442,7 @@ Item {
                     Layout.preferredWidth: 100
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -466,8 +463,7 @@ Item {
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 30
-                font.bold : true
+                font: headerFont
                 color : textColor
                 text: "Graphs"
                 height : 100
@@ -509,7 +505,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     color : textColor
@@ -554,7 +550,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     color : textColor
@@ -574,9 +570,7 @@ Item {
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 30
-                font.family: mainFont
-                font.bold : true
+                font: headerFont
                 color : galleryStyle.base
                 text: "Pads"
                 height : 100
@@ -612,7 +606,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -641,7 +635,7 @@ Item {
                     Layout.alignment: Qt.AlignCenter
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -677,7 +671,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     color : textColor
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -696,9 +690,7 @@ Item {
             header: Text
             {
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 30
-                font.family: mainFont
-                font.bold : true
+                font: headerFont
                 color : textColor
                 text: "Keys & Matrices & Switch"
                 height : 100
@@ -751,7 +743,7 @@ Item {
                     Layout.maximumWidth: 200
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     color : textColor
@@ -815,7 +807,7 @@ Item {
 
                         font.pointSize: 20
                         font.family: mainFont
-                        font.bold : true
+                        font.bold : false
                         color : textColor
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -826,7 +818,7 @@ Item {
 
                         font.pointSize: 20
                         font.family: mainFont
-                        font.bold : true
+                        font.bold : false
                         color : textColor
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -861,7 +853,7 @@ Item {
                     Layout.alignment: Layout.Center
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     color : textColor
@@ -900,7 +892,7 @@ Item {
 
                     font.pointSize: 20
                     font.family: mainFont
-                    font.bold : true
+                    font.bold : false
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     color : textColor
@@ -932,7 +924,7 @@ Item {
                 anchors.fill : parent
                 color : btnPrevious.pressed ? galleryStyle.colorOn : galleryStyle.background
             }
-            font.bold : true
+            font.bold : false
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -958,7 +950,7 @@ Item {
                 anchors.fill : parent
                 color : btnNext.pressed ? galleryStyle.colorOn : galleryStyle.background
             }
-            font.bold : true
+            font.bold : false
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
