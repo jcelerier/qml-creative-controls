@@ -54,7 +54,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
 
-![Gallery video](https://media.giphy.com/media/xUPGcIekebnYNZhBnO/giphy.gif)
+![Gallery video](https://media.giphy.com/media/LV9hbOzEIzGt20qThr/giphy.gif)
 
 ![QtDesigner](https://i.imgur.com/IctZ1HX.png)
 
