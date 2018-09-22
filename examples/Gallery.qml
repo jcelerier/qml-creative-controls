@@ -173,6 +173,7 @@ Item {
                         styles: galleryStyle
 
                         anchors.fill: parent
+                        spacing: 1
                         count: 6
                     }
                 }

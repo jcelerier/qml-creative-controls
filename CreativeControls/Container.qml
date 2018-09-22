@@ -15,20 +15,21 @@ Rectangle
     border.color: styles.base
     border.width: styles.containerCornerRadius
 
-    default property alias data : content.data
-    Item{
+    default property alias main : content.data
+    Item {
         id: content
         anchors{
             top: container.top
             topMargin: container.radius
+            leftMargin: container.radius
             horizontalCenter: container.horizontalCenter
         }
         width: container.width - 2 * container.radius
         height: title == "" ? container.height - 2.* container.radius
                              : container.height - 2.* container.radius -  (titleLabel.height + titleBottomMargin);
-
     }
 
+    Component.onCompleted: main.parent = content
 
     property alias title: titleLabel.text
     property real titleBottomMargin: titleLabel.height*0.3

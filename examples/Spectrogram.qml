@@ -2,8 +2,20 @@ import QtQuick 2.0
 import com.github.jcelerier.CreativeControls 1.0
 
 Container {
+    id: root
     width: 800
     height: 400
+
+    MultiSlider {
+        id: slider
+        anchors.fill:parent
+        count: 64
+        textVisible: false
+        interactive: false
+        spacing: 1
+        ease: true
+    }
+
 
     // Init to zero
     Component.onCompleted: {
@@ -30,13 +42,4 @@ Container {
         }
     }
 
-    MultiSlider {
-        id: slider
-        anchors.fill:parent
-        count: 64
-        textVisible: false
-        interactive: false
-        spacing: 1
-        ease: true
-    }
 }

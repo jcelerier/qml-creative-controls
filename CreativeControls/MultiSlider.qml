@@ -23,8 +23,8 @@ Item
     property bool ease: false
     property real spacing : 0.
     property real sliderWidth : (multiSlider.orientation == Qt.Vertical) ?
-                                    multiSlider.width / count
-                                  : multiSlider.height / count
+                                    (multiSlider.width) / count - spacing
+                                  : (multiSlider.height) / count - spacing
 
     property bool __updating: false
 
@@ -48,6 +48,7 @@ Item
                 interactive: multiSlider.interactive
                 height : multiSlider.height
                 width : multiSlider.sliderWidth
+                border.width: 0
 
                 onValueChanged: recomputeValues()
             }
@@ -71,6 +72,7 @@ Item
                 interactive: multiSlider.interactive
                 height : multiSlider.sliderWidth
                 width : multiSlider.width
+                border.width: 0
 
                 onValueChanged: recomputeValues()
             }
