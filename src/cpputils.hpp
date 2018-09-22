@@ -13,12 +13,12 @@ public:
 signals:
 
 public slots:
-  double getHSVHue(QColor col);
-  double getHSVSaturation(QColor col);
-  double getHSVValue(QColor col);
+  double getHSVHue(const QColor col);
+  double getHSVSaturation(const QColor col);
+  double getHSVValue(const QColor col);
 
-  QColor setHSVHue(QColor col, double h);
-  QColor setHSVSaturation(QColor col, double s);
-  QColor setHSVValue(QColor col, double v);
+  QColor setHSVHue(const QColor col, const double h);
+  QColor setHSVSaturation(const QColor col, const double s);
+  QColor setHSVValue(const QColor col, const double v);
 };
 }

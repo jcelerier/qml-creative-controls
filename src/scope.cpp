@@ -64,65 +64,70 @@ bool Scope::symmetrize() const
   return m_symmetrize;
 }
 
+/*!
+ * \brief Move given points to inner member.
+ * \note \c points could be empty after executing of this method.
+ * \param points vector of values that should be moved.
+ */
 void Scope::setPoints(QVector<qreal> points)
 {
   if (m_points == points)
     return;
 
-  m_points = points;
-  emit pointsChanged(points);
+  m_points = std::move(points);
+  emit pointsChanged(m_points);
   updatePath();
 }
 
-void Scope::setYMin(qreal yMin)
+void Scope::setYMin(const qreal yMin)
 {
   if (m_yMin == yMin)
     return;
 
   m_yMin = yMin;
-  emit yMinChanged(yMin);
+  emit yMinChanged(m_yMin);
   updatePath();
 }
 
-void Scope::setYMax(qreal yMax)
+void Scope::setYMax(const qreal yMax)
 {
   if (m_yMax == yMax)
     return;
 
   m_yMax = yMax;
-  emit yMaxChanged(yMax);
+  emit yMaxChanged(m_yMax);
   updatePath();
 }
 
-void Scope::setBaseColor(QColor baseColor)
+void Scope::setBaseColor(const QColor baseColor)
 {
   if (m_baseColor == baseColor)
     return;
 
   m_baseColor = baseColor;
   m_scopeBrush.setColor(m_baseColor);
-  emit baseColorChanged(baseColor);
+  emit baseColorChanged(m_baseColor);
   update();
 }
 
-void Scope::setDetailColor(QColor detailColor)
+void Scope::setDetailColor(const QColor detailColor)
 {
   if (m_detailColor == detailColor)
     return;
 
   m_detailColor = detailColor;
   m_scopePen.setColor(m_detailColor);
-  emit detailColorChanged(detailColor);
+  emit detailColorChanged(m_detailColor);
   update();
 }
 
-void Scope::setSymmetrize(bool symmetrize)
+void Scope::setSymmetrize(const bool symmetrize)
 {
   if (m_symmetrize == symmetrize)
     return;
 
   m_symmetrize = symmetrize;
-  emit symmetrizeChanged(symmetrize);
+  emit symmetrizeChanged(m_symmetrize);
   updatePath();
 }
 

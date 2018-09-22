@@ -24,11 +24,11 @@ public:
   bool pressed() const;
 
 public slots:
-  void setCenterX(double centerX);
-  void setCenterY(double centerY);
-  void setRadiusScale(double radiusScale);
-  void setColor(QColor color);
-  void setPressed(bool pressed);
+  void setCenterX(const double centerX);
+  void setCenterY(const double centerY);
+  void setRadiusScale(const double radiusScale);
+  void setColor(const QColor color);
+  void setPressed(const bool pressed);
 
 signals:
   void centerXChanged(double centerX);

@@ -7,22 +7,22 @@ CppUtils::CppUtils(QObject *parent) : QObject(parent)
 
 }
 
-double CppUtils::getHSVHue(QColor col)
+double CppUtils::getHSVHue(const QColor col)
 {
   return col.hsvHueF();
 }
 
-double CppUtils::getHSVSaturation(QColor col)
+double CppUtils::getHSVSaturation(const QColor col)
 {
   return col.hsvSaturationF();
 }
 
-double CppUtils::getHSVValue(QColor col)
+double CppUtils::getHSVValue(const QColor col)
 {
   return col.valueF();
 }
 
-QColor CppUtils::setHSVHue(QColor col, double h)
+QColor CppUtils::setHSVHue(const QColor col, double h)
 {
   auto s = col.hsvSaturationF();
   auto v = col.valueF();
@@ -30,7 +30,7 @@ QColor CppUtils::setHSVHue(QColor col, double h)
   return QColor::fromHsvF(h, s, v);
 }
 
-QColor CppUtils::setHSVSaturation(QColor col, double s)
+QColor CppUtils::setHSVSaturation(const QColor col, const double s)
 {
   auto h = col.hsvHueF();
   auto v = col.valueF();
@@ -38,7 +38,7 @@ QColor CppUtils::setHSVSaturation(QColor col, double s)
   return QColor::fromHsvF(h, s, v);
 }
 
-QColor CppUtils::setHSVValue(QColor col, double v)
+QColor CppUtils::setHSVValue(const QColor col, const double v)
 {
   auto h = col.hsvHueF();
   auto s = col.hsvSaturationF();

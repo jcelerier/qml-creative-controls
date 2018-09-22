@@ -22,11 +22,11 @@ public:
   qreal rotation() const;
 
 public slots:
-  void setSides(int sides);
-  void setBorderColor(QColor borderColor);
-  void setFillColor(QColor fillColor);
-  void setBorderWidth(qreal borderWidth);
-  void setRotation(qreal rotation);
+  void setSides(const int sides);
+  void setBorderColor(const QColor borderColor);
+  void setFillColor(const QColor fillColor);
+  void setBorderWidth(const qreal borderWidth);
+  void setRotation(const qreal rotation);
 
 signals:
   void sidesChanged(int sides);

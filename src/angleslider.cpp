@@ -72,7 +72,7 @@ QColor AngleSlider::detailColor() const
   return m_detailColor;
 }
 
-void AngleSlider::setAngle(qreal angle)
+void AngleSlider::setAngle(const qreal angle)
 {
   if (m_angle == angle)
     return;
@@ -87,7 +87,7 @@ void AngleSlider::setAngle(qreal angle)
   update();
 }
 
-void AngleSlider::setMin(qreal angle)
+void AngleSlider::setMin(const qreal angle)
 {
   if (m_min == angle)
     return;
@@ -96,7 +96,7 @@ void AngleSlider::setMin(qreal angle)
   update();
 }
 
-void AngleSlider::setMax(qreal angle)
+void AngleSlider::setMax(const qreal angle)
 {
   if (m_max == angle)
     return;
@@ -105,23 +105,23 @@ void AngleSlider::setMax(qreal angle)
   update();
 }
 
-void AngleSlider::setBaseColor(QColor baseColor)
+void AngleSlider::setBaseColor(const QColor baseColor)
 {
   if (m_baseColor == baseColor)
     return;
 
   m_baseColor = baseColor;
-  emit baseColorChanged(baseColor);
+  emit baseColorChanged(m_baseColor);
   update();
 }
 
-void AngleSlider::setDetailColor(QColor detailColor)
+void AngleSlider::setDetailColor(const QColor detailColor)
 {
   if (m_detailColor == detailColor)
     return;
 
   m_detailColor = detailColor;
-  emit detailColorChanged(detailColor);
+  emit detailColorChanged(m_detailColor);
   update();
 }
 

@@ -26,11 +26,11 @@ public:
 
 public slots:
   void setPoints(QVector<qreal> points);
-  void setYMin(qreal yMin);
-  void setYMax(qreal yMax);
-  void setBaseColor(QColor baseColor);
-  void setDetailColor(QColor detailColor);
-  void setSymmetrize(bool symmetrize);
+  void setYMin(const qreal yMin);
+  void setYMax(const qreal yMax);
+  void setBaseColor(const QColor baseColor);
+  void setDetailColor(const QColor detailColor);
+  void setSymmetrize(const bool symmetrize);
 
 signals:
   void pointsChanged(QVector<qreal> points);

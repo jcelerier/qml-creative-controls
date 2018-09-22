@@ -25,9 +25,9 @@ signals:
   void linesChanged(bool lines);
 
 public slots:
-  void setColor(QColor color);
+  void setColor(const QColor color);
   void setValues(QVector<qreal> values);
-  void setLines(bool lines);
+  void setLines(const bool lines);
 
 private:
   QSGNode* updatePaintNode(QSGNode*, UpdatePaintNodeData*) final override;

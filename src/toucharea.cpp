@@ -13,7 +13,7 @@ bool TouchArea::pressState() const
   return m_pressState;
 }
 
-void TouchArea::setPressState(bool pressState)
+void TouchArea::setPressState(const bool pressState)
 {
   if (m_pressState == pressState)
       return;

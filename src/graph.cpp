@@ -28,16 +28,21 @@ bool Graph::lines() const
   return m_lines;
 }
 
-void Graph::setColor(QColor main)
+void Graph::setColor(const QColor main)
 {
   if (m_graphColor == main)
     return;
 
   m_graphColor = main;
-  emit colorChanged(main);
+  emit colorChanged(m_graphColor);
   update();
 }
 
+/*!
+ * \brief Move given values to inner member.
+ * \note \c values could be empty after executing of this method.
+ * \param values vector of values that should be moved.
+ */
 void Graph::setValues(QVector<qreal> values)
 {
   if (m_values == values)
@@ -48,13 +53,13 @@ void Graph::setValues(QVector<qreal> values)
   update();
 }
 
-void Graph::setLines(bool lines)
+void Graph::setLines(const bool lines)
 {
   if (m_lines == lines)
     return;
 
   m_lines = lines;
-  emit linesChanged(lines);
+  emit linesChanged(m_lines);
   update();
 }
 

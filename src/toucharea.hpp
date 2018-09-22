@@ -16,7 +16,7 @@ public:
   bool pressState() const;
 
 public slots:
-  void setPressState(bool pressState);
+  void setPressState(const bool pressState);
 
 signals:
   void pressed(QPointF point);

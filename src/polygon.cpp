@@ -126,17 +126,17 @@ qreal Polygon::rotation() const
   return m_rotation;
 }
 
-void Polygon::setSides(int sides)
+void Polygon::setSides(const int sides)
 {
   if (m_sides == sides)
     return;
 
   m_sides = sides;
-  emit sidesChanged(sides);
+  emit sidesChanged(m_sides);
   update();
 }
 
-void Polygon::setBorderColor(QColor borderColor)
+void Polygon::setBorderColor(const QColor borderColor)
 {
   if (m_borderColor == borderColor)
     return;
@@ -146,33 +146,33 @@ void Polygon::setBorderColor(QColor borderColor)
   update();
 }
 
-void Polygon::setFillColor(QColor color)
+void Polygon::setFillColor(const QColor color)
 {
   if (m_color == color)
     return;
 
   m_color = color;
-  emit fillColorChanged(color);
+  emit fillColorChanged(m_color);
   update();
 }
 
-void Polygon::setBorderWidth(qreal borderWidth)
+void Polygon::setBorderWidth(const qreal borderWidth)
 {
   if (m_borderWidth == borderWidth)
     return;
 
   m_borderWidth = borderWidth;
-  emit borderWidthChanged(borderWidth);
+  emit borderWidthChanged(m_borderWidth);
   update();
 }
 
-void Polygon::setRotation(qreal rotation)
+void Polygon::setRotation(const qreal rotation)
 {
   if (m_rotation == rotation)
     return;
 
   m_rotation = rotation;
-  emit rotationChanged(rotation);
+  emit rotationChanged(m_rotation);
   update();
 }
 }

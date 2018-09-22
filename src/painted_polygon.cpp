@@ -37,53 +37,53 @@ qreal PaintedPolygon::rotation() const
   return m_rotation;
 }
 
-void PaintedPolygon::setSides(int sides)
+void PaintedPolygon::setSides(const int sides)
 {
   if (m_sides == sides)
     return;
 
   m_sides = sides;
-  emit sidesChanged(sides);
+  emit sidesChanged(m_sides);
   update();
 }
 
-void PaintedPolygon::setBorderColor(QColor borderColor)
+void PaintedPolygon::setBorderColor(const QColor borderColor)
 {
   if (m_borderColor == borderColor)
     return;
 
   m_borderColor = borderColor;
-  emit borderColorChanged(borderColor);
+  emit borderColorChanged(m_borderColor);
   update();
 }
 
-void PaintedPolygon::setFillColor(QColor color)
+void PaintedPolygon::setFillColor(const QColor color)
 {
   if (m_color == color)
     return;
 
   m_color = color;
-  emit fillColorChanged(color);
+  emit fillColorChanged(m_color);
   update();
 }
 
-void PaintedPolygon::setBorderWidth(qreal borderWidth)
+void PaintedPolygon::setBorderWidth(const qreal borderWidth)
 {
   if (m_borderWidth == borderWidth)
     return;
 
   m_borderWidth = borderWidth;
-  emit borderWidthChanged(borderWidth);
+  emit borderWidthChanged(m_borderWidth);
   update();
 }
 
-void PaintedPolygon::setRotation(qreal rotation)
+void PaintedPolygon::setRotation(const qreal rotation)
 {
   if (m_rotation == rotation)
     return;
 
   m_rotation = rotation;
-  emit rotationChanged(rotation);
+  emit rotationChanged(m_rotation);
   update();
 }
 

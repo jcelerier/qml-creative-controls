@@ -22,11 +22,11 @@ public:
   QColor detailColor() const;
 
 public slots:
-  void setAngle(qreal angle);
-  void setMin(qreal angle);
-  void setMax(qreal angle);
-  void setBaseColor(QColor baseColor);
-  void setDetailColor(QColor detailColor);
+  void setAngle(const qreal angle);
+  void setMin(const qreal angle);
+  void setMax(const qreal angle);
+  void setBaseColor(const QColor baseColor);
+  void setDetailColor(const QColor detailColor);
 
 signals:
   void angleChanged(qreal angle);

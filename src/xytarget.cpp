@@ -161,7 +161,7 @@ bool XYTarget::pressed() const
   return m_pressed;
 }
 
-void XYTarget::setCenterX(double centerX)
+void XYTarget::setCenterX(const double centerX)
 {
   if (m_centerX == centerX)
     return;
@@ -171,7 +171,7 @@ void XYTarget::setCenterX(double centerX)
   update();
 }
 
-void XYTarget::setCenterY(double centerY)
+void XYTarget::setCenterY(const double centerY)
 {
   if (m_centerY == centerY)
     return;
@@ -181,18 +181,18 @@ void XYTarget::setCenterY(double centerY)
   update();
 }
 
-void XYTarget::setRadiusScale(double radiusScale)
+void XYTarget::setRadiusScale(const double radiusScale)
 {
   if (m_radiusScale == radiusScale)
     return;
 
   m_radiusScale = radiusScale;
-  emit radiusScaleChanged(radiusScale);
+  emit radiusScaleChanged(m_radiusScale);
   updatePenWidth();
   update();
 }
 
-void XYTarget::setColor(QColor color)
+void XYTarget::setColor(const QColor color)
 {
   if (m_color == color)
     return;
@@ -200,11 +200,11 @@ void XYTarget::setColor(QColor color)
   m_color = color;
   m_pen.setColor(m_color);
   m_brush.setColor(m_color);
-  emit colorChanged(color);
+  emit colorChanged(m_color);
   update();
 }
 
-void XYTarget::setPressed(bool pressed)
+void XYTarget::setPressed(const bool pressed)
 {
   if(pressed != m_pressed)
   {
