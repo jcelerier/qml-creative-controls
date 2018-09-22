@@ -136,17 +136,17 @@ void XYTarget::updatePenWidth()
   m_radius = std::min(height(), width()) / m_radiusScale;
 }
 
-double XYTarget::centerX() const
+qreal XYTarget::centerX() const
 {
   return m_centerX;
 }
 
-double XYTarget::centerY() const
+qreal XYTarget::centerY() const
 {
   return m_centerY;
 }
 
-double XYTarget::radiusScale() const
+qreal XYTarget::radiusScale() const
 {
   return m_radiusScale;
 }
@@ -161,7 +161,7 @@ bool XYTarget::pressed() const
   return m_pressed;
 }
 
-void XYTarget::setCenterX(const double centerX)
+void XYTarget::setCenterX(const qreal centerX)
 {
   if (qFuzzyCompare(m_centerX, centerX))
     return;
@@ -171,7 +171,7 @@ void XYTarget::setCenterX(const double centerX)
   update();
 }
 
-void XYTarget::setCenterY(const double centerY)
+void XYTarget::setCenterY(const qreal centerY)
 {
   if (qFuzzyCompare(m_centerY, centerY))
     return;
@@ -181,7 +181,7 @@ void XYTarget::setCenterY(const double centerY)
   update();
 }
 
-void XYTarget::setRadiusScale(const double radiusScale)
+void XYTarget::setRadiusScale(const qreal radiusScale)
 {
   if (qFuzzyCompare(m_radiusScale, radiusScale))
     return;
