@@ -74,7 +74,7 @@ QColor AngleSlider::detailColor() const
 
 void AngleSlider::setAngle(const qreal angle)
 {
-  if (m_angle == angle)
+  if (qFuzzyCompare(m_angle, angle))
     return;
 
   if (angle < min())
@@ -89,7 +89,7 @@ void AngleSlider::setAngle(const qreal angle)
 
 void AngleSlider::setMin(const qreal angle)
 {
-  if (m_min == angle)
+  if (qFuzzyCompare(m_min, angle))
     return;
 
   m_min = angle;
@@ -98,7 +98,7 @@ void AngleSlider::setMin(const qreal angle)
 
 void AngleSlider::setMax(const qreal angle)
 {
-  if (m_max == angle)
+  if (qFuzzyCompare(m_max, angle))
     return;
 
   m_max = angle;

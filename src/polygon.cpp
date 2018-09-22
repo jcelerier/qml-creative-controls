@@ -158,7 +158,7 @@ void Polygon::setFillColor(const QColor color)
 
 void Polygon::setBorderWidth(const qreal borderWidth)
 {
-  if (m_borderWidth == borderWidth)
+  if (qFuzzyCompare(m_borderWidth, borderWidth))
     return;
 
   m_borderWidth = borderWidth;
@@ -168,7 +168,7 @@ void Polygon::setBorderWidth(const qreal borderWidth)
 
 void Polygon::setRotation(const qreal rotation)
 {
-  if (m_rotation == rotation)
+  if (qFuzzyCompare(m_rotation, rotation))
     return;
 
   m_rotation = rotation;

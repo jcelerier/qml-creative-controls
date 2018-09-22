@@ -81,7 +81,7 @@ void Scope::setPoints(QVector<qreal> points)
 
 void Scope::setYMin(const qreal yMin)
 {
-  if (m_yMin == yMin)
+  if (qFuzzyCompare(m_yMin, yMin))
     return;
 
   m_yMin = yMin;
@@ -91,7 +91,7 @@ void Scope::setYMin(const qreal yMin)
 
 void Scope::setYMax(const qreal yMax)
 {
-  if (m_yMax == yMax)
+  if (qFuzzyCompare(m_yMax, yMax))
     return;
 
   m_yMax = yMax;

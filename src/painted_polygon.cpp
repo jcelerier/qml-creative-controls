@@ -69,7 +69,7 @@ void PaintedPolygon::setFillColor(const QColor color)
 
 void PaintedPolygon::setBorderWidth(const qreal borderWidth)
 {
-  if (m_borderWidth == borderWidth)
+  if (qFuzzyCompare(m_borderWidth, borderWidth))
     return;
 
   m_borderWidth = borderWidth;
@@ -79,7 +79,7 @@ void PaintedPolygon::setBorderWidth(const qreal borderWidth)
 
 void PaintedPolygon::setRotation(const qreal rotation)
 {
-  if (m_rotation == rotation)
+  if (qFuzzyCompare(m_rotation, rotation))
     return;
 
   m_rotation = rotation;

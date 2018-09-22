@@ -163,7 +163,7 @@ bool XYTarget::pressed() const
 
 void XYTarget::setCenterX(const double centerX)
 {
-  if (m_centerX == centerX)
+  if (qFuzzyCompare(m_centerX, centerX))
     return;
 
   m_centerX = qBound(0., centerX, 1.);
@@ -173,7 +173,7 @@ void XYTarget::setCenterX(const double centerX)
 
 void XYTarget::setCenterY(const double centerY)
 {
-  if (m_centerY == centerY)
+  if (qFuzzyCompare(m_centerY, centerY))
     return;
 
   m_centerY = qBound(0., centerY, 1.);
@@ -183,7 +183,7 @@ void XYTarget::setCenterY(const double centerY)
 
 void XYTarget::setRadiusScale(const double radiusScale)
 {
-  if (m_radiusScale == radiusScale)
+  if (qFuzzyCompare(m_radiusScale, radiusScale))
     return;
 
   m_radiusScale = radiusScale;
