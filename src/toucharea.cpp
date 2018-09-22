@@ -51,7 +51,7 @@ void TouchArea::mouseDoubleClickEvent(QMouseEvent* event)
 void TouchArea::touchEvent(QTouchEvent* event)
 {
   setPressState(event->touchPoints().size() > 0);
-  if(m_pressState)
+  if (m_pressState)
   {
     const auto& touchpoint = *event->touchPoints().begin();
     switch(touchpoint.state())

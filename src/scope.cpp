@@ -24,7 +24,7 @@ void Scope::paint(QPainter* painter)
   painter->setRenderHint(QPainter::SmoothPixmapTransform);
   painter->setBrush(m_scopeBrush);
   painter->setPen(m_scopePen);
-  if(m_symmetrize)
+  if (m_symmetrize)
   {
     painter->drawPolygon(m_data);
   }
@@ -133,7 +133,7 @@ void Scope::setSymmetrize(const bool symmetrize)
 
 void Scope::updatePath()
 {
-  if(!m_symmetrize)
+  if (!m_symmetrize)
   {
     // y = yMin -> height
     // y = yMax -> 0
@@ -145,7 +145,7 @@ void Scope::updatePath()
     auto scale = [=] (qreal val) { return h0 + coeff * (val - y0); };
 
     m_data.resize(2 * m_points.size());
-    if(m_points.size() > 0)
+    if (m_points.size() > 0)
     {
       const auto inc = width() / m_points.size();
 
@@ -154,7 +154,7 @@ void Scope::updatePath()
       QPointF start{x, scale(*it)};
       int i = 0;
       const auto end = m_points.cend();
-      for(; it != end; ++it)
+      for (; it != end; ++it)
       {
         m_data[i] = start;
         ++i;
@@ -180,21 +180,21 @@ void Scope::updatePath()
 
     m_data.resize(2 * m_points.size());
 
-    if(m_points.size() > 0.)
+    if (m_points.size() > 0.)
     {
       const auto inc = width() / (m_points.size() - 1);
       auto x = 0.;
 
       // Draw the upper part
       const auto Npts = m_points.size();
-      for(int i = 0; i < Npts; i++)
+      for (int i = 0; i < Npts; i++)
       {
         m_data[i] = {x, scale(m_points[i])};
         x += inc;
       }
 
       // Symmetrize
-      for(int i = 0; i < Npts; i++)
+      for (int i = 0; i < Npts; i++)
       {
         const auto top_pt = m_data[Npts - i - 1];
         m_data[Npts + i] = {top_pt.x(), (h - top_pt.y())};

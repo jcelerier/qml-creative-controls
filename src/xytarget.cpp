@@ -33,7 +33,7 @@ void XYTarget::paint(QPainter* painter)
 
 void XYTarget::mousePressEvent(QMouseEvent* event)
 {
-  if(contains(event->pos()))
+  if (contains(event->pos()))
   {
     auto new_x = event->pos().x() / width();
     auto new_y = event->pos().y() / height();
@@ -72,7 +72,7 @@ void XYTarget::mouseReleaseEvent(QMouseEvent* event)
 
 void XYTarget::touchEvent(QTouchEvent* event)
 {
-  if(!event->touchPoints().empty())
+  if (!event->touchPoints().empty())
   {
     setPressed(true);
     const auto& first = event->touchPoints().first();
@@ -206,7 +206,7 @@ void XYTarget::setColor(const QColor color)
 
 void XYTarget::setPressed(const bool pressed)
 {
-  if(pressed != m_pressed)
+  if (pressed != m_pressed)
   {
     m_pressed = pressed;
     pressedChanged(m_pressed);

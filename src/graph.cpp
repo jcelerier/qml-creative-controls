@@ -71,9 +71,9 @@ QSGNode* Graph::updatePaintNode(
   QSGGeometry *dotsGeometry{};
 
   const auto n_pts = m_values.size();
-  if(n_pts == 0)
+  if (n_pts == 0)
   {
-    if(dotsNode)
+    if (dotsNode)
       delete dotsNode;
     return nullptr;
   }

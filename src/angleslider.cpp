@@ -54,12 +54,12 @@ qreal AngleSlider::angle() const
 
 qreal AngleSlider::min() const
 {
-    return m_min;
+  return m_min;
 }
 
 qreal AngleSlider::max() const
 {
-    return m_max;
+  return m_max;
 }
 
 QColor AngleSlider::baseColor() const
@@ -160,7 +160,7 @@ void AngleSlider::mouseReleaseEvent(QMouseEvent* event)
 
 void AngleSlider::touchEvent(QTouchEvent* event)
 {
-  if(!event->touchPoints().empty())
+  if (!event->touchPoints().empty())
     updateAngle(event->touchPoints().first().pos());
   event->accept();
 }
