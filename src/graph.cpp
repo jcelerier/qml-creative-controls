@@ -44,7 +44,7 @@ void Graph::setValues(QVector<qreal> values)
     return;
 
   m_values = std::move(values);
-  emit valuesChanged(values);
+  emit valuesChanged(m_values);
   update();
 }
 
