@@ -8,6 +8,6 @@ import QtQuick.Layouts 1.3
 // * enableAlpha: show the alpha channel slider
 ColorSlider
 {
-    colorSpace : Qt.hsla
-    enableAlpha : false
+    colorSpace: Qt.hsla
+    enableAlpha: false
 }

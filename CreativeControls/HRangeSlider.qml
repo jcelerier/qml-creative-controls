@@ -6,17 +6,19 @@ Rectangle
 {
     id: rangeSlider
 
-    width : 300
-    height : 100
+    width: 300
+    height: 100
     // onWidthChanged: handle.updateHandle();
     // onHeightChanged: handle.updateHandle();
     property var styles: DarkStyle
 
-    color : styles.sliderBackgroundColor
-    border.width : height / 25.
-    border.color : styles.sliderBackgroundColor
+    color: styles.sliderBackgroundColor
+    border {
+        width: height / 25.
+        color: styles.sliderBackgroundColor
+    }
 
-    radius : styles.cornerRadius
+    radius: styles.cornerRadius
 
     // the value is between 0 and 1.
     property real value //: initialValue;
@@ -24,11 +26,11 @@ Rectangle
     property real minValue: initialMinValue
     property real maxValue: initialMaxValue
 
-    property real initialMinValue : 0.4
-    property real initialMaxValue : 0.8
+    property real initialMinValue: 0.4
+    property real initialMaxValue: 0.8
 
     // value mapping
-    property var mapFunc : function(linearVal){return linearVal}
+    property var mapFunc: function(linearVal){ return linearVal }
 
     property bool __updating: false
 
@@ -40,23 +42,25 @@ Rectangle
     function updateValue()
     {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
-        if(!__updating)
+        if (!__updating)
         {
             rangeSlider.value = mapFunc();
         }
     }
 
-    function reset(){
+    function reset() {
         minHandle.reset();
         maxHandle.reset();
     }
+
     property real handleSize: 40.
 
     property color handleColor: styles.handleColor
+
     Rectangle{
         id: range
 
-        anchors{
+        anchors {
             right: maxHandle.left
             verticalCenter: rangeSlider.verticalCenter
         }
@@ -69,7 +73,6 @@ Rectangle
         function updateValues(offset){
             console.log(offset)
 
-
             var xMax = maxHandle.x + offset;
             var xMin = minHandle.x + offset;
 
@@ -77,12 +80,12 @@ Rectangle
             var clampedMinX = Utils.clamp(xMin + handleSize/2., handleSize/2., xMax -  handleSize/2.);
 
             var tmp = Utils.clamp(Utils.rescale(clampedMaxX, 3.*handleSize/2.,rangeSlider.width - handleSize/2., 0., 1.)
-                                  ,0,1);
+                                  , 0, 1);
             rangeSlider.maxValue = tmp
 
             rangeSlider.minValue = Utils.clamp(Utils.rescale(clampedMinX, handleSize/2.,
                                                              rangeSlider.width - 3.*handleSize/2., 0., 1.),
-                                               0,1);
+                                               0, 1);
         }
     }
 
@@ -92,7 +95,7 @@ Rectangle
         width: handleSize
         height: rangeSlider.height - rangeSlider.border.width * 2
 
-        x: Utils.rescale(rangeSlider.minValue,0.,1.,
+        x: Utils.rescale(rangeSlider.minValue, 0., 1.,
                          handleSize / 2.,
                          rangeSlider.width - 3.*handleSize/2.) - handleSize/2
 
@@ -103,7 +106,7 @@ Rectangle
         function moveHandle(mouseX,mouseY)
         {
             var clampedX = Utils.clamp(mouseX, handleSize/2., maxHandle.x - handleSize/2.);
-            rangeSlider.minValue = Utils.rescale(clampedX, handleSize/2.,rangeSlider.width - handleSize * 1.5,0.,1.);
+            rangeSlider.minValue = Utils.rescale(clampedX, handleSize/2.,rangeSlider.width - handleSize * 1.5, 0., 1.);
             // __updating = false;
         }
         function reset(){
@@ -111,19 +114,15 @@ Rectangle
         }
     }
 
-
     Rectangle{
         id: maxHandle
 
         width: handleSize
         height:rangeSlider.height - rangeSlider.border.width * 2
 
-        x:  Utils.rescale(rangeSlider.maxValue,0.,1.,
+        x:  Utils.rescale(rangeSlider.maxValue, 0., 1.,
                           3.*handleSize/2., rangeSlider.width - handleSize/2. ) - handleSize/2.
-
         y: rangeSlider.border.width
-
-
         color: styles.detail
 
         function moveHandle(mouseX,mouseY)
@@ -150,9 +149,9 @@ Rectangle
         color: styles.labelColor
         font.bold: true
     }
+
     Text
     {
-
         anchors.fill: maxHandle
 
         horizontalAlignment: Text.AlignHCenter
@@ -165,65 +164,55 @@ Rectangle
     MouseArea
     {
         id: mouseArea
-
         anchors.fill : parent
         property var handlePressed: null;
         property bool moveRange: false;
         property real offset: 0
-        onPressed :
+        onPressed:
         {
             __updating = true;
 
-            if(mouseX < minHandle.x + minHandle.width){
+            if (mouseX < minHandle.x + minHandle.width) {
                 handlePressed = minHandle;
-                handlePressed.moveHandle(mouseX,mouseY);
+                handlePressed.moveHandle(mouseX, mouseY);
             }
-            else if(mouseX > maxHandle.x ){
+            else if (mouseX > maxHandle.x) {
                 handlePressed = maxHandle;
-                handlePressed.moveHandle(mouseX,mouseY);
+                handlePressed.moveHandle(mouseX, mouseY);
             }
             else {
                 moveRange = true;
                 offset = mouseX - range.x;
             }
-
         }
 
         onPositionChanged: {
-            if(handlePressed)
-                handlePressed.moveHandle(mouseX,mouseY);
-            else if(moveRange)
+            if (handlePressed)
+                handlePressed.moveHandle(mouseX, mouseY);
+            else if (moveRange)
             {
                 var newVal = 0;
-
-                newVal = Utils.clamp(mouseX-offset,handleSize,rangeSlider.width-(range.width + handleSize));
+                newVal = Utils.clamp(mouseX - offset, handleSize, rangeSlider.width - (range.width + handleSize));
                 newVal -= range.x;
-
                 range.updateValues(newVal)
             }
-
         }
 
-        onReleased: { handlePressed = null; __updating = false;moveRange = false;}
+        onReleased: { handlePressed = null; __updating = false;moveRange = false; }
 
         onDoubleClicked:
         {
-            if(Utils.inside(mouseX,mouseY,maxHandle.x,maxHandle.y,
-                            maxHandle.width,maxHandle.height))
+            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y, maxHandle.width, maxHandle.height))
             {
                 maxHandle.reset();
             }
-            else if(Utils.inside(mouseX,mouseY,minHandle.x,minHandle.y,
-                                 minHandle.width,minHandle.height))
+            else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y, minHandle.width, minHandle.height))
             {
                 minHandle.reset();
             }
             else
                 rangeSlider.reset()
-
-
         }
     }
-
 }
 

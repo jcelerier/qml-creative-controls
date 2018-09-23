@@ -14,7 +14,7 @@ Rectangle
     // Use this function to add a value to the graph.
     function pushValue(v) {
         plot.values.push(v)
-        if(plot.values.length > (width / 2))
+        if (plot.values.length > (width / 2))
             plot.values.shift()
     }
 

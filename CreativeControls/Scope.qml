@@ -9,7 +9,6 @@ import com.github.jcelerier.CreativeControls 1.0
 // * yMin / yMax: bounds (in the value domain) that should be shown. Default is [-1; 1]
 // TODO allow to display a "fill" under the scope in non-symmetrized mode
 
-
 Item
 {
     property alias symmetrize: scope.symmetrize
@@ -18,8 +17,8 @@ Item
 
     Rectangle
     {
-        anchors.fill : parent
-        color : styles.background
+        anchors.fill: parent
+        color: styles.background
     }
 
     ScopeImpl
@@ -32,5 +31,4 @@ Item
         detailColor: styles.base
         symmetrize: false
     }
-
 }

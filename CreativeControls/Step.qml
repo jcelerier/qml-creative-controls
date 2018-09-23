@@ -26,11 +26,11 @@ Item {
     function initSteps()
     {
         steps.length = maxStep
-        for(var i = 0; i < maxStep; i++)
+        for (var i = 0; i < maxStep; i++)
         {
             var arr = []
             arr.length = numValues;
-            for(var j = 0; j < numValues; j++)
+            for (var j = 0; j < numValues; j++)
             {
                 arr[j] = rects.itemAt(i * j).toggled;
             }
@@ -40,9 +40,9 @@ Item {
     function getStep(step)
     {
         var arr = []
-        for(var i = 0; i < numValues; i++)
+        for (var i = 0; i < numValues; i++)
         {
-            if(rects.itemAt(i * maxStep + step).toggled)
+            if (rects.itemAt(i * maxStep + step).toggled)
             {
                 arr.push(numValues - i - 1);
             }
@@ -94,9 +94,9 @@ Item {
 
 
                 color: !toggled ? styles.colorOffDarker
-                                : step == currentStep ?
-                                      styles.colorOn
-                                    : styles.colorOnLighter
+                                : step == currentStep
+                                  ? styles.colorOn
+                                  : styles.colorOnLighter
                 border.width: 3
                 border.color: step == currentStep ? styles.colorOnLighter : styles.colorOff;
 
@@ -107,5 +107,4 @@ Item {
             }
         }
     }
-
 }

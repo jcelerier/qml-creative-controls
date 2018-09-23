@@ -9,13 +9,15 @@ Rectangle
 
     property var styles: DarkStyle
 
-    anchors.centerIn : parent
+    anchors.centerIn: parent
 
-    width : parent.width + border.width *2
-    height : parent.height + border.width *2
-    color : "transparent"
+    width: parent.width + border.width *2
+    height: parent.height + border.width *2
+    color: "transparent"
 
-    border.width : 3
-    border.color : styles.base
-    radius : 10
+    border {
+        width: 3
+        color: styles.base
+    }
+    radius: 10
 }

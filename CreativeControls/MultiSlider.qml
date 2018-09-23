@@ -21,10 +21,10 @@ Item
     property bool textVisible: true
     property bool interactive: true
     property bool ease: false
-    property real spacing : 0.
-    property real sliderWidth : (multiSlider.orientation == Qt.Vertical) ?
-                                    (multiSlider.width) / count - spacing
-                                  : (multiSlider.height) / count - spacing
+    property real spacing: 0.
+    property real sliderWidth: (multiSlider.orientation == Qt.Vertical)
+                               ? (multiSlider.width) / count - spacing
+                               : (multiSlider.height) / count - spacing
 
     property bool __updating: false
 
@@ -38,7 +38,7 @@ Item
         {
             id: hSliders
 
-            model : (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
+            model: (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
             VSlider
             {
                 styles: multiSlider.styles
@@ -46,8 +46,8 @@ Item
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive
-                height : multiSlider.height
-                width : multiSlider.sliderWidth
+                height: multiSlider.height
+                width: multiSlider.sliderWidth
                 border.width: 0
 
                 onValueChanged: recomputeValues()
@@ -70,8 +70,8 @@ Item
                 textVisible: multiSlider.textVisible
                 ease: multiSlider.ease
                 interactive: multiSlider.interactive
-                height : multiSlider.sliderWidth
-                width : multiSlider.width
+                height: multiSlider.sliderWidth
+                width: multiSlider.width
                 border.width: 0
 
                 onValueChanged: recomputeValues()
@@ -82,22 +82,21 @@ Item
     // outside -> inside
     function updateValues()
     {
-        if(!__updating)
+        if (!__updating)
         {
             __updating = true;
             var source = (orientation == Qt.Vertical) ? hSliders : vSliders;
 
-            for(var i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 var item = source.itemAt(i);
 
-                if(item !== null)
+                if (item !== null)
                 {
                     item.value = values[i];
                     item.updateHandle()
                 }
             }
-
             __updating = false;
         }
     }
@@ -105,19 +104,18 @@ Item
     // inside -> outside
     function recomputeValues()
     {
-        if(!__updating)
+        if (!__updating)
         {
             var source = (orientation == Qt.Vertical) ? hSliders : vSliders;
             var array = [];
-            for(var i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 var item = source.itemAt(i);
-                if(item !== null)
+                if (item !== null)
                 {
                     array.push(item.value)
                 }
             }
-
             __updating = true;
             values = array;
             __updating = false;

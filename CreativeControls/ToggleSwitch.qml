@@ -21,15 +21,14 @@ Rectangle
     border.color : styles.borderColor
     border.width : width/20
 
-    color : (toggleSwitch.state == "ON")? styles.colorOn : styles.colorOff
+    color : (toggleSwitch.state == "ON") ? styles.colorOn : styles.colorOff
     property bool ease : true
-   Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.InOutQuint}}
+    Behavior on color { enabled: ease; ColorAnimation { easing.type : Easing.InOutQuint } }
 
     signal toggle(bool onoff)
-    function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON")? "OFF" : "ON" }
+    function switchState(){ toggleSwitch.state = (toggleSwitch.state == "ON") ? "OFF" : "ON" }
 
-
-    Rectangle{
+    Rectangle {
         id: toggleHandle
 
         height: toggleSwitch.height - toggleSwitch.border.width*2
@@ -38,15 +37,15 @@ Rectangle
         radius: width/2
         color: styles.borderColor
 
-        x: (toggleSwitch.state == "ON")?  toggleSwitch.width - toggleHandle.width - toggleSwitch.border.width : toggleSwitch.border.width
+        x: (toggleSwitch.state == "ON") ? toggleSwitch.width - toggleHandle.width - toggleSwitch.border.width : toggleSwitch.border.width
         anchors.verticalCenter: parent.verticalCenter
-        Behavior on x{enabled: toggleSwitch.ease; NumberAnimation{easing.type : Easing.InOutQuint; }}
+        Behavior on x { enabled: toggleSwitch.ease; NumberAnimation{easing.type : Easing.InOutQuint; } }
     }
 
     TouchArea
     {
         anchors.fill : parent
-        onPressed : {
+        onPressed: {
             toggleSwitch.switchState();
             toggle(toggleSwitch.state == "ON");
         }

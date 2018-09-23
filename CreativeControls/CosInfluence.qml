@@ -11,28 +11,28 @@ Rectangle
 {
     id: cosInfluence
 
-    property var points : [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
-    property alias centerX : xy.centerX
-    property alias centerY : xy.centerY
+    property var points: [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
+    property alias centerX: xy.centerX
+    property alias centerY: xy.centerY
     onCenterXChanged: updateValues()
     onCenterYChanged: updateValues()
     onPointsChanged: updateValues()
 
     property var styles: DarkStyle
-    color : styles.background
+    color: styles.background
 
-    property real sizeRatio : Math.min(cosInfluence.width, cosInfluence.height) / 13.
+    property real sizeRatio: Math.min(cosInfluence.width, cosInfluence.height) / 13.
     property var values: []
 
     function updateValues()
     {
         var newvalues = [];
-        for(var i = 0; i < cosInfluence.points.length; i++)
+        for (var i = 0; i < cosInfluence.points.length; i++)
         {
             var x1 = cosInfluence.points[i].x - centerX + sizeRatio / width;
             var x2 = cosInfluence.points[i].y  - centerY + sizeRatio / width;
             var dist = 3 * Math.sqrt(x1 * x1 + x2 * x2);
-            if(Math.abs(dist) < Math.PI / 2)
+            if (Math.abs(dist) < Math.PI / 2)
                 newvalues.push(Math.cos(dist));
             else
                 newvalues.push(0);
@@ -43,7 +43,7 @@ Rectangle
     // Mouse area for when the background is clicked
     TouchArea
     {
-        id:touchArea
+        id: touchArea
         anchors.fill: parent
         onPressed: applyPos(point)
         onPositionChanged: applyPos(point)
@@ -91,12 +91,14 @@ Rectangle
                 id: dragArea
                 anchors.fill: parent
 
-                drag.target: parent
-                drag.smoothed: false
-                drag.minimumX: 0. - width / 2.
-                drag.maximumX: cosInfluence.width - width / 2.
-                drag.minimumY: 0 - height / 2.
-                drag.maximumY: cosInfluence.height - height / 2.
+                drag {
+                    target: parent
+                    smoothed: false
+                    minimumX: 0. - width / 2.
+                    maximumX: cosInfluence.width - width / 2.
+                    minimumY: 0 - height / 2.
+                    maximumY: cosInfluence.height - height / 2.
+                }
             }
         }
     }
@@ -105,7 +107,7 @@ Rectangle
     Crosshair {
         id: xy
         anchors.fill: parent
-        color: xy.pressed || touchArea.pressState? styles.colorOn :  styles.colorOff
+        color: xy.pressed || touchArea.pressState? styles.colorOn : styles.colorOff
         radiusScale: xy.pressed  || touchArea.pressState? 25 : 35
     }
 }

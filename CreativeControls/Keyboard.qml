@@ -44,9 +44,9 @@ Item
         whitePos = [];
         blackPos = [];
         var cur_x = 0;
-        for(var it = firstKey; it < lastKey; ++it) {
-            if(!isBlackKey(it)) {
-                whitePos.push({ key: it, rect: Qt.rect(cur_x, 0,  xScale * keyWidth, yScale*whiteHeight) });
+        for (var it = firstKey; it < lastKey; ++it) {
+            if (!isBlackKey(it)) {
+                whitePos.push( { key: it, rect: Qt.rect(cur_x, 0,  xScale * keyWidth, yScale*whiteHeight) } );
                 cur_x += xScale * keyWidth;
             }
         }
@@ -72,18 +72,42 @@ Item
             case 10: blackPos.push({ key: it, rect: Qt.rect(cur_x, 0, xScale*blackWidth, yScale*blackHeight) });
                      cur_x += xScale * keyWidth / 2; break;
             case 11: cur_x += xScale * keyWidth; break;*/
-            case 0: cur_x += xScale * (keyWidth ); break;
-            case 1: blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});break;
-            case 2: cur_x += xScale *(keyWidth ); break;
-            case 3: blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});break;
-            case 4: cur_x += xScale * (keyWidth ); break;
-            case 5: cur_x += xScale * (keyWidth ); break;
-            case 6: blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});break;
-            case 7: cur_x += xScale * keyWidth ; break;
-            case 8: blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});break;
-            case 9: cur_x += xScale * keyWidth; break;
-            case 10: blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});break;
-            case 11: cur_x += xScale * keyWidth; break;
+            case 0:
+                cur_x += xScale * (keyWidth );
+                break;
+            case 1:
+                blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});
+                break;
+            case 2:
+                cur_x += xScale *(keyWidth );
+                break;
+            case 3:
+                blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});
+                break;
+            case 4:
+                cur_x += xScale * (keyWidth );
+                break;
+            case 5:
+                cur_x += xScale * (keyWidth );
+                break;
+            case 6:
+                blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});
+                break;
+            case 7:
+                cur_x += xScale * keyWidth ;
+                break;
+            case 8:
+                blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});
+                break;
+            case 9:
+                cur_x += xScale * keyWidth;
+                break;
+            case 10:
+                blackPos.push({ key: it, rect: Qt.rect(cur_x- blackWidth/2, 0, xScale*blackWidth, yScale*blackHeight)});
+                break;
+            case 11:
+                cur_x += xScale * keyWidth;
+                break;
             default: break;
             }
         }
@@ -119,9 +143,9 @@ Item
     // Get the index of a piano key from a position
     function keyFromPos(mouseX, mouseY)
     {
-        for(var it = 0; it < blackPos.length; ++it)
+        for (var it = 0; it < blackPos.length; ++it)
         {
-            if(posInRect(blackPos[it].rect, mouseX, mouseY))
+            if (posInRect(blackPos[it].rect, mouseX, mouseY))
             {
                 return {
                     key: blackPos[it].key,
@@ -130,9 +154,9 @@ Item
             }
         }
 
-        for(var it = 0; it < whitePos.length; ++it)
+        for (var it = 0; it < whitePos.length; ++it)
         {
-            if(posInRect(whitePos[it].rect, mouseX, mouseY))
+            if (posInRect(whitePos[it].rect, mouseX, mouseY))
             {
                 return {
                     key: whitePos[it].key,
@@ -144,15 +168,14 @@ Item
 
     // Compare two arrays to check if the same keys are pressed in it
     function sameKeys(a1, a2) {
-        return a1.length === a2.length && a1.every(function(v,i)
-        { return v.key === a2[i].key; });
+        return a1.length === a2.length && a1.every(function(v, i){ return v.key === a2[i].key; });
     }
 
     function setPressed(key){
-        if(key !== undefined)
+        if (key !== undefined)
         {
             var newKeys = [ key ];
-            if(!sameKeys(newKeys, pressedKeys))
+            if (!sameKeys(newKeys, pressedKeys))
             {
                 pressedKeys = newKeys;
             }
@@ -171,9 +194,7 @@ Item
         anchors.fill: parent
         onPaint: {
             var ctx = getContext("2d");
-
             var cur_x = 0;
-
             var N = lastKey - firstKey;
 
             ctx.beginPath();
@@ -181,10 +202,9 @@ Item
             ctx.fillStyle = styles.whiteKeyColor;
             ctx.lineWidth = 1;
 
-            for(var it = firstKey; it < lastKey; ++it) {
-                if(!isBlackKey(it)) {
-
-                    if(isPressed(it)) {
+            for (var it = firstKey; it < lastKey; ++it) {
+                if (!isBlackKey(it)) {
+                    if (isPressed(it)) {
                         ctx.fillStyle = styles.whiteKeyDetail;
                     }
 
@@ -192,7 +212,7 @@ Item
                     ctx.rect(cur_x, 0, xScale * keyWidth, yScale*whiteHeight);
                     cur_x += xScale * keyWidth;
 
-                    if(isPressed(it)) {
+                    if (isPressed(it)) {
                         ctx.fillStyle = styles.whiteKeyColor;
                     }
                 }
@@ -206,9 +226,9 @@ Item
             ctx.strokeStyle = styles.keyBorder;
             cur_x = 0;
 
-            for(var it = firstKey; it < lastKey; ++it) {
+            for (var it = firstKey; it < lastKey; ++it) {
 
-                if(isPressed(it)) {
+                if (isPressed(it)) {
                     ctx.fillStyle = styles.blackKeyDetail;
                 }
 
@@ -228,10 +248,9 @@ Item
                 default: break;
                 }
 
-                if(isPressed(it)) {
+                if (isPressed(it)) {
                     ctx.fillStyle = styles.blackKeyColor;
                 }
-
             }
             ctx.stroke();
             ctx.closePath();
@@ -242,7 +261,7 @@ Item
         anchors.fill: parent
         onPressed: {
             var key = keyFromPos(mouseX, mouseY);
-            if(key !== undefined)
+            if (key !== undefined)
                 pressedKeys = [ key ];
             else
                 pressedKeys = [ ];
@@ -251,10 +270,10 @@ Item
 
         onPositionChanged: {
             var key = keyFromPos(mouseX, mouseY);
-            if(key !== undefined)
+            if (key !== undefined)
             {
                 var newKeys = [ key ];
-                if(!sameKeys(newKeys, pressedKeys))
+                if (!sameKeys(newKeys, pressedKeys))
                 {
                     pressedKeys = newKeys;
                 }
@@ -272,5 +291,4 @@ Item
             canvas.requestPaint();
         }
     }
-
 }

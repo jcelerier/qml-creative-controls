@@ -13,8 +13,8 @@ Grid
     rows: 3
     spacing: 5
     padding: 2.5
-    horizontalItemAlignment : Grid.AlignHCenter
-    verticalItemAlignment : Grid.AlignVCenter
+    horizontalItemAlignment: Grid.AlignHCenter
+    verticalItemAlignment: Grid.AlignVCenter
 
     property real radius: styles.cornerRadius
 
@@ -41,7 +41,7 @@ Grid
             property bool toggled : false
 
             onToggledChanged: {
-                if(toggled)
+                if (toggled)
                     rect.color = styles.colorOn;
                 else
                     rect.color = styles.colorOff;
@@ -51,14 +51,14 @@ Grid
                 anchors.fill: parent
 
                 onPressed: {
-                    if(togglable)
+                    if (togglable)
                         toggled = !toggled;
                     else
                         toggled = true;
                     grid.pressed = [ index ]
                 }
                 onReleased: {
-                    if(togglable)
+                    if (togglable)
                         ;
                     else
                         toggled = false;

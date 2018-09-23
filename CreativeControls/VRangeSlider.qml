@@ -6,16 +6,17 @@ Rectangle
 {
     id: rangeSlider
 
-    width : 100
-    height : 200
+    width: 100
+    height: 200
     // onWidthChanged: handle.updateHandle();
     // onHeightChanged: handle.updateHandle();
     property var styles: DarkStyle
 
-    color : styles.sliderBackgroundColor
-    border.width : width / 25.
-    border.color : styles.sliderBackgroundColor
-
+    color: styles.sliderBackgroundColor
+    border {
+        width : width / 25.
+        color : styles.sliderBackgroundColor
+    }
     radius : styles.cornerRadius
 
     // the value is between 0 and 1.
@@ -24,11 +25,11 @@ Rectangle
     property real minValue: initialMinValue
     property real maxValue: initialMaxValue
 
-    property real initialMinValue : 0.4
-    property real initialMaxValue : 0.8
+    property real initialMinValue: 0.4
+    property real initialMaxValue: 0.8
 
     // value mapping
-    property var mapFunc : function(linearVal){return linearVal}
+    property var mapFunc: function(linearVal) { return linearVal }
 
     property bool __updating: false
 
@@ -40,7 +41,7 @@ Rectangle
     function updateValue()
     {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
-        if(!__updating)
+        if (!__updating)
         {
             rangeSlider.value = mapFunc();
         }
@@ -50,6 +51,7 @@ Rectangle
         minHandle.reset();
         maxHandle.reset();
     }
+
     property real handleSize: rangeSlider.border.width * 5.
 
     property color handleColor: styles.handleColor
@@ -57,17 +59,17 @@ Rectangle
     Rectangle{
         id: range
 
-        anchors{
-            top:maxHandle.bottom
+        anchors {
+            top: maxHandle.bottom
             horizontalCenter: rangeSlider.horizontalCenter
         }
 
         width: rangeSlider.width - rangeSlider.border.width * 2
         height: minHandle.y - (maxHandle.y + maxHandle.height)
 
-        color: mouseArea.moveRange ?  styles.colorOnLighter : styles.colorOn
+        color: mouseArea.moveRange ? styles.colorOnLighter : styles.colorOn
 
-        function updateValues(offset){
+        function updateValues(offset) {
 
             var yMax = maxHandle.y + offset;
             var yMin = minHandle.y + offset;
@@ -83,7 +85,7 @@ Rectangle
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: minHandle
 
         width: rangeSlider.width - rangeSlider.border.width * 2
@@ -104,11 +106,10 @@ Rectangle
             // __updating = false;
         }
 
-        function reset(){
+        function reset() {
             rangeSlider.minValue = rangeSlider.initialMinValue;
         }
     }
-
 
     Rectangle{
         id: maxHandle
@@ -145,9 +146,9 @@ Rectangle
         color: styles.handlesValueColor
         font.bold: true
     }
+
     Text
     {
-
         anchors.fill: maxHandle
 
         horizontalAlignment: Text.AlignHCenter
@@ -168,11 +169,11 @@ Rectangle
         onPressed :
         {
             __updating = true;
-            if(mouseY < maxHandle.y  + maxHandle.height){
+            if (mouseY < maxHandle.y  + maxHandle.height) {
                 handlePressed = maxHandle;
                 handlePressed.moveHandle(mouseX,mouseY);
             }
-            else if(mouseY > minHandle.y ){
+            else if (mouseY > minHandle.y ) {
                 handlePressed = minHandle;
                 handlePressed.moveHandle(mouseX,mouseY);
             }
@@ -180,13 +181,12 @@ Rectangle
                 moveRange = true;
                 offset = mouseY - range.y;
             }
-
         }
 
         onPositionChanged: {
-            if(handlePressed)
-                handlePressed.moveHandle(mouseX,mouseY);
-            else if(moveRange)
+            if (handlePressed)
+                handlePressed.moveHandle(mouseX, mouseY);
+            else if (moveRange)
             {
                 var newVal = 0;
                 newVal = Math.min(Math.max(handleSize,mouseY-offset),rangeSlider.height-(range.height + handleSize))
@@ -201,13 +201,11 @@ Rectangle
 
         onDoubleClicked:
         {
-            if(Utils.inside(mouseX,mouseY,maxHandle.x,maxHandle.y,
-                            maxHandle.width,maxHandle.height))
+            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y, maxHandle.width, maxHandle.height))
             {
                 maxHandle.reset();
             }
-            else if(Utils.inside(mouseX,mouseY,minHandle.x,minHandle.y,
-                                 minHandle.width,minHandle.height))
+            else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y, minHandle.width, minHandle.height))
             {
                 minHandle.reset();
             }
@@ -215,6 +213,4 @@ Rectangle
                 rangeSlider.reset()
         }
     }
-
 }
-

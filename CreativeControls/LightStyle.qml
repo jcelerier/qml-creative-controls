@@ -4,7 +4,6 @@ import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 QtObject
 {   
-
     property color base: "#561C49"
     property color baseLighter: "#561C49"
     property color detail: "#3d1233"
@@ -25,8 +24,8 @@ QtObject
     property color handlesValueColor: colorOnLighter
 
     // switch, leds, matrix color
-    property color colorOn:  "orange"
-    property color colorOff:  "#8c5580"
+    property color colorOn: "orange"
+    property color colorOff: "#8c5580"
     property color colorOnLighter: "#ffb20c"
     property color colorOffDarker: "#230a1d"
 
@@ -44,9 +43,9 @@ QtObject
     property color textPressedColor: colorOnLighter
 
     // label text color (e.g. sliders)
-    property color labelColor:  "#561C49"
+    property color labelColor: "#561C49"
 
-    property real cornerRadius : 0.
+    property real cornerRadius: 0.
 
     function randomDetailColor()
     {

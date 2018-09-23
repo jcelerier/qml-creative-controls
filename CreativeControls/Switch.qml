@@ -20,10 +20,9 @@ Rectangle
     border.color : styles.borderColor
     border.width : width/10.
 
-    color : (pressSwitch.state == "ON")? styles.colorOn : styles.colorOff
+    color : (pressSwitch.state == "ON") ? styles.colorOn : styles.colorOff
     property bool ease : true
     Behavior on color{enabled: ease; ColorAnimation{easing.type : Easing.OutQuint}}
-
 
     signal pressed();
     signal released();

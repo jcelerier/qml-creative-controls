@@ -8,6 +8,4 @@ Text
 {
     font.pointSize: 20
     text: "TODO"
-
-
 }

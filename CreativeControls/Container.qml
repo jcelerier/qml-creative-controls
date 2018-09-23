@@ -7,18 +7,21 @@ Rectangle
 
     width: 150
     height: 150
-    radius : 10
+    radius: 10
 
     property var styles: DarkStyle
 
     color: styles.background
-    border.color: styles.base
-    border.width: styles.containerCornerRadius
+    border {
+        color: styles.base
+        width: styles.containerCornerRadius
+    }
 
     default property alias main : content.data
+
     Item {
         id: content
-        anchors{
+        anchors {
             top: container.top
             topMargin: container.radius
             leftMargin: container.radius
@@ -26,18 +29,19 @@ Rectangle
         }
         width: container.width - 2 * container.radius
         height: title == "" ? container.height - 2.* container.radius
-                             : container.height - 2.* container.radius -  (titleLabel.height + titleBottomMargin);
+                            : container.height - 2.* container.radius -  (titleLabel.height + titleBottomMargin);
     }
 
     Component.onCompleted: main.parent = content
 
     property alias title: titleLabel.text
     property real titleBottomMargin: titleLabel.height*0.3
-    Text{
+
+    Text {
         id: titleLabel
         text: ""
 
-        anchors{
+        anchors {
             top: content.bottom
             topMargin: container.titleBottomMargin
             horizontalCenter: container.horizontalCenter
@@ -46,9 +50,10 @@ Rectangle
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
 
-        font.bold: true
-        font.capitalization: Font.AllUppercase
-        color : styles.base
+        font {
+            bold: true
+            capitalization: Font.AllUppercase
+        }
+        color: styles.base
     }
-
 }

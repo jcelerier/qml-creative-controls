@@ -9,16 +9,18 @@ Text
 {
     id: label
 
-   // anchors.centerIn: parent
+    // anchors.centerIn: parent
 
     property bool selected: false
-    property var styles : DarkStyle
+    property var styles: DarkStyle
 
-    color : styles.labelColor
+    color: styles.labelColor
 
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
 
-    font.bold: true
-    font.pointSize: selected ? 15 : 14
+    font {
+        bold: true
+        pointSize: selected ? 15 : 14
+    }
 }

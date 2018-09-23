@@ -9,6 +9,6 @@ import QtQuick.Layouts 1.3
 // * enableAlpha: show the alpha channel slider
 ColorSlider
 {
-    colorSpace : Qt.rgba
-    enableAlpha : false
+    colorSpace: Qt.rgba
+    enableAlpha: false
 }
