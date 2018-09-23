@@ -1,8 +1,7 @@
 import QtQuick 2.10
 import com.github.jcelerier.CreativeControls 1.0
 
-Container
-{
+Container {
     width: 800
     height: 200
 
@@ -17,11 +16,13 @@ Container
         x: 506
         y: 166
         text: qsTr("Limiting Amplifier")
-        anchors.bottomMargin: 11
-        anchors.topMargin: -11
-        anchors.verticalCenter: text4.verticalCenter
-        anchors.bottom: text4.bottom
-        anchors.top: text4.top
+        anchors {
+            bottomMargin: 11
+            topMargin: -11
+            verticalCenter: text4.verticalCenter
+            bottom: text4.bottom
+            top: text4.top
+        }
         font.pixelSize: 12
     }
 
@@ -141,7 +142,6 @@ Container
         id: input
         x: 39
         y: 40
-
     }
 
     AngleSlider {
@@ -150,7 +150,6 @@ Container
         y: 20
         width: 40
         height: 40
-
     }
 
     AngleSlider {
@@ -159,7 +158,6 @@ Container
         y: 113
         width: 40
         height: 40
-
     }
 
     Matrix {
@@ -171,7 +169,6 @@ Container
         spacing: 1
         rows: 4
         columns: 1
-
     }
 
     Container {
@@ -187,7 +184,6 @@ Container
             y: -3
             width: 157
             height: 121
-
         }
     }
 
@@ -201,21 +197,4 @@ Container
         rows: 4
         spacing: 1
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

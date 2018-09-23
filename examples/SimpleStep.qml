@@ -3,8 +3,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import com.github.jcelerier.CreativeControls 1.0
 
-Rectangle
-{
+Rectangle {
     width: 800
     height: step.height + 10
 
@@ -15,9 +14,11 @@ Rectangle
         repeat: true
         onTriggered: step.nextStep()
     }
+
     Container {
         width: 800
         height: step.height + 10
+
         Step {
             id: step
             anchors.centerIn: parent
@@ -27,7 +28,5 @@ Rectangle
                 console.log(values)
             }
         }
-
     }
-
 }

@@ -3,30 +3,28 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import com.github.jcelerier.CreativeControls 1.0
 
-Page
-{
+Page {
     Row {
-        Container
-        {
+        Container {
             height: col.childrenRect.height + 2 * radius
-            Column
-            {
+
+            Column {
                 id: col
+
                 Repeater {
                     model :5
-                    Column {
-                        HSlider
-                        {
-                            height: 50
 
+                    Column {
+                        HSlider {
+                            height: 50
                         }
-                        Text
-                        {
+                        Text {
                             height: 50
                             text: "coucou"
                             color: "white"
                             font.pointSize: 34
-                        } }
+                        }
+                    }
                 }
             }
         }

@@ -15,48 +15,46 @@ Item {
         color: "#555"
     }
 
-        GridLayout {
-            x: 0
-            y: 0
+    GridLayout {
+        x: 0
+        y: 0
 
+        scale: 1
+        rows: 4
+        columns: 8
 
-            scale: 1
-            rows: 4
-            columns: 8
+        AngleSlider { }
+        ArcSlider { }
+        ColorChooser { }
+        ColorSlider { }
+        ColorWheel { }
+        CosInfluence { }
+        DonutSlider { }
+        Frame { }
 
-            AngleSlider { }
-            ArcSlider { }
-            ColorChooser { }
-            ColorSlider { }
-            ColorWheel { }
-            CosInfluence { }
-            DonutSlider { }
-            Frame { }
+        Graph { }
+        Graph2D { }
+        HSLSlider { }
+        HSVSlider { }
+        Joystick { }
+        Keyboard { }
+        Leds { }
 
-            Graph { }
-            Graph2D { }
-            HSLSlider { }
-            HSVSlider { }
-            Joystick { }
-            Keyboard { }
-            Leds { }
+        Matrix { }
+        MultiSlider { }
+        Random1D { }
+        Random2D { }
+        Random3D { }
+        RangeSlider { }
+        RGBSlider { }
+        Scale { }
 
-            Matrix { }
-            MultiSlider { }
-            Random1D { }
-            Random2D { }
-            Random3D { }
-            RangeSlider { }
-            RGBSlider { }
-            Scale { }
-
-            Scope { }
-            Spat { }
-            Spectrum { }
-            Step { }
-            Switch { }
-            Trajectory { }
-            XYPad { }
-        }
-
+        Scope { }
+        Spat { }
+        Spectrum { }
+        Step { }
+        Switch { }
+        Trajectory { }
+        XYPad { }
+    }
 }
