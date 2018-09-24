@@ -53,7 +53,7 @@ Grid
     // update color if the style changed
     function updateColor()
     {
-        for (var k = 0; k < leds.rows*leds.columns; k++)
+        for (var k = 0; k < repeater.count; k++)
         {
             var item = repeater.itemAt(k)
             if (item !== null)

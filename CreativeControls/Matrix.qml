@@ -21,8 +21,19 @@ Grid
     property bool togglable: false
     property var pressed: []
     property var styles: DarkStyle
+    onStylesChanged: {
+        for (var k = 0; k < repeater.count; k++)
+        {
+            var item = repeater.itemAt(k)
+            if (item !== null)
+            {
+                item.color = item.toggled ? styles.colorOn : styles.colorOff;
+            }
+        }
+    }
 
     Repeater {
+        id: repeater
         model: parent.columns * parent.rows
 
         anchors.fill: parent
