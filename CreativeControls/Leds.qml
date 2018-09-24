@@ -35,10 +35,12 @@ Grid
                              0,leds.height)
 
     property var styles: DarkStyle
+    onStylesChanged: updateColor();
 
     property real radius : 20
     property color ledColorOn: styles.colorOn
     property color ledColorOff: styles.colorOff
+
     property bool easing : false
 
     // intensity default values
@@ -47,6 +49,19 @@ Grid
         [0.4, 0.5, 0.6],
         [0.7, 0.8, 0.9]
     ]
+
+    // update color if the style changed
+    function updateColor()
+    {
+        for (var k = 0; k < leds.rows*leds.columns; k++)
+        {
+            var item = repeater.itemAt(k)
+            if (item !== null)
+            {
+                item.color = Qt.darker(styles.colorOn, intensity[item.indexColumn][item.indexRow] *10.);
+            }
+        }
+    }
 
     // toggle on/off
     function toggle(index)
