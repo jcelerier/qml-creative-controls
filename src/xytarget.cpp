@@ -1,6 +1,8 @@
 #include "xytarget.hpp"
-#include <QPainter>
+
 #include <QDebug>
+#include <QPainter>
+
 #include <cmath>
 
 namespace CreativeControls
@@ -28,7 +30,8 @@ void XYTarget::paint(QPainter* painter)
   painter->drawLine(w, 0., w, height());
   painter->drawLine(0., h, width(), h);
   painter->setRenderHint(QPainter::RenderHint::Antialiasing, true);
-  painter->drawEllipse(w - m_radius, h - m_radius, 2. * m_radius, 2. * m_radius);
+  painter->drawEllipse(
+      w - m_radius, h - m_radius, 2. * m_radius, 2. * m_radius);
 }
 
 void XYTarget::mousePressEvent(QMouseEvent* event)
@@ -50,7 +53,7 @@ void XYTarget::mousePressEvent(QMouseEvent* event)
 
 void XYTarget::mouseDoubleClickEvent(QMouseEvent* event)
 {
-   event->ignore();
+  event->ignore();
 }
 
 void XYTarget::mouseMoveEvent(QMouseEvent* event)
@@ -76,11 +79,11 @@ void XYTarget::touchEvent(QTouchEvent* event)
   {
     setPressed(true);
     const auto& first = event->touchPoints().first();
-    switch(first.state())
+    switch (first.state())
     {
       case Qt::TouchPointPressed:
       {
-        if(contains(first.pos()))
+        if (contains(first.pos()))
         {
           m_lastPos = first.pos();
           event->accept();
@@ -122,10 +125,8 @@ bool XYTarget::contains(const QPointF& point) const
 {
   const auto w = m_centerX * width();
   const auto h = m_centerY * height();
-  return point.x() > (w - m_radius)
-      && point.x() < (w + m_radius)
-      && point.y() > (h - m_radius)
-      && point.y() < (h + m_radius);
+  return point.x() > (w - m_radius) && point.x() < (w + m_radius)
+         && point.y() > (h - m_radius) && point.y() < (h + m_radius);
 }
 
 void XYTarget::updatePenWidth()

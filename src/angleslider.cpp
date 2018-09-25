@@ -1,7 +1,9 @@
 #include "angleslider.hpp"
+
 #include <QPainter>
-#include <complex>
 #include <QtMath>
+
+#include <complex>
 
 namespace CreativeControls
 {
@@ -18,7 +20,7 @@ AngleSlider::AngleSlider()
 void AngleSlider::paint(QPainter* painter)
 {
   const auto rect = boundingRect();
-  auto borderWidth = (rect.width() / 2) * 1./15.;
+  auto borderWidth = (rect.width() / 2) * 1. / 15.;
   const auto radius = rect.width() / 2. - borderWidth / 2. - 1;
   QPen p;
   p.setWidth(borderWidth);
@@ -42,9 +44,12 @@ void AngleSlider::paint(QPainter* painter)
 
   p.setWidth(borderWidth * 0.75);
   painter->setPen(p);
-  painter->drawLine(QPointF{pt_min_end.real() + cx, pt_min_end.imag() + cy}, QPointF{pt_min.real() + cx, pt_min.imag() + cy});
-  painter->drawLine(QPointF{pt_max_end.real() + cx, pt_max_end.imag() + cy}, QPointF{pt_max.real() + cx, pt_max.imag() + cy});
-
+  painter->drawLine(
+      QPointF{pt_min_end.real() + cx, pt_min_end.imag() + cy},
+      QPointF{pt_min.real() + cx, pt_min.imag() + cy});
+  painter->drawLine(
+      QPointF{pt_max_end.real() + cx, pt_max_end.imag() + cy},
+      QPointF{pt_max.real() + cx, pt_max.imag() + cy});
 }
 
 qreal AngleSlider::angle() const
@@ -78,9 +83,9 @@ void AngleSlider::setAngle(const qreal angle)
     return;
 
   if (angle < min())
-      m_angle = min();
+    m_angle = min();
   else if (angle > max())
-      m_angle = max();
+    m_angle = max();
   else
     m_angle = angle;
   emit angleChanged(m_angle);

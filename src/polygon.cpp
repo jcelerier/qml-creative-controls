@@ -1,4 +1,5 @@
 #include "polygon.hpp"
+
 #include <QSGFlatColorMaterial>
 #include <QSGGeometryNode>
 #include <QtMath>
@@ -11,9 +12,8 @@ Polygon::Polygon()
   setAntialiasing(true);
 }
 
-QSGNode* Polygon::updatePaintNode(
-    QSGNode* oldNode,
-    QQuickItem::UpdatePaintNodeData*)
+QSGNode*
+Polygon::updatePaintNode(QSGNode* oldNode, QQuickItem::UpdatePaintNodeData*)
 {
   // Attention les yeux...
   QSGGeometryNode *fillNode{}, *borderNode{};
@@ -23,7 +23,8 @@ QSGNode* Polygon::updatePaintNode(
   {
     // D'abord un noeud racine pour le "fill"
     fillNode = new QSGGeometryNode;
-    fillGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), m_sides );
+    fillGeometry
+        = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), m_sides);
 
     fillGeometry->setLineWidth(0);
     fillGeometry->setDrawingMode(GL_TRIANGLE_FAN);
@@ -31,23 +32,21 @@ QSGNode* Polygon::updatePaintNode(
     fillNode->setGeometry(fillGeometry);
     fillNode->setFlag(QSGNode::OwnsGeometry);
 
-
     auto fill = new QSGFlatColorMaterial;
     fill->setColor(m_color);
     fillNode->setMaterial(fill);
 
     fillNode->setFlag(QSGNode::OwnsMaterial);
 
-
     borderNode = new QSGGeometryNode;
-    borderGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), m_sides);
+    borderGeometry
+        = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), m_sides);
 
     borderGeometry->setLineWidth(m_borderWidth);
     borderGeometry->setDrawingMode(GL_LINE_LOOP);
 
     borderNode->setGeometry(borderGeometry);
     borderNode->setFlag(QSGNode::OwnsGeometry);
-
 
     auto border = new QSGFlatColorMaterial;
     border->setColor(m_borderColor);
@@ -58,13 +57,13 @@ QSGNode* Polygon::updatePaintNode(
   }
   else
   {
-    fillNode = static_cast<QSGGeometryNode *>(oldNode);
+    fillNode = static_cast<QSGGeometryNode*>(oldNode);
     fillGeometry = fillNode->geometry();
     fillGeometry->allocate(m_sides);
     auto fill = static_cast<QSGFlatColorMaterial*>(fillNode->material());
     fill->setColor(m_color);
 
-    borderNode = static_cast<QSGGeometryNode *>(fillNode->childAtIndex(0));
+    borderNode = static_cast<QSGGeometryNode*>(fillNode->childAtIndex(0));
     borderGeometry = borderNode->geometry();
     borderGeometry->allocate(m_sides);
 
@@ -82,12 +81,15 @@ QSGNode* Polygon::updatePaintNode(
 
   const auto theta = 2. * M_PI / m_sides;
 
-  // The user gives the rotation in degrees, we convert to radians for sin / cos.
+  // The user gives the rotation in degrees, we convert to radians for sin /
+  // cos.
   const auto rotation = 2. * M_PI * m_rotation / 360.;
   for (int i = 0; i < m_sides; ++i)
   {
-    const auto x = bounds.x() + half_w + std::cos(i * theta + rotation) * half_w;
-    const auto y = bounds.y() + half_h + std::sin(i * theta + rotation) * half_h;
+    const auto x
+        = bounds.x() + half_w + std::cos(i * theta + rotation) * half_w;
+    const auto y
+        = bounds.y() + half_h + std::sin(i * theta + rotation) * half_h;
     fillVertices[i].set(x, y);
     borderVertices[i].set(x, y);
   }
@@ -99,7 +101,6 @@ QSGNode* Polygon::updatePaintNode(
 
   return fillNode;
 }
-
 
 int Polygon::sides() const
 {

@@ -2,9 +2,8 @@
 
 namespace CreativeControls
 {
-CppUtils::CppUtils(QObject *parent) : QObject(parent)
+CppUtils::CppUtils(QObject* parent) : QObject(parent)
 {
-
 }
 
 double CppUtils::getHSVHue(const QColor col)

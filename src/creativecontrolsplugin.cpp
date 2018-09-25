@@ -1,22 +1,22 @@
 #include "creativecontrolsplugin.hpp"
-#include "graph.hpp"
+
 #include "angleslider.hpp"
-#include "scope.hpp"
-#include "polygon.hpp"
-#include "painted_polygon.hpp"
 #include "cpputils.hpp"
-#include "xytarget.hpp"
+#include "graph.hpp"
+#include "painted_polygon.hpp"
+#include "polygon.hpp"
+#include "scope.hpp"
 #include "toucharea.hpp"
+#include "xytarget.hpp"
 
 namespace CreativeControls
 {
 
 Plugin::Plugin()
 {
-
 }
 
-void Plugin::registerTypes(const char *uri)
+void Plugin::registerTypes(const char* uri)
 {
   qmlRegisterType<Graph>(uri, 1, 0, "GraphImpl");
   qmlRegisterType<AngleSlider>(uri, 1, 0, "AngleSliderImpl");
@@ -25,18 +25,17 @@ void Plugin::registerTypes(const char *uri)
   qmlRegisterType<XYTarget>(uri, 1, 0, "Crosshair");
   qmlRegisterType<TouchArea>(uri, 1, 0, "TouchArea");
 
-  qmlRegisterSingletonType<CppUtils>(uri, 1, 0, "CppUtils",
-                                     [] (QQmlEngine*, QJSEngine*) -> QObject* {
-    return new CppUtils;
-  });
+  qmlRegisterSingletonType<CppUtils>(
+      uri, 1, 0, "CppUtils",
+      [](QQmlEngine*, QJSEngine*) -> QObject* { return new CppUtils; });
 }
 }
 
 #if defined(QPM_INIT)
 static void creative_controls_init()
 {
-    static CreativeControls::Plugin p;
-    p.registerTypes("com.github.jcelerier.CreativeControls");
+  static CreativeControls::Plugin p;
+  p.registerTypes("com.github.jcelerier.CreativeControls");
 }
 Q_COREAPP_STARTUP_FUNCTION(creative_controls_init)
 #endif

@@ -1,4 +1,5 @@
 #include "painted_polygon.hpp"
+
 #include <QPainter>
 #include <QSGFlatColorMaterial>
 #include <QSGGeometryNode>
@@ -98,12 +99,15 @@ void PaintedPolygon::paint(QPainter* painter)
 
   QPolygonF poly;
   poly.reserve(m_sides);
-  // The user gives the rotation in degrees, we convert to radians for sin / cos.
+  // The user gives the rotation in degrees, we convert to radians for sin /
+  // cos.
   const auto rotation = 2. * M_PI * m_rotation / 360.;
   for (int i = 0; i < m_sides; ++i)
   {
-    const auto x = 2. + bounds.x() + half_w + std::cos(i * theta + rotation) * half_w;
-    const auto y = 2. + bounds.y() + half_h + std::sin(i * theta + rotation) * half_h;
+    const auto x
+        = 2. + bounds.x() + half_w + std::cos(i * theta + rotation) * half_w;
+    const auto y
+        = 2. + bounds.y() + half_h + std::sin(i * theta + rotation) * half_h;
 
     poly.push_back(QPointF{x, y});
   }
@@ -113,4 +117,3 @@ void PaintedPolygon::paint(QPainter* painter)
   painter->drawConvexPolygon(poly);
 }
 }
-

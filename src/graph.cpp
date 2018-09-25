@@ -1,8 +1,8 @@
 #include "graph.hpp"
 
 #include <QSGFlatColorMaterial>
-#include <QSGGeometryNode>
 #include <QSGGeometry>
+#include <QSGGeometryNode>
 #include <QtMath>
 
 namespace CreativeControls
@@ -63,12 +63,11 @@ void Graph::setLines(const bool lines)
   update();
 }
 
-QSGNode* Graph::updatePaintNode(
-    QSGNode* oldNode,
-    QQuickItem::UpdatePaintNodeData* )
+QSGNode*
+Graph::updatePaintNode(QSGNode* oldNode, QQuickItem::UpdatePaintNodeData*)
 {
-  QSGGeometryNode *dotsNode{};
-  QSGGeometry *dotsGeometry{};
+  QSGGeometryNode* dotsNode{};
+  QSGGeometry* dotsGeometry{};
 
   const auto n_pts = m_values.size();
   if (n_pts == 0)
@@ -81,10 +80,12 @@ QSGNode* Graph::updatePaintNode(
   if (!oldNode)
   {
     dotsNode = new QSGGeometryNode;
-    dotsGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), n_pts);
+    dotsGeometry
+        = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), n_pts);
 
     dotsGeometry->setLineWidth(2);
-    dotsGeometry->setDrawingMode(m_lines ? QSGGeometry::DrawLineStrip : QSGGeometry::DrawPoints);
+    dotsGeometry->setDrawingMode(
+        m_lines ? QSGGeometry::DrawLineStrip : QSGGeometry::DrawPoints);
 
     dotsNode->setGeometry(dotsGeometry);
     dotsNode->setFlag(QSGNode::OwnsGeometry);
@@ -97,11 +98,12 @@ QSGNode* Graph::updatePaintNode(
   }
   else
   {
-    dotsNode = static_cast<QSGGeometryNode *>(oldNode);
+    dotsNode = static_cast<QSGGeometryNode*>(oldNode);
     dotsGeometry = dotsNode->geometry();
 
     dotsGeometry->allocate(n_pts);
-    dotsGeometry->setDrawingMode(m_lines ? QSGGeometry::DrawLineStrip : QSGGeometry::DrawPoints);
+    dotsGeometry->setDrawingMode(
+        m_lines ? QSGGeometry::DrawLineStrip : QSGGeometry::DrawPoints);
 
     auto border = static_cast<QSGFlatColorMaterial*>(dotsNode->material());
     border->setColor(m_graphColor);
@@ -124,4 +126,3 @@ QSGNode* Graph::updatePaintNode(
   return dotsNode;
 }
 }
-

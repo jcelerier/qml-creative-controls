@@ -1,5 +1,7 @@
 #include "scope.hpp"
+
 #include <QPainter>
+
 #include <cmath>
 
 namespace CreativeControls
@@ -142,7 +144,7 @@ void Scope::updatePath()
     const auto h0 = height();
     const auto h1 = 0;
     const auto coeff = (h1 - h0) / (y1 - y0);
-    auto scale = [=] (qreal val) { return h0 + coeff * (val - y0); };
+    auto scale = [=](qreal val) { return h0 + coeff * (val - y0); };
 
     m_data.resize(2 * m_points.size());
     if (m_points.size() > 0)
@@ -176,7 +178,7 @@ void Scope::updatePath()
     const auto h0 = height() / 2.;
     const auto h1 = 0.;
     const auto coeff = (h1 - h0) / (y1 - y0);
-    auto scale = [=] (qreal val) { return h0 + coeff * (std::fabs(val) - y0); };
+    auto scale = [=](qreal val) { return h0 + coeff * (std::fabs(val) - y0); };
 
     m_data.resize(2 * m_points.size());
 

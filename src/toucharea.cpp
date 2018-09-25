@@ -16,7 +16,7 @@ bool TouchArea::pressState() const
 void TouchArea::setPressState(const bool pressState)
 {
   if (m_pressState == pressState)
-      return;
+    return;
 
   m_pressState = pressState;
   emit pressStateChanged(m_pressState);
@@ -54,7 +54,7 @@ void TouchArea::touchEvent(QTouchEvent* event)
   if (m_pressState)
   {
     const auto& touchpoint = *event->touchPoints().begin();
-    switch(touchpoint.state())
+    switch (touchpoint.state())
     {
       case Qt::TouchPointPressed:
         emit pressed(touchpoint.pos());
@@ -73,5 +73,4 @@ void TouchArea::touchEvent(QTouchEvent* event)
   }
   event->accept();
 }
-
 }
