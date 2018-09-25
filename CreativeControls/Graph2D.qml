@@ -1,8 +1,8 @@
 import QtQuick 2.6
 
+
 // Displays 2D input messages in a graph
-Text
-{
+Text {
     font.pointSize: 20
     text: "TODO"
 }

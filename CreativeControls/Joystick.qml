@@ -1,14 +1,13 @@
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
+
 // A round 2D touch area. The ballpen automatically returns to center upon release.
 // Properties:
 // * stickX / stickY : the position of the stick between [-1; 1]
 // * stickR : the distance of the stick to the center between [0; 1]
 // * stickAngle : the angle in degrees; 0 is at the right, 90 at the top.
-
-Rectangle
-{
+Rectangle {
     id: pad
 
     width: 200
@@ -30,16 +29,16 @@ Rectangle
     property real stickR: 0
     property real stickTheta: 0
 
-    function moveStick(mouseX, mouseY)
-    {
-        var dist = Utils.distance(0, 0, mouseX - pad.radius, mouseY - pad.radius);
-        stickTheta = mouseY === pad.radius && mouseX === pad.radius
-                ? 0
-                : Math.atan2(mouseY - pad.radius, mouseX - pad.radius);
-        var radius = Utils.clamp(dist, 0, pad.radius - stick.radius);
+    function moveStick(mouseX, mouseY) {
+        var dist = Utils.distance(0, 0, mouseX - pad.radius,
+                                  mouseY - pad.radius)
+        stickTheta = mouseY === pad.radius
+                && mouseX === pad.radius ? 0 : Math.atan2(mouseY - pad.radius,
+                                                          mouseX - pad.radius)
+        var radius = Utils.clamp(dist, 0, pad.radius - stick.radius)
 
-        stick.x = radius * Math.cos(stickTheta) + pad.radius - stick.radius;
-        stick.y = radius * Math.sin(stickTheta) + pad.radius - stick.radius;
+        stick.x = radius * Math.cos(stickTheta) + pad.radius - stick.radius
+        stick.y = radius * Math.sin(stickTheta) + pad.radius - stick.radius
 
         // rescale between 0 and 1
         stickX = Utils.rescale(stick.x, 0, pad.width - stick.width, -1.00, 1.00)
@@ -47,16 +46,14 @@ Rectangle
         stickR = Utils.distance(stickX, stickY, 0, 0)
     }
 
-    function releaseStick()
-    {
+    function releaseStick() {
         stickX = 0
         stickY = 0
         stickTheta = 0
         stickR = 0
     }
 
-    Rectangle
-    {
+    Rectangle {
         id: stick
         color: pad.state === "move" ? styles.colorOn : styles.base
         radius: pad.state === "move" ? pad.radius / 6 * 1.1 : pad.radius / 6
@@ -64,29 +61,26 @@ Rectangle
         width: height
     }
 
-    TouchArea
-    {
+    TouchArea {
         id: area
         anchors.fill: parent
         onPressed: {
             pad.state = "move"
-            moveStick(point.x, point.y);
+            moveStick(point.x, point.y)
         }
 
         onPositionChanged: moveStick(point.x, point.y)
         onReleased: {
             pad.state = "default"
-            releaseStick();
+            releaseStick()
         }
     }
-
 
     states: [
         State {
             id: def
             name: "default"
-            AnchorChanges
-            {
+            AnchorChanges {
                 target: stick
                 anchors.horizontalCenter: pad.horizontalCenter
                 anchors.verticalCenter: pad.verticalCenter
@@ -95,8 +89,7 @@ Rectangle
         State {
             id: move
             name: "move"
-            AnchorChanges
-            {
+            AnchorChanges {
                 target: stick
                 anchors.horizontalCenter: undefined
                 anchors.verticalCenter: undefined
@@ -105,6 +98,8 @@ Rectangle
     ]
 
     transitions: Transition {
-        AnchorAnimation { duration: 50 }
+        AnchorAnimation {
+            duration: 50
+        }
     }
 }

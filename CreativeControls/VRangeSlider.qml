@@ -1,9 +1,9 @@
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
+
 // Slider with a min and max
-Rectangle
-{
+Rectangle {
     id: rangeSlider
 
     width: 100
@@ -14,14 +14,15 @@ Rectangle
 
     color: styles.sliderBackgroundColor
     border {
-        width : width / 25.
-        color : styles.sliderBackgroundColor
+        width: width / 25.
+        color: styles.sliderBackgroundColor
     }
-    radius : styles.cornerRadius
+    radius: styles.cornerRadius
 
     // the value is between 0 and 1.
-    property real value //: initialValue;
+    property real value
 
+    //: initialValue;
     property real minValue: initialMinValue
     property real maxValue: initialMaxValue
 
@@ -29,34 +30,33 @@ Rectangle
     property real initialMaxValue: 0.8
 
     // value mapping
-    property var mapFunc: function(linearVal) { return linearVal }
+    property var mapFunc: function (linearVal) {
+        return linearVal
+    }
 
     property bool __updating: false
 
-
     // by reseting, the handle width and height are initialized according to the initalValue
-    Component.onCompleted: reset();
+    Component.onCompleted: reset()
 
     // function called when updating the value from outside
-    function updateValue()
-    {
+    function updateValue() {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
-        if (!__updating)
-        {
-            rangeSlider.value = mapFunc();
+        if (!__updating) {
+            rangeSlider.value = mapFunc()
         }
     }
 
-    function reset(){
-        minHandle.reset();
-        maxHandle.reset();
+    function reset() {
+        minHandle.reset()
+        maxHandle.reset()
     }
 
     property real handleSize: rangeSlider.border.width * 5.
 
     property color handleColor: styles.handleColor
 
-    Rectangle{
+    Rectangle {
         id: range
 
         anchors {
@@ -71,17 +71,26 @@ Rectangle
 
         function updateValues(offset) {
 
-            var yMax = maxHandle.y + offset;
-            var yMin = minHandle.y + offset;
+            var yMax = maxHandle.y + offset
+            var yMin = minHandle.y + offset
 
-            var clampedMaxY = Utils.clamp(yMax + handleSize/2., handleSize/2., minHandle.y -  handleSize/2. );
-            var clampedMinY = Utils.clamp(yMin+ handleSize/2., yMax + 3.*handleSize/2., rangeSlider.height  -  handleSize/2.);
+            var clampedMaxY = Utils.clamp(yMax + handleSize / 2.,
+                                          handleSize / 2.,
+                                          minHandle.y - handleSize / 2.)
+            var clampedMinY = Utils.clamp(yMin + handleSize / 2.,
+                                          yMax + 3. * handleSize / 2.,
+                                          rangeSlider.height - handleSize / 2.)
 
-            rangeSlider.maxValue = Utils.clamp(Utils.rescale(rangeSlider.height - clampedMaxY, 3.*handleSize/2.,rangeSlider.height - handleSize/2. , 0., 1.)
-                                               ,0,1);
-            rangeSlider.minValue = Utils.clamp(Utils.rescale(rangeSlider.height - clampedMinY, handleSize/2., rangeSlider.height - 3.*handleSize/2., 0., 1.)
-                                               ,0,1);
-
+            rangeSlider.maxValue = Utils.clamp(Utils.rescale(
+                                                   rangeSlider.height - clampedMaxY,
+                                                   3. * handleSize / 2., rangeSlider.height
+                                                   - handleSize / 2.,
+                                                   0., 1.), 0, 1)
+            rangeSlider.minValue = Utils.clamp(Utils.rescale(
+                                                   rangeSlider.height - clampedMinY,
+                                                   handleSize / 2.,
+                                                   rangeSlider.height - 3. * handleSize / 2.,
+                                                   0., 1.), 0, 1)
         }
     }
 
@@ -93,52 +102,60 @@ Rectangle
 
         x: rangeSlider.border.width
 
-        y: Utils.rescale(1. - rangeSlider.minValue,0.,1.,3. * handleSize / 2. ,
-                         rangeSlider.height - handleSize/2. ) - handleSize/2.
+        y: Utils.rescale(1. - rangeSlider.minValue, 0., 1.,
+                         3. * handleSize / 2.,
+                         rangeSlider.height - handleSize / 2.) - handleSize / 2.
 
-        color: mouseArea.handlePressed == minHandle ?  styles.pressedHandlesColor: styles.handlesColor
+        color: mouseArea.handlePressed == minHandle
+               ? styles.pressedHandlesColor : styles.handlesColor
 
-        function moveHandle(mouseX,mouseY)
-        {
-            var clampedY = Utils.clamp(mouseY, maxHandle.y + maxHandle.height + handleSize/2., rangeSlider.height -  handleSize/2.);
-            rangeSlider.minValue = Utils.rescale(rangeSlider.height - clampedY, handleSize/2., rangeSlider.height - 3.*handleSize/2., 0., 1.);
+        function moveHandle(mouseX, mouseY) {
+            var clampedY = Utils.clamp(
+                        mouseY,
+                        maxHandle.y + maxHandle.height + handleSize / 2.,
+                        rangeSlider.height - handleSize / 2.)
+            rangeSlider.minValue = Utils.rescale(
+                        rangeSlider.height - clampedY, handleSize / 2.,
+                        rangeSlider.height - 3. * handleSize / 2., 0., 1.)
 
             // __updating = false;
         }
 
         function reset() {
-            rangeSlider.minValue = rangeSlider.initialMinValue;
+            rangeSlider.minValue = rangeSlider.initialMinValue
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: maxHandle
 
         width: rangeSlider.width - rangeSlider.border.width * 2
         height: handleSize
 
         x: rangeSlider.border.width
-        y: Utils.rescale(1. - rangeSlider.maxValue,0.,1., handleSize/2.,rangeSlider.height - 3.*handleSize/2. ) - handleSize/2.
+        y: Utils.rescale(
+               1. - rangeSlider.maxValue, 0., 1., handleSize / 2.,
+               rangeSlider.height - 3. * handleSize / 2.) - handleSize / 2.
 
-        color: mouseArea.handlePressed == maxHandle ?  styles.pressedHandlesColor: styles.handlesColor
+        color: mouseArea.handlePressed == maxHandle
+               ? styles.pressedHandlesColor : styles.handlesColor
 
-        function moveHandle(mouseX,mouseY)
-        {
-            var clampedY = Utils.clamp(mouseY, handleSize/2., minHandle.y -  handleSize/2.);
-            rangeSlider.maxValue = Utils.rescale(rangeSlider.height - clampedY, 3.*handleSize/2.,rangeSlider.height - handleSize/2., 0., 1.);
-
+        function moveHandle(mouseX, mouseY) {
+            var clampedY = Utils.clamp(mouseY, handleSize / 2.,
+                                       minHandle.y - handleSize / 2.)
+            rangeSlider.maxValue = Utils.rescale(
+                        rangeSlider.height - clampedY, 3. * handleSize / 2.,
+                        rangeSlider.height - handleSize / 2., 0., 1.)
         }
-        function reset(){
+        function reset() {
             rangeSlider.maxValue = rangeSlider.initialMaxValue
         }
-
     }
 
-    Text
-    {
+    Text {
         anchors.fill: minHandle
-        // anchors.horizontalCenter: range.horizontalCenter
 
+        // anchors.horizontalCenter: range.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 
@@ -147,8 +164,7 @@ Rectangle
         font.bold: true
     }
 
-    Text
-    {
+    Text {
         anchors.fill: maxHandle
 
         horizontalAlignment: Text.AlignHCenter
@@ -158,58 +174,55 @@ Rectangle
         font.bold: true
     }
 
-    MouseArea
-    {
+    MouseArea {
         id: mouseArea
 
-        anchors.fill : parent
-        property var handlePressed: null;
-        property bool moveRange: false;
+        anchors.fill: parent
+        property var handlePressed: null
+        property bool moveRange: false
         property real offset: 0
-        onPressed :
-        {
-            __updating = true;
-            if (mouseY < maxHandle.y  + maxHandle.height) {
-                handlePressed = maxHandle;
-                handlePressed.moveHandle(mouseX,mouseY);
-            }
-            else if (mouseY > minHandle.y ) {
-                handlePressed = minHandle;
-                handlePressed.moveHandle(mouseX,mouseY);
-            }
-            else {
-                moveRange = true;
-                offset = mouseY - range.y;
+        onPressed: {
+            __updating = true
+            if (mouseY < maxHandle.y + maxHandle.height) {
+                handlePressed = maxHandle
+                handlePressed.moveHandle(mouseX, mouseY)
+            } else if (mouseY > minHandle.y) {
+                handlePressed = minHandle
+                handlePressed.moveHandle(mouseX, mouseY)
+            } else {
+                moveRange = true
+                offset = mouseY - range.y
             }
         }
 
         onPositionChanged: {
             if (handlePressed)
-                handlePressed.moveHandle(mouseX, mouseY);
-            else if (moveRange)
-            {
-                var newVal = 0;
-                newVal = Math.min(Math.max(handleSize,mouseY-offset),rangeSlider.height-(range.height + handleSize))
-                newVal -= range.y;
+                handlePressed.moveHandle(mouseX, mouseY)
+            else if (moveRange) {
+                var newVal = 0
+                newVal = Math.min(
+                            Math.max(handleSize, mouseY - offset),
+                            rangeSlider.height - (range.height + handleSize))
+                newVal -= range.y
 
                 range.updateValues(newVal)
             }
-
         }
 
-        onReleased: { handlePressed = null; __updating = false;moveRange = false;}
+        onReleased: {
+            handlePressed = null
+            __updating = false
+            moveRange = false
+        }
 
-        onDoubleClicked:
-        {
-            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y, maxHandle.width, maxHandle.height))
-            {
-                maxHandle.reset();
-            }
-            else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y, minHandle.width, minHandle.height))
-            {
-                minHandle.reset();
-            }
-            else
+        onDoubleClicked: {
+            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y,
+                             maxHandle.width, maxHandle.height)) {
+                maxHandle.reset()
+            } else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y,
+                                    minHandle.width, minHandle.height)) {
+                minHandle.reset()
+            } else
                 rangeSlider.reset()
         }
     }

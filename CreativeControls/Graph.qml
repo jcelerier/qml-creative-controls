@@ -1,11 +1,11 @@
 import QtQuick 2.7
 import com.github.jcelerier.CreativeControls 1.0
 
+
 // Displays input messages in a graph
 // No UI input.
 // * lines: will display lines between dots
-Rectangle
-{
+Rectangle {
     property var styles: DarkStyle
 
     color: styles.background

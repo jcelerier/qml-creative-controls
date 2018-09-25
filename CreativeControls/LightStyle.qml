@@ -2,8 +2,8 @@ pragma Singleton
 
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
-QtObject
-{   
+
+QtObject {
     property color base: "#561C49"
     property color baseLighter: "#561C49"
     property color detail: "#3d1233"
@@ -47,8 +47,7 @@ QtObject
 
     property real cornerRadius: 0.
 
-    function randomDetailColor()
-    {
-      return CppUtils.setHSVHue(borderColor, Math.random());
+    function randomDetailColor() {
+        return CppUtils.setHSVHue(borderColor, Math.random())
     }
 }
