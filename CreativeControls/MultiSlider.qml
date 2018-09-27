@@ -1,23 +1,23 @@
 import QtQuick 2.6
 
+
 // Vertical or horizontal set of sliders.
 // Parameters:
 // * count: the number of sliders
 // * orientation: vertical / horizontal
 // * spacing: spacing between sliders
 // * values: an array with all the output values.
-Item
-{
+Item {
     id: multiSlider
 
     objectName: "multiSlider"
-    width: orientation ==  Qt.Vertical ? 500 : 400
-    height: orientation ==  Qt.Vertical ? 200 : 500
+    width: orientation == Qt.Vertical ? 500 : 400
+    height: orientation == Qt.Vertical ? 200 : 500
 
     property var styles: DarkStyle
 
-    property int count : 10
-    property int orientation : Qt.Vertical
+    property int count: 10
+    property int orientation: Qt.Vertical
     property bool textVisible: true
     property bool interactive: true
     property bool ease: false
@@ -30,17 +30,14 @@ Item
 
     property var values: []
     onValuesChanged: updateValues()
-    Row
-    {
+    Row {
         spacing: multiSlider.spacing
 
-        Repeater
-        {
+        Repeater {
             id: hSliders
 
             model: (multiSlider.orientation == Qt.Vertical) ? multiSlider.count : 0
-            VSlider
-            {
+            VSlider {
                 styles: multiSlider.styles
 
                 textVisible: multiSlider.textVisible
@@ -55,16 +52,13 @@ Item
         }
     }
 
-    Column
-    {
-        spacing : multiSlider.spacing
-        Repeater
-        {
+    Column {
+        spacing: multiSlider.spacing
+        Repeater {
             id: vSliders
 
             model: (multiSlider.orientation == Qt.Horizontal) ? multiSlider.count : 0
-            HSlider
-            {
+            HSlider {
                 styles: multiSlider.styles
 
                 textVisible: multiSlider.textVisible
@@ -80,45 +74,37 @@ Item
     }
 
     // outside -> inside
-    function updateValues()
-    {
-        if (!__updating)
-        {
-            __updating = true;
-            var source = (orientation == Qt.Vertical) ? hSliders : vSliders;
+    function updateValues() {
+        if (!__updating) {
+            __updating = true
+            var source = (orientation == Qt.Vertical) ? hSliders : vSliders
 
-            for (var i = 0; i < count; i++)
-            {
-                var item = source.itemAt(i);
+            for (var i = 0; i < count; i++) {
+                var item = source.itemAt(i)
 
-                if (item !== null)
-                {
-                    item.value = values[i];
+                if (item !== null) {
+                    item.value = values[i]
                     item.updateHandle()
                 }
             }
-            __updating = false;
+            __updating = false
         }
     }
 
     // inside -> outside
-    function recomputeValues()
-    {
-        if (!__updating)
-        {
-            var source = (orientation == Qt.Vertical) ? hSliders : vSliders;
-            var array = [];
-            for (var i = 0; i < count; i++)
-            {
-                var item = source.itemAt(i);
-                if (item !== null)
-                {
+    function recomputeValues() {
+        if (!__updating) {
+            var source = (orientation == Qt.Vertical) ? hSliders : vSliders
+            var array = []
+            for (var i = 0; i < count; i++) {
+                var item = source.itemAt(i)
+                if (item !== null) {
                     array.push(item.value)
                 }
             }
-            __updating = true;
-            values = array;
-            __updating = false;
+            __updating = true
+            values = array
+            __updating = false
         }
     }
 }

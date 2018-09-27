@@ -1,9 +1,9 @@
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
+
 // Slider with a min and max
-Rectangle
-{
+Rectangle {
     id: rangeSlider
 
     width: 300
@@ -21,8 +21,9 @@ Rectangle
     radius: styles.cornerRadius
 
     // the value is between 0 and 1.
-    property real value //: initialValue;
+    property real value
 
+    //: initialValue;
     property real minValue: initialMinValue
     property real maxValue: initialMaxValue
 
@@ -30,34 +31,33 @@ Rectangle
     property real initialMaxValue: 0.8
 
     // value mapping
-    property var mapFunc: function(linearVal){ return linearVal }
+    property var mapFunc: function (linearVal) {
+        return linearVal
+    }
 
     property bool __updating: false
 
-
     // by reseting, the handle width and height are initialized according to the initalValue
-    Component.onCompleted: reset();
+    Component.onCompleted: reset()
 
     // function called when updating the value from outside
-    function updateValue()
-    {
+    function updateValue() {
         // TODO use a function instead so that one can use linear, or log, or whatever mapping.
-        if (!__updating)
-        {
-            rangeSlider.value = mapFunc();
+        if (!__updating) {
+            rangeSlider.value = mapFunc()
         }
     }
 
     function reset() {
-        minHandle.reset();
-        maxHandle.reset();
+        minHandle.reset()
+        maxHandle.reset()
     }
 
     property real handleSize: 40.
 
     property color handleColor: styles.handleColor
 
-    Rectangle{
+    Rectangle {
         id: range
 
         anchors {
@@ -70,78 +70,84 @@ Rectangle
 
         color: styles.colorOn
 
-        function updateValues(offset){
+        function updateValues(offset) {
             console.log(offset)
 
-            var xMax = maxHandle.x + offset;
-            var xMin = minHandle.x + offset;
+            var xMax = maxHandle.x + offset
+            var xMin = minHandle.x + offset
 
-            var clampedMaxX =  Utils.clamp(xMax + handleSize/2., minHandle.x + 3.*handleSize/2., rangeSlider.width -  handleSize/2.);
-            var clampedMinX = Utils.clamp(xMin + handleSize/2., handleSize/2., xMax -  handleSize/2.);
+            var clampedMaxX = Utils.clamp(xMax + handleSize / 2.,
+                                          minHandle.x + 3. * handleSize / 2.,
+                                          rangeSlider.width - handleSize / 2.)
+            var clampedMinX = Utils.clamp(xMin + handleSize / 2.,
+                                          handleSize / 2.,
+                                          xMax - handleSize / 2.)
 
-            var tmp = Utils.clamp(Utils.rescale(clampedMaxX, 3.*handleSize/2.,rangeSlider.width - handleSize/2., 0., 1.)
-                                  , 0, 1);
+            var tmp = Utils.clamp(Utils.rescale(
+                                      clampedMaxX, 3. * handleSize / 2.,
+                                      rangeSlider.width - handleSize / 2., 0.,
+                                      1.), 0, 1)
             rangeSlider.maxValue = tmp
 
-            rangeSlider.minValue = Utils.clamp(Utils.rescale(clampedMinX, handleSize/2.,
-                                                             rangeSlider.width - 3.*handleSize/2., 0., 1.),
-                                               0, 1);
+            rangeSlider.minValue = Utils.clamp(Utils.rescale(
+                                                   clampedMinX, handleSize / 2., rangeSlider.width
+                                                   - 3. * handleSize / 2., 0.,
+                                                   1.), 0, 1)
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: minHandle
 
         width: handleSize
         height: rangeSlider.height - rangeSlider.border.width * 2
 
-        x: Utils.rescale(rangeSlider.minValue, 0., 1.,
-                         handleSize / 2.,
-                         rangeSlider.width - 3.*handleSize/2.) - handleSize/2
+        x: Utils.rescale(
+               rangeSlider.minValue, 0., 1., handleSize / 2.,
+               rangeSlider.width - 3. * handleSize / 2.) - handleSize / 2
 
         y: rangeSlider.border.width
 
         color: styles.detail
 
-        function moveHandle(mouseX,mouseY)
-        {
-            var clampedX = Utils.clamp(mouseX, handleSize/2., maxHandle.x - handleSize/2.);
-            rangeSlider.minValue = Utils.rescale(clampedX, handleSize/2.,rangeSlider.width - handleSize * 1.5, 0., 1.);
+        function moveHandle(mouseX, mouseY) {
+            var clampedX = Utils.clamp(mouseX, handleSize / 2.,
+                                       maxHandle.x - handleSize / 2.)
+            rangeSlider.minValue = Utils.rescale(
+                        clampedX, handleSize / 2.,
+                        rangeSlider.width - handleSize * 1.5, 0., 1.)
             // __updating = false;
         }
-        function reset(){
-            rangeSlider.minValue = rangeSlider.initialMinValue;
+
+        function reset() {
+            rangeSlider.minValue = rangeSlider.initialMinValue
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: maxHandle
 
         width: handleSize
-        height:rangeSlider.height - rangeSlider.border.width * 2
+        height: rangeSlider.height - rangeSlider.border.width * 2
 
-        x:  Utils.rescale(rangeSlider.maxValue, 0., 1.,
-                          3.*handleSize/2., rangeSlider.width - handleSize/2. ) - handleSize/2.
+        x: Utils.rescale(rangeSlider.maxValue, 0., 1., 3. * handleSize / 2., rangeSlider.width - handleSize / 2.) - handleSize / 2.
         y: rangeSlider.border.width
         color: styles.detail
 
-        function moveHandle(mouseX,mouseY)
-        {
-            var clampedX = Utils.clamp(mouseX, minHandle.x + minHandle.width + handleSize/2 , rangeSlider.width - handleSize/2 );
-            rangeSlider.maxValue = Utils.rescale(clampedX, handleSize * 1.5, rangeSlider.width - handleSize/2 ,0.,1.);
+        function moveHandle(mouseX, mouseY) {
+            var clampedX = Utils.clamp(mouseX, minHandle.x + minHandle.width + handleSize / 2, rangeSlider.width - handleSize / 2)
+            rangeSlider.maxValue = Utils.rescale(clampedX, handleSize * 1.5, rangeSlider.width - handleSize / 2, 0., 1.)
         }
 
-        function reset()
-        {
+        function reset() {
             rangeSlider.maxValue = rangeSlider.initialMaxValue
         }
     }
 
-    Text
-    {
+    Text {
         anchors.fill: minHandle
-        // anchors.horizontalCenter: range.horizontalCenter
 
+        // anchors.horizontalCenter: range.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 
@@ -150,8 +156,7 @@ Rectangle
         font.bold: true
     }
 
-    Text
-    {
+    Text {
         anchors.fill: maxHandle
 
         horizontalAlignment: Text.AlignHCenter
@@ -161,58 +166,55 @@ Rectangle
         font.bold: true
     }
 
-    MouseArea
-    {
+    MouseArea {
         id: mouseArea
-        anchors.fill : parent
-        property var handlePressed: null;
-        property bool moveRange: false;
+        anchors.fill: parent
+        property var handlePressed: null
+        property bool moveRange: false
         property real offset: 0
-        onPressed:
-        {
-            __updating = true;
+        onPressed: {
+            __updating = true
 
             if (mouseX < minHandle.x + minHandle.width) {
-                handlePressed = minHandle;
-                handlePressed.moveHandle(mouseX, mouseY);
-            }
-            else if (mouseX > maxHandle.x) {
-                handlePressed = maxHandle;
-                handlePressed.moveHandle(mouseX, mouseY);
-            }
-            else {
-                moveRange = true;
-                offset = mouseX - range.x;
+                handlePressed = minHandle
+                handlePressed.moveHandle(mouseX, mouseY)
+            } else if (mouseX > maxHandle.x) {
+                handlePressed = maxHandle
+                handlePressed.moveHandle(mouseX, mouseY)
+            } else {
+                moveRange = true
+                offset = mouseX - range.x
             }
         }
 
         onPositionChanged: {
             if (handlePressed)
-                handlePressed.moveHandle(mouseX, mouseY);
-            else if (moveRange)
-            {
-                var newVal = 0;
-                newVal = Utils.clamp(mouseX - offset, handleSize, rangeSlider.width - (range.width + handleSize));
-                newVal -= range.x;
+                handlePressed.moveHandle(mouseX, mouseY)
+            else if (moveRange) {
+                var newVal = 0
+                newVal = Utils.clamp(
+                            mouseX - offset, handleSize,
+                            rangeSlider.width - (range.width + handleSize))
+                newVal -= range.x
                 range.updateValues(newVal)
             }
         }
 
-        onReleased: { handlePressed = null; __updating = false;moveRange = false; }
+        onReleased: {
+            handlePressed = null
+            __updating = false
+            moveRange = false
+        }
 
-        onDoubleClicked:
-        {
-            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y, maxHandle.width, maxHandle.height))
-            {
-                maxHandle.reset();
-            }
-            else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y, minHandle.width, minHandle.height))
-            {
-                minHandle.reset();
-            }
-            else
+        onDoubleClicked: {
+            if (Utils.inside(mouseX, mouseY, maxHandle.x, maxHandle.y,
+                             maxHandle.width, maxHandle.height)) {
+                maxHandle.reset()
+            } else if (Utils.inside(mouseX, mouseY, minHandle.x, minHandle.y,
+                                    minHandle.width, minHandle.height)) {
+                minHandle.reset()
+            } else
                 rangeSlider.reset()
         }
     }
 }
-

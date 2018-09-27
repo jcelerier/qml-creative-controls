@@ -1,13 +1,13 @@
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
+
 // A matrix of buttons. Buttons can be toggles or triggers.
-Grid
-{
+Grid {
     id: grid
 
-    width : 200
-    height : 200
+    width: 200
+    height: 200
 
     columns: 3
     rows: 3
@@ -22,12 +22,10 @@ Grid
     property var pressed: []
     property var styles: DarkStyle
     onStylesChanged: {
-        for (var k = 0; k < repeater.count; k++)
-        {
+        for (var k = 0; k < repeater.count; k++) {
             var item = repeater.itemAt(k)
-            if (item !== null)
-            {
-                item.color = item.toggled ? styles.colorOn : styles.colorOff;
+            if (item !== null) {
+                item.color = item.toggled ? styles.colorOn : styles.colorOff
             }
         }
     }
@@ -45,17 +43,17 @@ Grid
             height: grid.height / grid.rows - 5
             radius: grid.radius
 
-            color: styles.colorOff;
+            color: styles.colorOff
             border.width: 3
             border.color: styles.colorOnLighter
 
-            property bool toggled : false
+            property bool toggled: false
 
             onToggledChanged: {
                 if (toggled)
-                    rect.color = styles.colorOn;
+                    rect.color = styles.colorOn
                 else
-                    rect.color = styles.colorOff;
+                    rect.color = styles.colorOff
             }
 
             MouseArea {
@@ -63,17 +61,17 @@ Grid
 
                 onPressed: {
                     if (togglable)
-                        toggled = !toggled;
+                        toggled = !toggled
                     else
-                        toggled = true;
-                    grid.pressed = [ index ]
+                        toggled = true
+                    grid.pressed = [index]
                 }
                 onReleased: {
                     if (togglable)
                         ;
                     else
-                        toggled = false;
-                    grid.pressed = [ ]
+                        toggled = false
+                    grid.pressed = []
                 }
             }
         }

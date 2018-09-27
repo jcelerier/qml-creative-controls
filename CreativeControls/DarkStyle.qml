@@ -3,8 +3,7 @@ pragma Singleton
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
-QtObject
-{   
+QtObject {
     property color base: "#b4c889"
     property color baseLighter: "#bec889"
     property color detail: "#3a4407"
@@ -44,12 +43,11 @@ QtObject
     property color blackKeyDetail: colorOn
 
     // label text color (e.g. sliders)
-    property color labelColor:  "#cccfbf"
+    property color labelColor: "#cccfbf"
 
-    property real cornerRadius : 0.
+    property real cornerRadius: 0.
 
-    function randomDetailColor()
-    {
-      return CppUtils.setHSVHue(colorOn, Math.random());
+    function randomDetailColor() {
+        return CppUtils.setHSVHue(colorOn, Math.random())
     }
 }

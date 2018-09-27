@@ -1,9 +1,8 @@
 import QtQuick 2.6
 import com.github.jcelerier.CreativeControls 1.0
 
-Rectangle
-{
-    id : container
+Rectangle {
+    id: container
 
     width: 150
     height: 150
@@ -17,7 +16,7 @@ Rectangle
         width: styles.containerCornerRadius
     }
 
-    default property alias main : content.data
+    default property alias main: content.data
 
     Item {
         id: content
@@ -28,14 +27,15 @@ Rectangle
             horizontalCenter: container.horizontalCenter
         }
         width: container.width - 2 * container.radius
-        height: title == "" ? container.height - 2.* container.radius
-                            : container.height - 2.* container.radius -  (titleLabel.height + titleBottomMargin);
+        height: title == ""
+                ? container.height - 2. * container.radius
+                : container.height - 2. * container.radius - (titleLabel.height + titleBottomMargin)
     }
 
     Component.onCompleted: main.parent = content
 
     property alias title: titleLabel.text
-    property real titleBottomMargin: titleLabel.height*0.3
+    property real titleBottomMargin: titleLabel.height * 0.3
 
     Text {
         id: titleLabel

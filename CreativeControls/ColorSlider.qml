@@ -8,9 +8,7 @@ import QtQuick.Layouts 1.3
 // * color: the current color
 // * colorSpace: the colorSpace for these sliders
 // * enableAlpha: show the alpha channel slider
-
-Rectangle
-{
+Rectangle {
     id: colorSlider
 
     height: 200
@@ -24,18 +22,16 @@ Rectangle
     property real alphaValue: enableAlpha ? a.value : 1.0
 
     // slider width varies according to channel number (3 without alpha and 4 with alpha)
-    property real sliderWidth: enableAlpha ? width/4. : width/3.
+    property real sliderWidth: enableAlpha ? width / 4. : width / 3.
     property var colorSpace: Qt.hsla
 
-    RowLayout
-    {
+    RowLayout {
         width: parent.width
-        height: parent.height * 2/3
+        height: parent.height * 2 / 3
         anchors.centerIn: parent
 
-        VSlider
-        {
-            id : x
+        VSlider {
+            id: x
 
             text: colorSpace == Qt.rgba ? "R" : "H"
 
@@ -50,16 +46,15 @@ Rectangle
 
             initialValue: 153. / 255.
 
-            handleColor:  colorSpace == Qt.rgba
-                          ? colorSpace(value, 0, 0,1.)
-                          : colorSpace(value, 0.5, 0.5, 1.)
+            handleColor: colorSpace == Qt.rgba
+                         ? colorSpace(value, 0, 0, 1.)
+                         : colorSpace(value, 0.5, 0.5, 1.)
         }
 
-        VSlider
-        {
+        VSlider {
             id: y
 
-            text: colorSpace == Qt.rgba ? "G" :"S"
+            text: colorSpace == Qt.rgba ? "G" : "S"
 
             border {
                 width: 2
@@ -72,14 +67,13 @@ Rectangle
 
             initialValue: 187. / 255.
             handleColor: colorSpace == Qt.rgba
-                         ? colorSpace(0, value, 0., 1.)
+                         ? colorSpace(0, value, 0.,1.)
                          : colorSpace(x.value, value, 0.5, 1.)
         }
-        VSlider
-        {
+
+        VSlider {
             id: z
-            text: colorSpace == Qt.rgba ? "B" :
-                                           colorSpace == Qt.hsla ? "L" : "V"
+            text: colorSpace == Qt.rgba ? "B" : colorSpace == Qt.hsla ? "L" : "V"
 
             border {
                 width: 2
@@ -97,11 +91,10 @@ Rectangle
                          : colorSpace(x.value, 0.5, value, 1.)
         }
 
-        VSlider
-        {
-            id : a
+        VSlider {
+            id: a
 
-            visible : colorSlider.enableAlpha
+            visible: colorSlider.enableAlpha
             text: "A"
 
             border {
