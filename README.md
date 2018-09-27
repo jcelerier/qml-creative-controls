@@ -12,7 +12,7 @@ Requirements:
 * Tested on Windows, Linux, macOS, Android. Should work everywhere.
 
 [![Build Status](https://travis-ci.org/jcelerier/qml-creative-controls.svg)](https://travis-ci.org/jcelerier/qml-creative-controls)
-[![Build status](https://ci.appveyor.com/api/projects/status/j07ij1y6tf6awey5?svg=true)](https://ci.appveyor.com/project/JeanMichalCelerier/qml-creative-controls)
+[![Build status](https://ci.appveyor.com/api/projects/status/j07ij1y6tf6awey5?svg=true)](https://ci.appveyor.com/project/JeanMichalCelerier/qml-creative-controls) [![Join the chat at https://gitter.im/qml-creative-controls/Lobby](https://badges.gitter.im/qml-creative-controls/Lobby.svg)](https://gitter.im/qml-creative-controls/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ## Building
