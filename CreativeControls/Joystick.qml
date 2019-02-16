@@ -29,6 +29,8 @@ Rectangle {
     property real stickR: 0
     property real stickTheta: 0
 
+    signal polarChanged(point p)
+
     function moveStick(mouseX, mouseY) {
         var dist = Utils.distance(0, 0, mouseX - pad.radius,
                                   mouseY - pad.radius)
@@ -44,6 +46,8 @@ Rectangle {
         stickX = Utils.rescale(stick.x, 0, pad.width - stick.width, -1.00, 1.00)
         stickY = -Utils.rescale(stick.y, 0, pad.height - stick.height, -1, 1)
         stickR = Utils.distance(stickX, stickY, 0, 0)
+
+        polarChanged(stickR, stickTheta)
     }
 
     function releaseStick() {

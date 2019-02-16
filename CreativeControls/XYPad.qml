@@ -14,6 +14,8 @@ Item {
 
     property var styles: DarkStyle
 
+    signal pointChanged(point p)
+
     Rectangle {
         anchors.fill: parent
         color: styles.background
@@ -38,6 +40,7 @@ Item {
         function applyPos(point) {
             stickX = Utils.clamp(point.x, 0, xyPad.width) / width
             stickY = Utils.clamp(point.y, 0, xyPad.height) / height
+            xyPad.pointChanged(Qt.point(stickX, stickY))
         }
     }
 }
