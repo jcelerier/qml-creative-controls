@@ -111,6 +111,19 @@ MetaInfo {
             libraryIcon: "keyboard16.png"
         }
     }
+	
+     Type {
+        name: "CreativeControls.Label"
+        icon: "label16.png"
+
+        ItemLibraryEntry {
+            name: "Label"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "label16.png"
+        }
+    }
     
     Type {
         name: "CreativeControls.Leds"
