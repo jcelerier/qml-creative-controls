@@ -218,6 +218,20 @@ MetaInfo {
             libraryIcon: "switch16.png"
         }
     }
+	
+	Type {
+        name: "CreativeControls.ToggleSwitch"
+        icon: "toggleSwitch16.png"
+
+        ItemLibraryEntry {
+            name: "Toggle Switch"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+			libraryIcon: "toggleSwitch16.png"
+        }
+    }	
+	
     Type {
         name: "CreativeControls.XYPad"
         icon: "pad16.png"
@@ -302,6 +316,18 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
+	
+	 Type {
+        name: "CreativeControls.Scale"
+        
+        ItemLibraryEntry {
+            name: "Linear Scale"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+        }
+    }
+	
     Type {
         name: "CreativeControls.Spat"
         
@@ -337,7 +363,7 @@ MetaInfo {
 
     Type {
         name: "CreativeControls.Trajectory"
-        
+
         ItemLibraryEntry {
             name: "Trajectory Editor"
             category: "Creative Controls"
@@ -345,16 +371,7 @@ MetaInfo {
             requiredImport: "CreativeControls"
         }
     }
-    Type {
-        name: "CreativeControls.Scale"
-        
-        ItemLibraryEntry {
-            name: "Linear Scale"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-        }
-    }
+   
     
     */
 }
