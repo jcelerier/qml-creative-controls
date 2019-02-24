@@ -1,179 +1,178 @@
 MetaInfo {
     Type {
         name: "CreativeControls.AngleSlider"
-        icon: "angleSlider16.png"
+        icon: "angleSlider-icon.png"
 
         ItemLibraryEntry {
             name: "Angle Slider"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "angleSlider16.png"
+            libraryIcon: "angleSlider-icon.png"
         }
     }
     Type {
         name: "CreativeControls.Container"
-        icon: "container16.png"
+        icon: "container-icon.png"
 
         ItemLibraryEntry {
             name: "Container"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "container16.png"
+            libraryIcon: "container-icon.png"
         }
     }
     Type {
         name: "CreativeControls.CosInfluence"
-        icon: "pad16.png"
+        icon: "pad-icon.png"
 
         ItemLibraryEntry {
             name: "Cosine Influence"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "pad16.png"
+            libraryIcon: "pad-icon.png"
 
         }
     }
     Type {
         name: "CreativeControls.DonutSlider"
-        icon: "donutSlider16.png"
+        icon: "donutSlider-icon.png"
 
         ItemLibraryEntry {
             name: "Donut Slider"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "donutSlider16.png"
+            libraryIcon: "donutSlider-icon.png"
         }
     }
     Type {
         name: "CreativeControls.Graph"
-        icon: "graph16.png"
+        icon: "graph-icon.png"
 
         ItemLibraryEntry {
             name: "1D Graph"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "graph16.png"
+            libraryIcon: "graph-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.HSVSlider"
-         icon: "hsvSlider16.png"
+         icon: "hsvSlider-icon.png"
         ItemLibraryEntry {
             name: "HSV Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "hsvSlider16.png"
+            libraryIcon: "hsvSlider-icon.png"
         }
     }
 
     Type {
         name: "CreativeControls.HSLSlider"
-        icon: "hsvSlider16.png"
+        icon: "hsvSlider-icon.png"
 
         ItemLibraryEntry {
             name: "HSL Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "hsvSlider16.png"
+            libraryIcon: "hsvSlider-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.Joystick"
-        icon: "joystick16.png"
+        icon: "joystick-icon.png"
 
         ItemLibraryEntry {
             name: "Joystick"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "joystick16.png"
+            libraryIcon: "joystick-icon.png"
         }
     }
     
     Type {
+        name: "CreativeControls.HSlider"
+        icon: "hslider-icon.png"
+
+        ItemLibraryEntry {
+            name: "Horizontal Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "hslider-icon.png"
+        }
+    }
+    Type {
         name: "CreativeControls.Keyboard"
-        icon: "keyboard16.png"
+        icon: "keyboard-icon.png"
 
         ItemLibraryEntry {
             name: "Piano Keyboard"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "keyboard16.png"
+            libraryIcon: "keyboard-icon.png"
         }
     }
 	
      Type {
         name: "CreativeControls.Label"
-        icon: "label16.png"
+        icon: "label-icon.png"
 
         ItemLibraryEntry {
             name: "Label"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "label16.png"
+            libraryIcon: "label-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.Leds"
-        icon: "leds16.png"
+        icon: "leds-icon.png"
 
         ItemLibraryEntry {
             name: "Leds"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "leds16.png"
-        }
-    }
-    
-    Type {
-        name: "CreativeControls.LogSlider"
-        icon: "slider16.png"
-
-        ItemLibraryEntry {
-            name: "Log Slider"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "slider16.png"
+            libraryIcon: "leds-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.Matrix"
-        icon: "matrix16.png"
+        icon: "matrix-icon.png"
 
         ItemLibraryEntry {
             name: "Button Matrix"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "matrix16.png"
+            libraryIcon: "matrix-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.MultiSlider"
-        icon: "multislider16.png"
+        icon: "multislider-icon.png"
 
         ItemLibraryEntry {
             name: "Multi-Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "multislider16.png"
+            libraryIcon: "multislider-icon.png"
 
         }
     }
@@ -181,80 +180,81 @@ MetaInfo {
 
     Type {
         name: "CreativeControls.RGBSlider"
-        icon: "rgbSlider16.png"
+        icon: "rgbSlider-icon.png"
 
         ItemLibraryEntry {
             name: "RGB Sliders"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "rgbSlider16.png"
+            libraryIcon: "rgbSlider-icon.png"
         }
     }
 
     
     Type {
         name: "CreativeControls.Scope"
-        icon: "scope16.png"
+        icon: "scope-icon.png"
 
         ItemLibraryEntry {
             name: "Scope"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "scope16.png"
-        }
-    }
-    
-    Type {
-        name: "CreativeControls.Slider"
-        icon: "slider16.png"
-
-        ItemLibraryEntry {
-            name: "Slider"
-            category: "Creative Controls"
-            version: "1.0"
-            requiredImport: "CreativeControls"
-            libraryIcon: "slider16.png"
+            libraryIcon: "scope-icon.png"
         }
     }
     
     Type {
         name: "CreativeControls.Switch"
-        icon: "switch16.png"
+        icon: "switch-icon.png"
 
         ItemLibraryEntry {
             name: "Switch"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "switch16.png"
+            libraryIcon: "switch-icon.png"
         }
     }
 	
-	Type {
+    Type {
         name: "CreativeControls.ToggleSwitch"
-        icon: "toggleSwitch16.png"
+        icon: "toggleSwitch-icon.png"
 
         ItemLibraryEntry {
             name: "Toggle Switch"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-			libraryIcon: "toggleSwitch16.png"
+            libraryIcon: "toggleSwitch-icon.png"
         }
     }	
+
+
+    Type {
+        name: "CreativeControls.VSlider"
+        icon: "vslider-icon.png"
+
+        ItemLibraryEntry {
+            name: "Vertical Slider"
+            category: "Creative Controls"
+            version: "1.0"
+            requiredImport: "CreativeControls"
+            libraryIcon: "vslider-icon.png"
+        }
+    }
 	
     Type {
         name: "CreativeControls.XYPad"
-        icon: "pad16.png"
+        icon: "pad-icon.png"
 
         ItemLibraryEntry {
             name: "X-Y Pad"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "CreativeControls"
-            libraryIcon: "pad16.png"
+            libraryIcon: "pad-icon.png"
         }
     }
     
