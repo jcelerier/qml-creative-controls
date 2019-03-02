@@ -25,14 +25,14 @@ MetaInfo {
     }
     Type {
         name: "com.github.jcelerier.CreativeControls.CosInfluence"
-        icon: "pad-icon.png"
+        icon: "cosPad-icon.png"
 
         ItemLibraryEntry {
             name: "Cosine Influence"
             category: "Creative Controls"
             version: "1.0"
             requiredImport: "com.github.jcelerier.CreativeControls"
-            libraryIcon: "pad-icon.png"
+            libraryIcon: "cosPad-icon.png"
 
         }
     }
