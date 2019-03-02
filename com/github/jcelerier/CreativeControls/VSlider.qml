@@ -83,7 +83,7 @@ Rectangle {
 
     function reset() {
         slider.value = slider.initialValue
-        updateHandle()
+        updateHandle();
     }
 
     Rectangle {
@@ -122,7 +122,7 @@ Rectangle {
 
         function update() {
             resize = true
-            antiHandle.height = slider.value * (slider.height - slider.border.width)
+            antiHandle.height = (1.0 - slider.value) * (slider.height - 2*slider.border.width)
         }
     }
 

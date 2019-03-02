@@ -28,7 +28,7 @@ Item {
 
     property bool __updating: false
 
-    property var values: []
+    property var values: [0.2,0.4,0.5,0.6,0.1,0.9]
     onValuesChanged: updateValues()
     Row {
         spacing: multiSlider.spacing
