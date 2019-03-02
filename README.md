@@ -59,7 +59,7 @@ This allows to build pretty control interfaces for MIDI or OSC-able software.
 
 ## Gallery
 
-![QtDesigner](https://i.imgur.com/IctZ1HX.png)
+![QtDesigner](https://i.imgur.com/mGzRNor.png)
 
 ## Inspiration
 

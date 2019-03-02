@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import com.github.jcelerier.CreativeControls 1.0
+import QtQuick.Layouts 1.0
 
 Item {
     id: element
@@ -19,10 +20,11 @@ Item {
 
         Matrix {
             id: buttonMatrix
-            x: 365
-            y: 33
+            x: 354
             width: 300
             height: 300
+            anchors.top: parent.top
+            anchors.topMargin: 20
             rows: 4
             columns: 4
         }
@@ -30,9 +32,9 @@ Item {
         Label {
             id: label
             x: 368
-            y: 512
+            y: 502
             text: "QML Creative Controls"
-            anchors.horizontalCenterOffset: 100
+            anchors.horizontalCenterOffset: 135
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 31
@@ -41,42 +43,35 @@ Item {
         RGBSlider {
             id: rGBSliders
             x: 681
-            y: 35
             width: 180
             height: 180
-        }
-
-        Joystick {
-            id: joystick
-            x: 32
-            y: 219
-            width: 100
-            height: 100
-            radius: 50
-        }
-
-        AngleSlider {
-            id: angleSlider
-            x: 181
-            y: 217
+            anchors.right: parent.right
+            anchors.rightMargin: 20
+            anchors.top: parent.top
+            anchors.topMargin: 20
         }
 
         Container {
             id: container2
-            x: 37
-            y: 356
-            width: 255
-            height: 174
+            y: 359
+            width: 310
+            height: 190
+            radius: 10
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
 
             CosInfluence {
                 id: cosineInfluence
+                radius: 1
                 anchors.fill: parent
             }
         }
 
         Keyboard {
             id: pianoKeyboard
-            x: 365
+            x: 362
             y: 356
             width: 497
             height: 108
@@ -85,7 +80,7 @@ Item {
         Leds {
             id: leds
             x: 681
-            y: 229
+            y: 216
             width: 180
             height: 100
             rows: 2
@@ -93,18 +88,20 @@ Item {
 
         ToggleSwitch {
             id: toggleSwitch1
-            x: 485
-            y: 491
+            x: 725
+            y: 492
             anchors.right: parent.right
-            anchors.rightMargin: 100
+            anchors.rightMargin: 55
         }
 
         Container {
             id: container1
-            x: 19
-            y: 15
             width: 310
             height: 136
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.top: parent.top
+            anchors.topMargin: 20
 
             MultiSlider {
                 id: element1
@@ -114,9 +111,44 @@ Item {
                 anchors.rightMargin: -2
                 textVisible: true
                 anchors.fill: parent
-                values: [0.2, 0.6, 0.7, 0.3, 0.8]
                 count: 5
+
+                values: [0.1, 0.5, 0.9, 0.4, 0.7]
+            }
+        }
+
+        Switch {
+            id: element2
+            x: 365
+            y: 491
+        }
+
+        RowLayout {
+            x: 32
+            y: 192
+            spacing: 20
+
+            Joystick {
+                id: joystick
+                radius: 60
+                Layout.preferredHeight: 120
+                Layout.preferredWidth: 120
+            }
+
+            AngleSlider {
+                id: angleSlider
+                Layout.preferredHeight: 120
+                Layout.preferredWidth: 120
             }
         }
     }
 }
+
+
+
+
+/*##^## Designer {
+    D{i:2;anchors_y:15}D{i:4;anchors_y:35}D{i:5;anchors_height:174;anchors_width:255;anchors_x:37;anchors_y:359}
+D{i:10;anchors_x:15;anchors_y:15}
+}
+ ##^##*/
