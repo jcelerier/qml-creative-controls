@@ -89,4 +89,8 @@ DISTFILES += \
     $$PWD/examples/ContainerExample.qml \
     $$PWD/examples/Spectrogram.qml \
     $$PWD/tests/SliderTest.qml \
-    $$PWD/tests/Various.qml
+    $$PWD/tests/Various.qml \
+    examples/DesignerExampleForm.ui.qml \
+    examples/DesignerExample.qml
+
+FORMS +=
