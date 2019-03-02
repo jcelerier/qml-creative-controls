@@ -10,7 +10,7 @@ QML_DESIGNER_IMPORT_PATH += $$PWD
 
 DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
-
+CCPATH = $$PWD/com/github/jcelerier
 HEADERS += \
     $$PWD/src/graph.hpp \
     $$PWD/src/creativecontrolsplugin.hpp \
@@ -36,47 +36,47 @@ SOURCES += \
 DESTDIR = $$_PRO_FILE_PWD_/CreativeControls/
 
 OTHER_FILES += \
-    $$PWD/CreativeControls/AngleSlider.qml \
-    $$PWD/CreativeControls/ArcSlider.qml \
-    $$PWD/CreativeControls/ColorChooser.qml \
-    $$PWD/CreativeControls/ColorSlider.qml \
-    $$PWD/CreativeControls/ColorWheel.qml \
-    $$PWD/CreativeControls/Container.qml \
-    $$PWD/CreativeControls/CosInfluence.qml \
-    $$PWD/CreativeControls/DarkStyle.qml \
-    $$PWD/CreativeControls/DonutSlider.qml \
-    $$PWD/CreativeControls/Frame.qml \
-    $$PWD/CreativeControls/Graph2D.qml \
-    $$PWD/CreativeControls/Graph.qml \
-    $$PWD/CreativeControls/HRangeSlider.qml \
-    $$PWD/CreativeControls/HSlider.qml \
-    $$PWD/CreativeControls/HSLSlider.qml \
-    $$PWD/CreativeControls/HSVSlider.qml \
-    $$PWD/CreativeControls/Joystick.qml \
-    $$PWD/CreativeControls/Keyboard.qml \
-    $$PWD/CreativeControls/Label.qml \
-    $$PWD/CreativeControls/Leds.qml \
-    $$PWD/CreativeControls/LightStyle.qml \
-    $$PWD/CreativeControls/Matrix.qml \
-    $$PWD/CreativeControls/MultiSlider.qml \
-    $$PWD/CreativeControls/Random1D.qml \
-    $$PWD/CreativeControls/Random2D.qml \
-    $$PWD/CreativeControls/Random3D.qml \
-    $$PWD/CreativeControls/RGBSlider.qml \
-    $$PWD/CreativeControls/Scale.qml \
-    $$PWD/CreativeControls/Scope.qml \
-    $$PWD/CreativeControls/Spat.qml \
-    $$PWD/CreativeControls/Spectrum.qml \
-    $$PWD/CreativeControls/Step.qml \
-    $$PWD/CreativeControls/Switch.qml \
-    $$PWD/CreativeControls/ToggleSwitch.qml \
-    $$PWD/CreativeControls/Trajectory.qml \
-    $$PWD/CreativeControls/Utils.qml \
-    $$PWD/CreativeControls/VRangeSlider.qml \
-    $$PWD/CreativeControls/VSlider.qml \
-    $$PWD/CreativeControls/XYPad.qml \
-    $$PWD/CreativeControls/qmldir \
-    $$PWD/CreativeControls/designer/CreativeControls.metainfo \
+    $$CCPATH/CreativeControls/AngleSlider.qml \
+    $$CCPATH/CreativeControls/ArcSlider.qml \
+    $$CCPATH/CreativeControls/ColorChooser.qml \
+    $$CCPATH/CreativeControls/ColorSlider.qml \
+    $$CCPATH/CreativeControls/ColorWheel.qml \
+    $$CCPATH/CreativeControls/Container.qml \
+    $$CCPATH/CreativeControls/CosInfluence.qml \
+    $$CCPATH/CreativeControls/DarkStyle.qml \
+    $$CCPATH/CreativeControls/DonutSlider.qml \
+    $$CCPATH/CreativeControls/Frame.qml \
+    $$CCPATH/CreativeControls/Graph2D.qml \
+    $$CCPATH/CreativeControls/Graph.qml \
+    $$CCPATH/CreativeControls/HRangeSlider.qml \
+    $$CCPATH/CreativeControls/HSlider.qml \
+    $$CCPATH/CreativeControls/HSLSlider.qml \
+    $$CCPATH/CreativeControls/HSVSlider.qml \
+    $$CCPATH/CreativeControls/Joystick.qml \
+    $$CCPATH/CreativeControls/Keyboard.qml \
+    $$CCPATH/CreativeControls/Label.qml \
+    $$CCPATH/CreativeControls/Leds.qml \
+    $$CCPATH/CreativeControls/LightStyle.qml \
+    $$CCPATH/CreativeControls/Matrix.qml \
+    $$CCPATH/CreativeControls/MultiSlider.qml \
+    $$CCPATH/CreativeControls/Random1D.qml \
+    $$CCPATH/CreativeControls/Random2D.qml \
+    $$CCPATH/CreativeControls/Random3D.qml \
+    $$CCPATH/CreativeControls/RGBSlider.qml \
+    $$CCPATH/CreativeControls/Scale.qml \
+    $$CCPATH/CreativeControls/Scope.qml \
+    $$CCPATH/CreativeControls/Spat.qml \
+    $$CCPATH/CreativeControls/Spectrum.qml \
+    $$CCPATH/CreativeControls/Step.qml \
+    $$CCPATH/CreativeControls/Switch.qml \
+    $$CCPATH/CreativeControls/ToggleSwitch.qml \
+    $$CCPATH/CreativeControls/Trajectory.qml \
+    $$CCPATH/CreativeControls/Utils.qml \
+    $$CCPATH/CreativeControls/VRangeSlider.qml \
+    $$CCPATH/CreativeControls/VSlider.qml \
+    $$CCPATH/CreativeControls/XYPad.qml \
+    $$CCPATH/CreativeControls/qmldir \
+    $$CCPATH/CreativeControls/designer/CreativeControls.metainfo \
     $$PWD/README.md
 
 DISTFILES += \
@@ -90,7 +90,7 @@ DISTFILES += \
     $$PWD/examples/Spectrogram.qml \
     $$PWD/tests/SliderTest.qml \
     $$PWD/tests/Various.qml \
-    examples/DesignerExampleForm.ui.qml \
-    examples/DesignerExample.qml
+    $$PWD/examples/DesignerExampleForm.ui.qml \
+    $$PWD/examples/DesignerExample.qml
 
 FORMS +=

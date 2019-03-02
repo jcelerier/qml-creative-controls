@@ -1,177 +1,177 @@
 MetaInfo {
     Type {
-        name: "CreativeControls.AngleSlider"
+        name: "com.github.jcelerier.CreativeControls.AngleSlider"
         icon: "angleSlider-icon.png"
 
         ItemLibraryEntry {
             name: "Angle Slider"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "angleSlider-icon.png"
         }
     }
     Type {
-        name: "CreativeControls.Container"
+        name: "com.github.jcelerier.CreativeControls.Container"
         icon: "container-icon.png"
 
         ItemLibraryEntry {
             name: "Container"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "container-icon.png"
         }
     }
     Type {
-        name: "CreativeControls.CosInfluence"
+        name: "com.github.jcelerier.CreativeControls.CosInfluence"
         icon: "pad-icon.png"
 
         ItemLibraryEntry {
             name: "Cosine Influence"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "pad-icon.png"
 
         }
     }
     Type {
-        name: "CreativeControls.DonutSlider"
+        name: "com.github.jcelerier.CreativeControls.DonutSlider"
         icon: "donutSlider-icon.png"
 
         ItemLibraryEntry {
             name: "Donut Slider"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "donutSlider-icon.png"
         }
     }
     Type {
-        name: "CreativeControls.Graph"
+        name: "com.github.jcelerier.CreativeControls.Graph"
         icon: "graph-icon.png"
 
         ItemLibraryEntry {
             name: "1D Graph"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "graph-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.HSVSlider"
+        name: "com.github.jcelerier.CreativeControls.HSVSlider"
          icon: "hsvSlider-icon.png"
         ItemLibraryEntry {
             name: "HSV Sliders"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "hsvSlider-icon.png"
         }
     }
 
     Type {
-        name: "CreativeControls.HSLSlider"
+        name: "com.github.jcelerier.CreativeControls.HSLSlider"
         icon: "hsvSlider-icon.png"
 
         ItemLibraryEntry {
             name: "HSL Sliders"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "hsvSlider-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.Joystick"
+        name: "com.github.jcelerier.CreativeControls.Joystick"
         icon: "joystick-icon.png"
 
         ItemLibraryEntry {
             name: "Joystick"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "joystick-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.HSlider"
+        name: "com.github.jcelerier.CreativeControls.HSlider"
         icon: "hslider-icon.png"
 
         ItemLibraryEntry {
             name: "Horizontal Slider"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "hslider-icon.png"
         }
     }
     Type {
-        name: "CreativeControls.Keyboard"
+        name: "com.github.jcelerier.CreativeControls.Keyboard"
         icon: "keyboard-icon.png"
 
         ItemLibraryEntry {
             name: "Piano Keyboard"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "keyboard-icon.png"
         }
     }
 	
      Type {
-        name: "CreativeControls.Label"
+        name: "com.github.jcelerier.CreativeControls.Label"
         icon: "label-icon.png"
 
         ItemLibraryEntry {
             name: "Label"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "label-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.Leds"
+        name: "com.github.jcelerier.CreativeControls.Leds"
         icon: "leds-icon.png"
 
         ItemLibraryEntry {
             name: "Leds"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "leds-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.Matrix"
+        name: "com.github.jcelerier.CreativeControls.Matrix"
         icon: "matrix-icon.png"
 
         ItemLibraryEntry {
             name: "Button Matrix"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "matrix-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.MultiSlider"
+        name: "com.github.jcelerier.CreativeControls.MultiSlider"
         icon: "multislider-icon.png"
 
         ItemLibraryEntry {
             name: "Multi-Sliders"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "multislider-icon.png"
 
         }
@@ -179,81 +179,81 @@ MetaInfo {
     
 
     Type {
-        name: "CreativeControls.RGBSlider"
+        name: "com.github.jcelerier.CreativeControls.RGBSlider"
         icon: "rgbSlider-icon.png"
 
         ItemLibraryEntry {
             name: "RGB Sliders"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "rgbSlider-icon.png"
         }
     }
 
     
     Type {
-        name: "CreativeControls.Scope"
+        name: "com.github.jcelerier.CreativeControls.Scope"
         icon: "scope-icon.png"
 
         ItemLibraryEntry {
             name: "Scope"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "scope-icon.png"
         }
     }
     
     Type {
-        name: "CreativeControls.Switch"
+        name: "com.github.jcelerier.CreativeControls.Switch"
         icon: "switch-icon.png"
 
         ItemLibraryEntry {
             name: "Switch"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "switch-icon.png"
         }
     }
 	
     Type {
-        name: "CreativeControls.ToggleSwitch"
+        name: "com.github.jcelerier.CreativeControls.ToggleSwitch"
         icon: "toggleSwitch-icon.png"
 
         ItemLibraryEntry {
             name: "Toggle Switch"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "toggleSwitch-icon.png"
         }
     }	
 
 
     Type {
-        name: "CreativeControls.VSlider"
+        name: "com.github.jcelerier.CreativeControls.VSlider"
         icon: "vslider-icon.png"
 
         ItemLibraryEntry {
             name: "Vertical Slider"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "vslider-icon.png"
         }
     }
 	
     Type {
-        name: "CreativeControls.XYPad"
+        name: "com.github.jcelerier.CreativeControls.XYPad"
         icon: "pad-icon.png"
 
         ItemLibraryEntry {
             name: "X-Y Pad"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
             libraryIcon: "pad-icon.png"
         }
     }
@@ -263,125 +263,125 @@ MetaInfo {
     
     /* 
     Type {
-        name: "CreativeControls.ColorChooser"
+        name: "com.github.jcelerier.CreativeControls.ColorChooser"
         
         ItemLibraryEntry {
             name: "Color Chooser"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.ColorWheel"
+        name: "com.github.jcelerier.CreativeControls.ColorWheel"
         
         ItemLibraryEntry {
             name: "Color Wheel"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
 
     
     Type {
-        name: "CreativeControls.Graph2D"
+        name: "com.github.jcelerier.CreativeControls.Graph2D"
         
         ItemLibraryEntry {
             name: "2D Graph"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.Random1D"
+        name: "com.github.jcelerier.CreativeControls.Random1D"
         
         ItemLibraryEntry {
             name: "1D Random Generator"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.Random2D"
+        name: "com.github.jcelerier.CreativeControls.Random2D"
         
         ItemLibraryEntry {
             name: "2D Random Generator"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.Random3D"
+        name: "com.github.jcelerier.CreativeControls.Random3D"
         
         ItemLibraryEntry {
             name: "3D Random Generator"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
 	
 	 Type {
-        name: "CreativeControls.Scale"
+        name: "com.github.jcelerier.CreativeControls.Scale"
         
         ItemLibraryEntry {
             name: "Linear Scale"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
 	
     Type {
-        name: "CreativeControls.Spat"
+        name: "com.github.jcelerier.CreativeControls.Spat"
         
         ItemLibraryEntry {
             name: "Spatializer"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.Spectrum"
+        name: "com.github.jcelerier.CreativeControls.Spectrum"
         
         ItemLibraryEntry {
             name: "Spectrum Display"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
     
     Type {
-        name: "CreativeControls.Step"
+        name: "com.github.jcelerier.CreativeControls.Step"
         
         ItemLibraryEntry {
             name: "Step Sequencer"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
 
     Type {
-        name: "CreativeControls.Trajectory"
+        name: "com.github.jcelerier.CreativeControls.Trajectory"
 
         ItemLibraryEntry {
             name: "Trajectory Editor"
             category: "Creative Controls"
             version: "1.0"
-            requiredImport: "CreativeControls"
+            requiredImport: "com.github.jcelerier.CreativeControls"
         }
     }
    

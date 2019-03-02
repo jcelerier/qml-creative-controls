@@ -11,6 +11,9 @@ import com.github.jcelerier.CreativeControls 1.0
 Rectangle {
     id: cosInfluence
 
+    width: 200
+    height: 200
+
     property var points: [Qt.point(0.2, 0.4), Qt.point(0.5, 0.1)]
     property alias centerX: xy.centerX
     property alias centerY: xy.centerY

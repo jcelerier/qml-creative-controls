@@ -10,9 +10,9 @@ import com.github.jcelerier.CreativeControls 1.0
 Rectangle {
     id: pad
 
-    width: 200
-    height: 200
-    radius: Math.max(width, height) / 2
+    width: 100
+    height: width
+    radius: width / 2
 
     property var styles: DarkStyle
     color: styles.background

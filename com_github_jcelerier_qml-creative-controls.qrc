@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/com/github/jcelerier/qml-creative-controls">
+    <qresource prefix="/com/github/jcelerier/CreativeControls">
         <file alias="qmldir">CreativeControls/qmldir-qpm</file>
         <file alias="AngleSlider.qml">CreativeControls/AngleSlider.qml</file>
         <file alias="ArcSlider.qml">CreativeControls/ArcSlider.qml</file>
