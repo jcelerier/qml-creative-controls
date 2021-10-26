@@ -22,7 +22,6 @@ Scope::Scope()
 void Scope::paint(QPainter* painter)
 {
   painter->setRenderHint(QPainter::Antialiasing);
-  painter->setRenderHint(QPainter::HighQualityAntialiasing);
   painter->setRenderHint(QPainter::SmoothPixmapTransform);
   painter->setBrush(m_scopeBrush);
   painter->setPen(m_scopePen);

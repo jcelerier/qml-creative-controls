@@ -1,5 +1,5 @@
 QT += qml quick
-CONFIG += c++11 plugin
+CONFIG += plugin
 TEMPLATE = lib
 
 # QMAKE_CXXFLAGS += -fsanitize=address -fsanitize=undefined -O0
